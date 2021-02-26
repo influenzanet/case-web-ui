@@ -1,0 +1,25 @@
+@import './helpers/colors.scss';
+@import './helpers/spacing.scss';
+@import './helpers/forms.scss';
+@import './helpers/custom_range.scss';
+@import './helpers/borders.scss';
+@import './helpers//typography.scss';
+@import './helpers/utilities.scss';
+
+// ---------------------------------------------
+// Other:
+// ---------------------------------------------
+$enable-rounded: false !default;
+
+.captcha-badge-alt {
+  color: map-get($theme-colors, "grey-7");
+  & a {
+    color: #000;
+  }
+}
+
+.grecaptcha-badge { visibility: hidden; }
+
+@import './iconfonts';
+
+@import '~bootstrap/scss/bootstrap.scss';
