@@ -7,7 +7,16 @@ module.exports = {
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
+      use: ["style-loader",
+        {
+          loader: "css-loader",
+          options: {
+            modules: {
+              auto: true
+            },
+          },
+        },
+        "sass-loader"],
       include: path.resolve(__dirname, "../")
     });
 
@@ -19,6 +28,11 @@ module.exports = {
       }
     });
     config.resolve.extensions.push(".ts", ".tsx");
+
+    config.resolve.modules = [
+      path.resolve(__dirname, "..", 'src'),
+      "node_modules",
+    ]
 
     return config;
   }
