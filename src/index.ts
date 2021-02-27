@@ -1,5 +1,4 @@
-import * as SurveyComponents from './components/survey';
+export * from './components/buttons';
+export * from './components/charts';
+export * from './components/survey';
 
-export {
-  SurveyComponents
-}

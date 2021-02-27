@@ -1,10 +1,10 @@
 import React from "react";
 import SurveyView from "./SurveyView";
-import ExampleWeekly from '../../../exampleContent/surveys/example_weekly.json';
-import ExampleIntake from '../../../exampleContent/surveys/example_intake.json';
+import ExampleWeekly from '../../../../exampleContent/surveys/example_weekly.json';
+import ExampleIntake from '../../../../exampleContent/surveys/example_intake.json';
 import { Survey } from "survey-engine/lib/data_types";
 
-import '../../../localStyles';
+import 'localStyles';
 
 export default {
   title: "Survey View"
