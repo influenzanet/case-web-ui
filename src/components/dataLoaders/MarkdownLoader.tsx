@@ -5,14 +5,20 @@ import MarkdownRenderer from '../displays/MarkdownRenderer';
 import ComposedLineAndScatterChartLoader from './ComposedLineAndScatterChartLoader';
 import MapWithTimeSliderLoader from './MapWithTimeSliderLoader';
 
+/**
+ * @param markdownUrl: string: URL absolute or relative path (from the content URL) with filename extension
+ * @param languageCode: optional string, to define locale code for time series (composed line and scatter chart) date formatter
+ * @param className: optional string, to add CSS classes for the markdown's wrapper
+ * @param flavor: optional string, select what extra renderer to attach to the markdown. Currently supported: 'chart-renderer' and default.
+ */
 interface MarkdownLoaderProps {
-  className?: string;
   markdownUrl: string;
-  languageCode: string;
+  className?: string;
+  languageCode?: string;
   flavor?: string;
 }
 
-const customFlavorRenderers = (language: string) => {
+const customFlavorRenderers = (language?: string) => {
   return {
     default: {
       'inlineCode': (node: any) => <p className="border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
@@ -42,7 +48,7 @@ const customFlavorRenderers = (language: string) => {
             />;
           case 'line-and-scatter-chart':
             return <ComposedLineAndScatterChartLoader
-              language={language}
+              language={language ? language : 'en'}
               dataUrl={value.url}
             />
           default:
