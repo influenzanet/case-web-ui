@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getExternalOrLocalContentURL } from '../../utils/routeUtils';
 import ComposedLineAndScatterChart, { ChartConfig } from '../charts/ComposedLineAndScatterChart';
+import LoadingPlaceholder from '../displays/LoadingPlaceholder';
 
 
 interface ComposedLineAndScatterChartLoaderProps {
@@ -24,14 +25,7 @@ const ComposedLineAndScatterChartLoader: React.FC<ComposedLineAndScatterChartLoa
   }, [props.dataUrl]);
 
 
-  const loadingContent = () => <div
-    className="d-flex align-items-center bg-secondary justify-content-center my-2"
-    style={{ minHeight: 400 }}
-  >
-    <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  const loadingContent = () => <LoadingPlaceholder color="secondary" minHeight={400} />
 
   if (!data) {
     return loadingContent();

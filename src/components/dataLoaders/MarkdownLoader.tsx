@@ -1,6 +1,7 @@
 import React from 'react';
 import { containerClassName } from '../../constants';
 import { useFetchTextFile } from '../../hooks/useFetchTextFile';
+import LoadingPlaceholder from '../displays/LoadingPlaceholder';
 import MarkdownRenderer from '../displays/MarkdownRenderer';
 import ComposedLineAndScatterChartLoader from './ComposedLineAndScatterChartLoader';
 import MapWithTimeSliderLoader from './MapWithTimeSliderLoader';
@@ -64,11 +65,7 @@ const MarkdownLoader: React.FC<MarkdownLoaderProps> = (props) => {
 
   if (loading) {
     return <div className={containerClassName}>
-      <div className="d-flex align-items-center my-3 bg-secondary justify-content-center h-100" style={{ minHeight: 300 }}>
-        <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
+      <LoadingPlaceholder color="secondary" minHeight={300} />
     </div>
   }
   if (!content) {

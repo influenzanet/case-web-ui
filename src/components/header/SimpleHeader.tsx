@@ -4,6 +4,7 @@ import LanguageDropdown from './LanguageDropdown';
 import clsx from 'clsx';
 import { getExternalOrLocalContentURL } from '../../utils/routeUtils';
 import { containerClassName } from '../../constants';
+import LoadingPlaceholder from '../displays/LoadingPlaceholder';
 
 
 interface SimpleHeaderProps {
@@ -23,11 +24,7 @@ const SimpleHeader: React.FC<SimpleHeaderProps> = (props) => {
   />
 
   if (props.loading || !props.config) {
-    return <div className="d-flex align-items-center bg-secondary justify-content-center h-100" style={{ minHeight: 100 }}>
-      <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    </div>
+    return <LoadingPlaceholder color="secondary" minHeight={100} />
   }
 
   return (

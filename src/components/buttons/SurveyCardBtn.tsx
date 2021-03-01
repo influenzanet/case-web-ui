@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Profile } from '../../api/types/user';
+import { Profile } from '../../types/profile';
 import { AvatarConfig } from '../../types/avatars';
 import Avatar from '../displays/Avatar';
 

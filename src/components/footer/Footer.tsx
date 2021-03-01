@@ -1,6 +1,7 @@
 import React from 'react';
 import { containerClassName } from '../../constants';
 import { FooterContentConfig } from '../../types/footerConfig';
+import LoadingPlaceholder from '../displays/LoadingPlaceholder';
 import FooterColumn from './FooterComponents/FooterColumn';
 
 interface FooterProps {
@@ -13,11 +14,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = (props) => {
   if (props.loading || !props.content) {
-    return <div className="d-flex align-items-center bg-primary justify-content-center h-100" style={{ minHeight: 200 }}>
-      <div className="spinner-border text-white" style={{ width: '3rem', height: '3rem' }} role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    </div>
+    return <LoadingPlaceholder color="primary" minHeight={300} />
   }
 
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getExternalOrLocalContentURL } from '../../utils/routeUtils';
 import MapWithTimeSlider, { MapSeriesConfig } from '../charts/MapWithTimeSlider';
+import LoadingPlaceholder from '../displays/LoadingPlaceholder';
 
 interface MapWithTimeSliderLoaderProps {
   mapUrl: string;
@@ -31,14 +32,7 @@ const MapWithTimeSliderLoader: React.FC<MapWithTimeSliderLoaderProps> = (props) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.mapUrl]);
 
-  const loadingContent = () => <div
-    className="d-flex align-items-center bg-secondary justify-content-center my-2"
-    style={{ minHeight: 400 }}
-  >
-    <div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-  </div>
+  const loadingContent = () => <LoadingPlaceholder color="secondary" minHeight={400} />
 
   if (!geoData || !seriesData) {
     return loadingContent();
