@@ -81,7 +81,3 @@ WithContent.args = {
   onNavigate: (url: string, external?: boolean) => console.log(url, external),
   onOpenDialog: (dialog: string) => console.log(dialog)
 }
-
-
-
-
