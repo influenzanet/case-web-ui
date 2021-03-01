@@ -1,0 +1,24 @@
+.card {
+  transition: transform 300ms ease-in-out;
+  cursor: pointer;
+}
+
+.card button {
+  text-decoration: none;
+}
+
+.card:hover {
+    // text-decoration: underline;
+    transform: scale(1.025);
+}
+
+.card:hover button {
+  text-decoration: underline;
+}
+.card:hover p {
+  text-decoration: underline;
+}
+
+.icon {
+  font-size: 1.25rem;
+}
