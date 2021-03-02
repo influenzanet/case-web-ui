@@ -6,8 +6,10 @@ import { AvatarConfig } from '../../types/avatars';
 import { getLocalizedString } from '../../utils/localize';
 import SurveyCardBtn from '../buttons/SurveyCardBtn';
 import styles from './SurveyCard.module.scss';
+import { LocalizedString } from 'survey-engine/lib/data_types';
 
 export interface SurveyCardProps {
+  studyName?: LocalizedString[];
   surveyKey: string;
   studyKey: string;
   category: string;
@@ -36,12 +38,20 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
       }
     }}
   >
-    <h6 className="fw-bold">
-      <span className="fs-btn">
+    <h5 className="fw-bold">
+      {props.studyName ?
+        <span className={clsx({
+          'text-secondary': 'prio' === props.category,
+          'text-grey-5': ['optional', 'normal'].includes(props.category),
+        })}>
+          {getLocalizedString(props.studyName, props.selectedLanguage)}
+          {' - '}
+        </span> : null}
+      <span className="">
         {getLocalizedString(props.surveyInfos?.name, props.selectedLanguage)}
       </span>
       <span className={
-        clsx("ms-1 fw-light", {
+        clsx("ms-1 fs-6 fw-light", {
           "text-primary": props.category === 'normal',
           "text-secondary": props.category === 'prio',
           "text-grey-7": props.category === 'optional',
@@ -49,7 +59,7 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
       }>
         {getLocalizedString(props.surveyInfos?.typicalDuration, props.selectedLanguage)}
       </span>
-    </h6>
+    </h5>
     <p className="fst-italic">
       {getLocalizedString(props.surveyInfos?.description, props.selectedLanguage)}
     </p>
