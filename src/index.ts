@@ -7,3 +7,4 @@ export * from './components/footer';
 export * from './components/header';
 export * from './components/misc';
 export * from './components/survey';
+export * from './utils';
