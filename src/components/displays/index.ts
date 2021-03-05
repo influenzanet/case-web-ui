@@ -1,5 +1,6 @@
 import AccordionList from './AccordionList';
 import AlertBox from './AlertBox';
+import Avatar from './Avatar';
 import ImageContainer from './ImageContainer';
 import LoadingPlaceholder from './LoadingPlaceholder';
 import LogoCredits from './LogoCredits';
@@ -11,6 +12,7 @@ import VideoPlayer from './VideoPlayer';
 export {
   AccordionList,
   AlertBox,
+  Avatar,
   ImageContainer,
   LoadingPlaceholder,
   LogoCredits,
