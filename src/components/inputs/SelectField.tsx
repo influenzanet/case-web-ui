@@ -3,7 +3,10 @@ import clsx from 'clsx';
 
 interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
   value?: string;
-  values?: Array<LanguageConfig>;
+  values?: Array<{
+    code: string;
+    label: string;
+  }>;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   id?: string;
   name?: string;
@@ -11,15 +14,14 @@ interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
   hasError?: boolean;
 }
 
-interface LanguageConfig {
-  code: string;
-  label: string;
-}
 
 const SelectField: React.FC<SelectFieldProps> = (props) => {
   const { hasError, className, ...selectProps } = props;
 
-  const renderOption = (optionValue: LanguageConfig) => {
+  const renderOption = (optionValue: {
+    code: string;
+    label: string;
+  }) => {
     return (
       <option
         key={optionValue.code}

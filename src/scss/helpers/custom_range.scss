@@ -19,9 +19,11 @@ $custom-range-tick-width:         $form-range-track-height / 2;
 
 @mixin range-thumb {
   border-radius: 50%;
-  z-index: 1000;
+  position: relative;
+  z-index: 1000000;
   background: map-get($theme-colors, "primary");
 }
+
 input[type=range] {
   -webkit-appearance: none;
   display: block;
@@ -57,13 +59,19 @@ input[type=range]::-ms-thumb {
 
 //And now the ticks
 .ticks {
-  z-index: -1;
+  z-index: 0;
   //We need left & right padding that's half the width of the range thumb, so all ticks align with the center of the thumb
   padding: $form-range-thumb-width/2 $form-range-thumb-height/2;
 }
 
 .range-track {
   background-color: map-get($theme-colors, "secondary");
+  height: $form-range-track-height;
+  width: 100%;
+}
+
+.range-track-white {
+  background-color: #FFF;
   height: $form-range-track-height;
   width: 100%;
 }

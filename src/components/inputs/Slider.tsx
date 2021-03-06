@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 interface SliderProps {
@@ -7,6 +8,7 @@ interface SliderProps {
   step?: number;
   value: number;
   onChange: (value?: number) => void;
+  useWhiteTrack?: boolean;
 }
 
 const Slider: React.FC<SliderProps> = (props) => {
@@ -47,7 +49,7 @@ const Slider: React.FC<SliderProps> = (props) => {
 
       />
       <div className="pe-none ticks position-absolute left-0 right-0 top-0 h-100 d-flex w-100 justify-content-between">
-        <div className="range-track"></div>
+        <div className={props.useWhiteTrack ? "range-track-white" : "range-track"}></div>
       </div>
       <div className="pe-none ticks position-absolute left-0 right-0 top-0 h-100 d-flex w-100 justify-content-between">
         {renderTicks()}
