@@ -1,6 +1,6 @@
 {
   "name": "case-web-ui",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "React components for CASE",
   "scripts": {
     "build": "rollup -c",
