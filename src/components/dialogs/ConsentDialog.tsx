@@ -77,7 +77,7 @@ const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
               className="w-100"
               color="primary"
               onClick={props.onConfirmed}
-              label={props.acceptBtn + 'longer title or even longer'}
+              label={props.acceptBtn}
               disabled={!scrollComplete}
             />
 
