@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import DialogBtn from '../buttons/DialogBtn';
-import { dialogPaddingXClass } from './contants';
+import { defaultDialogPaddingXClass } from './contants';
 import Dialog from './Dialog';
 
 interface ConfirmDialogProps {
@@ -12,9 +12,13 @@ interface ConfirmDialogProps {
   confirmText: string;
   onConfirm: () => void;
   onClose: () => void;
+  dialogPaddingXClass?: string;
+  dialogPaddingYClass?: string;
 }
 
 const ConfirmDialog: React.FC<ConfirmDialogProps> = (props) => {
+  const paddingX = props.dialogPaddingXClass ? props.dialogPaddingXClass : defaultDialogPaddingXClass;
+
   return (
     <Dialog
       open={props.open}
@@ -22,9 +26,11 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = (props) => {
       onClose={props.onClose}
       ariaLabelledBy="confirmDialogTitle"
       color={props.color}
+      dialogPaddingXClass={props.dialogPaddingXClass}
+      dialogPaddingYClass={props.dialogPaddingYClass}
     >
       <div className={clsx(
-        dialogPaddingXClass,
+        paddingX,
         'py-3',
         'bg-grey-1'
       )}>

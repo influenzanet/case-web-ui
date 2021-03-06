@@ -4,6 +4,7 @@ import DialogBtn from '../buttons/DialogBtn';
 import MarkdownRenderer from '../displays/MarkdownRenderer';
 import Dialog from './Dialog';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+import { defaultDialogPaddingXClass } from './contants';
 
 interface ConsentDialogProps {
   open: boolean;
@@ -13,12 +14,16 @@ interface ConsentDialogProps {
   acceptBtn: string;
   onConfirmed: () => void;
   onCancelled: () => void;
+  dialogPaddingXClass?: string;
+  dialogPaddingYClass?: string;
 }
 
 const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
   const [scrollComplete, setScrollComplete] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const fullScreen = useMediaQuery('(max-width:600px)');
+
+  const paddingX = props.dialogPaddingXClass ? props.dialogPaddingXClass : defaultDialogPaddingXClass;
 
   const handleScroll = () => {
     if (containerRef.current && containerRef.current.scrollHeight - containerRef.current.scrollTop - containerRef.current.clientHeight < 5) {
@@ -39,13 +44,16 @@ const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
       onClose={props.onCancelled}
       title={props.title}
       ariaLabelledBy="contentDialogTitle"
+      dialogPaddingXClass={props.dialogPaddingXClass}
+      dialogPaddingYClass={props.dialogPaddingYClass}
     >
       {props.content ?
         <React.Fragment>
           <div
             className={clsx(
               // styles.content,
-              "pb-2 px-3 pt-3 bg-white overflow-auto")}
+              paddingX,
+              "pb-2 pt-3 bg-white overflow-auto")}
             ref={containerRef}
             onScroll={() => handleScroll()}
             style={{
@@ -59,7 +67,8 @@ const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
           <div className="container-fluid">
             <div className={clsx(
               "bg-grey-1",
-              "px-3 pt-2 pb-4 pb-sm-3",
+              paddingX,
+              "pt-2 pb-4 pb-sm-3",
               "row"
               // styles.btns
             )}>

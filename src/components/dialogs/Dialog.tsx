@@ -2,7 +2,7 @@ import React from 'react';
 import MuiDialog from '@material-ui/core/Dialog';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import clsx from 'clsx';
-import { defaultWidth, dialogHeaderPaddingYClass, dialogPaddingXClass, fullScreenBreakPoint } from './contants';
+import { defaultWidth, defaultDialogPaddingXClass, defaultDialogPaddingYClass, fullScreenBreakPoint } from './contants';
 
 
 interface DialogProps {
@@ -13,6 +13,8 @@ interface DialogProps {
   onClose: () => void;
   ariaLabelledBy: string;
   ariaDescribedBy?: string;
+  dialogPaddingXClass?: string;
+  dialogPaddingYClass?: string;
 }
 
 
@@ -21,6 +23,9 @@ const Dialog: React.FC<DialogProps> = (props) => {
   const fullScreen = useMediaQuery(`(max-width:${fullScreenBreakPoint}px)`);
 
   const isTextColorWhite = ['primary', 'danger'].includes(color);
+
+  const paddingX = props.dialogPaddingXClass ? props.dialogPaddingXClass : defaultDialogPaddingXClass;
+  const paddingY = props.dialogPaddingYClass ? props.dialogPaddingYClass : defaultDialogPaddingYClass;
 
   const headerContent = (useButtonPlaceholder?: boolean) => <React.Fragment>
     <h4 id={props.ariaLabelledBy}
@@ -50,8 +55,8 @@ const Dialog: React.FC<DialogProps> = (props) => {
 
   const dialogHeader = <React.Fragment>
     <div className={clsx(
-      dialogPaddingXClass,
-      dialogHeaderPaddingYClass,
+      paddingX,
+      paddingY,
       'd-flex align-items-center',
       `bg-${color}`,
       {
@@ -65,8 +70,8 @@ const Dialog: React.FC<DialogProps> = (props) => {
     {/** For accounting header height in fullscreen mode: */}
     <div
       className={clsx(
-        dialogPaddingXClass,
-        dialogHeaderPaddingYClass,
+        paddingX,
+        paddingY,
         'd-flex align-items-center',
         {
           'd-block': fullScreen,
