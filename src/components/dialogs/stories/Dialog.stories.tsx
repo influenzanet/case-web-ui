@@ -24,7 +24,8 @@ Primary.args = {
   ariaDescribedBy: undefined,
   children: <React.Fragment>
     <div style={{ minHeight: 300 }}></div>
-  </React.Fragment>
+  </React.Fragment>,
+  dialogPaddingXClass: 'px-2'
 }
 
 export const Width = Template.bind({});

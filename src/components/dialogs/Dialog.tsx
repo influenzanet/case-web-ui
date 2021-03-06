@@ -2,7 +2,7 @@ import React from 'react';
 import MuiDialog from '@material-ui/core/Dialog';
 import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
 import clsx from 'clsx';
-import { defaultWidth, defaultDialogPaddingXClass, defaultDialogPaddingYClass, fullScreenBreakPoint } from './contants';
+import { defaultWidth, defaultDialogPaddingXClass, defaultDialogPaddingYClass, fullScreenBreakPoint } from './constants';
 
 
 interface DialogProps {

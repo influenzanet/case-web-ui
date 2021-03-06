@@ -22,3 +22,15 @@ Example.args = {
   onCancelled: () => { }
 }
 
+export const WithDifferentXPadding = Template.bind({});
+WithDifferentXPadding.args = {
+  open: true,
+  title: 'Title',
+  content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta distinctio voluptate totam, odit assumenda tempore ipsum sequi provident eveniet rerum, non dolorum accusantium ullam sapiente eaque quaerat ipsa laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta distinctio voluptate totam, odit assumenda tempore ipsum sequi provident eveniet rerum, non dolorum accusantium ullam sapiente eaque quaerat ipsa laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta distinctio voluptate totam, odit assumenda tempore ipsum sequi provident eveniet rerum, non dolorum accusantium ullam sapiente eaque quaerat ipsa laborum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque soluta distinctio voluptate totam, odit assumenda tempore ipsum sequi provident eveniet rerum, non dolorum accusantium ullam sapiente eaque quaerat ipsa laborum.',
+  cancelBtn: 'Cancel',
+  acceptBtn: 'Accept',
+  onConfirmed: () => { },
+  onCancelled: () => { },
+  dialogPaddingXClass: 'px-2'
+}
+
