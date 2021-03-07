@@ -1,6 +1,6 @@
 {
   "name": "case-web-ui",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "React components for CASE",
   "scripts": {
     "build": "rollup -c",
@@ -61,6 +61,7 @@
   },
   "peerDependencies": {
     "bootstrap": "^5.0.0-beta2",
+    "@material-ui/core": "^4.11.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "survey-engine": "^0.9.3"

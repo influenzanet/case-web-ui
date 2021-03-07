@@ -6,6 +6,7 @@ export * from './components/dialogs';
 export * from './components/displays';
 export * from './components/footer';
 export * from './components/header';
+export * from './components/icons';
 export * from './components/inputs';
 export * from './components/misc';
 export * from './components/survey';
@@ -18,3 +19,5 @@ import {
 export {
   containerClassName
 }
+
+
