@@ -22,9 +22,9 @@ const LinkList: React.FC<LinkListProps> = (props) => {
         props.className
       )}>
       <h2>{props.title}</h2>
-      <div className="d-grid gap-1">
+      <div className="d-grid gap-2">
         {props.items.map(item => <button key={item.value}
-          className="btn btn-link text-start px-0 text-decoration-none"
+          className="btn btn-link text-start px-0 py-0 text-decoration-none"
           onClick={() => {
             switch (item.type) {
               case 'dialog':

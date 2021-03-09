@@ -15,8 +15,8 @@ Example.args = {
   title: 'Link List Example',
   className: undefined,
   items: [
-    { label: 'Navigate Internally', value: 'toUrl', type: 'internal' },
-    { label: 'Navigate to External', value: 'toUrl', type: 'external' },
+    { label: 'Navigate Internally', value: 'toUrl1', type: 'internal' },
+    { label: 'Navigate to External', value: 'toUrl2', type: 'external' },
     { label: 'Language Switch', value: 'en', type: 'language' },
     { label: 'Open Dialog', value: 'login', type: 'dialog' },
   ],
