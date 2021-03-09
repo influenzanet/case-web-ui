@@ -4,9 +4,6 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import { getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de } from 'date-fns/locale';
 
-import "react-datepicker/dist/react-datepicker.css";
-import "./DateInput.scss";
-
 import { addYears, getUnixTime } from 'date-fns';
 
 import YearMonthSelector from './YearMonthSelector';
