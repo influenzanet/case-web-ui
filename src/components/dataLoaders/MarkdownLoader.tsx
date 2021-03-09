@@ -22,7 +22,7 @@ interface MarkdownLoaderProps {
 const customFlavorRenderers = (language?: string) => {
   return {
     default: {
-      'inlineCode': (node: any) => <p className="border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
+      'inlineCode': (node: any) => <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
       'paragraph': (node: any) => node.children[0].type.name === "image" || node.children[0].type.name === "inlineCode" ? (
         <div {...node} />
       ) : (
@@ -31,7 +31,7 @@ const customFlavorRenderers = (language?: string) => {
       ,
     },
     chartRenderer: {
-      'inlineCode': (node: any) => <p className="border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
+      'inlineCode': (node: any) => <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
       'paragraph': (node: any) => node.children[0].type.name === "image" || node.children[0].type.name === "inlineCode" ? (
         <div {...node} />
       ) : (
