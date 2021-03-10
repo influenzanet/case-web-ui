@@ -64,12 +64,6 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
             case 'footnote':
               return null;
             case 'responseGroup':
-              if (!response) {
-                setResponse({
-                  key: component.key ? component.key : 'no key found',
-                  items: []
-                })
-              }
               return <ResponseComponent key={index.toFixed()}
                 itemKey={props.renderItem.key}
                 languageCode={props.languageCode}

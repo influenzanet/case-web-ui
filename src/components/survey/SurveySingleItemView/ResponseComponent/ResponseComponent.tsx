@@ -63,9 +63,13 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         }
 
         if (!response) {
+          const newItems = prev.items?.filter(i => i.key !== key)
+          if (!newItems || newItems.length < 1) {
+            return undefined;
+          }
           return {
             ...prev,
-            items: prev.items?.filter(i => i.key !== key),
+            items: newItems,
           }
         }
 

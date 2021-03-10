@@ -71,14 +71,15 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     } else {
       setResponse(prev => {
         if (!prev) {
-          return {
-            key: props.compDef.key ? props.compDef.key : 'no key found',
-            items: []
-          }
+          return undefined;
+        }
+        const newItems = prev.items?.filter(i => i.key !== key);
+        if (!newItems || newItems.length < 1) {
+          return undefined;
         }
         return {
           ...prev,
-          items: prev.items?.filter(i => i.key !== key),
+          items: newItems,
         }
       });
     }

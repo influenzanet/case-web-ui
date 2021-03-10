@@ -70,11 +70,9 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         renderItem={surveyItem}
         languageCode={props.selectedLanguage}
         responseChanged={(response) => {
-          if (response) {
-            props.surveyEngine.setResponse(surveyItem.key, response);
-            // Rerender page by updating state
-            props.setResponseCount(props.responseCount + 1);
-          }
+          props.surveyEngine.setResponse(surveyItem.key, response);
+          // Rerender page by updating state
+          props.setResponseCount(props.responseCount + 1);
         }}
         responsePrefill={response}
         showInvalid={!valid.hard && showValidationErrors}
