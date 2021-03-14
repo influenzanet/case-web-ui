@@ -165,7 +165,7 @@ Optional.args = {
 }
 
 export const WithStudyName = Template.bind({});
-Optional.args = {
+WithStudyName.args = {
   studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
   surveyKey: 'surveyKey',
   studyKey: 'studyKey',
