@@ -58,6 +58,8 @@
 }
 
 .datepicker-arrow-btn {
+  display: inline-flex;
+  vertical-align: middle;
   background-color: transparent;
   padding: 3px;
   border-radius: 0%;

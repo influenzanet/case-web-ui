@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
-import DateRange from '@material-ui/icons/DateRange';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de } from 'date-fns/locale';
 import { format } from 'date-fns';
@@ -101,11 +98,11 @@ const DateInput: React.FC<DateInputProps> = (props) => {
     return (
       <div className="my-1 d-flex justify-content-between">
         <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 ms-3 ">
-          {<ArrowBackIcon fontSize="default" />}
+          <span className="material-icons ">arrow_back</span>
         </button>
         <span>{format(date, 'MMMM yyyy', { locale: dateLocales.find(loc => loc.code === props.languageCode)?.locale })}</span>
         <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 me-3">
-          {<ArrowForwardIcon fontSize="default" />}
+        <span className="material-icons ">arrow_forward</span>
         </button>
       </div>
     )
@@ -158,7 +155,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           calendarContainer={DatepickerContainer}
           renderCustomHeader={DatepickerHeader}
         />
-        <DateRange fontSize="default" className="m-1 d-none d-sm-inline" />
+        <span className="m-1 d-none d-sm-inline material-icons">date_range</span>
       </div>
       break;
   }
