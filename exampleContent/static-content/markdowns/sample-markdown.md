@@ -4,4 +4,6 @@
 
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis odit incidunt minima velit eum ratione illum. Nihil corporis alias consectetur reiciendis aliquam laboriosam modi deleniti, maxime dolorum exercitationem tempore ex.
 
+*Italic text **with bold***
+
 CASE is developed by [coneno](https://coneno.com)
