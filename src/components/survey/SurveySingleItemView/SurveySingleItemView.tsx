@@ -23,7 +23,8 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.responsePrefill);
   const [touched, setTouched] = useState(false);
 
-  const horizontalPadding = 'px-2 px-sm-3';
+  const paddingX = 'px-2 px-sm-3';
+  const paddingY = 'py-2 py-sm-2a';
 
   useEffect(() => {
     if (touched) {
@@ -119,8 +120,8 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
         className={
           clsx(
             'd-flex align-items-center',
-            horizontalPadding,
-            'py-2a',
+            paddingX,
+            paddingY,
             'bg-grey-2',
             {
               'bg-danger-light': props.showInvalid
@@ -163,7 +164,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
         return null;
       }
       return <TextViewComponent
-        className={clsx(horizontalPadding, 'mt-2a')}
+        className={clsx(paddingX, 'mt-2a')}
         key={index.toFixed()}
         compDef={component}
         languageCode={props.languageCode}
@@ -177,15 +178,15 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
         className={'bg-grey-1'}>
         {renderTitleComp()}
         <div className={clsx(
-          horizontalPadding,
-          'py-2a'
+          paddingX,
+          paddingY
         )}
         >
           {renderBodyComponents()}
         </div>
         {props.showInvalid ?
           <p className={clsx(
-            horizontalPadding,
+            paddingX,
             'fw-bold',
             'py-2',
             'bg-danger-light  m-0 text-danger'
