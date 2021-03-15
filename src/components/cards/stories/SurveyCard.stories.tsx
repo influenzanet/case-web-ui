@@ -70,21 +70,23 @@ const Template = (args) => (
 
 export const WithoutStudyName = Template.bind({});
 WithoutStudyName.args = {
-  surveyKey: 'surveyKey',
-  studyKey: 'studyKey',
-  category: 'prio',
-  validUntil: undefined,
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
-  surveyInfos: {
+  details: {
     surveyKey: 'surveyKey',
     studyKey: 'studyKey',
-    name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-    description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
-    typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    category: 'prio',
+    validUntil: undefined,
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+    surveyInfos: {
+      surveyKey: 'surveyKey',
+      studyKey: 'studyKey',
+      name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+      description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+      typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    },
   },
   selectedLanguage: 'en',
   avatars: avatarList,
@@ -93,22 +95,24 @@ WithoutStudyName.args = {
 
 export const Prio = Template.bind({});
 Prio.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
-  surveyKey: 'surveyKey',
-  studyKey: 'studyKey',
-  category: 'prio',
-  validUntil: undefined,
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
-  surveyInfos: {
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
     surveyKey: 'surveyKey',
     studyKey: 'studyKey',
-    name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-    description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
-    typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    category: 'prio',
+    validUntil: undefined,
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+    surveyInfos: {
+      surveyKey: 'surveyKey',
+      studyKey: 'studyKey',
+      name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+      description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+      typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    },
   },
   selectedLanguage: 'en',
   avatars: avatarList,
@@ -117,22 +121,24 @@ Prio.args = {
 
 export const Normal = Template.bind({});
 Normal.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
-  surveyKey: 'surveyKey',
-  studyKey: 'studyKey',
-  category: 'normal',
-  validUntil: undefined,
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
-  surveyInfos: {
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
     surveyKey: 'surveyKey',
     studyKey: 'studyKey',
-    name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-    description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
-    typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    category: 'normal',
+    validUntil: undefined,
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+    surveyInfos: {
+      surveyKey: 'surveyKey',
+      studyKey: 'studyKey',
+      name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+      description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+      typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    },
   },
   selectedLanguage: 'en',
   avatars: avatarList,
@@ -142,22 +148,24 @@ Normal.args = {
 
 export const Optional = Template.bind({});
 Optional.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
-  surveyKey: 'surveyKey',
-  studyKey: 'studyKey',
-  category: 'optional',
-  validUntil: undefined,
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
-  surveyInfos: {
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
     surveyKey: 'surveyKey',
     studyKey: 'studyKey',
-    name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-    description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
-    typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    category: 'optional',
+    validUntil: undefined,
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+    surveyInfos: {
+      surveyKey: 'surveyKey',
+      studyKey: 'studyKey',
+      name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+      description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+      typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    },
   },
   selectedLanguage: 'en',
   avatars: avatarList,
@@ -166,22 +174,24 @@ Optional.args = {
 
 export const WithStudyName = Template.bind({});
 WithStudyName.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
-  surveyKey: 'surveyKey',
-  studyKey: 'studyKey',
-  category: 'optional',
-  validUntil: undefined,
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
-  surveyInfos: {
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
     surveyKey: 'surveyKey',
     studyKey: 'studyKey',
-    name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-    description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
-    typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    category: 'optional',
+    validUntil: undefined,
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+    surveyInfos: {
+      surveyKey: 'surveyKey',
+      studyKey: 'studyKey',
+      name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+      description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+      typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+    },
   },
   selectedLanguage: 'en',
   avatars: avatarList,
