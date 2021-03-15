@@ -69,10 +69,12 @@ const Template = (args) => (
 
 export const NotSubscribed = Template.bind({});
 NotSubscribed.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-  studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
-  studyKey: 'studyKey',
-  profiles: [],
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+    studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
+    studyKey: 'studyKey',
+    profiles: [],
+  },
   selectedLanguage: 'en',
   avatars: avatarList,
   actionText: 'Open',
@@ -82,14 +84,16 @@ NotSubscribed.args = {
 
 export const Subscribed = Template.bind({});
 Subscribed.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-  studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
-  studyKey: 'studyKey',
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+    studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
+    studyKey: 'studyKey',
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+  },
   selectedLanguage: 'en',
   avatars: avatarList,
   actionText: 'Open',
@@ -99,19 +103,21 @@ Subscribed.args = {
 
 export const SubscribedWithTwo = Template.bind({});
 SubscribedWithTwo.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-  studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
-  studyKey: 'studyKey',
-  profiles: [{
-    id: 'test',
-    avatarId: 'pinguin',
-    alias: 'Test Main Profile'
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+    studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
+    studyKey: 'studyKey',
+    profiles: [{
+      id: 'test',
+      avatarId: 'pinguin',
+      alias: 'Test Main Profile'
+    },
+    {
+      id: 'test2',
+      avatarId: 'default',
+      alias: 'Test Secondary Profile'
+    }],
   },
-  {
-    id: 'test2',
-    avatarId: 'default',
-    alias: 'Test Secondary Profile'
-  }],
   selectedLanguage: 'en',
   avatars: avatarList,
   actionText: 'Open',
@@ -121,29 +127,31 @@ SubscribedWithTwo.args = {
 
 export const SubscribedWithMultiple = Template.bind({});
 SubscribedWithMultiple.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-  studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
-  studyKey: 'studyKey',
-  profiles: [{
-    id: 'test',
-    avatarId: 'pinguin',
-    alias: 'Test Main Profile'
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+    studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*' }] }],
+    studyKey: 'studyKey',
+    profiles: [{
+      id: 'test',
+      avatarId: 'pinguin',
+      alias: 'Test Main Profile'
+    },
+    {
+      id: 'test2',
+      avatarId: 'default',
+      alias: 'Test Secondary Profile'
+    },
+    {
+      id: 'test3',
+      avatarId: 'spinne',
+      alias: 'Yet an other profile'
+    },
+    {
+      id: 'test4',
+      avatarId: 'panda',
+      alias: 'And the last one'
+    }],
   },
-  {
-    id: 'test2',
-    avatarId: 'default',
-    alias: 'Test Secondary Profile'
-  },
-  {
-    id: 'test3',
-    avatarId: 'spinne',
-    alias: 'Yet an other profile'
-  },
-  {
-    id: 'test4',
-    avatarId: 'panda',
-    alias: 'And the last one'
-  }],
   selectedLanguage: 'en',
   avatars: avatarList,
   actionText: 'Open',
@@ -153,14 +161,16 @@ SubscribedWithMultiple.args = {
 
 export const NotClickable = Template.bind({});
 NotClickable.args = {
-  studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
-  studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*\n\nItems:\n- item1\n- item2\n' }] }],
-  studyKey: 'studyKey',
-  profiles: [{
-    id: 'test',
-    avatarId: 'default',
-    alias: 'Test Profile'
-  }],
+  details: {
+    studyName: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+    studyDescription: [{ code: 'en', parts: [{ str: '*Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, quo? Inventore modi perspiciatis esse tenetur consequuntur cum, nesciunt, accusamus accusantium quis harum laboriosam alias officiis quibusdam in voluptatibus repudiandae provident.*\n\nItems:\n- item1\n- item2\n' }] }],
+    studyKey: 'studyKey',
+    profiles: [{
+      id: 'test',
+      avatarId: 'default',
+      alias: 'Test Profile'
+    }],
+  },
   selectedLanguage: 'en',
   avatars: avatarList,
   actionText: undefined,
