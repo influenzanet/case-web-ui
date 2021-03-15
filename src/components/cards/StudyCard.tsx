@@ -44,7 +44,7 @@ const StudyCard: React.FC<StudyCardProps> = (props) => {
 
       <div className="d-flex flex-wrap mt-n1">
         {!props.profiles || props.profiles.length < 1 ?
-          <div className="bg-grey-2 mt-1 px-2 py-1 text-grey-6 fw-bold">
+          <div className="bg-grey-2 mt-1 px-2 py-1 text-grey-6 fw-bold fs-small">
             {props.notJoinedText}
           </div>
           :
@@ -54,12 +54,12 @@ const StudyCard: React.FC<StudyCardProps> = (props) => {
           >
             <Avatar
               className="me-1"
-              size="24px"
+              size="20px"
               avatarId={p.avatarId}
               avatars={props.avatars}
             />
             <span
-              className="text-truncate"
+              className="text-truncate fs-small"
               style={{ maxWidth: 200 }}
             >
               {p.alias}
