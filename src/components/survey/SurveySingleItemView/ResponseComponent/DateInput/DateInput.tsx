@@ -9,7 +9,7 @@ import { addYears, getUnixTime } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
 
 export const dateLocales = [
-  { code: 'nl', locale: nl, format: 'dd.MM.yyyy' },
+  { code: 'nl', locale: nl, format: 'dd-MM-yyyy' },
   { code: 'nl-be', locale: nlBE, format: 'dd.MM.yyyy' },
   { code: 'fr-be', locale: fr, format: 'dd.MM.yyyy' },
   { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },

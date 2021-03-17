@@ -13,7 +13,7 @@ export default {
 
 export const WeeklySurvey = () => <div className="container">
   <SurveyView
-    languageCode='en'
+    languageCode='nl'
     nextBtnText='Next'
     backBtnText='Back'
     submitBtnText='Submit'
