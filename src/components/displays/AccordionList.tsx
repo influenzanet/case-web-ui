@@ -14,9 +14,11 @@ interface AccordionListProps {
 
 const AccordionList: React.FC<AccordionListProps> = (props) => {
   const [openedKeys, setOpenedKeys] = useState<string[]>([]);
+  const [transitioning, setTransitioning] = useState<string[]>([])
 
-  const toggleItem = (key: string, isOpened: boolean) => {
-    if (isOpened) {
+  const toggleItem = (key: string) => {
+    setTransitioning(prev => [...prev, key])
+    if (openedKeys.includes(key)) {
       setOpenedKeys(prev => prev.filter(k => k !== key));
     } else {
       setOpenedKeys(prev => [...prev, key])
@@ -27,27 +29,21 @@ const AccordionList: React.FC<AccordionListProps> = (props) => {
     <React.Fragment>
       {props.items.map((item, index) => {
         const key = 'item' + index.toFixed();
-        const isOpened = openedKeys.includes(key);
-
         return <div key={key}
           className="mt-3"
         >
           <div className="bg-secondary py-1a px-2 d-flex align-items-center cursor-pointer"
             data-bs-toggle="collapse" data-bs-target={'#' + key}
-            onClick={() => {
-              toggleItem(key, isOpened);
-            }}
+            onClick={() => transitioning.includes(key) ? null : toggleItem(key)}
           >
             <h6 className="m-0 flex-grow-1">{item.title}</h6>
             <button
               data-bs-toggle="collapse" data-bs-target={'#' + key}
               aria-expanded="false" aria-controls={'#' + key}
               className="btn btn-link text-body p-0 ps-1 d-flex align-items-center text-decoration-none"
-              onClick={() => {
-                toggleItem(key, isOpened);
-              }}
+              onClick={() => transitioning.includes(key) ? null : toggleItem(key)}
             >
-              {isOpened ?
+              {openedKeys.includes(key) ?
                 <React.Fragment>
                   <span className="text-decoration-underline text-nowrap d-none d-sm-inline">{props.closeLabel}</span>
                   <span className="ps-1 d-flex align-items-center">
@@ -64,7 +60,8 @@ const AccordionList: React.FC<AccordionListProps> = (props) => {
           </div>
           <div
             id={key}
-            className="collapse multi-collapse">
+            className="collapse multi-collapse"
+            onTransitionEndCapture={() => setTransitioning(prev => prev.filter(k => k !== key))}>
             <MarkdownRenderer
               className="py-1a px-2"
               markdown={item.content}
