@@ -219,6 +219,15 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
           />
+        case 'likertGroup':
+          return <LikertScale
+            key={respComp.key}
+            componentKey={currentKeyPath}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
         default:
           return <p key={respComp.key ? respComp.key : index.toString()}>{respComp.role}</p>
       }
