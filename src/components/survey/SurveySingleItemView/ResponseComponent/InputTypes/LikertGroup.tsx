@@ -5,7 +5,7 @@ import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import LikertScale from './LikertScale';
 
 interface LikertGroupProps {
-  parentKey: string;
+  componentKey: string;
   compDef: ItemComponent;
   prefill?: ResponseItem;
   responseChanged: (response: ResponseItem | undefined) => void;
@@ -71,7 +71,7 @@ const LikertGroup: React.FC<LikertGroupProps> = (props) => {
     if (row.displayCondition === false) {
       return null;
     }
-    const rowKey = props.parentKey + '.' + row.key;
+    const rowKey = props.componentKey + '.' + row.key;
 
     switch (row.role) {
       case 'text':

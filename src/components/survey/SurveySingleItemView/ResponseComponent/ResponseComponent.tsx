@@ -17,6 +17,7 @@ import TextViewComponent from '../SurveyComponents/TextViewComponent';
 import moment from 'moment';
 import EQ5DHealthIndicatorInput from './EQ5DHealthIndicatorInput/EQ5DHealthIndicatorInput';
 import LikertScale from './InputTypes/LikertScale';
+import LikertGroup from './InputTypes/LikertGroup';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -220,7 +221,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
           />
         case 'likertGroup':
-          return <LikertScale
+          return <LikertGroup
             key={respComp.key}
             componentKey={currentKeyPath}
             languageCode={props.languageCode}
