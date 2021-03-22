@@ -5,7 +5,6 @@ import { getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de } from 'date-fns/locale';
 import { format } from 'date-fns';
 import "react-datepicker/src/stylesheets/datepicker.scss";
-import "../../../../../scss/helpers/date_input.scss";
 import { addYears, getUnixTime } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
 
@@ -102,7 +101,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         </button>
         <span>{format(date, 'MMMM yyyy', { locale: dateLocales.find(loc => loc.code === props.languageCode)?.locale })}</span>
         <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 me-3">
-        <span className="material-icons ">arrow_forward</span>
+          <span className="material-icons ">arrow_forward</span>
         </button>
       </div>
     )
