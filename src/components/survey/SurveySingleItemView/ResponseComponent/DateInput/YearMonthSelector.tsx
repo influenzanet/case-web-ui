@@ -47,7 +47,7 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
   years.reverse();
 
 
-  const referenceYear = selectedYear ? selectedYear : 2000;
+  const referenceYear = !selectedYear ? 2000 : selectedYear;
   const months = eachMonthOfInterval({
     start: max([startOfYear(new Date(referenceYear, 0, 2)), props.minDate]),
     end: min([props.maxDate, endOfYear(new Date(referenceYear, 0, 2))]),
@@ -75,7 +75,6 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
     className="form-select mb-2 mb-sm-0"
     value={selectedMonth !== undefined ? selectedMonth : 'NaN'}
     onChange={({ target: { value } }) => {
-      console.log(value);
       if (value === 'NaN') {
         setSelectedYear(undefined);
         setSelectedMonth(undefined);
