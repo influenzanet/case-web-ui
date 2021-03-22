@@ -33,7 +33,8 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
       styles.card,
       {
         "bg-primary text-white": props.details.category === 'prio',
-        "bg-secondary text-body": ['normal', 'optional'].includes(props.details.category),
+        "bg-secondary text-body": ['normal'].includes(props.details.category),
+        "bg-grey-1": props.details.category === 'optional',
         //"text-white": props.category === 'prio',
         //[styles.optional]: props.category === 'optional',
       }
