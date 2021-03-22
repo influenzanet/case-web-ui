@@ -9,7 +9,6 @@
 
 // for date picker
 @import './helpers/date_input.scss';
-@import "react-datepicker/src/stylesheets/datepicker.scss";
 @include datepicker_classes($theme-colors);
 
 // ---------------------------------------------

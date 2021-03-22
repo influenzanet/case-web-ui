@@ -1,3 +1,5 @@
+@import './datepicker-defaults/datepicker.scss';
+
 @mixin datepicker_classes($theme-colors) {
   .react-datepicker {
     font: inherit !important;
