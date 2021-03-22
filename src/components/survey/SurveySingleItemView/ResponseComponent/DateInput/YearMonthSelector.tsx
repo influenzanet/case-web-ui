@@ -60,7 +60,7 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
 
   const yearSelector = <select
     className="form-select mb-2 mb-sm-0"
-    value={selectedYear !== undefined ? selectedYear : 'NaN'}
+    value={selectedYear !== undefined && selectedYear.toString() !== 'NaN' ? selectedYear : 'NaN'}
     onChange={({ target: { value } }) => setSelectedYear(value && value !== '-1' ? parseInt(value) : undefined)}
   >
     <option value={'NaN'}></option>
