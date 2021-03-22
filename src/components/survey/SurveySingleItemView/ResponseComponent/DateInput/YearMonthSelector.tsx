@@ -46,11 +46,10 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
   }
   years.reverse();
 
-
-  const referenceYear = !selectedYear ? 2000 : selectedYear;
+  const referenceYear = getYear(new Date());
   const months = eachMonthOfInterval({
-    start: max([startOfYear(new Date(referenceYear, 0, 2)), props.minDate]),
-    end: min([props.maxDate, endOfYear(new Date(referenceYear, 0, 2))]),
+    start: startOfYear(new Date(referenceYear, 0, 2)),
+    end: endOfYear(new Date(referenceYear, 0, 2)),
   }).map(m => {
     return {
       label: format(m, 'MMMM', { locale: dateLocales.find(l => l.code === props.languageCode)?.locale }),
