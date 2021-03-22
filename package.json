@@ -16,7 +16,7 @@
     "build"
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.2"
+    "@fortawesome/fontawesome-free": "^5.15.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -27,9 +27,9 @@
     "@storybook/react": "^6.1.21",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.21",
     "@types/react": "^17.0.3",
-    "@types/react-datepicker": "^3.1.7",
+    "@types/react-datepicker": "^3.1.8",
     "@types/react-dom": "^17.0.2",
     "@types/react-simple-maps": "^1.0.3",
     "babel-loader": "^8.2.2",
@@ -47,15 +47,15 @@
     "react-simple-maps": "^2.3.0",
     "react-tooltip": "^4.2.15",
     "recharts": "^2.0.8",
-    "rollup": "^2.41.0",
+    "rollup": "^2.42.1",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "sass-loader": "^10.1.1",
-    "survey-engine": "^0.9.4",
-    "ts-jest": "^26.5.3",
+    "survey-engine": "^0.9.5",
+    "ts-jest": "^26.5.4",
     "typescript": "^4.2.3",
     "typescript-plugin-css-modules": "^3.2.0"
   },
@@ -64,6 +64,6 @@
     "bootstrap": "^5.0.0-beta2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "survey-engine": "^0.9.4"
+    "survey-engine": "^0.9.5"
   }
 }

@@ -17,12 +17,19 @@ export const Example = () => <SurveySingleItemView
       key: 'root',
       role: 'root',
       items: [
-        { key: 't', role: 'title', content: [{ code: 'en', parts: ['Likert Scale Example'] }] },
+        { key: 't', role: 'title', content: [{ code: 'en', resolvedText: 'Likert Scale Example' }] },
         {
           key: 'rg', role: 'responseGroup', items: [
             {
               key: 'lg', role: 'likertGroup', items: [
-                { key: 't1', role: 'text', content: [{ code: 'en', parts: ['Example 1'] }] }
+                { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Example 1' }], style: [{ key: "className", value: "mb-2 fw-bold" }, { key: "variant", value: "h6" }] },
+                {
+                  key: 'l1', role: 'likert', items: [
+                    { key: '1', role: 'option', content: [{ code: 'en', resolvedText: '1' }] },
+                    { key: '2', role: 'option', content: [{ code: 'en', resolvedText: '2' }] },
+                    { key: '3', role: 'option', content: [{ code: 'en', resolvedText: '3' }] },
+                  ]
+                },
               ]
             }
           ]

@@ -8,7 +8,7 @@ interface SurveyViewProps {
   loading?: boolean;
   survey: Survey;
   languageCode: string;
-  onSubmit: (responses: SurveySingleItemResponse[]) => void;
+  onSubmit: (responses: SurveySingleItemResponse[], version: string) => void;
   prefills?: SurveySingleItemResponse[];
   context?: SurveyContext;
   backBtnText: string;
@@ -33,7 +33,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
-    props.onSubmit(resp);
+    props.onSubmit(resp, props.survey.current.versionId);
   }
 
   const resetScrollPosition = () => {

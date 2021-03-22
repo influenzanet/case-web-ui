@@ -19,11 +19,11 @@ export const getLocaleStringTextByCode = (translations: LocalizedObject[] | unde
   const translation = (translations.find(cont => cont.code === code) as LocalizedString);
   if (!translation) {
     if (translations.length > 0) {
-      return (translations[0] as LocalizedString).parts.map(p => p).join('');
+      return (translations[0] as LocalizedString).resolvedText;
     }
     return;
   }
-  return translation.parts.map(p => p).join('');
+  return translation.resolvedText;
 }
 
 export const getItemComponentByRole = (components: Array<ItemComponent> | undefined, role: string): ItemComponent | undefined => {

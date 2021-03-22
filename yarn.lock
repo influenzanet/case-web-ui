@@ -1375,10 +1375,10 @@
   resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.2.2.tgz#59046f772136a44c5999e0189d33c6a26676630c"
   integrity sha512-NbsL1a9asJO6N/5kRxYPCy0kNhKMi9T75kl4QfIGtmpd/5IfB+UIAUxd9AICmCLaH4Osc2TImeTJj94xc9MNKg==
 
-"@fortawesome/fontawesome-free@^5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz#218cd7276ab4f9ab57cc3d2efa2697e6a579f25d"
-  integrity sha512-7l/AX41m609L/EXI9EKH3Vs3v0iA8tKlIOGtw+kgcoanI7p+e4I4GYLqW3UXWiTnjSFymKSmTTPKYrivzbxxqA==
+"@fortawesome/fontawesome-free@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
 
 "@hypnosphi/create-react-context@^0.3.1":
   version "0.3.1"
@@ -2316,10 +2316,18 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@^26.0.20":
+"@types/jest@*":
   version "26.0.20"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
   integrity sha512-9zi2Y+5USJRxd0FsahERhBwlcvFh6D2GLQnY2FH2BzK8J9s9omvNHIbvABwIluXa0fD8XVKMLTO0aOEuUfACAA==
+  dependencies:
+    jest-diff "^26.0.0"
+    pretty-format "^26.0.0"
+
+"@types/jest@^26.0.21":
+  version "26.0.21"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.21.tgz#3a73c2731e7e4f0fbaea56ce7ff8c79cf812bd24"
+  integrity sha512-ab9TyM/69yg7eew9eOwKMUmvIZAKEGZYlq/dhe5/0IMUd/QLJv5ldRMdddSn+u22N13FP3s5jYyktxuBwY0kDA==
   dependencies:
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
@@ -2428,10 +2436,10 @@
     "@types/react" "*"
     "@types/reactcss" "*"
 
-"@types/react-datepicker@^3.1.7":
-  version "3.1.7"
-  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-3.1.7.tgz#753610f151775a50d779a459026ea21596fa2d1d"
-  integrity sha512-oFkxBYHhdli//q0vgOffCGEMKEkIFn0yTi78gv3el7HT6eGwM2FtSUjxbmrLsshLUzVSPWn97VCGMxUKgKMOsQ==
+"@types/react-datepicker@^3.1.8":
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/@types/react-datepicker/-/react-datepicker-3.1.8.tgz#642b0d5f2c30f53d7940b1771d5fb11b646bb7fb"
+  integrity sha512-RFEg7++xhosMq02i2lsuaUPEbZGn66U3dxtvw9LU/ZRqLkBGr9Ft2LTz6vbeYYVtaBdOr0NcQatOLnlfUaS8kw==
   dependencies:
     "@types/react" "*"
     date-fns "^2.0.1"
@@ -10938,10 +10946,10 @@ rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.41.0:
-  version "2.41.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.41.0.tgz#b2a398bbabbf227738dedaef099e494aed468982"
-  integrity sha512-Gk76XHTggulWPH95q8V62bw6uqDH6UGvbD6LOa3QUyhuMF3eOuaeDHR7SLm1T9faitkpNrqzUAVYx47klcMnlA==
+rollup@^2.42.1:
+  version "2.42.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.42.1.tgz#6d675b7971e3bee510935326a0f7e556bb7d43de"
+  integrity sha512-/y7M2ULg06JOXmMpPzhTeQroJSchy8lX8q6qrjqil0jmLz6ejCWbQzVnWTsdmMQRhfU0QcwtiW8iZlmrGXWV4g==
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -11790,10 +11798,10 @@ supports-hyperlinks@^2.0.0:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
 
-survey-engine@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.9.4.tgz#eaf133bead5ab0d692e39e7c183827dbf0cce683"
-  integrity sha512-U7a6Vi0Jt0Yyut8dkt9phwdr3lYKiAk9KPwpXa5YVTn5cZ2oxM2cR4mxZUQTozf7q8+rbTrAXbGnvMppE0sX+A==
+survey-engine@^0.9.5:
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/survey-engine/-/survey-engine-0.9.5.tgz#849dd8d637de4642e03cdd5d98223e7151139a14"
+  integrity sha512-C3wUP4eWi2ykfav/E85juo5XSWsZCvtQOQQlgTf8dIz4MPeCyQmQpJHBk1zwfCgcw1BlELAh6XtbUFdOnMEyHw==
   dependencies:
     moment "2.24.0"
 
@@ -12105,10 +12113,10 @@ ts-essentials@^2.0.3:
   resolved "https://registry.yarnpkg.com/ts-essentials/-/ts-essentials-2.0.12.tgz#c9303f3d74f75fa7528c3d49b80e089ab09d8745"
   integrity sha512-3IVX4nI6B5cc31/GFFE+i8ey/N2eA0CZDbo6n0yrz0zDX8ZJ8djmU1p+XRz7G3is0F3bB3pu2pAroFdAWQKU3w==
 
-ts-jest@^26.5.3:
-  version "26.5.3"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.3.tgz#a6ee00ba547be3b09877550df40a1465d0295554"
-  integrity sha512-nBiiFGNvtujdLryU7MiMQh1iPmnZ/QvOskBbD2kURiI1MwqvxlxNnaAB/z9TbslMqCsSbu5BXvSSQPc5tvHGeA==
+ts-jest@^26.5.4:
+  version "26.5.4"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.5.4.tgz#207f4c114812a9c6d5746dd4d1cdf899eafc9686"
+  integrity sha512-I5Qsddo+VTm94SukBJ4cPimOoFZsYTeElR2xy6H2TOVs+NsvgYglW8KuQgKoApOKuaU/Ix/vrF9ebFZlb5D2Pg==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"
