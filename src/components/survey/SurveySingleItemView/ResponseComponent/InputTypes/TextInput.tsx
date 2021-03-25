@@ -56,7 +56,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
   const fullKey = [props.parentKey, props.compDef.key].join('.');
   return (
     <div
-      className={clsx("d-flex align-items-center", getClassName(props.compDef.style))}
+      className={clsx("d-flex align-items-center w-100", getClassName(props.compDef.style))}
       onClick={props.onClick}
     >
       <label htmlFor={fullKey} className="me-1">
