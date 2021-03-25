@@ -8,10 +8,13 @@ interface SliderProps {
   step?: number;
   value: number;
   onChange: (value?: number) => void;
-  useWhiteTrack?: boolean;
+  trackColor?: string;
+  tickColor?: string;
 }
 
 const Slider: React.FC<SliderProps> = (props) => {
+  const trackColor = 'bg-' + (props.trackColor ? props.trackColor : 'grey-1');
+  const tickColor = 'bg-' + (props.tickColor ? props.tickColor : 'grey-4');
 
   const renderTicks = () => {
     if (!props.step) {
@@ -25,7 +28,7 @@ const Slider: React.FC<SliderProps> = (props) => {
         {Array(numberOfTicks).fill(0).map(
           (_, index: number) => <span
             key={index.toString()}
-            className="tick"
+            className={clsx("tick", tickColor)}
           ></span>)
         }
       </React.Fragment>
@@ -49,7 +52,7 @@ const Slider: React.FC<SliderProps> = (props) => {
 
       />
       <div className="pe-none ticks position-absolute left-0 right-0 top-0 h-100 d-flex w-100 justify-content-between">
-        <div className={props.useWhiteTrack ? "range-track-white" : "range-track"}></div>
+        <div className={clsx("range-track", trackColor)}></div>
       </div>
       <div className="pe-none ticks position-absolute left-0 right-0 top-0 h-100 d-flex w-100 justify-content-between">
         {renderTicks()}

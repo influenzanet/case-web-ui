@@ -3,7 +3,7 @@ $form-range-thumb-height:          $form-range-thumb-width !default;
 $form-range-track-height:         .5rem !default;
 
 $custom-range-tick-height:         $form-range-track-height;
-$custom-range-tick-width:         $form-range-track-height / 2;
+$custom-range-tick-width:         3px;
 
 //Some range styling.
 //Using mixins because each major browser needs a separate selector to style parts of the range input, combining selectors would invalidate the whole selector on each browser
@@ -65,20 +65,12 @@ input[type=range]::-ms-thumb {
 }
 
 .range-track {
-  background-color: map-get($theme-colors, "secondary");
-  height: $form-range-track-height;
-  width: 100%;
-}
-
-.range-track-white {
-  background-color: #FFF;
   height: $form-range-track-height;
   width: 100%;
 }
 
 .tick {
   pointer-events: none;
-  background: map-get($theme-colors, "grey-6");
   width: $custom-range-tick-width;
   height: $custom-range-tick-height;
 }

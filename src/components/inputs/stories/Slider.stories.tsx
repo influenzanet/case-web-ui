@@ -34,6 +34,7 @@ export const WithWhiteTrack = () => <div className="bg-secondary p-2"><Slider
   step={1}
   value={10}
   onChange={(value?: number) => { }}
-  useWhiteTrack={true}
+  trackColor="white"
+  tickColor="grey-3"
 /></div>;
 
