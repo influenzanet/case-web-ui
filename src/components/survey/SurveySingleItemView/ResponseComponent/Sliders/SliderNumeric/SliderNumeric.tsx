@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { Slider, Typography, Box } from '@material-ui/core';
+import { Slider } from '../../../../../inputs';
 import { getLocaleStringTextByCode } from '../../../utils';
 
 interface SliderNumericProps {
+  parentKey: string;
   compDef: ItemComponent;
   prefill?: ResponseItem;
   responseChanged: (response: ResponseItem | undefined) => void;
@@ -28,76 +29,64 @@ const SliderNumeric: React.FC<SliderNumericProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-  const handleSliderChange = (key: string | undefined) => (event: any, newValue: number | number[]) => {
+  const handleSliderChange = (key: string | undefined) => (value?: number) => {
     if (!key) { return; }
     setTouched(true);
 
-    setInputValue(newValue as number);
+    setInputValue(value as number);
 
     setResponse(prev => {
+      if (value === undefined) {
+        return undefined;
+      }
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
           dtype: 'number',
-          value: newValue.toString()
+          value: value.toString()
         }
       }
       return {
         ...prev,
         dtype: 'number',
-        value: newValue.toString()
+        value: value.toString()
       }
     })
   };
 
-  const marks = () => {
-    if (props.compDef.style) {
-      const labels = props.compDef.style.find(st => st.key === 'step-labels');
-      if (labels && labels.value === "true") {
-        if (props.compDef.properties?.min && props.compDef.properties?.max && props.compDef.properties?.stepSize) {
-          const min = props.compDef.properties?.min as number;
-          const max = props.compDef.properties?.max as number;
-          const stepSize = props.compDef.properties?.stepSize as number;
-
-          const marks = [];
-
-          for (let i = min; i <= max; i += stepSize) {
-            marks.push({
-              value: i,
-              label: i.toString()
-            });
-          }
-
-          return marks;
-        }
-      }
-    }
-
-    return props.compDef.properties?.stepSize ? true : false;
-  };
-
-
+  const fullKey = [props.parentKey, props.compDef.key].join('.');
   return (
     <React.Fragment>
       {props.compDef.content ?
-        <Typography id="slider-numeric" gutterBottom>
+        <label htmlFor={fullKey} className="me-1">
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-        </Typography>
+          {response ? <span className="ms-1 fw-bold text-primary">{inputValue}</span> : null}
+        </label>
         : null}
-      <Box p={1}>
-        <Slider
-          color="secondary"
-          aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
-          value={typeof inputValue === 'number' ? inputValue : 0}
-          onChange={handleSliderChange(props.compDef.key)}
-          valueLabelDisplay="auto"
-          min={props.compDef.properties?.min as number}
-          max={props.compDef.properties?.max as number}
-          step={props.compDef.properties?.stepSize as number}
-          marks={marks()}
-          disabled={props.compDef.disabled !== undefined}
-        />
-      </Box>
+      <div className="d-flex py-1">
+        <div className="flex-grow-1">
+          <Slider
+            id={fullKey}
+            aria-labelledby={props.compDef.content ? "slider-numeric" : undefined}
+            value={typeof inputValue === 'number' ? inputValue : 0}
+            onChange={handleSliderChange(props.compDef.key)}
+            min={props.compDef.properties?.min as number}
+            max={props.compDef.properties?.max as number}
+            step={props.compDef.properties?.stepSize as number}
+            trackColor="white"
+            tickColor="grey-3"
+          />
+          <div className="d-flex">
+            <span className="flex-grow-1 text-start">
+              {props.compDef.properties?.min}
+            </span>
+            <span className="">
+              {props.compDef.properties?.max}
+            </span>
+          </div>
+        </div>
+
+      </div>
     </React.Fragment>
   );
 };

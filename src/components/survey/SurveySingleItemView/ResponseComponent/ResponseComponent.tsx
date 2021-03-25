@@ -171,6 +171,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'sliderNumeric':
           return <SliderNumeric
+            parentKey={currentKeyPath}
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
