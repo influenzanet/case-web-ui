@@ -1,0 +1,47 @@
+import React from "react";
+import SurveySingleItemView from "../SurveySingleItemView";
+
+import 'localStyles';
+
+export default {
+  title: "Survey Item Types/Multiple Choice"
+};
+
+const invalidWarning = "Please check your response";
+
+export const Example = () => <SurveySingleItemView
+  renderItem={{
+    key: 'test.q1',
+    version: 1,
+    components: {
+      key: 'root',
+      role: 'root',
+      items: [
+        { key: 't', role: 'title', content: [{ code: 'en', resolvedText: 'Multiple Choice Example' }] },
+        {
+          key: 'rg', role: 'responseGroup', items: [
+            {
+              key: 'mcg', role: 'multipleChoiceGroup',
+              items: [
+                { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
+                { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] },
+                { key: '3', role: 'input', content: [{ code: 'en', resolvedText: 'Option 2 here' }] },
+                { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Subtitle' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
+                { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'Option 4' }] },
+                { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Option 5' }] },
+                { key: 't2', role: 'text', content: [{ code: 'en', resolvedText: 'Subtitle 2' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
+                { key: '6', role: 'option', content: [{ code: 'en', resolvedText: 'Option 6' }] },
+                { key: '7', role: 'option', content: [{ code: 'en', resolvedText: 'Option 7' }] },
+              ]
+            }
+          ]
+        }
+      ]
+    },
+  }}
+  responsePrefill={undefined}
+  responseChanged={(response) => console.log(response)}
+  showInvalid={false}
+  languageCode="en"
+  invalidWarning={invalidWarning}
+/>

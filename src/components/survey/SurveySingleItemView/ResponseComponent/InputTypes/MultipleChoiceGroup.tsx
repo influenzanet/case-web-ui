@@ -3,6 +3,7 @@ import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/l
 import { getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';
+import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 
 
 interface MultipleChoiceGroupProps {
@@ -137,6 +138,12 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     let labelComponent = <p>{'loading...'}</p>;
 
     switch (option.role) {
+      case 'text':
+        return <TextViewComponent
+          key={option.key}
+          compDef={option}
+          languageCode={props.languageCode}
+        />;
       case 'option':
         labelComponent = <label
           className="form-check-label cursor-pointer w-100"

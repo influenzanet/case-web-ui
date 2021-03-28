@@ -8,6 +8,7 @@ import WarningComponent from './SurveyComponents/WarningComponent';
 import ResponseComponent from './ResponseComponent/ResponseComponent';
 import clsx from 'clsx';
 import BulletList from './SurveyComponents/BulletList';
+import MarkdownComponent from './SurveyComponents/MarkdownComponent';
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -87,6 +88,11 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                 compDef={component}
                 languageCode={props.languageCode}
               />
+            case 'markdown':
+              return <MarkdownComponent key={index.toFixed()}
+                compDef={component}
+                languageCode={props.languageCode}
+              />;
             case 'error':
               return <ErrorComponent key={index.toFixed()}
                 compDef={component}

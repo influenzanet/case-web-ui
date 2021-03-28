@@ -18,6 +18,7 @@ import moment from 'moment';
 import EQ5DHealthIndicatorInput from './EQ5DHealthIndicatorInput/EQ5DHealthIndicatorInput';
 import LikertScale from './InputTypes/LikertScale';
 import LikertGroup from './InputTypes/LikertGroup';
+import MarkdownComponent from '../SurveyComponents/MarkdownComponent';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -105,6 +106,11 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             languageCode={props.languageCode}
           />
+        case 'markdown':
+          return <MarkdownComponent key={index.toFixed()}
+            compDef={respComp}
+            languageCode={props.languageCode}
+          />;
         case 'singleChoiceGroup':
           return <SingleChoiceGroup
             key={respComp.key}
