@@ -23,6 +23,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
         width="100%"
         controls={true}
         poster={props.posterUrl}
+        controlsList="nodownload"
       >
         {props.sources.map((src, index) => <source
           key={index.toFixed()}

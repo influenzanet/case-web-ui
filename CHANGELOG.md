@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Changed
+
+- Add `controlList='nodownload'` option to VideoPlayer to prevent download option appearing in video menu. (Videos aretypically not meant for downloading locally.)
+
 ## [1.1.13]
 
 ### Added
