@@ -4,6 +4,7 @@ import { getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
+import NumberInput from './NumberInput';
 
 
 interface MultipleChoiceGroupProps {
@@ -136,6 +137,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     }
     const optionKey = props.parentKey + '.' + option.key;
     let labelComponent = <p>{'loading...'}</p>;
+    const prefill = subResponseCache.find(r => r.key === option.key);
 
     switch (option.role) {
       case 'text':
@@ -151,17 +153,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
           {getLocaleStringTextByCode(option.content, props.languageCode)}
         </label>;
         break;
-      /*
-      const description = getLocaleStringTextByCode(option.description, props.languageCode);
-      if (description) {
-        return <Tooltip key={option.key} title={description} arrow>
-          {renderedOption}
-        </Tooltip>
-      }
-      return renderedOption;*/
       case 'input':
-        const prefill = subResponseCache.find(r => r.key === option.key);
-
         labelComponent =
           <TextInput
             parentKey={props.parentKey}
@@ -176,6 +168,23 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               updateSubResponseCache(option.key, response);
             }}
             updateDelay={5}
+            disabled={isDisabled(option)}
+          />;
+        break;
+      case 'numberInput':
+        labelComponent =
+          <NumberInput
+            componentKey={props.parentKey}
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={(response) => {
+              const value = response?.value;
+              const checkStatus = (value !== undefined && value.length > 0);
+              setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+              updateSubResponseCache(option.key, response);
+            }}
             disabled={isDisabled(option)}
           />;
         break;

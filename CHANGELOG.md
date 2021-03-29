@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.13]
+
+### Added
+
+- Multiple choice question can include numeric input fields as well. For this, inside the options array, add an item with `role: 'numberInput'`. Component properties like min, max, step can be applied.
+
+### Changed
+
+- Change styling of Text and Number input components. Label part should only expand as far as its content requires. Number input has max width currently.
+
+
 ## [1.1.12]
 
 ### Added

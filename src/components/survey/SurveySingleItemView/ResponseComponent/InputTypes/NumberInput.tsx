@@ -84,21 +84,25 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
 
   const content = props.compDef.content;
   const placeAfter = getLabelPlacementStyle(props.compDef.style) === 'after';
+  const fullKey = [props.componentKey, props.compDef.key].join('.');
 
   return <div
-    className={clsx("d-flex align-items-center",
+    className={clsx("d-flex align-items-center w-100",
       getClassName(props.compDef.style))}
   >
-    {!placeAfter ? <label htmlFor={props.componentKey} className="me-1">
+    {!placeAfter ? <label htmlFor={fullKey} className="me-1 flex-grow-1"
+      style={{ maxWidth: 'fit-content' }}
+    >
       {getLocaleStringTextByCode(content, props.languageCode)}
     </label> : null}
 
     <input
       style={{
+        flexBasis: 0,
         minWidth: 90,
         maxWidth: 300,
       }}
-      className="form-control border-0"
+      className="form-control border-0 flex-grow-1"
       type="number"
       autoComplete="off"
       id={props.componentKey}

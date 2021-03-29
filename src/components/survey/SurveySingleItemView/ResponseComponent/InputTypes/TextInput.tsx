@@ -59,11 +59,17 @@ const TextInput: React.FC<TextInputProps> = (props) => {
       className={clsx("d-flex align-items-center w-100", getClassName(props.compDef.style))}
       onClick={props.onClick}
     >
-      <label htmlFor={fullKey} className="me-1">
+      <label htmlFor={fullKey} className="me-1 flex-grow-1"
+        style={{ maxWidth: 'fit-content' }}
+      >
         {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
       </label>
       <input
-        className="form-control border-0"
+        className="form-control border-0 flex-grow-1"
+        style={{
+          flexBasis: 0,
+          minWidth: 100,
+        }}
         autoComplete="off"
         id={fullKey}
         placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
