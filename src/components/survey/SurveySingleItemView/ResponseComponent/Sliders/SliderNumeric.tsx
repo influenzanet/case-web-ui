@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { Slider } from '../../../../../inputs';
-import { getLocaleStringTextByCode } from '../../../utils';
+import { Slider } from '../../../../inputs';
+import { getLocaleStringTextByCode } from '../../utils';
 
 interface SliderNumericProps {
   parentKey: string;
@@ -55,12 +55,14 @@ const SliderNumeric: React.FC<SliderNumericProps> = (props) => {
   };
 
   const fullKey = [props.parentKey, props.compDef.key].join('.');
+  const noResponseText = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
+
   return (
     <React.Fragment>
       {props.compDef.content ?
         <label htmlFor={fullKey} className="me-1">
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
-          {response ? <span className="ms-1 fw-bold text-primary">{inputValue}</span> : null}
+          <span className="ms-1 fw-bold text-primary">{response ? inputValue : noResponseText}</span>
         </label>
         : null}
       <div className="d-flex py-1">

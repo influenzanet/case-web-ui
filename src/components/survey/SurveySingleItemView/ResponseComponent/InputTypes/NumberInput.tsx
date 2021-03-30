@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getLabelPlacementStyle, getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getInputMaxWidth, getLabelPlacementStyle, getLocaleStringTextByCode } from '../../utils';
 import clsx from 'clsx';
 
 interface NumberInputProps {
@@ -84,6 +84,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
 
   const content = props.compDef.content;
   const placeAfter = getLabelPlacementStyle(props.compDef.style) === 'after';
+  const inputMaxWidth = getInputMaxWidth(props.compDef.style);
   const fullKey = [props.componentKey, props.compDef.key].join('.');
 
   return <div
@@ -99,8 +100,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     <input
       style={{
         flexBasis: 0,
-        minWidth: 90,
-        maxWidth: 300,
+        minWidth: 60,
+        maxWidth: inputMaxWidth,
       }}
       className="form-control border-0 flex-grow-1"
       type="number"

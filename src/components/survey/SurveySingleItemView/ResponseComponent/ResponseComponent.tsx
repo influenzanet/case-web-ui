@@ -9,7 +9,7 @@ import MultilineTextInput from './InputTypes/MultilineTextInput';
 import NumberInput from './InputTypes/NumberInput';
 
 
-import SliderNumeric from './Sliders/SliderNumeric/SliderNumeric';
+import SliderNumeric from './Sliders/SliderNumeric';
 import SliderNumericRange from './Sliders/SliderNumericRange/SliderNumericRange';
 import SliderCategorical from './Sliders/SliderCategorical/SliderCategorical';
 import Matrix from './InputTypes/Matrix';

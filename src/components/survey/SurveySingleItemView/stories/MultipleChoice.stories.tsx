@@ -33,7 +33,7 @@ export const Example = () => <SurveySingleItemView
                 { key: '6', role: 'option', content: [{ code: 'en', resolvedText: 'Option 6' }] },
                 { key: '7', role: 'option', content: [{ code: 'en', resolvedText: 'Option 7' }] },
                 { key: 't3', role: 'text', content: [{ code: 'en', resolvedText: 'With Number Inputs' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
-                { key: '8', role: 'numberInput', content: [{ code: 'en', resolvedText: 'Healthcare provider name' }], properties: { min: 1, max: 20 } },
+                { key: '8', role: 'numberInput', style: [{ key: 'inputMaxWidth', value: '80px' }], content: [{ code: 'en', resolvedText: 'Healthcare provider name' }], properties: { min: 1, max: 20 } },
                 { key: '9', role: 'numberInput', content: [{ code: 'en', resolvedText: 'Alternative Healthcare Provider Name' }] },
                 { key: '10', role: 'input', content: [{ code: 'en', resolvedText: 'Other: ' }], description: [{ code: 'en', resolvedText: 'use comma to separate multiple entries' }] },
               ]

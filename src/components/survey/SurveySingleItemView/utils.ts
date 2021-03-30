@@ -57,3 +57,14 @@ export const getLabelPlacementStyle = (styles?: Array<{ key: string, value: stri
   }
   return className.value;
 }
+
+export const getInputMaxWidth = (styles?: Array<{ key: string, value: string }>): string | undefined => {
+  if (!styles) {
+    return;
+  }
+  const className = styles.find(st => st.key === 'inputMaxWidth');
+  if (!className) {
+    return;
+  }
+  return className.value;
+}

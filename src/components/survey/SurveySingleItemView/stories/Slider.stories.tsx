@@ -23,6 +23,7 @@ export const Example = () => <SurveySingleItemView
             {
               key: 'slider', role: 'sliderNumeric',
               content: [{ code: 'en', resolvedText: 'your selection:' }],
+              description: [{ code: 'en', resolvedText: 'please move the slider' }],
               properties: {
                 min: 0,
                 max: 100,

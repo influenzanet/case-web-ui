@@ -1,10 +1,12 @@
 # Changelog
 
-## [Unreleased]
+## [1.1.14]
 
 ### Changed
 
 - Add `controlList='nodownload'` option to VideoPlayer to prevent download option appearing in video menu. (Videos aretypically not meant for downloading locally.)
+- Survey's numeric slider component is using the "description" attribute, as a placeholder when no answer is selected yet.
+- NumberInput component accepts new style attribute (e.g., `{ key: 'inputMaxWidth': '80px'}`) to control max width of the input field. Ignored if smaller than min width (50px). If not defined, component won't have max width, thus will try to fill up remaining space.
 
 ## [1.1.13]
 
