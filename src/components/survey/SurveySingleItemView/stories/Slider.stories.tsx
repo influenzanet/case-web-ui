@@ -9,7 +9,7 @@ export default {
 
 const invalidWarning = "Please check your response";
 
-export const Example = () => <SurveySingleItemView
+export const Numeric = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
     version: 1,
@@ -21,13 +21,22 @@ export const Example = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 'slider', role: 'sliderNumeric',
-              content: [{ code: 'en', resolvedText: 'your selection:' }],
+              key: 'numeric1', role: 'sliderNumeric',
+              content: [{ code: 'en', resolvedText: 'Numeric Slider 0 to 100:' }],
               description: [{ code: 'en', resolvedText: 'please move the slider' }],
               properties: {
                 min: 0,
                 max: 100,
                 stepSize: 5,
+              }
+            },
+            {
+              key: 'numeric2', role: 'sliderNumeric',
+              content: [{ code: 'en', resolvedText: 'Numeric Slider -50 to 50:' }],
+              properties: {
+                min: -50,
+                max: 50,
+                //stepSize: 5,
               }
             }
           ]
@@ -42,7 +51,7 @@ export const Example = () => <SurveySingleItemView
   invalidWarning={invalidWarning}
 />
 
-export const Example2 = () => <SurveySingleItemView
+export const NumericRange = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
     version: 1,
@@ -54,12 +63,22 @@ export const Example2 = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 'slider', role: 'sliderNumeric',
-              content: [{ code: 'en', resolvedText: 'your selection:' }],
+              key: 'numericRange1', role: 'sliderNumericRange',
+              content: [{ code: 'en', resolvedText: 'Range Slider 0 to 100:' }],
+              description: [{ code: 'en', resolvedText: 'please move the slider' }],
+              properties: {
+                min: 0,
+                max: 100,
+                stepSize: 5,
+              }
+            },
+            {
+              key: 'numericRange2', role: 'sliderNumericRange',
+              content: [{ code: 'en', resolvedText: 'Range Slider -50 to 50:' }],
               properties: {
                 min: -50,
                 max: 50,
-                //stepSize: 5,
+                stepSize: 5,
               }
             }
           ]
