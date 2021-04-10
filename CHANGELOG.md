@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.15]
+
+### Added
+
+- New stories to locally test and preview components.
+
+### Changed
+
+- `LoadingPlaceholder` widget supports "white" background color.
+- `LoadingPlaceholder` widget allows configuring width of the spinner's line.
+- Updated project dependencies
+
 ## [1.1.14]
 
 ### Changed
