@@ -15,22 +15,32 @@ export const Primary = Template.bind({});
 Primary.args = {
   minHeight: 100,
   color: 'primary',
-  iconSize: "",
+  iconSize: '',
+  iconBorderWidth: ''
 }
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   minHeight: 100,
   color: 'secondary',
-  iconSize: "",
+  iconSize: '',
+  iconBorderWidth: ''
 }
 
 export const Large = Template.bind({});
 Large.args = {
   minHeight: 500,
   color: 'primary',
-  iconSize: 200,
+  iconSize: '10rem',
+  iconBorderWidth: ''
 }
 
+export const Fullscreen = Template.bind({});
+Fullscreen.args = {
+  minHeight: 'vh-100',
+  color: 'white',
+  iconSize: '6rem',
+  iconBorderWidth: '.1rem'
+}
 
 

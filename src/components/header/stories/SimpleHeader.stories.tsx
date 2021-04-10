@@ -4,7 +4,7 @@ import SimpleHeader from '../SimpleHeader';
 import 'localStyles';
 
 export default {
-  title: "Headers/SimpleHeader"
+  title: "Header/SimpleHeader"
 };
 
 
