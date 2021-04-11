@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.16]
+
+### Added
+
+- New stories for single choice survey component.
+
+### Changed
+
+- `SingleChoiceGroup` and `MultipleChoiceGroup` survey components display error message if there are no items (instead of crashing).
+
 ## [1.1.15]
 
 ### Added

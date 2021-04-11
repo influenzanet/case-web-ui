@@ -216,6 +216,10 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
 
   }
 
+  if (!(props.compDef as ItemGroupComponent).items) {
+    return <p>ERROR: multiple choice options missing</p>
+  }
+
   return (
     <fieldset
       id={props.parentKey}

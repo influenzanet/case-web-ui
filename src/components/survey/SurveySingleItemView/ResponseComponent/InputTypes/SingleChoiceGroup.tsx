@@ -190,6 +190,10 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     </div>)
   }
 
+  if (!(props.compDef as ItemGroupComponent).items) {
+    return <p>ERROR: single choice options missing</p>
+  }
+
   return (
     <fieldset
       id={props.parentKey}
