@@ -23,7 +23,7 @@ export const Example = () => <SurveySingleItemView
             {
               key: 'lg', role: 'dropDownGroup', items: [
                 { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Example 1' }], style: [{ key: "className", value: "mb-2 fw-bold" }, { key: "variant", value: "h6" }] },
-                { key: 't2', role: 'text', content: [{ code: 'en', resolvedText: 'Example 2' }], style: [{ key: "className", value: "mb-2 fw-bold" }, { key: "variant", value: "h6" }] },
+                { key: 't2', role: 'text', content: [{ code: 'en', resolvedText: 'Example 2 with longer Content in Dropdown' }], style: [{ key: "className", value: "mb-2 fw-bold" }, { key: "variant", value: "h6" }] },
               ]
             }
           ]

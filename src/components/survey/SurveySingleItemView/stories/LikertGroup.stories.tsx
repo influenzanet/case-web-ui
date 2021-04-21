@@ -30,6 +30,16 @@ export const Example = () => <SurveySingleItemView
                     { key: '3', role: 'option', content: [{ code: 'en', resolvedText: '3' }] },
                   ]
                 },
+                { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Example 2' }], style: [{ key: "className", value: "mb-2 fw-bold" }, { key: "variant", value: "h6" }] },
+                {
+                  key: 'l1', role: 'likert', items: [
+                    { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'with Text 1' }] },
+                    { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'with Text 2' }] },
+                    { key: '3', role: 'option', content: [{ code: 'en', resolvedText: 'with Text 3' }] },
+                    { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'with Text 4' }] },
+                    { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'with Text 5' }] },
+                  ]
+                },
               ]
             }
           ]

@@ -16,12 +16,12 @@ const LoadingPlaceholder: React.FC<LoadingPlaceholderProps> = (props) => {
   const iconBorderWidth = props.iconBorderWidth ? props.iconBorderWidth : defaultIconBorderWidth
   return (
     <div
-      className={clsx("d-flex align-items-center justify-content-center h-100", {
-        'bg-secondary': props.color === 'secondary',
-        'bg-primary': props.color === 'primary',
-        'bg-white': props.color === 'white',
-        'vh-100': props.minHeight === 'vh-100',
-      })}
+      className={clsx(
+        "d-flex align-items-center justify-content-center h-100 ",
+        `bg-${props.color}`,
+        {
+          'vh-100': props.minHeight === 'vh-100',
+        })}
       style={{ minHeight: props.minHeight }}>
       <div className={clsx(
         "spinner-border",
