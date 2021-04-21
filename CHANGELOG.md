@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.17]
+
+### Added
+
+- New stories for single choice survey component.
+
+### Changed
+
+- Internal changes how color is handled by LoadingPlacelholder
+- Updating project dependencies
+
 ## [1.1.16]
 
 ### Added
