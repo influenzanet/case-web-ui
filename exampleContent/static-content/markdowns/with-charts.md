@@ -2,6 +2,11 @@
 
 Op deze pagina vindt u de actuele resultaten van Infectieradar. De resultaten worden binnenkort bijgewerkt.
 
-[line-and-scatter-chart]: /charts/20210126_0801_percentage_klachten_over_tijd.json
+<lineandscatterchart
+  data-url="/charts/20210126_0801_percentage_klachten_over_tijd.json"
+/>
 
-[mapchart:/charts/ggd-map-nl.json]:  /charts/20210126_0801_kaart_data.json
+<mapchart
+  map-url="/charts/ggd-map-nl.json"
+  data-url="/charts/20210126_0801_kaart_data.json"
+/>
