@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.18]
+
+### Added
+
+- `VideoPlayer` accepts `tracks` array (optional property), to define caption/subtitles.
+- New storybook example for `VideoPlayer`
+
+### Changed
+
+- Likert scale survey component supports the option to put label before radio buttons
+- Updating dependencies, especially bootstrap to stable version
+
 ## [1.1.17]
 
 ### Added

@@ -9,7 +9,16 @@ interface VideoPlayerProps {
     src: string;
     type: string;
   }>;
+  tracks?: Array<
+    {
+      src: string;
+      default?: boolean;
+      srcLang: string;
+      label: string;
+      kind: string;
+    }>
 }
+
 
 const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
   return (
@@ -30,6 +39,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = (props) => {
           src={src.src}
           type={src.type}
         />)}
+        {
+          props.tracks ?
+            props.tracks.map((trackProps, index) => <track
+              key={index.toFixed()}
+              {...trackProps}
+            />)
+            : null
+        }
         {props.fallbackText ? props.fallbackText : null}
       </video>
     </div>
