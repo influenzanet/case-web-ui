@@ -19,3 +19,9 @@ NL.args = {
   mapUrl: '/charts/ggd-map-nl.json',
   dataUrl: '/charts/20210126_0801_kaart_data.json',
 }
+
+export const BE = Template.bind({});
+BE.args = {
+  mapUrl: '/charts/be-provinces.json',
+  dataUrl: '/charts/20210126_0801_kaart_data.json',
+}
