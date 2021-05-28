@@ -1,11 +1,14 @@
 # Changelog
 
-## [1.2.0]
+## [1.2.0] - 2021-05-28
 
 ### Changed
 
 - Updated react-markdown version to 6.0.0
 - Dialog header fixed always
+- `SurveySingleItemView` and `SurveyPageView` are now exported, so that they can be used, e.g., by the editor.
+- Add a new callback to SurveyView: `onResponsesChanged`. Optional method that will be called every time the responses changed.
+- Option to display item and response option keys in surveys, to be used by the editor when testing. Option keys are currently only available for single and multiple choice questions.
 
 ### BREAKING-CHANGES
 

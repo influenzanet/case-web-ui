@@ -29,6 +29,7 @@ interface SurveyPageViewProps {
   localisedTexts: SurveyPageLocalisedTexts;
   surveyEndItem?: SurveySingleItem;
   ignoreValidation?: boolean;
+  showKeys?: boolean;
 }
 
 const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
@@ -77,6 +78,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         responsePrefill={response}
         showInvalid={!valid.hard && showValidationErrors}
         invalidWarning={props.localisedTexts.invalidResponse}
+        showKeys={props.showKeys}
       />
     </div>
   }

@@ -40,6 +40,7 @@ export const Example = () => <SurveySingleItemView
   showInvalid={false}
   languageCode="en"
   invalidWarning={invalidWarning}
+  showKeys={true}
 />
 
 export const ExampleWithMissingOptions = () => <SurveySingleItemView
@@ -66,4 +67,5 @@ export const ExampleWithMissingOptions = () => <SurveySingleItemView
   showInvalid={false}
   languageCode="en"
   invalidWarning={invalidWarning}
+  showKeys={true}
 />

@@ -9,6 +9,7 @@ interface SurveyViewProps {
   survey: Survey;
   languageCode: string;
   onSubmit: (responses: SurveySingleItemResponse[], version: string) => void;
+  onResponsesChanged?: (responses: SurveySingleItemResponse[], version: string) => void;
   prefills?: SurveySingleItemResponse[];
   context?: SurveyContext;
   backBtnText: string;
@@ -16,6 +17,7 @@ interface SurveyViewProps {
   submitBtnText: string;
   invalidResponseText: string;
   hideBackButton?: boolean;
+  showKeys?: boolean;
   // init with temporary loaded results
   // save temporary result
 }
@@ -31,6 +33,13 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     setSurveyEngine(new SurveyEngineCore(props.survey, props.context, props.prefills));
   }, [props.survey, props.context, props.prefills]);
 
+  const onResponsesChanged = () => {
+    if (props.onResponsesChanged) {
+      const resp = surveyEngine.getResponses();
+      props.onResponsesChanged(resp, props.survey.current.versionId);
+    }
+  }
+
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
     props.onSubmit(resp, props.survey.current.versionId);
@@ -39,7 +48,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const resetScrollPosition = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-
   }
 
   // console.log(surveyEngine.getSurveyEndItem());
@@ -76,7 +84,11 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       isLastPage={isLastPage}
       selectedLanguage={props.languageCode}
       responseCount={responseCount}
-      setResponseCount={setResponseCount}
+      setResponseCount={(count) => {
+        setResponseCount(count);
+        onResponsesChanged();
+      }}
+      showKeys={props.showKeys}
     />;
   }
 

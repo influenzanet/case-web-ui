@@ -27,6 +27,7 @@ interface ResponseComponentProps {
   responseChanged: (response: ResponseItem | undefined) => void;
   languageCode: string;
   isRequired: boolean;
+  showOptionKey?: boolean;
 }
 
 const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
@@ -119,6 +120,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            showOptionKey={props.showOptionKey}
           />
         case 'multipleChoiceGroup':
           return <MultipleChoiceGroup
@@ -128,6 +130,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            showOptionKey={props.showOptionKey}
           />
         case 'dropDownGroup':
           return <DropDownGroup

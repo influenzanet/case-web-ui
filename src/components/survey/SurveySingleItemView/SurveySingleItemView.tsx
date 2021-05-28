@@ -17,6 +17,7 @@ interface SurveySingleItemViewProps {
   responseChanged: (response: ResponseItem | undefined) => void;
   showInvalid?: boolean;
   invalidWarning: string;
+  showKeys?: boolean;
 }
 
 
@@ -77,6 +78,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                   setTouched(true);
                   setResponse(response);
                 }}
+                showOptionKey={props.showKeys}
               />
             case 'text':
               return <TextViewComponent key={index.toFixed()}
@@ -116,7 +118,12 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   const titleComp = getItemComponentByRole(props.renderItem.components?.items, 'title')
 
   const renderTitleComp = (): React.ReactNode => {
-    if (!titleComp) { return null; }
+    if (!titleComp) {
+      if (props.showKeys) {
+        return <h5 className="text-primary me-2">{props.renderItem.key}</h5>
+      }
+      return null;
+    }
 
     const content = getLocaleStringTextByCode(titleComp.content, props.languageCode);
     const description = getLocaleStringTextByCode(titleComp.description, props.languageCode);
@@ -136,6 +143,9 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
       >
         <div className="flex-grow-1">
           <h5 className="m-0 fw-bold">
+            {props.showKeys ?
+              <span className="text-primary me-2">{props.renderItem.key}</span>
+              : null}
             {content}
             {requiredItem ?
               <span

@@ -13,6 +13,7 @@ interface MultipleChoiceGroupProps {
   prefill?: ResponseItem;
   responseChanged: (response: ResponseItem | undefined) => void;
   languageCode: string;
+  showOptionKey?: boolean;
 }
 
 const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
@@ -200,6 +201,9 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
       })}
       key={option.key} >
       <div>
+        {props.showOptionKey ?
+          <span className="text-primary me-2">{option.key}</span>
+          : null}
         <input
           className="form-check-input cursor-pointer"
           type="checkbox"
