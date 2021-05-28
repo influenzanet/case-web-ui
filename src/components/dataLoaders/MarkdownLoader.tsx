@@ -22,40 +22,43 @@ interface MarkdownLoaderProps {
 const customFlavorRenderers = (language?: string) => {
   return {
     default: {
-      'inlineCode': (node: any) => <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
-      'paragraph': (node: any) => node.children[0].type.name === "image" || node.children[0].type.name === "inlineCode" ? (
-        <div {...node} />
-      ) : (
-          <p {...node} />
-        )
-      ,
+      'code': (node: any, ...props: any) => {
+        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props} >{node.children}</p>
+      },
+      'p': (props: any) => {
+        if (props.children && props.children.length > 0 && props.children[0].type) {
+          if (props.children[0].type.name === "img" || props.children[0].type.name === "code") {
+            return <div {...props} />
+          }
+        }
+        return <p {...props} />
+
+      },
     },
     chartRenderer: {
-      'inlineCode': (node: any) => <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" >{node.children}</p>,
-      'paragraph': (node: any) => node.children[0].type.name === "image" || node.children[0].type.name === "inlineCode" ? (
-        <div {...node} />
-      ) : (
-          <p {...node} />
-        )
-      ,
-      'definition': (value: any) => {
-        const id = value.identifier.split(':')[0];
-        switch (id) {
-          case 'mapchart':
-            const mapUrl = value.identifier.substring(value.identifier.indexOf(':') + 1);
-            return <MapWithTimeSliderLoader
-              mapUrl={mapUrl}
-              dataUrl={value.url}
-            />;
-          case 'line-and-scatter-chart':
-            return <ComposedLineAndScatterChartLoader
-              language={language ? language : 'en'}
-              dataUrl={value.url}
-            />
-          default:
-            return <p>{'unknown: ' + value.identifier}</p>
+      'p': (props: any) => {
+        if (props.children && props.children.length > 0 && props.children[0].type) {
+          if (["img", "mapchart", "lineandscatterchart", "code"].includes(props.children[0].type.name)) {
+            return <div {...props} />
+          }
         }
+        return <p {...props} />
       },
+      'code': (node: any, ...props: any) => {
+        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props}>{node.children}</p>
+      },
+      'mapchart': (props: any) => {
+        return <MapWithTimeSliderLoader
+          mapUrl={props['map-url']}
+          dataUrl={props['data-url']}
+        />
+      },
+      'lineandscatterchart': (props: any) =>
+        <ComposedLineAndScatterChartLoader
+          language={language ? language : 'en'}
+          dataUrl={props['data-url']}
+        />
+      ,
     }
   }
 }
@@ -82,6 +85,7 @@ const MarkdownLoader: React.FC<MarkdownLoaderProps> = (props) => {
     className={props.className}
     markdown={content}
     renderers={renderers}
+    plugins={true}
   />
 };
 
