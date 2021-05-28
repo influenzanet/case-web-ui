@@ -96,7 +96,7 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/core@^7.14.3":
+"@babel/core@^7.14.2":
   version "7.14.3"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.14.3.tgz#5395e30405f0776067fbd9cf0884f15bfb770a38"
   integrity sha512-jB5AmTKOCSJIZ72sd78ECEhuPiDMKlQdDI/4QRI6lzYATx5SSogS1oQA2AoPecRCknm30gHi2l+QVvNUu3wZAg==
@@ -1711,10 +1711,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fontsource/open-sans@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.3.0.tgz#960c3d9df5e841369e47d775dbb1a80212ff08d1"
-  integrity sha512-U4mz+KC0WT0AbjR5BanmfXbtkirFU3puOCOblJ3dm8ekV+SfZ4QSjpEryNCaY16gqNgKtwMWMOtVvlNPmc9gfw==
+"@fontsource/open-sans@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.4.0.tgz#35c914f9d694f8edeecb241a0ec75181dc12eabc"
+  integrity sha512-BuCgcH70BTPAE0/j/ipM0wtyXQayjmc+AXr2an3KTPg5QDZyENeWHrSRzx4wzsNizcx7uMdsqi0R99u284DQAQ==
 
 "@fortawesome/fontawesome-free@^5.15.3":
   version "5.15.3"
@@ -10958,10 +10958,10 @@ react-textarea-autosize@^8.3.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-tooltip@^4.2.19:
-  version "4.2.19"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.19.tgz#a865fffdb62154c6079bcb273e238de6b3c57366"
-  integrity sha512-wF6h0a2nqX3UHw9aSoj77Tv/+/KIjRdb107otHtX+1wISad1QoLD+j5chrBDx7mjY1T4WKfrV2DN+iFCimdZOw==
+react-tooltip@^4.2.21:
+  version "4.2.21"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.21.tgz#840123ed86cf33d50ddde8ec8813b2960bfded7f"
+  integrity sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig==
   dependencies:
     prop-types "^15.7.2"
     uuid "^7.0.3"
@@ -11464,10 +11464,10 @@ rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.50.1:
-  version "2.50.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.50.1.tgz#5d52d5c65ade19164d56efec98f16a461c6df38e"
-  integrity sha512-3MQhSdGpms4xjYrtR3WNHMT+VrWWM4oqUxUC770MmLo1FWFR2pr/OL81HSPC/ifmiu0uMFk0qPGLmjkSMRIESw==
+rollup@^2.50.3:
+  version "2.50.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.50.3.tgz#71021dedf2e3423bee28e795860783feea2be63e"
+  integrity sha512-58KiHnaCzZn6F5yRMjHe7WTZuFj6r4iJVJz5UwvKD6f/xfTy2IdtbR2AVHN6cyfK1tBy//hJ66ebXy6Y1h7HlQ==
   optionalDependencies:
     fsevents "~2.3.1"
 
@@ -12750,10 +12750,10 @@ typescript-plugin-css-modules@^3.2.0:
     stylus "^0.54.7"
     tsconfig-paths "^3.9.0"
 
-typescript@^4.2.4:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
-  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
+typescript@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.2.tgz#399ab18aac45802d6f2498de5054fcbbe716a805"
+  integrity sha512-zZ4hShnmnoVnAHpVHWpTcxdv7dWP60S2FsydQLV8V5PbS3FifjWFFRiHSWpDJahly88PRyV5teTSLoq4eG7mKw==
 
 unbox-primitive@^1.0.0:
   version "1.0.1"

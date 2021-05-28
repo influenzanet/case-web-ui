@@ -16,11 +16,13 @@
     "build"
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3"
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "rehype-raw": "^5.1.0",
+    "remark-gfm": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.2",
-    "@fontsource/open-sans": "^4.3.0",
+    "@fontsource/open-sans": "^4.4.0",
     "@material-ui/core": "^4.11.4",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
@@ -45,9 +47,9 @@
     "react-dom": "^17.0.2",
     "react-markdown": "^6.0.2",
     "react-simple-maps": "^2.3.0",
-    "react-tooltip": "^4.2.19",
+    "react-tooltip": "^4.2.21",
     "recharts": "^2.0.9",
-    "rollup": "^2.50.1",
+    "rollup": "^2.50.3",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -56,7 +58,7 @@
     "sass-loader": "^10.1.1",
     "survey-engine": "^0.10.0",
     "ts-jest": "^26.5.5",
-    "typescript": "^4.2.4",
+    "typescript": "^4.3.2",
     "typescript-plugin-css-modules": "^3.2.0"
   },
   "peerDependencies": {

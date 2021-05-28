@@ -27,7 +27,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
   const paddingX = props.dialogPaddingXClass ? props.dialogPaddingXClass : defaultDialogPaddingXClass;
   const paddingY = props.dialogPaddingYClass ? props.dialogPaddingYClass : defaultDialogPaddingYClass;
 
-  const headerContent = (useButtonPlaceholder?: boolean) => <React.Fragment>
+  const headerContent = () => <React.Fragment>
     <h4 id={props.ariaLabelledBy}
       className={clsx(
         'flex-grow-1 m-0 fw-bold',
@@ -39,17 +39,14 @@ const Dialog: React.FC<DialogProps> = (props) => {
       {props.title}
     </h4>
     <div className="ps-2">
-      {!useButtonPlaceholder ?
-        <button type="button"
-          onClick={props.onClose}
-          className={clsx(
-            "btn-close",
-            {
-              "btn-close-white": isTextColorWhite
-            }
-          )} aria-label="Exit"></button> :
-        <div style={{ width: 24 }}></div>
-      }
+      <button type="button"
+        onClick={props.onClose}
+        className={clsx(
+          "btn-close",
+          {
+            "btn-close-white": isTextColorWhite
+          }
+        )} aria-label="Exit"></button>
     </div>
   </React.Fragment>
 
@@ -57,31 +54,13 @@ const Dialog: React.FC<DialogProps> = (props) => {
     <div className={clsx(
       paddingX,
       paddingY,
-      'd-flex align-items-center',
+      'd-flex align-items-center sticky-top ',
       `bg-${color}`,
-      {
-        'position-fixed w-100': fullScreen
-      }
     )}
     >
       {headerContent()}
     </div>
 
-    {/** For accounting header height in fullscreen mode: */}
-    <div
-      className={clsx(
-        paddingX,
-        paddingY,
-        'd-flex align-items-center',
-        {
-          'd-block': fullScreen,
-          'd-none': !fullScreen
-        }
-      )}
-      aria-hidden="true"
-    >
-      {headerContent(true)}
-    </div>
   </React.Fragment>
 
 
