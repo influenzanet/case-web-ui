@@ -13,7 +13,21 @@ const Template = (args) => (
 
 export const Info = Template.bind({});
 Info.args = {
-  content: "This is an Info Box",
+  content: "This is an Info Box [open](http://localhost:6006)",
+  className: "",
+  hide: false,
+  type: 'info',
+  pxClass: "",
+  pyClass: "",
+  useIcon: true,
+  iconSize: "",
+  closable: true,
+  onClose: () => null,
+}
+
+export const Empty = Template.bind({});
+Info.args = {
+  content: undefined,
   className: "",
   hide: false,
   type: 'info',

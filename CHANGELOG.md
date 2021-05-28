@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.1] - 2021-05-28
+
+Needed to downgrade rollup and plugin versions. When creating the bundle and deploying, react-markdown was not working anymore.
+
 ## [1.2.0] - 2021-05-28
 
 ### Changed
