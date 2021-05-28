@@ -15,11 +15,12 @@
   "files": [
     "build"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@fontsource/open-sans": "^4.4.0",
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "@material-ui/core": "^4.11.4",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
