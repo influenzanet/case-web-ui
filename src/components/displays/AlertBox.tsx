@@ -69,7 +69,7 @@ const AlertBox: React.FC<AlertBoxProps> = (props) => {
         <MarkdownRenderer
           className="p-0 flex-grow-1"
           renderers={{
-            link: node => <TextLink className="text-body" {...node} />,
+            a: node => <TextLink className="text-body" {...node} />,
           }}
           markdown={props.content}
         />

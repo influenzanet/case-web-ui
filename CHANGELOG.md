@@ -1,5 +1,63 @@
 # Changelog
 
+## [1.2.0]
+
+### Changed
+
+- Updated react-markdown version to 6.0.0
+- Dialog header fixed always
+
+### BREAKING-CHANGES
+
+Due to the updates related to react-markdown version, the following markdown custom syntax need to be changed.
+
+**Map Chart**
+
+Previously:
+~~~
+[mapchart:/charts/ggd-map-nl.json]:  /charts/20210126_0801_kaart_data.json
+~~~
+
+New syntax:
+
+~~~
+<mapchart
+  map-url="/charts/ggd-map-nl.json"
+  data-url="/charts/20210126_0801_kaart_data.json"
+/>
+~~~
+
+**Line and Scatter Chart**
+
+Previously:
+~~~
+[line-and-scatter-chart]: /charts/20210126_0801_percentage_klachten_over_tijd.json
+~~~
+
+New syntax:
+~~~
+<lineandscatterchart
+  data-url="/charts/20210126_0801_percentage_klachten_over_tijd.json"
+/>
+~~~
+
+**Page info for date line**
+
+Previously:
+~~~
+`Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.`
+~~~
+
+New syntax:
+~~~
+<pageinfo>
+Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.
+</pageinfo>
+~~~
+
+The old syntax will be rendered as the default code block.
+
+
 ## [1.1.18]
 
 ### Added

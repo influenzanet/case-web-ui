@@ -22,30 +22,25 @@ interface MarkdownLoaderProps {
 const customFlavorRenderers = (language?: string) => {
   return {
     default: {
-      'code': (node: any, ...props: any) => {
-        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props} >{node.children}</p>
+      'pageinfo': (props: any) => {
+        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props} ></p>
       },
       'p': (props: any) => {
-        if (props.children && props.children.length > 0 && props.children[0].type) {
-          if (props.children[0].type.name === "img" || props.children[0].type.name === "code") {
-            return <div {...props} />
-          }
+        if (props.node.children && props.node.children.length > 0 && props.node.children[0].type === 'element') {
+          return <div {...props} />
         }
         return <p {...props} />
-
       },
     },
     chartRenderer: {
       'p': (props: any) => {
-        if (props.children && props.children.length > 0 && props.children[0].type) {
-          if (["img", "mapchart", "lineandscatterchart", "code"].includes(props.children[0].type.name)) {
-            return <div {...props} />
-          }
+        if (props.node.children && props.node.children.length > 0 && props.node.children[0].type === 'element') {
+          return <div {...props} />
         }
         return <p {...props} />
       },
-      'code': (node: any, ...props: any) => {
-        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props}>{node.children}</p>
+      'pageinfo': (props: any) => {
+        return <p className="mb-1a border-primary border-top-2 border-bottom-2 text-grey-6" {...props} ></p>
       },
       'mapchart': (props: any) => {
         return <MapWithTimeSliderLoader
@@ -85,7 +80,6 @@ const MarkdownLoader: React.FC<MarkdownLoaderProps> = (props) => {
     className={props.className}
     markdown={content}
     renderers={renderers}
-    plugins={true}
   />
 };
 

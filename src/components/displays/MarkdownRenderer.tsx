@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactMarkdown from "react-markdown";
-import rehypeRaw from 'rehype-raw';
 import TextLink from '../buttons/TextLink';
+import rehypeRaw from 'rehype-raw';
 import gfm from 'remark-gfm';
 
 
 interface MarkdownRendererProps {
   markdown: string;
-  renderers?: { [nodeType: number]: React.ElementType<any>; };
+  renderers?: { [nodeType: string]: React.ElementType<any>; };
   className?: string;
-  plugins: boolean;
+  disablePlugins?: boolean;
 }
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = (props) => {
@@ -19,13 +19,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = (props) => {
       children={props.markdown}
       components={
         {
-          link: TextLink,
+          a: TextLink,
           ...props.renderers
         }
-
       }
-      remarkPlugins={props.plugins ? [gfm] : undefined}
-      rehypePlugins={props.plugins ? [rehypeRaw] : undefined}
+      remarkPlugins={!props.disablePlugins ? [gfm] : undefined}
+      rehypePlugins={!props.disablePlugins ? [rehypeRaw] : undefined}
     />
   );
 };
