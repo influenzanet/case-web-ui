@@ -1,6 +1,12 @@
 # Changelog
 
-## [1.2.1] - 2021-05-28
+## [Unreleased] -
+
+### Changed:
+
+- `SurveySingleItemView`: Apply same style to debug key as title even if there is no title component.
+
+## [1.2.2 (1)] - 2021-05-28
 
 Needed to downgrade rollup and plugin versions. When creating the bundle and deploying, react-markdown was not working anymore.
 

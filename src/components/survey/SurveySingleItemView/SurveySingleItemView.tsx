@@ -120,7 +120,11 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
   const renderTitleComp = (): React.ReactNode => {
     if (!titleComp) {
       if (props.showKeys) {
-        return <h5 className="text-primary me-2">{props.renderItem.key}</h5>
+        return <h5 className={clsx(
+          paddingX,
+          paddingY,
+          'bg-grey-2',
+          "text-primary me-2 fw-bold")}>{props.renderItem.key}</h5>
       }
       return null;
     }
