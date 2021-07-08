@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
 import { getLocaleStringTextByCode } from '../../utils';
-import { nl, nlBE, fr, de } from 'date-fns/locale';
+import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { addYears, getUnixTime } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
@@ -12,6 +12,7 @@ export const dateLocales = [
   { code: 'nl-be', locale: nlBE, format: 'dd.MM.yyyy' },
   { code: 'fr-be', locale: fr, format: 'dd.MM.yyyy' },
   { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },
+  { code: 'it', locale: it, format: 'dd/MM/yyyy' },
 ];
 
 dateLocales.forEach(loc => {

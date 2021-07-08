@@ -1,10 +1,12 @@
 # Changelog
 
-## [Unreleased] -
+## [1.3.0] - 2021-07-08
 
 ### Changed:
 
 - `SurveySingleItemView`: Apply same style to debug key as title even if there is no title component.
+- Add Italian date locale for datepickers.
+- Updating dependencies: material-ui, react-date-picker
 
 ## [1.2.2 (1)] - 2021-05-28
 
