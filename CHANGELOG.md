@@ -5,6 +5,7 @@
 ### Changed:
 
 -  `SingleChoiceGroup`: Options of a single choice group can be styled (with className attribute). In such a case, styling is not propagated down to the nested inputs, to avoid issues with improperly applied styles twice.
+-  `SingleChoiceGroup` and `MultipleChoiceGroup` accept now option items with multiple parts (items in the component's items array). Currently, only text-based components are supported, for the purpose if different parts of the text needs to be styled differently (e.g., bold, color highlight or underlined).
 
 ## [1.3.0] - 2021-07-08
 

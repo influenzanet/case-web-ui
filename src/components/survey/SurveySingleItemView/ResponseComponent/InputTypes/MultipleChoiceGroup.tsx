@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { getLocaleStringTextByCode } from '../../utils';
+import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/lib/data_types';
+import { getClassName, getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
@@ -140,58 +140,77 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     let labelComponent = <p>{'loading...'}</p>;
     const prefill = subResponseCache.find(r => r.key === option.key);
 
-    switch (option.role) {
-      case 'text':
-        return <TextViewComponent
-          key={option.key}
-          compDef={option}
-          languageCode={props.languageCode}
-        />;
-      case 'option':
-        labelComponent = <label
-          className="form-check-label cursor-pointer w-100"
-          htmlFor={optionKey}>
-          {getLocaleStringTextByCode(option.content, props.languageCode)}
-        </label>;
-        break;
-      case 'input':
-        labelComponent =
-          <TextInput
-            parentKey={props.parentKey}
+    if (isItemGroupComponent(option)) {
+      switch (option.role) {
+        // TODO: handle composite option types, when contains different inputs
+        case 'option':
+          labelComponent = <label htmlFor={optionKey}>
+            {option.items.map(oi => <span
+              key={oi.key}
+              className={clsx(
+                "cursor-pointer",
+                getClassName(oi.style)
+              )}
+            >
+              {getLocaleStringTextByCode(oi.content, props.languageCode)}
+            </span>)}
+          </label>
+          break;
+      }
+    } else {
+      switch (option.role) {
+        case 'text':
+          return <TextViewComponent
             key={option.key}
             compDef={option}
-            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
-            responseChanged={(response) => {
-              const value = response?.value;
-              const checkStatus = (value !== undefined && value.length > 0);
-              setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
-              updateSubResponseCache(option.key, response);
-            }}
-            updateDelay={5}
-            disabled={isDisabled(option)}
           />;
-        break;
-      case 'numberInput':
-        labelComponent =
-          <NumberInput
-            componentKey={props.parentKey}
-            key={option.key}
-            compDef={option}
-            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
-            languageCode={props.languageCode}
-            responseChanged={(response) => {
-              const value = response?.value;
-              const checkStatus = (value !== undefined && value.length > 0);
-              setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
-              updateSubResponseCache(option.key, response);
-            }}
-            disabled={isDisabled(option)}
-          />;
-        break;
-      default:
-        labelComponent = <p key={option.key}>role inside multiple choice group not implemented yet: {option.role}</p>
-        break;
+        case 'option':
+          labelComponent = <label
+            className="form-check-label cursor-pointer w-100"
+            htmlFor={optionKey}>
+            {getLocaleStringTextByCode(option.content, props.languageCode)}
+          </label>;
+          break;
+        case 'input':
+          labelComponent =
+            <TextInput
+              parentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={(response) => {
+                const value = response?.value;
+                const checkStatus = (value !== undefined && value.length > 0);
+                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+                updateSubResponseCache(option.key, response);
+              }}
+              updateDelay={5}
+              disabled={isDisabled(option)}
+            />;
+          break;
+        case 'numberInput':
+          labelComponent =
+            <NumberInput
+              componentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={(response) => {
+                const value = response?.value;
+                const checkStatus = (value !== undefined && value.length > 0);
+                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+                updateSubResponseCache(option.key, response);
+              }}
+              disabled={isDisabled(option)}
+            />;
+          break;
+        default:
+          labelComponent = <p key={option.key}>role inside multiple choice group not implemented yet: {option.role}</p>
+          break;
+      }
     }
 
     return (<div className={clsx(

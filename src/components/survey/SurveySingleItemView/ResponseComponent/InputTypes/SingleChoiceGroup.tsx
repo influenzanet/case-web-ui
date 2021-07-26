@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
+import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
 import { getClassName, getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
@@ -116,59 +116,71 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     const optionClassName = getClassName(option.style);
 
     let labelComponent = <p>{'loading...'}</p>
-    switch (option.role) {
-      case 'option':
-        labelComponent = <label className="form-check-label cursor-pointer flex-grow-1" htmlFor={optionKey}>
-          {getLocaleStringTextByCode(option.content, props.languageCode)}
-        </label>
-        /*
-          const description = getLocaleStringTextByCode(option.description, props.languageCode);
-          if (description) {
-          return <Tooltip key={option.key} title={description} arrow>
-            {renderedOption}
-          </Tooltip>
-          }*/
-        // return renderedOption;
-        break;
-      case 'input':
-        labelComponent =
-          <TextInput
-            parentKey={props.parentKey}
+    if (isItemGroupComponent(option)) {
+      switch (option.role) {
+        // TODO: handle composite option types, when contains different inputs
+        case 'option':
+          labelComponent = <label htmlFor={optionKey}>
+            {option.items.map(oi => <span
+              key={oi.key}
+              className={clsx(
+                "cursor-pointer",
+                getClassName(oi.style)
+              )}
+            >
+              {getLocaleStringTextByCode(oi.content, props.languageCode)}
+            </span>)}
+          </label>
+          break;
+      }
+    } else {
+      // Simplified option type (no styled text, single input)
+      switch (option.role) {
+        case 'option':
+          labelComponent = <label className="form-check-label cursor-pointer flex-grow-1" htmlFor={optionKey}>
+            {getLocaleStringTextByCode(option.content, props.languageCode)}
+          </label>
+          break;
+        case 'input':
+          labelComponent =
+            <TextInput
+              parentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={setResponseForKey(option.key)}
+              updateDelay={5}
+              disabled={isDisabled}
+            />;
+          break;
+        case 'numberInput':
+          labelComponent =
+            <NumberInput
+              componentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={setResponseForKey(option.key)}
+              ignoreClassName={optionClassName !== undefined}
+            />;
+          break;
+        case 'dateInput':
+          labelComponent = <DateInput
+            componentKey={optionKey}
             key={option.key}
             compDef={option}
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
-            updateDelay={5}
+            openCalendar={getSelectedKey() === option.key}
             disabled={isDisabled}
           />;
-        break;
-      case 'numberInput':
-        labelComponent =
-          <NumberInput
-            componentKey={props.parentKey}
-            key={option.key}
-            compDef={option}
-            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
-            languageCode={props.languageCode}
-            responseChanged={setResponseForKey(option.key)}
-            ignoreClassName={optionClassName !== undefined}
-          />;
-        break;
-      case 'dateInput':
-        labelComponent = <DateInput
-          componentKey={optionKey}
-          key={option.key}
-          compDef={option}
-          prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
-          languageCode={props.languageCode}
-          responseChanged={setResponseForKey(option.key)}
-          openCalendar={getSelectedKey() === option.key}
-          disabled={isDisabled}
-        />;
-        break;
-      default:
-        labelComponent = <p key={option.key}>role inside single choice group not implemented yet: {option.role}</p>;
+          break;
+        default:
+          labelComponent = <p key={option.key}>role inside single choice group not implemented yet: {option.role}</p>;
+      }
     }
 
     return (<div className={clsx(

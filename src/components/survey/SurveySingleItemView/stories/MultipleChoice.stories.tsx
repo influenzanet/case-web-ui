@@ -25,6 +25,14 @@ export const Example = () => <SurveySingleItemView
               items: [
                 { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
                 { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] },
+                {
+                  key: '1a', role: 'option',
+                  items: [
+                    { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Option 1' }] },
+                    { key: '2', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components' }], style: [{ key: 'className', value: 'fw-bold text-danger' },] },
+                    { key: '3', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components ' }], style: [{ key: 'className', value: 'text-decoration-underline' },] },
+                  ]
+                },
                 { key: '3', role: 'input', content: [{ code: 'en', resolvedText: 'Option 2 here' }] },
                 { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Subtitle' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
                 { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'Option 4' }] },
