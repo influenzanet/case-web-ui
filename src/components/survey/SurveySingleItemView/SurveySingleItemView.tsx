@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SurveySingleItem, ItemGroupComponent, ResponseItem, ItemComponent } from 'survey-engine/lib/data_types';
-import { getItemComponentByRole, getItemComponentsByRole, getLocaleStringTextByCode } from './utils';
+import { SurveySingleItem, ItemGroupComponent, ResponseItem, ItemComponent, isItemGroupComponent } from 'survey-engine/lib/data_types';
+import { getClassName, getItemComponentByRole, getItemComponentsByRole, getLocaleStringTextByCode } from './utils';
 import HelpGroup from './SurveyComponents/HelpGroup';
 import TextViewComponent from './SurveyComponents/TextViewComponent';
 import ErrorComponent from './SurveyComponents/ErrorComponent';
@@ -129,7 +129,26 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
       return null;
     }
 
-    const content = getLocaleStringTextByCode(titleComp.content, props.languageCode);
+    let content = <React.Fragment>
+      {getLocaleStringTextByCode(titleComp.content, props.languageCode)}
+    </React.Fragment>;
+
+    if (isItemGroupComponent(titleComp)) {
+      content = <React.Fragment>
+        {
+          titleComp.items.map(item => <span
+            key={item.key}
+            className={clsx(
+              "cursor-pointer",
+              getClassName(item.style)
+            )}
+          >
+            {getLocaleStringTextByCode(item.content, props.languageCode)}
+          </span>)
+        }
+      </React.Fragment>
+    }
+
     const description = getLocaleStringTextByCode(titleComp.description, props.languageCode);
 
     return (
@@ -140,6 +159,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
             paddingX,
             paddingY,
             'bg-grey-2',
+            getClassName(titleComp.style),
             {
               'bg-danger-light': props.showInvalid
             }
@@ -167,7 +187,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
           {description ? <p className="m-0 fst-italic">{description} </p> : null}
         </div>
 
-        { renderHelpGroup()}
+        {renderHelpGroup()}
       </div >
     )
   }

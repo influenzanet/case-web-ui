@@ -82,3 +82,4 @@ export const ExampleWithMissingOptions = () => <SurveySingleItemView
   invalidWarning={invalidWarning}
   showKeys={true}
 />
+

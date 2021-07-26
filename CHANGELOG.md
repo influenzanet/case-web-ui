@@ -6,6 +6,8 @@
 
 -  `SingleChoiceGroup`: Options of a single choice group can be styled (with className attribute). In such a case, styling is not propagated down to the nested inputs, to avoid issues with improperly applied styles twice.
 -  `SingleChoiceGroup` and `MultipleChoiceGroup` accept now option items with multiple parts (items in the component's items array). Currently, only text-based components are supported, for the purpose if different parts of the text needs to be styled differently (e.g., bold, color highlight or underlined).
+- Title component of a single survey item now supports className style attribute to attach CSS class to the whole title area. This can be used, e.g., to add "sticky-top", to make the question title stick to the top of the screen as long as the question is visible.
+- Title component of a single survey item accepts now a list of items through its `items` attribute. This can be used to define a `content` with differently styled parts (e.g., to highlight specific words, or override default font weight from bold to normal).
 
 ## [1.3.0] - 2021-07-08
 
