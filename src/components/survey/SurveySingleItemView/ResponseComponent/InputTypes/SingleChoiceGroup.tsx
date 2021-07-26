@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import TextInput from './TextInput';
 import NumberInput from './NumberInput';
@@ -113,6 +113,8 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
 
     const isDisabled = option.disabled === true;
 
+    const optionClassName = getClassName(option.style);
+
     let labelComponent = <p>{'loading...'}</p>
     switch (option.role) {
       case 'option':
@@ -150,6 +152,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
+            ignoreClassName={optionClassName !== undefined}
           />;
         break;
       case 'dateInput':
@@ -172,7 +175,9 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
       "form-check d-flex align-items-center",
       {
         'mb-2': !isLast
-      })}
+      },
+      optionClassName,
+    )}
       key={option.key} >
       <div>
         {props.showOptionKey ?

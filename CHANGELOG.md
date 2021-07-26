@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0 - ???
+
+### Changed:
+
+-  `SingleChoiceGroup`: Options of a single choice group can be styled (with className attribute). In such a case, styling is not propagated down to the nested inputs, to avoid issues with improperly applied styles twice.
+
 ## [1.3.0] - 2021-07-08
 
 ### Changed:

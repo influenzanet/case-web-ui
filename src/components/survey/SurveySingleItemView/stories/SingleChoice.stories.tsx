@@ -26,8 +26,12 @@ export const Example = () => <SurveySingleItemView
                 { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
                 { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] },
                 { key: '3', role: 'input', content: [{ code: 'en', resolvedText: 'Option 2 here' }] },
-                { key: 't1', role: 'dateInput', content: [{ code: 'en', resolvedText: 'Subtitle' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
-                { key: '8', role: 'numberInput', style: [{ key: 'inputMaxWidth', value: '80px' }], content: [{ code: 'en', resolvedText: 'Healthcare provider name' }], properties: { min: 1, max: 20 } },
+                { key: 't1', role: 'dateInput', content: [{ code: 'en', resolvedText: 'Subtitle' }] },
+                {
+                  key: '8', role: 'numberInput', style: [
+                    { key: 'className', value: 'pt-2 border-top border-1 border-grey-2' },
+                    { key: 'inputMaxWidth', value: '80px' }], content: [{ code: 'en', resolvedText: 'Healthcare provider name' }], properties: { min: 1, max: 20 }
+                },
               ]
             }
           ]

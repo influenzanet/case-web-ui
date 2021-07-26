@@ -10,6 +10,7 @@ interface NumberInputProps {
   responseChanged: (response: ResponseItem | undefined) => void;
   languageCode: string;
   disabled?: boolean;
+  ignoreClassName?: boolean;
 }
 
 const NumberInput: React.FC<NumberInputProps> = (props) => {
@@ -89,7 +90,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
 
   return <div
     className={clsx("d-flex align-items-center w-100",
-      getClassName(props.compDef.style))}
+      props.ignoreClassName !== true ? getClassName(props.compDef.style) : undefined
+    )}
   >
     {!placeAfter ? <label htmlFor={fullKey} className="me-1 flex-grow-1"
       style={{ maxWidth: 'fit-content' }}
