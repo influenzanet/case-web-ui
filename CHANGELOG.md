@@ -5,6 +5,7 @@
 ### Changed:
 
 -  `SingleChoiceGroup` and `MultipleChoiceGroup`: use flex grow label also in case of formatted text.
+- `responsiveSingleChoiceArray`: small improvements on props.
 
 
 ## 1.4.0 - 2021-07-29

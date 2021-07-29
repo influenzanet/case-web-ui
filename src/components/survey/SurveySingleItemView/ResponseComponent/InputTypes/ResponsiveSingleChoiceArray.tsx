@@ -204,7 +204,8 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
   const renderHorizontalRow = (rowDef: ItemComponent, options: ItemGroupComponent, isLast: boolean) => {
     const rowKey = rowDef.key;
 
-    const labelOnTop = props.compDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'top';
+    const labelOnTop = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'top';
+    const hideLabel = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'none';
 
     return <div
       key={rowKey}
@@ -251,13 +252,13 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
 
               const optionLabelClassName = getClassName(option.style)
 
-              const label = (<div className={clsx(
+              const label = hideLabel ? null : (<div className={clsx(
                 {
                   "text-center": !optionLabelClassName,
                 },
                 optionLabelClassName
               )}>
-                <label htmlFor="todo-optionkey" >
+                <label htmlFor={optionKey} >
                   {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
                 </label>
               </div>);

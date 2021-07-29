@@ -99,7 +99,6 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                 { key: 'tableModeClassName', value: 'table-borderless' },
                 { key: 'tableModeLayout', value: 'fixed' },
                 { key: 'tableModeFirstColWidth', value: '33%' },
-                // { key: 'horizontalModeLabelPlacement', value: 'top' },
                 // { key: 'verticalModeReverseOrder', value: 'true' },
               ],
               items: [
@@ -133,6 +132,11 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                 },
                 {
                   key: 'row2', role: 'row',
+                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
+                },
+                {
+                  key: 'row3', role: 'row',
+                  style: [{ key: 'horizontalModeLabelPlacement', value: 'none' }],
                   content: [{ code: 'en', resolvedText: 'Here is some text ' }],
                 },
               ]
