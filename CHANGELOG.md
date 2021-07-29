@@ -1,5 +1,12 @@
 # Changelog
 
+## ???
+
+### Changed:
+
+-  `SingleChoiceGroup` and `MultipleChoiceGroup`: use flex grow label also in case of formatted text.
+
+
 ## 1.4.0 - 2021-07-29
 
 ### Added:

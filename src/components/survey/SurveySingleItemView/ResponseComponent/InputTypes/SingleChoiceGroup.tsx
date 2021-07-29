@@ -121,7 +121,9 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
       switch (option.role) {
         // TODO: handle composite option types, when contains different inputs
         case 'option':
-          labelComponent = <label htmlFor={optionKey}>
+          labelComponent = <label htmlFor={optionKey}
+            className="flex-grow-1 cursor-pointer"
+          >
             {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
           </label>
           break;
