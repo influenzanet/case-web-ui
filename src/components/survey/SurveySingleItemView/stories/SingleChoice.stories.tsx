@@ -28,8 +28,8 @@ export const Example = () => <SurveySingleItemView
                   key: '1a', role: 'option',
                   items: [
                     { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Option 1' }] },
-                    { key: '2', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components' }], style: [{ key: 'className', value: 'fw-bold fs-1 text-danger' },] },
-                    { key: '3', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components ' }], style: [{ key: 'className', value: 'fw-light fs-6' },] },
+                    { key: '2', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components' }], style: [{ key: 'className', value: 'fw-bold text-decoration-underline' },] },
+                    { key: '3', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components ' }], style: [{ key: 'className', value: '' },] },
                   ]
                 },
                 { key: '1b', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
@@ -53,7 +53,7 @@ export const Example = () => <SurveySingleItemView
   showInvalid={false}
   languageCode="en"
   invalidWarning={invalidWarning}
-  showKeys={true}
+  showKeys={false}
 />
 
 export const ExampleWithMissingOptions = () => <SurveySingleItemView

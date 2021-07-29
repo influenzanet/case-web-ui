@@ -5,6 +5,7 @@ import TextInput from './TextInput';
 import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import NumberInput from './NumberInput';
+import { renderFormattedContent } from '../../renderUtils';
 
 
 interface MultipleChoiceGroupProps {
@@ -145,15 +146,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
         // TODO: handle composite option types, when contains different inputs
         case 'option':
           labelComponent = <label htmlFor={optionKey}>
-            {option.items.map(oi => <span
-              key={oi.key}
-              className={clsx(
-                "cursor-pointer",
-                getClassName(oi.style)
-              )}
-            >
-              {getLocaleStringTextByCode(oi.content, props.languageCode)}
-            </span>)}
+            {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
           </label>
           break;
       }

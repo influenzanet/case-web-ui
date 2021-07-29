@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.4.0 - ???
+## 1.4.0 - 2021-07-29
+
+### Added:
+
+- New survey question type: `ResponsiveSingleChoiceArray`. When using this component, you can define different view modes for different screen sizes. Currently supported are: 'vertical', 'horizontal' and 'table' modes. This question type can be used, e.g., to implement Likert Scale matrices.
 
 ### Changed:
 

@@ -103,7 +103,7 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
       className={clsx(
         "flex-grow-1",
         {
-          "d-sm-block mb-1 mb-sm-0": shouldStackOnSmallScreen(),
+          "d-sm-block mb-2 mb-sm-1": shouldStackOnSmallScreen(),
         })}
       style={{ flexBasis: 0 }}
     >

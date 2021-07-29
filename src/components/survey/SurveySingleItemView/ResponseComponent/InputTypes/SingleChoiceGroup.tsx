@@ -7,6 +7,7 @@ import TextInput from './TextInput';
 import NumberInput from './NumberInput';
 
 import clsx from 'clsx';
+import { renderFormattedContent } from '../../renderUtils';
 
 interface SingleChoiceGroupProps {
   parentKey: string;
@@ -121,15 +122,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         // TODO: handle composite option types, when contains different inputs
         case 'option':
           labelComponent = <label htmlFor={optionKey}>
-            {option.items.map(oi => <span
-              key={oi.key}
-              className={clsx(
-                "cursor-pointer",
-                getClassName(oi.style)
-              )}
-            >
-              {getLocaleStringTextByCode(oi.content, props.languageCode)}
-            </span>)}
+            {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
           </label>
           break;
       }

@@ -9,6 +9,7 @@ import ResponseComponent from './ResponseComponent/ResponseComponent';
 import clsx from 'clsx';
 import BulletList from './SurveyComponents/BulletList';
 import MarkdownComponent from './SurveyComponents/MarkdownComponent';
+import { renderFormattedContent } from './renderUtils';
 
 interface SurveySingleItemViewProps {
   renderItem: SurveySingleItem;
@@ -129,25 +130,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
       return null;
     }
 
-    let content = <React.Fragment>
-      {getLocaleStringTextByCode(titleComp.content, props.languageCode)}
-    </React.Fragment>;
-
-    if (isItemGroupComponent(titleComp)) {
-      content = <React.Fragment>
-        {
-          titleComp.items.map(item => <span
-            key={item.key}
-            className={clsx(
-              "cursor-pointer",
-              getClassName(item.style)
-            )}
-          >
-            {getLocaleStringTextByCode(item.content, props.languageCode)}
-          </span>)
-        }
-      </React.Fragment>
-    }
+    let content = renderFormattedContent(titleComp, props.languageCode);
 
     const description = getLocaleStringTextByCode(titleComp.description, props.languageCode);
 
