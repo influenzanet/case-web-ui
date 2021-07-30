@@ -157,10 +157,11 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
           case 'row':
             const rowKey = props.compDef.key + '.' + item.key;
             const sortedOptions = reverseOrder ? options.items.slice().reverse() : options.items;
+            const rowClassName = item.style?.find(s => s.key === 'verticalModeClassName')?.value;
             return <div key={item.key}
               className={clsx(
                 { 'mb-2 pb-2': index !== rows.length - 1 },
-                getClassName(item.style),
+                rowClassName,
               )}
             >
               <h6
@@ -206,12 +207,14 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
 
     const labelOnTop = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'top';
     const hideLabel = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'none';
+    const rowClassName = rowDef.style?.find(s => s.key === 'horizontalModeClassName')?.value;
+
 
     return <div
       key={rowKey}
       className={clsx(
         { 'mb-2 pb-2': !isLast },
-        getClassName(rowDef.style),
+        rowClassName,
       )}
     >
       <h6 id={rowKey + 'label'}
@@ -318,6 +321,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     const useFixedLayout = props.compDef.style?.find(st => st.key === 'tableModeLayout')?.value === 'fixed';
     const useFirstColWidth = props.compDef.style?.find(st => st.key === 'tableModeFirstColWidth')?.value;
     const tableClassName = props.compDef.style?.find(st => st.key === 'tableModeClassName')?.value;
+    const tableOptionsClassName = options.style?.find(st => st.key === 'tableModeClassName')?.value;
 
     return <table className={clsx(
       "table",
@@ -328,7 +332,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
       } : undefined}
     >
       <thead>
-        <tr className={getClassName(options.style)}>
+        <tr className={tableOptionsClassName}>
           <th scope="col" style={useFirstColWidth ? {
             width: useFirstColWidth
           } : undefined}></th>
@@ -371,8 +375,9 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
             default:
               break;
           }
+          const rowClassName = item.style?.find(st => st.key === 'tableModeClassName')?.value;
           return <tr key={props.compDef + '.' + item.key}
-            className={getClassName(item.style)}
+            className={rowClassName}
           >
             {rowContent}
           </tr>

@@ -45,13 +45,15 @@ export const ExampleTableAndVertical = () => <SurveySingleItemView
                     { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Very High' }] },
                   ],
                   style: [
-                    { key: 'className', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ]
                 },
                 {
                   key: 'row1', role: 'row',
                   style: [
-                    { key: 'className', value: 'border-bottom border-grey-2' },
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
                     { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
@@ -117,13 +119,15 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                     { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Very High' }] },
                   ],
                   style: [
-                    { key: 'className', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ]
                 },
                 {
                   key: 'row1', role: 'row',
                   style: [
-                    { key: 'className', value: 'border-bottom border-grey-2' },
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
                     { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
@@ -132,6 +136,11 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                 },
                 {
                   key: 'row2', role: 'row',
+                  style: [
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
+                  ],
                   content: [{ code: 'en', resolvedText: 'Here is some text ' }],
                 },
                 {
