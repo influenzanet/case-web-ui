@@ -5,6 +5,7 @@
 ### Changed:
 
 - `responsiveSingleChoiceArray`: fix isLast for horizontal mode
+- `likert` survey response item fixes issues with longer text when stacked in vertical mode.
 
 
 ## 1.4.1 - 2021-07-30

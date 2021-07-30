@@ -88,8 +88,8 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
 
     const label = (<div className={clsx(
       {
-        "text-center": !className,
-        "d-inline-block d-sm-block ms-2 ms-sm-0": shouldStackOnSmallScreen()
+        "text-center": !className && !shouldStackOnSmallScreen(),
+        "d-inline-block d-sm-block ms-2 ms-sm-0 text-start text-sm-center": shouldStackOnSmallScreen()
       },
       className
     )}>
@@ -103,7 +103,7 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
       className={clsx(
         "flex-grow-1",
         {
-          "d-sm-block mb-2 mb-sm-1": shouldStackOnSmallScreen(),
+          "d-flex d-sm-block mb-2 mb-sm-1 align-items-center": shouldStackOnSmallScreen(),
         })}
       style={{ flexBasis: 0 }}
     >
