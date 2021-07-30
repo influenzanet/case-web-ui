@@ -1,5 +1,12 @@
 # Changelog
 
+## ???
+
+### Changed:
+
+- `responsiveSingleChoiceArray`: fix isLast for horizontal mode
+
+
 ## 1.4.1 - 2021-07-30
 
 ### Changed:

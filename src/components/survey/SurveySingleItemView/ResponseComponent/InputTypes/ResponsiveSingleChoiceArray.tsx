@@ -299,7 +299,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
       {rows.map((item, index) => {
         switch (item.role) {
           case 'row':
-            return renderHorizontalRow(item, options, index === rows.length);
+            return renderHorizontalRow(item, options, index === rows.length - 1);
           case 'options':
             return undefined;
           default:

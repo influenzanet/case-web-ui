@@ -145,7 +145,17 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                 },
                 {
                   key: 'row3', role: 'row',
-                  style: [{ key: 'horizontalModeLabelPlacement', value: 'none' }],
+                  style: [
+                    { key: 'horizontalModeLabelPlacement', value: 'none' },
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
+                  ],
+                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
+                },
+                {
+                  key: 'row4', role: 'row',
+                  // style: [{ key: 'horizontalModeLabelPlacement', value: 'none' }],
                   content: [{ code: 'en', resolvedText: 'Here is some text ' }],
                 },
               ]
