@@ -143,7 +143,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
     <div
       className="text-center my-3"
     >
-      { props.showBackButton ?
+      {props.showBackButton ?
         <button
           type="button"
           className="btn btn-outline-primary fs-btn"
@@ -180,7 +180,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
           </div>
         )
       }
-      { props.isLastPage ? surveyEnd() : surveyNavigation()}
+      {props.isLastPage ? surveyEnd() : surveyNavigation()}
     </div>
   );
 };
