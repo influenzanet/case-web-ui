@@ -20,6 +20,7 @@ import LikertScale from './InputTypes/LikertScale';
 import LikertGroup from './InputTypes/LikertGroup';
 import MarkdownComponent from '../SurveyComponents/MarkdownComponent';
 import ResponsiveSingleChoiceArray from './InputTypes/ResponsiveSingleChoiceArray';
+import ResponsiveBipolarLikertScaleArray from './InputTypes/ResponsiveBipolarLikertScaleArray';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -242,6 +243,15 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'responsiveSingleChoiceArray':
           return <ResponsiveSingleChoiceArray
+            key={respComp.key}
+            componentKey={currentKeyPath}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'responsiveBipolarLikertScaleArray':
+          return <ResponsiveBipolarLikertScaleArray
             key={respComp.key}
             componentKey={currentKeyPath}
             languageCode={props.languageCode}

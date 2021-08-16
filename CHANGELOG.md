@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.5.0 - ???
+
+### Added:
+
+- New survey response component for role `responsiveBipolarLikertScaleArray`.
+
+### Changed:
+
+- Updating project dependencies (react-markdown, recharts, react-datepicker)
+
+
+
 ## 1.4.2 - 2021-07-30
 
 ### Changed:
