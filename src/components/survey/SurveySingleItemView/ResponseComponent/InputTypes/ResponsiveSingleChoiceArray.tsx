@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { renderFormattedContent } from '../../renderUtils';
 import { getClassName } from '../../utils';
+import { getResponsiveModes, Variant } from './responsiveUtils';
 
 interface ResponsiveSingleChoiceArrayProps {
   componentKey: string;
@@ -12,15 +13,9 @@ interface ResponsiveSingleChoiceArrayProps {
   languageCode: string;
 }
 
-interface BreakpointModeDef {
-  start?: string;
-  end?: string;
-  variant: Variant;
-}
 
-type Variant = 'vertical' | 'horizontal' | 'table';
 
-const breakpoints = ['sm', 'md', 'lg', 'xl', 'xxl'];
+
 
 interface VerticalModeOptionProps {
   slotFullKey: string;
@@ -324,7 +319,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     const tableOptionsClassName = options.style?.find(st => st.key === 'tableModeClassName')?.value;
 
     return <table className={clsx(
-      "table",
+      "table m-0",
       tableClassName
     )}
       style={useFixedLayout ? {
@@ -386,22 +381,6 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     </table>
   }
 
-  const getModeForBreakpont = (bp: string): Variant | undefined => {
-    const bpMode = props.compDef.style?.find(style => style.key === `${bp}Mode`);
-    if (!bpMode) {
-      return undefined;
-    }
-    return bpMode.value as Variant;
-  }
-
-  const getDefaultMode = (): Variant => {
-    const bpMode = props.compDef.style?.find(style => style.key === 'defaultMode');
-    if (!bpMode) {
-      return 'horizontal';
-    }
-    return bpMode.value as Variant;
-  }
-
   const renderMode = (mode: Variant) => {
     switch (mode) {
       case 'vertical':
@@ -415,53 +394,10 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     }
   }
 
-  const getResponsiveModes = () => {
-    const breakpointModes: Array<BreakpointModeDef> = [];
-    let currentMode: BreakpointModeDef = {
-      variant: getDefaultMode()
-    };
-
-    breakpoints.forEach(bp => {
-      const mode = getModeForBreakpont(bp);
-      if (mode === undefined) {
-        return;
-      }
-      currentMode.end = bp;
-      breakpointModes.push(currentMode);
-      currentMode = {
-        start: bp,
-        variant: mode,
-      }
-    });
-    breakpointModes.push(currentMode);
-
-    const className = getClassName(props.compDef.style);
-
-    return (
-      <React.Fragment>
-        {
-          breakpointModes.map((bm, index) => <div
-            key={index.toString()}
-            className={clsx(
-              'overflow-visible',
-              {
-                'd-none': bm.start !== undefined,
-                [`d-${bm.start}-block`]: bm.start !== undefined,
-                [`d-${bm.end}-none`]: bm.end !== undefined
-              },
-              className,
-            )}
-          >
-            {renderMode(bm.variant)}
-          </div>)
-        }
-      </React.Fragment>
-    )
-  }
 
   return (
     <React.Fragment>
-      {getResponsiveModes()}
+      {getResponsiveModes(renderMode, props.compDef.style)}
     </React.Fragment>
   );
 };

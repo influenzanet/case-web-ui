@@ -21,48 +21,46 @@ export const ExampleTableAndVertical = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 'lg', role: 'responsiveBipolarLikertScaleArray',
+              key: 'rblsca', role: 'responsiveBipolarLikertScaleArray',
               style: [
                 {
                   key: 'defaultMode', value: 'vertical'
                 },
-                {
-                  key: 'smMode', value: 'table'
-                },
+                { key: 'smMode', value: 'table' },
                 { key: 'className', value: 'table-responsive' },
                 { key: 'tableModeClassName', value: 'table-borderless' },
-                { key: 'tableModeLayout', value: 'fixed' },
-                // { key: 'tableModeFirstColWidth', value: '33%' }
+                // { key: 'tableModeLayout', value: 'fixed' },
+                // { key: 'tableModeLabelColWidth', value: '20%' },
+                { key: 'labelRowPosition', value: 'top' },
+                // { key: 'verticalModeReverseOrder', value: 'true' },
               ],
               items: [
                 {
-                  key: 'header', role: 'options',
+                  key: 'o', role: 'options',
                   items: [
-                    { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Very Low' }] },
-                    { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Low' }] },
-                    { key: '3', role: 'option', content: [{ code: 'en', resolvedText: 'Medium - With Longer label' }] },
-                    { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'High' }] },
-                    { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Very High' }] },
+                    { key: '-2', role: 'option', },
+                    { key: '-1', role: 'option', },
+                    { key: '0', role: 'option', },
+                    { key: '+1', role: 'option', },
+                    { key: '+2', role: 'option', },
                   ],
-                  style: [
-                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
-                  ]
                 },
                 {
                   key: 'row1', role: 'row',
                   style: [
-                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
                     { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
-                    { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
-                    { key: '2', role: 'text', content: [{ code: 'en', resolvedText: 'with formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
+                    { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
+                    { key: '2', role: 'end', content: [{ code: 'en', resolvedText: 'with formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
                   ]
                 },
                 {
                   key: 'row2', role: 'row',
-                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
+                  items: [
+                    { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
+                    { key: '2', role: 'end', content: [{ code: 'en', resolvedText: 'with formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
+                  ]
                 },
               ]
             }
@@ -90,73 +88,52 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 'rsca', role: 'responsiveBipolarLikertScaleArray',
+              key: 'rblsca', role: 'responsiveBipolarLikertScaleArray',
               style: [
                 {
                   key: 'defaultMode', value: 'vertical'
                 },
-                { key: 'smMode', value: 'horizontal' },
+                { key: 'smMode', value: 'withLabelRow' },
                 { key: 'lgMode', value: 'table' },
                 { key: 'className', value: 'table-responsive' },
                 { key: 'tableModeClassName', value: 'table-borderless' },
                 { key: 'tableModeLayout', value: 'fixed' },
-                { key: 'tableModeFirstColWidth', value: '33%' },
-                // { key: 'verticalModeReverseOrder', value: 'true' },
+                { key: 'tableModeLabelColWidth', value: '20%' },
+                { key: 'labelRowPosition', value: 'top' },
               ],
               items: [
                 {
-                  key: 'header', role: 'options',
+                  key: 'o', role: 'options',
                   items: [
-                    { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Very Low' }] },
-                    { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Low' }] },
-                    {
-                      key: '3', role: 'option', items: [
-                        { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Medium - ' }] },
-                        { key: 't2', role: 'text', content: [{ code: 'en', resolvedText: 'With Longer label to test what happens' }], style: [{ key: 'className', value: 'fst-italic' }] },
-                      ]
-                    },
-                    { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'High' }] },
-                    { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Very High' }] },
+                    { key: '-2', role: 'option', },
+                    { key: '-1', role: 'option', },
+                    { key: '0', role: 'option', },
+                    { key: '+1', role: 'option', },
+                    { key: '+2', role: 'option', },
                   ],
-                  style: [
-                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
-                  ]
                 },
                 {
                   key: 'row1', role: 'row',
                   style: [
-                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
                     { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
-                    { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
-                    { key: '2', role: 'text', content: [{ code: 'en', resolvedText: 'with formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
+                    { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
+                    { key: '2', role: 'end', content: [{ code: 'en', resolvedText: 'End label without formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
                   ]
                 },
                 {
                   key: 'row2', role: 'row',
-                  style: [
-                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
-                  ],
-                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
-                },
-                {
-                  key: 'row3', role: 'row',
-                  style: [
-                    { key: 'horizontalModeLabelPlacement', value: 'none' },
-                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'horizontalModeClassName', value: 'border-bottom border-grey-2' },
-                    { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
-                  ],
-                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
-                },
-                {
-                  key: 'row4', role: 'row',
-                  // style: [{ key: 'horizontalModeLabelPlacement', value: 'none' }],
-                  content: [{ code: 'en', resolvedText: 'Here is some text ' }],
+                  items: [
+                    {
+                      key: '1', role: 'start',
+                      items: [
+                        { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Start label with ' }] },
+                        { key: '2', role: 'text', content: [{ code: 'en', resolvedText: 'formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
+                      ]
+                    },
+                    { key: '2', role: 'end', content: [{ code: 'en', resolvedText: 'End label without formatting' }], style: [{ key: 'className', value: 'text-primary' }] },
+                  ]
                 },
               ]
             }
