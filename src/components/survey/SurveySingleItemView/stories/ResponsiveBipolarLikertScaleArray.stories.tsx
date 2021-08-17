@@ -100,6 +100,7 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                 { key: 'tableModeLayout', value: 'fixed' },
                 { key: 'tableModeLabelColWidth', value: '20%' },
                 { key: 'labelRowPosition', value: 'top' },
+                { key: 'labelRowMaxLabelWidth', value: '90px' },
               ],
               items: [
                 {
@@ -116,6 +117,7 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                   key: 'row1', role: 'row',
                   style: [
                     { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'withLabelRowModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
                     { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },

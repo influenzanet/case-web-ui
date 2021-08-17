@@ -103,6 +103,87 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </p>
   }
 
+  const getSingleItemWithLabelRow = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean, labelOnTop: boolean, labelRowMaxLabelWidth?: string) => {
+    const rowKey = rowDef.key;
+
+    if (!isItemGroupComponent(rowDef)) {
+      return <div key={rowKey}>Row labels are missing</div>;
+    }
+
+    const startLabelComp = rowDef.items.find(l => l.role === "start");
+    const endLabelComp = rowDef.items.find(l => l.role === "end");
+    if (!startLabelComp || !endLabelComp) {
+      return <div key={rowKey}>Row labels are missing</div>;
+    }
+
+    const labelRow = <div
+      className={clsx("d-flex",
+        {
+          "pb-1a align-items-end": labelOnTop,
+          "pt-1a": !labelOnTop,
+        }
+      )}
+    >
+      <div className="pe-2 flex-grow-1">
+        <div style={{
+          maxWidth: labelRowMaxLabelWidth
+        }}>
+          {renderFormattedContent(startLabelComp, props.languageCode)}
+        </div>
+      </div>
+      <div className="ps-3 flex-grow-1 text-end d-flex justify-content-end">
+        <div style={{
+          maxWidth: labelRowMaxLabelWidth
+        }}>
+          {renderFormattedContent(endLabelComp, props.languageCode)}
+        </div>
+      </div>
+    </div>;
+
+    const rowClassName = rowDef.style?.find(st => st.key === 'withLabelRowModeClassName')?.value;
+
+    return <div
+      key={rowKey}
+      className={clsx(
+        "py-2",
+        {
+          "pb-0": isLast,
+          "pt-0": isfirst,
+        },
+        rowClassName,
+      )}
+    >
+      {labelOnTop ? labelRow : null}
+      <fieldset
+        id={rowKey}
+        name={rowKey}
+        className={clsx(
+          "d-flex justify-content-between",
+        )}
+        aria-describedby={rowKey + 'label'}
+      >
+        {
+          options.items.map(
+            option => {
+              const optionKey = option.key;
+              return <input
+                key={optionKey}
+                className="form-check-input cursor-pointer"
+                type="radio"
+                name={rowKey}
+                id={optionKey}
+                onChange={radioSelectionChanged(rowKey)}
+                value={option.key}
+                checked={isResponseSet(rowKey, option.key)}
+              />
+            }
+          )
+        }
+      </fieldset>
+      {!labelOnTop ? labelRow : null}
+    </div>
+  }
+
   const renderWithLabelRowMode = () => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
@@ -112,9 +193,14 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
       return <p>No options found.</p>;
     }
 
-    return <p>
-      label row mode
-    </p>
+    const rows = props.compDef.items.filter(item => item.role === "row");
+    return <React.Fragment>
+      {rows.map((item, index) => {
+        const labelOnTop = props.compDef.style?.find(s => s.key === 'labelRowPosition')?.value === 'top';
+        const labelRowMaxLabelWidth = props.compDef.style?.find(s => s.key === 'labelRowMaxLabelWidth')?.value;
+        return getSingleItemWithLabelRow(item, options, index === 0, index === rows.length - 1, labelOnTop, labelRowMaxLabelWidth);
+      })}
+    </React.Fragment>
   }
 
   const renderTableMode = () => {
