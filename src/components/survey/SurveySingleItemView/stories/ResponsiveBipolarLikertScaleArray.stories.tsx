@@ -49,6 +49,7 @@ export const ExampleTableAndVertical = () => <SurveySingleItemView
                   key: 'row1', role: 'row',
                   style: [
                     { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
                     { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },
@@ -118,6 +119,7 @@ export const ExampleAllResponsive = () => <SurveySingleItemView
                   style: [
                     { key: 'tableModeClassName', value: 'border-bottom border-grey-2' },
                     { key: 'withLabelRowModeClassName', value: 'border-bottom border-grey-2' },
+                    { key: 'verticalModeClassName', value: 'border-bottom border-grey-2' },
                   ],
                   items: [
                     { key: '1', role: 'start', content: [{ code: 'en', resolvedText: 'Here is some text ' }] },

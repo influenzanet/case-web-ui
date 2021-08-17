@@ -89,6 +89,64 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     return resp !== undefined;
   }
 
+  const getSingleVerticalItem = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean) => {
+    const rowKey = rowDef.key;
+
+    if (!isItemGroupComponent(rowDef)) {
+      return <div key={rowKey}>Row labels are missing</div>;
+    }
+
+    const startLabelComp = rowDef.items.find(l => l.role === "start");
+    const endLabelComp = rowDef.items.find(l => l.role === "end");
+    if (!startLabelComp || !endLabelComp) {
+      return <div key={rowKey}>Row labels are missing</div>;
+    }
+
+    const rowClassName = rowDef.style?.find(st => st.key === 'verticalModeClassName')?.value;
+    return <div
+      key={rowKey}
+      className={clsx(
+        "py-2",
+        {
+          "pb-0": isLast,
+          "pt-0": isfirst,
+        },
+        rowClassName,
+      )}
+    >
+      <div className="text-center">
+        {renderFormattedContent(startLabelComp, props.languageCode)}
+      </div>
+      <fieldset
+        id={'vertical' + rowKey}
+        name={'vertical' + rowKey}
+        className="text-center"
+      >
+        {
+          options.items.map(
+            option => {
+              const optionKey = option.key;
+              return <div key={optionKey} className="my-1a">
+                <input
+                  className="form-check-input cursor-pointer"
+                  type="radio"
+                  name={'vertical' + rowKey}
+                  id={optionKey}
+                  onChange={radioSelectionChanged(rowKey)}
+                  value={option.key}
+                  checked={isResponseSet(rowKey, option.key)}
+                />
+              </div>
+            }
+          )
+        }
+      </fieldset>
+      <div className="text-center">
+        {renderFormattedContent(endLabelComp, props.languageCode)}
+      </div>
+    </div>
+  }
+
   const renderVerticalMode = () => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
@@ -98,9 +156,12 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
       return <p>No options found.</p>;
     }
 
-    return <p>
-      vertical mode
-    </p>
+    const rows = props.compDef.items.filter(item => item.role === "row");
+    return <React.Fragment>
+      {rows.map((item, index) => {
+        return getSingleVerticalItem(item, options, index === 0, index === rows.length - 1);
+      })}
+    </React.Fragment>
   }
 
   const getSingleItemWithLabelRow = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean, labelOnTop: boolean, labelRowMaxLabelWidth?: string) => {
