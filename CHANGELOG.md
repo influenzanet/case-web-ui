@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.1 - 2021-08-19
+
+### Changed:
+
+- Improve survey page progress indicator, to better handle cases with many survey pages.
+- Improve click target for likert scales item, especially relevant for vertical mode.
+
 ## 1.5.0 - 2021-08-17
 
 ### Added:

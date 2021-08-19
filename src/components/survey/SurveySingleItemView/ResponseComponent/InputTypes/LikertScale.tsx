@@ -91,10 +91,12 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
         "text-center": !className && !shouldStackOnSmallScreen(),
         "d-inline-block d-sm-block ms-2 ms-sm-0 text-start text-sm-center": shouldStackOnSmallScreen()
       },
+      "flex-grow-1",
       className
     )}>
       {content ? <label
         htmlFor={optionKey}
+        className="w-100 cursor-pointer"
       >{content}</label> : null}
     </div>);
 
