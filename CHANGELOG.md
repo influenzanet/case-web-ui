@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.2 - 2021-08-21
+
+### Changed
+
+- Survey Page buttons on last page, put focus on Submit instead of back button. This a temporary solution, since ideally focus should be set to the top survey item.
+
+
 ## 1.5.1 - 2021-08-19
 
 ### Changed:

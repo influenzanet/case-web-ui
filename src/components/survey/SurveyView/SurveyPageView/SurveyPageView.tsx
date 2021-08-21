@@ -116,6 +116,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       {props.showBackButton ?
         <button
           type="button"
+          id="back"
           className="btn btn-outline-primary fs-btn"
           onClick={props.onPreviousPage}
           disabled={props.loading}
@@ -133,6 +134,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         )}
         onClick={() => handleClickWithValidation(props.onSubmit)}
         disabled={props.loading}
+        autoFocus={true}
       >
         {props.localisedTexts.submitBtn}
       </button>
@@ -155,6 +157,8 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         : null}
       <button
         type="button"
+        id="next"
+        name="next"
         className="btn btn-primary ms-2 fw-bold fs-btn"
         onClick={() => handleClickWithValidation(props.onNextPage)}
         disabled={props.loading}
