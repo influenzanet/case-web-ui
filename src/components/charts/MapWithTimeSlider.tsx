@@ -190,7 +190,7 @@ const MapWithTimeSlider: React.FC<MapWithTimeSliderProps> = (props) => {
                   // console.log(geo);
                   const value = selectedSeries?.data.find(d => d.name.includes(geo.properties.name))?.sequence[dataIndex];
                   return <Geography
-                    fill={value ? colorScale(value) : undefined}
+                    fill={value !== undefined ? colorScale(value) : undefined}
                     key={geo.rsmKey} geography={geo}
                     onMouseEnter={() => {
                       setTooltipContent(

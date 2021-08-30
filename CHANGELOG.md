@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.3 - 2021-08-30
+
+### Changed
+
+- Fixed issue for map-time-series visualisation to be able include values with zero.
+- Add css class `fs-survey-item-title` to survey items and set default size to 1.125rem.
+
+
 ## 1.5.2 - 2021-08-21
 
 ### Changed
