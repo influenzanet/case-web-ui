@@ -149,7 +149,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
           )}
       >
         <div className="flex-grow-1">
-          <h5 className="m-0 fw-bold">
+          <h5 className="m-0 fw-bold fs-survey-item-title">
             {props.showKeys ?
               <span className="text-primary me-2">{props.renderItem.key}</span>
               : null}
