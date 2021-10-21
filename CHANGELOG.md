@@ -1,12 +1,19 @@
 # Changelog
 
+## 1.6.0
+
+### BREAKING-CHANGES
+
+- Replacing  material-ui dialog, with react bootstrap's modal. Dialog component support now following props:
+  - size (optional): 'sm', 'lg', 'xl'
+  - fullScreenFrom (optional): 'sm-down', 'md-down', 'lg-down', xl-down', 'xxl-down'. If not defined, 'sm-down' will be used as a default value.
+
 ## 1.5.3 - 2021-08-30
 
 ### Changed
 
 - Fixed issue for map-time-series visualisation to be able include values with zero.
 - Add css class `fs-survey-item-title` to survey items and set default size to 1.125rem.
-
 
 ## 1.5.2 - 2021-08-21
 

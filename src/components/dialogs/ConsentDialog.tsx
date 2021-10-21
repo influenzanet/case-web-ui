@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import DialogBtn from '../buttons/DialogBtn';
 import MarkdownRenderer from '../displays/MarkdownRenderer';
 import Dialog from './Dialog';
-import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+
 import { defaultDialogPaddingXClass } from './constants';
 
 interface ConsentDialogProps {
@@ -12,6 +12,8 @@ interface ConsentDialogProps {
   content?: string;
   cancelBtn: string;
   acceptBtn: string;
+  size?: 'sm' | 'lg' | 'xl';
+  fullScreenFrom?: 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
   onConfirmed: () => void;
   onCancelled: () => void;
   dialogPaddingXClass?: string;
@@ -21,7 +23,6 @@ interface ConsentDialogProps {
 const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
   const [scrollComplete, setScrollComplete] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const fullScreen = useMediaQuery('(max-width:600px)');
 
   const paddingX = props.dialogPaddingXClass ? props.dialogPaddingXClass : defaultDialogPaddingXClass;
 
@@ -44,6 +45,8 @@ const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
       onClose={props.onCancelled}
       title={props.title}
       ariaLabelledBy="contentDialogTitle"
+      size={props.size}
+      fullScreenFrom={props.fullScreenFrom}
       dialogPaddingXClass={props.dialogPaddingXClass}
       dialogPaddingYClass={props.dialogPaddingYClass}
     >
@@ -55,9 +58,9 @@ const ConsentDialog: React.FC<ConsentDialogProps> = (props) => {
             "pb-2 pt-3 bg-white overflow-auto")}
           ref={containerRef}
           onScroll={() => handleScroll()}
-          style={{
+          /*style={{
             maxHeight: fullScreen ? 3000 : '60vh',
-          }}
+          }}*/
           tabIndex={0}
         >
           <MarkdownRenderer

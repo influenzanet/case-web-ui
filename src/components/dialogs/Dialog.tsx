@@ -1,15 +1,15 @@
 import React from 'react';
-import MuiDialog from '@material-ui/core/Dialog';
-import useMediaQuery from '@material-ui/core/useMediaQuery/useMediaQuery';
+import { Modal } from 'react-bootstrap';
 import clsx from 'clsx';
-import { defaultWidth, defaultDialogPaddingXClass, defaultDialogPaddingYClass, fullScreenBreakPoint } from './constants';
+import { defaultDialogPaddingXClass, defaultDialogPaddingYClass } from './constants';
 
 
 interface DialogProps {
   open: boolean;
   title: string;
   color?: 'primary' | 'danger' | 'warning' | 'success';
-  preferredWidth?: number;
+  size?: 'sm' | 'lg' | 'xl';
+  fullScreenFrom?: 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
   onClose: () => void;
   ariaLabelledBy: string;
   ariaDescribedBy?: string;
@@ -20,7 +20,6 @@ interface DialogProps {
 
 const Dialog: React.FC<DialogProps> = (props) => {
   const color = props.color ? props.color : 'primary';
-  const fullScreen = useMediaQuery(`(max-width:${fullScreenBreakPoint}px)`);
 
   const isTextColorWhite = ['primary', 'danger'].includes(color);
 
@@ -65,28 +64,19 @@ const Dialog: React.FC<DialogProps> = (props) => {
 
 
   return (
-    <MuiDialog onClose={props.onClose}
+    <Modal
+      onHide={props.onClose}
       aria-labelledby={props.ariaLabelledBy}
-      open={props.open}
-      fullScreen={fullScreen}
-      scroll='paper'
-      PaperProps={{
-        style: {
-          borderRadius: 0,
-          width: fullScreen ? fullScreenBreakPoint : props.preferredWidth ? props.preferredWidth : defaultWidth,
-          maxWidth: fullScreenBreakPoint,
-        }
-      }}
-      classes={{
-        paper: 'd-flex flex-column',
-        // paperFullScreen: ,
-      }}
+      show={props.open}
+      size={props.size}
+      centered
+      fullscreen={props.fullScreenFrom ? props.fullScreenFrom : 'sm-down'}
     >
       {dialogHeader}
       <div className="flex-grow-1 bg-grey-1">
         {props.children}
       </div>
-    </MuiDialog>
+    </Modal>
   );
 };
 

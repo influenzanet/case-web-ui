@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Dialog from '../Dialog';
 import ConsentDialog from '../ConsentDialog';
 
 import 'localStyles';
@@ -34,3 +35,33 @@ WithDifferentXPadding.args = {
   dialogPaddingXClass: 'px-2'
 }
 
+export const StackedDialogs = () => {
+  const [showPrimary, setShowPrimary] = useState(false);
+  const [showSecondary, setShowSecondary] = useState(false);
+
+  return <div>
+    <button onClick={() => setShowPrimary(true)}>open</button>
+    <Dialog
+      title="Test"
+      ariaLabelledBy="test"
+      open={showPrimary}
+      onClose={() => setShowPrimary(false)}
+      //size='sm'
+      children={<React.Fragment>
+        <div className="p-2" style={{ minHeight: 300 }}>
+          <button onClick={() => setShowSecondary(true)}>open</button>
+        </div>
+      </React.Fragment>
+      }
+    />
+    <ConsentDialog
+      title="Test"
+      open={showSecondary}
+      onCancelled={() => setShowSecondary(false)}
+      onConfirmed={() => setShowSecondary(false)}
+      acceptBtn='ok'
+      cancelBtn='cancel'
+      content='Content'
+    />
+  </div>
+}
