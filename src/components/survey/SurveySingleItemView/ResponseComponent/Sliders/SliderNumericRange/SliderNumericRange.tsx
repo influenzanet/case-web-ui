@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { Typography, Slider, Box } from '@material-ui/core';
 import { getLocaleStringTextByCode } from '../../../utils';
 
 interface SliderNumericRangeProps {
@@ -96,7 +95,16 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
 
   return (
     <React.Fragment>
-      {props.compDef.content ?
+      <p>Not implemented yet</p>
+    </React.Fragment>
+  );
+};
+
+export default SliderNumericRange;
+
+// old :
+/*
+{props.compDef.content ?
         <Typography id="slider-numeric" gutterBottom>
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </Typography>
@@ -114,9 +122,4 @@ const SliderNumericRange: React.FC<SliderNumericRangeProps> = (props) => {
           marks={marks()}
           disabled={props.compDef.disabled !== undefined}
         />
-      </Box>
-    </React.Fragment>
-  );
-};
-
-export default SliderNumericRange;
+      </Box>*/
