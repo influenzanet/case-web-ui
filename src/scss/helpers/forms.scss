@@ -46,3 +46,12 @@ $form-check-input-border-radius: 0 !default;
 .eq5d-scale:focus-within {
   border: 2px solid rgba(map-get($theme-colors, "primary"), .2);
 }
+
+.dropzone {
+  background-color: white;
+  padding: $input-btn-padding-y $input-padding-x;
+  &.active {
+    padding: $input-btn-padding-y - 0.125rem $input-padding-x - 0.125rem;
+    border: 0.125rem solid rgba(map-get($theme-colors, "primary"), .2);
+  }
+}

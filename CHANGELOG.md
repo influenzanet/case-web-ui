@@ -8,6 +8,10 @@
   - size (optional): 'sm', 'lg', 'xl'
   - fullScreenFrom (optional): 'sm-down', 'md-down', 'lg-down', xl-down', 'xxl-down'. If not defined, 'sm-down' will be used as a default value.
 
+### Added
+
+- New component for file inputs using a dropzone.
+
 ## 1.5.3 - 2021-08-30
 
 ### Changed
