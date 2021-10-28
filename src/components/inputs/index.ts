@@ -3,6 +3,7 @@ import Checkbox from './Checkbox';
 import SelectField from './SelectField';
 import Slider from './Slider';
 import TextField from './TextField';
+import FileDropzone from './FileDropzone';
 
 export {
   AvatarSelector,
@@ -10,4 +11,5 @@ export {
   SelectField,
   Slider,
   TextField,
+  FileDropzone,
 }
