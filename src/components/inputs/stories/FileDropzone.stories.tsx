@@ -21,3 +21,16 @@ Example.args = {
 
   }
 }
+
+export const ExternallyManagedList = Template.bind({});
+ExternallyManagedList.args = {
+  //accept: 'json',
+  placeholderText: 'Drag and drop a file here, or click this field',
+  files: [
+    new File([], 'testFile.json')
+  ],
+  onDrop: (acceptedFiles, event) => {
+    console.log(acceptedFiles)
+
+  }
+}
