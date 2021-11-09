@@ -12,6 +12,10 @@
 
 - New component for file inputs using a dropzone.
 
+### Changed
+
+- Survey navigation buttons should loose focus after clicked. Also submit button should not gain autofocus now.
+
 ## 1.5.3 - 2021-08-30
 
 ### Changed

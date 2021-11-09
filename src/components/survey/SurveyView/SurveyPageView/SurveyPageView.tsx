@@ -120,21 +120,27 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
           className="btn btn-outline-primary fs-btn"
           onClick={props.onPreviousPage}
           disabled={props.loading}
+          autoFocus={false}
         >
           {props.localisedTexts.backBtn}
         </button>
         : null}
       <button
         type="button"
+        id="submit"
         className={clsx(
           "btn btn-primary fw-bold fs-btn",
           {
             "ms-2": props.showBackButton
           }
         )}
-        onClick={() => handleClickWithValidation(props.onSubmit)}
+        onClick={(event) => {
+          event.currentTarget.blur()
+          handleClickWithValidation(props.onSubmit)
+        }
+        }
         disabled={props.loading}
-        autoFocus={true}
+        autoFocus={false}
       >
         {props.localisedTexts.submitBtn}
       </button>
@@ -148,9 +154,14 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
       {props.showBackButton ?
         <button
           type="button"
+          id="back"
           className="btn btn-outline-primary fs-btn"
-          onClick={props.onPreviousPage}
+          onClick={(event) => {
+            event.currentTarget.blur()
+            props.onPreviousPage()
+          }}
           disabled={props.loading}
+          autoFocus={false}
         >
           {props.localisedTexts.backBtn}
         </button>
@@ -160,8 +171,12 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         id="next"
         name="next"
         className="btn btn-primary ms-2 fw-bold fs-btn"
-        onClick={() => handleClickWithValidation(props.onNextPage)}
+        onClick={(event) => {
+          event.currentTarget.blur();
+          handleClickWithValidation(props.onNextPage)
+        }}
         disabled={props.loading}
+        autoFocus={false}
       >
         {props.localisedTexts.nextBtn}
       </button>
