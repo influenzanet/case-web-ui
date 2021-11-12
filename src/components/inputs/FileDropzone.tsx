@@ -26,6 +26,16 @@ const FileDropzone: React.FC<FileDropzoneProps> = (props) => {
     </span>
   ));
 
+  const shouldUsePlaceholder = () => {
+    if (props.files !== undefined) {
+      if (props.files.length > 0) {
+        return false;
+      }
+      return true;
+    }
+    return acceptedFiles.length > 0;
+  }
+
   return (
 
     <div {...getRootProps({
@@ -40,7 +50,7 @@ const FileDropzone: React.FC<FileDropzoneProps> = (props) => {
         className="flex-grow-1"
       >
         <input {...getInputProps()} />
-        {(acceptedFiles.length > 0 || (props.files && props.files?.length > 0)) ? <React.Fragment>{files}</React.Fragment> :
+        {(shouldUsePlaceholder()) ? <React.Fragment>{files}</React.Fragment> :
           <span className="text-grey-4">{props.placeholderText}</span>
         }
       </div>
