@@ -28,7 +28,7 @@ const FileDropzone: React.FC<FileDropzoneProps> = (props) => {
 
   const shouldUsePlaceholder = () => {
     if (props.files !== undefined) {
-      if (props.files.length > 0) {
+      if (props.files.length < 1) {
         return true;
       }
       return false;
