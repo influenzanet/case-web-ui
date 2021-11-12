@@ -50,7 +50,7 @@ const FileDropzone: React.FC<FileDropzoneProps> = (props) => {
         className="flex-grow-1"
       >
         <input {...getInputProps()} />
-        {(shouldUsePlaceholder()) ? <React.Fragment>{files}</React.Fragment> :
+        {(!shouldUsePlaceholder()) ? <React.Fragment>{files}</React.Fragment> :
           <span className="text-grey-4">{props.placeholderText}</span>
         }
       </div>
