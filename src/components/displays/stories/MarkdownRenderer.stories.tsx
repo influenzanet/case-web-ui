@@ -38,7 +38,7 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis odit incidu
 }
 
 export const WithIframe = Template.bind({});
-Default.args = {
+WithIframe.args = {
   markdown: `
 <pageinfo>Page Info</pageinfo>
 
