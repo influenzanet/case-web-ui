@@ -36,35 +36,26 @@ export const getItemComponentsByRole = (components: Array<ItemComponent>, role: 
   return components.filter(comp => comp.role === role);
 }
 
-export const getClassName = (styles?: Array<{ key: string, value: string }>): string | undefined => {
+export const getStyleValueByKey = (styles: Array<{ key: string, value: string }> | undefined, key: string): string | undefined => {
   if (!styles) {
     return;
   }
-  const className = styles.find(st => st.key === 'className');
-  if (!className) {
+  const object = styles.find(st => st.key === key);
+  if (!object) {
     return;
   }
-  return className.value;
+  return object.value;
+}
+
+export const getClassName = (styles?: Array<{ key: string, value: string }>): string | undefined => {
+  return getStyleValueByKey(styles, 'className');
 }
 
 export const getLabelPlacementStyle = (styles?: Array<{ key: string, value: string }>): string | undefined => {
-  if (!styles) {
-    return;
-  }
-  const className = styles.find(st => st.key === 'labelPlacement');
-  if (!className) {
-    return;
-  }
-  return className.value;
+  return getStyleValueByKey(styles, 'labelPlacement');
 }
 
 export const getInputMaxWidth = (styles?: Array<{ key: string, value: string }>): string | undefined => {
-  if (!styles) {
-    return;
-  }
-  const className = styles.find(st => st.key === 'inputMaxWidth');
-  if (!className) {
-    return;
-  }
-  return className.value;
+  return getStyleValueByKey(styles, 'inputMaxWidth');
 }
+

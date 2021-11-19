@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 
 interface MultilineTextInputProps {
@@ -51,6 +51,7 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
     })
   };
 
+  const maxLengthValue = getStyleValueByKey(props.compDef.style, 'maxLength');
   const fullKey = [props.componentKey, props.compDef.key].join('.');
   return (
     <div
@@ -65,7 +66,7 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
         id={fullKey}
         placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
         value={inputValue}
-        maxLength={4000}
+        maxLength={maxLengthValue ? parseInt(maxLengthValue) : 4000}
         rows={3}
         onChange={handleInputValueChange(props.compDef.key)}
         disabled={props.compDef.disabled !== undefined}

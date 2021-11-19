@@ -20,6 +20,7 @@
 - Small improvements on TextInput and NumberInput styling.
 - DateInput n survey also accepts className for the component.
 - NavLink example removes `type="button"` that causes wrong style in Safari.
+- TextInput and MultiLineTextInput survey components now support `maxLength` attribute passed down through the style array, to control how many characters can be entered.
 
 
 ## 1.5.3 - 2021-08-30

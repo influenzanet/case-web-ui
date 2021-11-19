@@ -40,7 +40,8 @@ export const ExampleClozeQuestion = () => <SurveySingleItemView
                   ]
                 },
                 {
-                  key: '2', role: 'input', description: [{ code: 'en', resolvedText: 'Placeholder 1' }]
+                  key: '2', role: 'input', description: [{ code: 'en', resolvedText: 'Placeholder 1' }],
+                  style: [{ key: 'maxLength', value: '6' }]
                 },
                 {
                   key: '3', role: 'text',

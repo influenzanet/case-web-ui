@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getInputMaxWidth, getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 
 interface TextInputProps {
@@ -57,6 +57,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 
   const labelText = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
   const inputMaxWidth = getInputMaxWidth(props.compDef.style);
+  const maxLengthValue = getStyleValueByKey(props.compDef.style, 'maxLength');
 
   const fullKey = [props.parentKey, props.compDef.key].join('.');
   return (
@@ -91,7 +92,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         id={fullKey}
         placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
         value={inputValue}
-        maxLength={4000}
+        maxLength={maxLengthValue ? parseInt(maxLengthValue) : 4000}
         onChange={handleInputValueChange(props.compDef.key)}
         disabled={props.compDef.disabled === true || props.disabled === true}
       />
