@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getInputMaxWidth, getLocaleStringTextByCode } from '../../utils';
 import clsx from 'clsx';
 
 interface TextInputProps {
@@ -12,6 +12,8 @@ interface TextInputProps {
   updateDelay?: number;
   onClick?: () => void;
   disabled?: boolean;
+  nonFullWidth?: boolean;
+  defaultClassName?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -53,13 +55,27 @@ const TextInput: React.FC<TextInputProps> = (props) => {
     })
   };
 
+  const labelText = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
+  const inputMaxWidth = getInputMaxWidth(props.compDef.style);
+
   const fullKey = [props.parentKey, props.compDef.key].join('.');
   return (
     <div
-      className={clsx("d-flex align-items-center w-100", getClassName(props.compDef.style))}
+      className={clsx(
+        props.defaultClassName,
+        "d-flex align-items-center",
+        {
+          'w-100': !props.nonFullWidth,
+        },
+        getClassName(props.compDef.style),
+      )}
       onClick={props.onClick}
     >
-      <label htmlFor={fullKey} className="me-1 flex-grow-1"
+      <label htmlFor={fullKey} className={clsx("flex-grow-1",
+        {
+          "me-1": labelText !== undefined && labelText.length > 0
+        }
+      )}
         style={{ maxWidth: 'fit-content' }}
       >
         {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
@@ -68,7 +84,8 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         className="form-control border-0 flex-grow-1"
         style={{
           flexBasis: 0,
-          minWidth: 100,
+          minWidth: 40,
+          maxWidth: inputMaxWidth,
         }}
         autoComplete="off"
         id={fullKey}

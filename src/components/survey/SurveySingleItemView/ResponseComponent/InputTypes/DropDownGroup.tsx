@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
 import { getLocaleStringTextByCode } from '../../utils';
@@ -10,6 +11,7 @@ interface DropDownGroupProps {
   languageCode: string;
   componentKey: string;
   fullWidth?: boolean;
+  defaultClassName?: string;
 }
 
 
@@ -81,7 +83,9 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
   </select>;
 
   return (
-    <div className="d-flex align-items-center my-1">
+    <div className={clsx(
+      props.defaultClassName,
+      "d-flex align-items-center my-1")}>
       {props.compDef.content ?
         <label
           htmlFor={props.componentKey}

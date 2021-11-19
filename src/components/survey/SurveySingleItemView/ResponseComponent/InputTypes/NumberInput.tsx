@@ -11,6 +11,8 @@ interface NumberInputProps {
   languageCode: string;
   disabled?: boolean;
   ignoreClassName?: boolean;
+  nonFullWidth?: boolean;
+  defaultClassName?: string;
 }
 
 const NumberInput: React.FC<NumberInputProps> = (props) => {
@@ -88,12 +90,24 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
   const inputMaxWidth = getInputMaxWidth(props.compDef.style);
   const fullKey = [props.componentKey, props.compDef.key].join('.');
 
+  const labelText = getLocaleStringTextByCode(content, props.languageCode);
+
   return <div
-    className={clsx("d-flex align-items-center w-100",
+    className={clsx(
+      props.defaultClassName,
+      "d-flex align-items-center",
+      {
+        'w-100': !props.nonFullWidth,
+      },
       props.ignoreClassName !== true ? getClassName(props.compDef.style) : undefined
     )}
   >
-    {!placeAfter ? <label htmlFor={fullKey} className="me-1 flex-grow-1"
+    {!placeAfter ? <label htmlFor={fullKey} className={clsx(
+      "flex-grow-1",
+      {
+        "me-1": labelText !== undefined && labelText.length > 0
+      }
+    )}
       style={{ maxWidth: 'fit-content' }}
     >
       {getLocaleStringTextByCode(content, props.languageCode)}

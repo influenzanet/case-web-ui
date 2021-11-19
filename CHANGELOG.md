@@ -10,11 +10,17 @@
 
 ### Added
 
-- New component for file inputs using a dropzone.
+- New survey response item type for "cloze" question, a question where inputs embedded in a text can be placed. E.g., On .... between ... and ... . This can be embedded inside a single or multiple choice question as well. To invoke such an item, you can use the `role: 'cloze'`.
+- New component available for file inputs using a dropzone.
+
 
 ### Changed
 
 - Survey navigation buttons should loose focus after clicked. Also submit button should not gain autofocus now.
+- Small improvements on TextInput and NumberInput styling.
+- DateInput n survey also accepts className for the component.
+- NavLink example removes `type="button"` that causes wrong style in Safari.
+
 
 ## 1.5.3 - 2021-08-30
 

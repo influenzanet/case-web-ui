@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
-import { getLocaleStringTextByCode } from '../../utils';
+import { getClassName, getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { addYears, getUnixTime } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
+import clsx from 'clsx';
 
 export const dateLocales = [
   { code: 'nl', locale: nl, format: 'dd-MM-yyyy' },
@@ -28,6 +29,7 @@ interface DateInputProps {
   languageCode: string;
   disabled?: boolean;
   openCalendar: boolean | undefined;
+  defaultClassName?: string;
 }
 
 const DateInput: React.FC<DateInputProps> = (props) => {
@@ -160,7 +162,11 @@ const DateInput: React.FC<DateInputProps> = (props) => {
   }
 
   return (
-    <div className="d-flex align-items-center">
+    <div className={clsx(
+      props.defaultClassName,
+      "d-flex align-items-center",
+      getClassName(props.compDef.style)
+    )}>
       {props.compDef.content ?
         <label className="me-1">
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}

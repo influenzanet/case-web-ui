@@ -21,6 +21,7 @@ import LikertGroup from './InputTypes/LikertGroup';
 import MarkdownComponent from '../SurveyComponents/MarkdownComponent';
 import ResponsiveSingleChoiceArray from './InputTypes/ResponsiveSingleChoiceArray';
 import ResponsiveBipolarLikertScaleArray from './InputTypes/ResponsiveBipolarLikertScaleArray';
+import ClozeQuestion from './InputTypes/ClozeQuestion';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -254,6 +255,15 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           return <ResponsiveBipolarLikertScaleArray
             key={respComp.key}
             componentKey={currentKeyPath}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'cloze':
+          return <ClozeQuestion
+            parentKey={currentKeyPath}
+            key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}

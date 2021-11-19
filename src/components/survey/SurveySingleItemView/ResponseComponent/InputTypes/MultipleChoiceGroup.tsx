@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import NumberInput from './NumberInput';
 import { renderFormattedContent } from '../../renderUtils';
+import ClozeQuestion from './ClozeQuestion';
 
 
 interface MultipleChoiceGroupProps {
@@ -41,7 +42,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     setResponseForKey(key, checked);
   }
 
-  const setResponseForKey = (key: string, checked: boolean, value?: string, dtype?: string) => {
+  const setResponseForKey = (key: string, checked: boolean, value?: string, dtype?: string, items?: ResponseItem[]) => {
     setTouched(true);
     if (checked) {
       const newRI: ResponseItem = {
@@ -52,6 +53,9 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
       }
       if (dtype) {
         newRI.dtype = dtype;
+      }
+      if (items) {
+        newRI.items = items;
       }
       setResponse(prev => {
         if (!prev || !prev.items) {
@@ -143,13 +147,27 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
 
     if (isItemGroupComponent(option)) {
       switch (option.role) {
-        // TODO: handle composite option types, when contains different inputs
         case 'option':
           labelComponent = <label htmlFor={optionKey}
             className="flex-grow-1 cursor-pointer"
           >
             {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
           </label>
+          break;
+        case 'cloze':
+          labelComponent = <ClozeQuestion
+            parentKey={optionKey}
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={(response) => {
+              const checkStatus = (response !== undefined && response.items !== undefined);
+              setResponseForKey(option.key ? option.key : 'unknown', checkStatus, response?.value, undefined, response?.items);
+              updateSubResponseCache(option.key, response);
+            }}
+            disabled={isDisabled(option)}
+          />;
           break;
       }
     } else {

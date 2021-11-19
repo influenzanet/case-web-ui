@@ -8,6 +8,7 @@ import NumberInput from './NumberInput';
 
 import clsx from 'clsx';
 import { renderFormattedContent } from '../../renderUtils';
+import ClozeQuestion from './ClozeQuestion';
 
 interface SingleChoiceGroupProps {
   parentKey: string;
@@ -126,6 +127,17 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           >
             {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
           </label>
+          break;
+        case 'cloze':
+          labelComponent = <ClozeQuestion
+            parentKey={optionKey}
+            key={option.key}
+            compDef={option}
+            prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={setResponseForKey(option.key)}
+            disabled={isDisabled}
+          />;
           break;
       }
     } else {
