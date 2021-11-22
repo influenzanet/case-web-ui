@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import { getExternalOrLocalContentURL } from '../..';
 import styles from './ActionCard.module.scss';
 
 interface ActionCardProps {
@@ -46,7 +47,7 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
           width: props.image.width,
           minWidth: props.image.minWidth,
           maxWidth: props.image.maxWidth,
-          backgroundImage: `url(${props.image.url})`,
+          backgroundImage: `url(${getExternalOrLocalContentURL(props.image.url)})`,
           backgroundPosition: props.image.backgroundPosition ? props.image.backgroundPosition : 'center',
           backgroundSize: props.image.backgroundSize ? props.image.backgroundSize : 'cover',
         }}>
@@ -61,7 +62,12 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
         <div className="flex-grow-1">
           {props.children}
         </div>
-        <div className="mt-1a d-flex align-items-center">
+        <div className={clsx(
+          "d-flex align-items-center",
+          {
+            "mt-1a": props.footerText && props.actionBtnText
+          }
+        )}>
           {props.footerText ? <span className="text-grey-5">
             {props.footerText}
           </span> : null}

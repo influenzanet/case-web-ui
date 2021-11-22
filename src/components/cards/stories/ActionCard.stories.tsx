@@ -21,7 +21,7 @@ const Template = (args) => (
 export const WithAction = Template.bind({});
 WithAction.args = {
   image: {
-    url: '/static-content/images/placeholder_image.png',
+    url: '/images/placeholder_image.png',
     height: 200,
   },
   title: 'Card Title',
@@ -36,7 +36,7 @@ WithAction.args = {
 export const WithoutAction = Template.bind({});
 WithoutAction.args = {
   image: {
-    url: '/static-content/images/placeholder_image.png',
+    url: '/images/placeholder_image.png',
     height: '200px',
   },
   title: 'Card Title',
@@ -50,7 +50,7 @@ WithoutAction.args = {
 export const WithMarkdownContent = Template.bind({});
 WithMarkdownContent.args = {
   image: {
-    url: '/static-content/images/placeholder_image.png',
+    url: '/images/placeholder_image.png',
     height: '200px',
   },
   title: 'Card Title',
@@ -75,7 +75,7 @@ With a bullet list:
 export const WithLeftImage = Template.bind({});
 WithLeftImage.args = {
   image: {
-    url: '/static-content/images/placeholder_image.png',
+    url: '/images/placeholder_image.png',
     placement: 'left',
     width: "250px",
     minWidth: "60px",
