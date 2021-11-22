@@ -65,9 +65,12 @@ const Dialog: React.FC<DialogProps> = (props) => {
 
   return (
     <Modal
+      scrollable={false}
       onHide={props.onClose}
       aria-labelledby={props.ariaLabelledBy}
       show={props.open}
+      bgClassName="bg-grey-1"
+      contentClassName="border-0"
       size={props.size}
       centered
       fullscreen={props.fullScreenFrom ? props.fullScreenFrom : 'sm-down'}
