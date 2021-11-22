@@ -1,10 +1,13 @@
 .card {
   transition: all 100ms ease-in-out;
-  cursor: pointer;
 }
 
 .card button {
   text-decoration: none;
+}
+
+.actionable {
+  cursor: pointer;
 }
 
 .actionable:hover {
