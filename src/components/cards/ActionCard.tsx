@@ -4,7 +4,7 @@ import styles from './ActionCard.module.scss';
 
 interface ActionCardProps {
   title: string;
-  image: {
+  image?: {
     url: string;
     className?: string;
     backgroundPosition?: string;
@@ -29,8 +29,8 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
       'bg-secondary d-flex',
       styles.card,
       {
-        'flex-row': props.image.placement === 'left',
-        'flex-column': props.image.placement !== 'left',
+        'flex-row': props.image?.placement === 'left',
+        'flex-column': props.image?.placement !== 'left',
         [styles.actionable]: props.actionBtnText
       },
       props.className,
@@ -53,7 +53,7 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
 
       </div> : null}
       <div className={clsx("p-2 d-flex flex-column",
-        { "flex-grow-1": props.image.placement !== 'left', }
+        { "flex-grow-1": props.image?.placement !== 'left', }
       )}>
         <h5 className="fw-bold">
           {props.title}
