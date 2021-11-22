@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.2 - 2021-11-22
+
+Fix issue with dialog header rendering on windows.
+
+
 ## 1.6.1 - 2021-11-19
 
 Updated project dependencies.
