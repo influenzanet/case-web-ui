@@ -55,6 +55,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
       paddingY,
       'd-flex align-items-center sticky-top ',
       `bg-${color}`,
+      'me-0'
     )}
     >
       {headerContent()}
