@@ -1,0 +1,20 @@
+.card {
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.card button {
+  text-decoration: none;
+}
+
+.actionable:hover {
+    //transform: scale(1.01);
+    filter: drop-shadow(.125rem .125rem .5rem  rgb(241, 241, 241));
+}
+
+.actionable:hover button {
+  text-decoration: underline;
+}
+.actionable:hover h5 {
+  text-decoration: underline;
+}

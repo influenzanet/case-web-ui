@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.0 - ???
+
+### Added
+
+- New component called `ActionCard` - a configurable card with hover effect, clickable, can include image on top or on the left. Image is attached as background image to a div, with configurable width, height (also min/max) and and background postion and size.
+
 ## 1.6.2 - 2021-11-22
 
 Fix issue with dialog header rendering on windows.
