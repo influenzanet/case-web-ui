@@ -30,7 +30,7 @@ const AccordionList: React.FC<AccordionListProps> = (props) => {
   return (
     <React.Fragment>
       {props.items.map((item, index) => {
-        const key = props.itemKey + index.toFixed();
+        const key = props.itemKey?.replace('.', '-') + index.toFixed();
         return <div key={key}
           className={clsx({
             "mt-3": index > 0

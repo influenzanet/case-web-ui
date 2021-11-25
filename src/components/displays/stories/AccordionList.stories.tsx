@@ -8,6 +8,7 @@ export default {
 };
 
 export const Example = () => <AccordionList
+  //itemKey={'test.test'}
   items={[
     {
       title: 'Item 1 title',
