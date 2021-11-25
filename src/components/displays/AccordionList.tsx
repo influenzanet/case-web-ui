@@ -1,9 +1,11 @@
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import ChevronDown from '../icons/Arrows/ChevronDown';
 import ChevronUp from '../icons/Arrows/ChevronUp';
 import MarkdownRenderer from './MarkdownRenderer';
 
 interface AccordionListProps {
+  itemKey?: string;
   items: Array<{
     title: string;
     content: string;
@@ -28,9 +30,11 @@ const AccordionList: React.FC<AccordionListProps> = (props) => {
   return (
     <React.Fragment>
       {props.items.map((item, index) => {
-        const key = 'item' + index.toFixed();
+        const key = props.itemKey + index.toFixed();
         return <div key={key}
-          className="mt-3"
+          className={clsx({
+            "mt-3": index > 0
+          })}
         >
           <div className="bg-secondary py-1a px-2 d-flex align-items-center cursor-pointer"
             data-bs-toggle="collapse" data-bs-target={'#' + key}
