@@ -33,6 +33,24 @@ WithAction.args = {
   className: undefined,
 }
 
+
+export const AsImg = Template.bind({});
+AsImg.args = {
+  image: {
+    as: 'img',
+    alt: 'Alt text',
+    url: '/images/placeholder_image.png',
+    height: 200,
+  },
+  title: 'Card Title',
+  body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, minus eveniet? Eveniet natus pariatur, nam voluptates voluptas soluta magni dignissimos alias laborum fugit culpa, consequatur modi quas eius provident aperiam.',
+  footerText: '01.04.2025',
+  actionBtnText: 'Do Action',
+  children: [<p key="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ea molestiae numquam eveniet, dolores voluptas unde quibusdam iure accusamus corporis? Voluptas consequuntur fugit corporis, debitis temporibus hic. Velit, reiciendis? Et.</p>],
+  onClick: () => { console.log('clicked') },
+  className: undefined,
+}
+
 export const WithoutAction = Template.bind({});
 WithoutAction.args = {
   image: {

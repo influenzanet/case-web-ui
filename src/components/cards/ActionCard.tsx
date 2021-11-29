@@ -6,6 +6,8 @@ import styles from './ActionCard.module.scss';
 interface ActionCardProps {
   title: string;
   image?: {
+    as?: 'div' | 'img'; // defaults to 'div'
+    alt?: string;
     url: string;
     className?: string;
     backgroundPosition?: string;
@@ -25,6 +27,29 @@ interface ActionCardProps {
 }
 
 const ActionCard: React.FC<ActionCardProps> = (props) => {
+  const renderImage = () => {
+    if (!props.image) {
+      return null;
+    }
+    if (props.image.as === 'img') {
+      return <img className="w-100" src={getExternalOrLocalContentURL(props.image.url)} alt={props.image.alt} />
+    }
+
+    return <div
+      className={clsx("flex-grow-1", props.image.className)}
+      style={{
+        height: props.image.height,
+        maxHeight: props.image.maxHeight,
+        minHeight: props.image.minHeight,
+        width: props.image.width,
+        minWidth: props.image.minWidth,
+        maxWidth: props.image.maxWidth,
+        backgroundImage: `url(${getExternalOrLocalContentURL(props.image.url)})`,
+        backgroundPosition: props.image.backgroundPosition ? props.image.backgroundPosition : 'center',
+        backgroundSize: props.image.backgroundSize ? props.image.backgroundSize : 'cover',
+      }} />
+  }
+
   return (
     <div className={clsx(
       'bg-secondary d-flex',
@@ -38,21 +63,7 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
     )}
       onClick={props.onClick}
     >
-      {props.image ? <div
-        className={clsx("flex-grow-1", props.image.className)}
-        style={{
-          height: props.image.height,
-          maxHeight: props.image.maxHeight,
-          minHeight: props.image.minHeight,
-          width: props.image.width,
-          minWidth: props.image.minWidth,
-          maxWidth: props.image.maxWidth,
-          backgroundImage: `url(${getExternalOrLocalContentURL(props.image.url)})`,
-          backgroundPosition: props.image.backgroundPosition ? props.image.backgroundPosition : 'center',
-          backgroundSize: props.image.backgroundSize ? props.image.backgroundSize : 'cover',
-        }}>
-
-      </div> : null}
+      {renderImage()}
       <div className={clsx("p-2 d-flex flex-column flex-grow-1")}>
         <h5 className="fw-bold">
           {props.title}
