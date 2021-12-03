@@ -107,3 +107,29 @@ WithLeftImage.args = {
   onClick: () => { console.log('clicked') },
   className: undefined,
 }
+
+
+export const WithoutImage = Template.bind({});
+WithoutImage.args = {
+  title: 'Card Title',
+  body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, minus eveniet? Eveniet natus pariatur, nam voluptates voluptas soluta magni dignissimos alias laborum fugit culpa, consequatur modi quas eius provident aperiam.',
+  footerText: '01.04.2025',
+  actionBtnText: 'Do Action',
+  children: [<p key="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ea molestiae numq</p>],
+  onClick: () => { console.log('clicked') },
+  className: undefined,
+}
+
+export const WithBodyBgImage = Template.bind({});
+WithBodyBgImage.args = {
+  bodyBgImage: {
+    url: '/images/placeholder_image.png',
+  },
+  title: 'Card Title',
+  body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, minus eveniet? Eveniet natus pariatur, nam voluptates voluptas soluta magni dignissimos alias laborum fugit culpa, consequatur modi quas eius provident aperiam.',
+  footerText: '01.04.2025',
+  actionBtnText: 'Do Action',
+  children: [<p key="1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ea molestiae numq</p>],
+  onClick: () => { console.log('clicked') },
+  className: undefined,
+}

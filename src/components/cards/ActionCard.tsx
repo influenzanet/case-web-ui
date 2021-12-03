@@ -20,6 +20,12 @@ interface ActionCardProps {
     minHeight?: string | number;
     maxHeight?: string | number;
   };
+  bodyBgImage?: {
+    url: string;
+    backgroundPosition?: string;
+    backgroundSize?: string;
+    overlayOpacity?: number;
+  };
   footerText?: string;
   actionBtnText?: string;
   className?: string;
@@ -64,7 +70,16 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
       onClick={props.onClick}
     >
       {renderImage()}
-      <div className={clsx("p-2 d-flex flex-column flex-grow-1")}>
+      <div className={clsx("p-2 d-flex flex-column flex-grow-1", {
+        "text-white": props.bodyBgImage !== undefined
+      })}
+        style={
+          props.bodyBgImage ? {
+            background: `linear-gradient(0deg, rgba(0, 0, 0, ${props.bodyBgImage.overlayOpacity !== undefined ? props.bodyBgImage.overlayOpacity : 0.6}), rgba(0, 0, 0, ${props.bodyBgImage.overlayOpacity !== undefined ? props.bodyBgImage.overlayOpacity : 0.6})), url(${getExternalOrLocalContentURL(props.bodyBgImage.url)})`,
+            backgroundPosition: props.bodyBgImage.backgroundPosition ? props.bodyBgImage.backgroundPosition : 'center',
+            backgroundSize: props.bodyBgImage.backgroundSize ? props.bodyBgImage.backgroundSize : 'cover',
+          } : undefined}
+      >
         <h5 className="fw-bold">
           {props.title}
         </h5>
@@ -77,11 +92,20 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
             "mt-1a": props.footerText && props.actionBtnText
           }
         )}>
-          {props.footerText ? <span className="text-grey-5">
+          {props.footerText ? <span className={clsx({
+            "text-grey-5": props.bodyBgImage === undefined,
+            "text-white": props.bodyBgImage !== undefined
+          })}>
             {props.footerText}
           </span> : null}
           <span className="flex-grow-1"></span>
-          {props.actionBtnText ? <button className="btn btn-link text-body p-0">
+          {props.actionBtnText ? <button className={clsx(
+            "btn btn-link p-0",
+            {
+              "text-body": props.bodyBgImage === undefined,
+              "text-white": props.bodyBgImage !== undefined
+            }
+          )}>
             {props.actionBtnText}
             <i className="fs-btn">
               <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" className="bi bi-arrow-right-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
