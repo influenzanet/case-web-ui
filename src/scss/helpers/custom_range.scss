@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $form-range-thumb-width:          1rem !default;
 $form-range-thumb-height:          $form-range-thumb-width !default;
 $form-range-track-height:         .5rem !default;
@@ -61,7 +63,7 @@ input[type=range]::-ms-thumb {
 .ticks {
   z-index: 0;
   //We need left & right padding that's half the width of the range thumb, so all ticks align with the center of the thumb
-  padding: $form-range-thumb-width/2 $form-range-thumb-height/2;
+  padding: math.div($form-range-thumb-width, 2) math.div($form-range-thumb-height, 2);
 }
 
 .range-track {
