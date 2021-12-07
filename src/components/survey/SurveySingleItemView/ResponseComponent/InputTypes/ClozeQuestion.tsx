@@ -146,6 +146,8 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             defaultClassName={defaultInputClassName}
           />;
 
+        case 'lineBreak':
+          return <div key={item.key} className="w-100" />
         case 'numberInput':
           return <NumberInput
             componentKey={props.parentKey}

@@ -126,11 +126,14 @@ export const Example2ClozeQuestion = () => <SurveySingleItemView
                   style: [{ key: 'inputMaxWidth', value: '120px' },]
                 },
                 {
+                  key: 'br', role: 'lineBreak',
+                },
+                {
                   key: '3', role: 'text',
-                  content: [{ code: 'en', resolvedText: ' also in between ' }],
+                  content: [{ code: 'en', resolvedText: 'also in between ' }],
                   style: [
                     { key: 'variant', value: 'span' },
-                    { key: 'className', value: 'mx-1' }
+                    { key: 'className', value: 'me-1' }
                   ]
                 },
                 {
