@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { addYears, getUnixTime } from 'date-fns';
@@ -21,13 +21,7 @@ dateLocales.forEach(loc => {
 });
 
 
-interface DateInputProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
-  disabled?: boolean;
+interface DateInputProps extends CommonResponseComponentProps {
   openCalendar: boolean | undefined;
   defaultClassName?: string;
 }
@@ -138,7 +132,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         onClick={() => datePickerRef.current?.setOpen(true)}
       >
         <DatePicker
-          id={props.componentKey}
+          id={props.parentKey}
           ref={datePickerRef}
           className="form-control border-0 shadow-none p-1"
           selected={selectedDate}

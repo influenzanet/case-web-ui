@@ -2,20 +2,12 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { renderFormattedContent } from '../../renderUtils';
-import { getClassName } from '../../utils';
+import { CommonResponseComponentProps, getClassName } from '../../utils';
 import { getResponsiveModes, Variant } from './responsiveUtils';
 
-interface ResponsiveSingleChoiceArrayProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface ResponsiveSingleChoiceArrayProps extends CommonResponseComponentProps {
+
 }
-
-
-
-
 
 interface VerticalModeOptionProps {
   slotFullKey: string;

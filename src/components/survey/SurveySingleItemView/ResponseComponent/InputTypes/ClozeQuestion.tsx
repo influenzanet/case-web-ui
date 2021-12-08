@@ -3,19 +3,14 @@ import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem }
 import { renderFormattedContent } from '../../renderUtils';
 import MarkdownComponent from '../../SurveyComponents/MarkdownComponent';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
-import { getClassName } from '../../utils';
+import { CommonResponseComponentProps, getClassName } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import DropDownGroup from './DropDownGroup';
 import NumberInput from './NumberInput';
 import TextInput from './TextInput';
 
-interface ClozeQuestionProps {
-  parentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
-  disabled?: boolean;
+interface ClozeQuestionProps extends CommonResponseComponentProps {
+
 }
 
 const defaultInputClassName = "mx-1 my-0a";
@@ -111,7 +106,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             responseChanged={handleItemResponse(item.key ? item.key : 'undefined')}
             prefill={(prefill && prefill.key === item.key) ? prefill : undefined}
             fullWidth={true}
-            componentKey={optionKey}
+            parentKey={optionKey}
             defaultClassName={defaultInputClassName}
           />
       }
@@ -150,7 +145,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
           return <div key={item.key} className="w-100" />
         case 'numberInput':
           return <NumberInput
-            componentKey={props.parentKey}
+            parentKey={props.parentKey}
             key={item.key}
             compDef={item}
             prefill={(prefill && prefill.key === item.key) ? prefill : undefined}
@@ -163,7 +158,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
           break;
         case 'dateInput':
           return <DateInput
-            componentKey={optionKey}
+            parentKey={optionKey}
             key={item.key}
             compDef={item}
             prefill={(prefill && prefill.key === item.key) ? prefill : undefined}

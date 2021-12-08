@@ -6,6 +6,7 @@ import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemVie
 import { checkSurveyItemsValidity, checkSurveyItemValidity } from 'survey-engine/lib/validation-checkers';
 import clsx from 'clsx';
 import { getItemComponentByRole, getLocaleStringTextByCode } from '../../SurveySingleItemView/utils';
+import { CustomSurveyResponseComponent } from '../../SurveySingleItemView/ResponseComponent/ResponseComponent';
 
 interface SurveyPageLocalisedTexts {
   backBtn: string;
@@ -30,6 +31,7 @@ interface SurveyPageViewProps {
   surveyEndItem?: SurveySingleItem;
   ignoreValidation?: boolean;
   showKeys?: boolean;
+  customResponseComponents?: Array<CustomSurveyResponseComponent>;
 }
 
 const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
@@ -79,6 +81,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         showInvalid={!valid.hard && showValidationErrors}
         invalidWarning={props.localisedTexts.invalidResponse}
         showKeys={props.showKeys}
+        customResponseComponents={props.customResponseComponents}
       />
     </div>
   }

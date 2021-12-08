@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import clsx from 'clsx';
 
-interface LikertScaleProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface LikertScaleProps extends CommonResponseComponentProps {
+
 }
 
 
@@ -62,7 +58,7 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
   }
 
   const renderOption = (option: ItemComponent) => {
-    const optionKey = props.componentKey + '.' + option.key;
+    const optionKey = props.parentKey + '.' + option.key;
     const isDisabled = option.disabled === true;
     const content = getLocaleStringTextByCode(option.content, props.languageCode);
     const className = getClassName(option.style);
@@ -77,7 +73,7 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
       <input
         className="form-check-input cursor-pointer"
         type="radio"
-        name={props.componentKey}
+        name={props.parentKey}
         id={optionKey}
         value={option.key}
         checked={getSelectedKey() === option.key}
@@ -117,7 +113,7 @@ const LikertScale: React.FC<LikertScaleProps> = (props) => {
 
   return (
     <fieldset
-      id={props.componentKey}
+      id={props.parentKey}
       className={clsx(
         "d-flex",
         {

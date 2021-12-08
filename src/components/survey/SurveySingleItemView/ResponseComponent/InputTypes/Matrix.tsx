@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { getLocaleStringTextByCode, getItemComponentByRole } from '../../utils';
+import { getLocaleStringTextByCode, getItemComponentByRole, CommonResponseComponentProps } from '../../utils';
 import clsx from 'clsx';
 import NumberInput from './NumberInput';
 import DropDownGroup from './DropDownGroup';
 import TextInput from './TextInput';
 
-interface MatrixProps {
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
-  componentKey: string;
+interface MatrixProps extends CommonResponseComponentProps {
+
 }
 
 
@@ -185,7 +181,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
   }
 
   const renderRadioRow = (compDef: ItemGroupComponent, index: number): React.ReactNode => {
-    const rowKey = [props.componentKey, compDef.key].join('.');
+    const rowKey = [props.parentKey, compDef.key].join('.');
 
     const cells = (compDef as ItemGroupComponent).items.map((cell, cindex) => {
       let currentCellContent: React.ReactNode | null;
@@ -239,7 +235,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
   }
 
   const renderResponseRow = (compDef: ItemGroupComponent, index: number): React.ReactNode => {
-    const rowKey = [props.componentKey, compDef.key].join('.');
+    const rowKey = [props.parentKey, compDef.key].join('.');
     const cells = (compDef as ItemGroupComponent).items.map((cell, cIndex) => {
       const cellKey = [rowKey, cell.key].join('.');
       let currentCellContent: React.ReactNode | null;
@@ -287,7 +283,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
         case 'numberInput':
           currentCellContent =
             <NumberInput
-              componentKey={cellKey}
+              parentKey={cellKey}
               compDef={cell}
               languageCode={props.languageCode}
               responseChanged={handleCellResponseChange(compDef.key, cell.key)}
@@ -301,7 +297,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
             responseChanged={handleCellResponseChange(compDef.key, cell.key)}
             prefill={getCellResponse(compDef.key, cell.key)}
             fullWidth={true}
-            componentKey={cellKey}
+            parentKey={cellKey}
           />
           break;
         default:

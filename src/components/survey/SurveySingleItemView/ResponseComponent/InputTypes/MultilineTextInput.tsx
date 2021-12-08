@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 
-interface MultilineTextInputProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface MultilineTextInputProps extends CommonResponseComponentProps {
 }
 
 const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
@@ -52,7 +47,7 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
   };
 
   const maxLengthValue = getStyleValueByKey(props.compDef.style, 'maxLength');
-  const fullKey = [props.componentKey, props.compDef.key].join('.');
+  const fullKey = [props.parentKey, props.compDef.key].join('.');
   return (
     <div
       className={clsx("d-flex align-items-start", getClassName(props.compDef.style))}

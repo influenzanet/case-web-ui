@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/lib/data_types';
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
@@ -9,12 +9,7 @@ import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
 
 
-interface MultipleChoiceGroupProps {
-  compDef: ItemComponent;
-  parentKey: string;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface MultipleChoiceGroupProps extends CommonResponseComponentProps {
   showOptionKey?: boolean;
 }
 
@@ -206,7 +201,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
         case 'numberInput':
           labelComponent =
             <NumberInput
-              componentKey={props.parentKey}
+              parentKey={props.parentKey}
               key={option.key}
               compDef={option}
               prefill={(prefill && prefill.key === option.key) ? prefill : undefined}

@@ -2,15 +2,11 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
 import { renderFormattedContent } from '../../renderUtils';
-import { getClassName } from '../../utils';
+import { CommonResponseComponentProps, getClassName } from '../../utils';
 import { getResponsiveModes, Variant } from './responsiveUtils';
 
-interface ResponsiveBipolarLikertScaleArrayProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface ResponsiveBipolarLikertScaleArrayProps extends CommonResponseComponentProps {
+
 }
 
 const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleArrayProps> = (props) => {

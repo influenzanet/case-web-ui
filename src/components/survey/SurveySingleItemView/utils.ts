@@ -1,5 +1,14 @@
-import { ItemComponent, LocalizedString, LocalizedObject } from "survey-engine/lib/data_types";
+import { ItemComponent, LocalizedString, LocalizedObject, ResponseItem } from "survey-engine/lib/data_types";
 
+export interface CommonResponseComponentProps {
+  parentKey: string;
+  compDef: ItemComponent;
+  prefill?: ResponseItem;
+  responseChanged: (response: ResponseItem | undefined) => void;
+  languageCode: string;
+  showOptionKey?: boolean;
+  disabled?: boolean;
+}
 
 export const getItemComponentTranslationByRole = (components: Array<ItemComponent>, role: string, code: string): string | null => {
   const comp = components.find(comp => comp.role === role);

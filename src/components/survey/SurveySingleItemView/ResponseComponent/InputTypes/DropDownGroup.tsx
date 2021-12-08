@@ -1,15 +1,10 @@
 import clsx from 'clsx';
 import React, { useState, useEffect } from 'react';
-import { ItemComponent, ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
-import { getLocaleStringTextByCode } from '../../utils';
+import { ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
+import { CommonResponseComponentProps, getLocaleStringTextByCode } from '../../utils';
 
 
-interface DropDownGroupProps {
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
-  componentKey: string;
+interface DropDownGroupProps extends CommonResponseComponentProps {
   fullWidth?: boolean;
   defaultClassName?: string;
 }
@@ -59,7 +54,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
   };
 
   const renderedInput = <select
-    id={props.componentKey}
+    id={props.parentKey}
     className="form-select flex-grow-1"
     aria-label="Select"
     value={getSelectedKey()}
@@ -88,7 +83,7 @@ const DropDownGroup: React.FC<DropDownGroupProps> = (props) => {
       "d-flex align-items-center my-1")}>
       {props.compDef.content ?
         <label
-          htmlFor={props.componentKey}
+          htmlFor={props.parentKey}
           className="m-0 me-1 flex-shrink-1" style={{ minWidth: 80 }}>
           {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
         </label>

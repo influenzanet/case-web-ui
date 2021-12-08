@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 
-interface TextInputProps {
-  parentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface TextInputProps extends CommonResponseComponentProps {
   updateDelay?: number;
   onClick?: () => void;
-  disabled?: boolean;
   nonFullWidth?: boolean;
   defaultClassName?: string;
 }

@@ -22,6 +22,7 @@ import MarkdownComponent from '../SurveyComponents/MarkdownComponent';
 import ResponsiveSingleChoiceArray from './InputTypes/ResponsiveSingleChoiceArray';
 import ResponsiveBipolarLikertScaleArray from './InputTypes/ResponsiveBipolarLikertScaleArray';
 import ClozeQuestion from './InputTypes/ClozeQuestion';
+import { CommonResponseComponentProps } from '../utils';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -31,6 +32,12 @@ interface ResponseComponentProps {
   languageCode: string;
   isRequired: boolean;
   showOptionKey?: boolean;
+  customResponseComponents?: Array<CustomSurveyResponseComponent>;
+}
+
+export interface CustomSurveyResponseComponent {
+  name: string;
+  component: React.FunctionComponent<CommonResponseComponentProps>;
 }
 
 const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
@@ -138,7 +145,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'dropDownGroup':
           return <DropDownGroup
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -156,7 +163,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'multilineTextInput':
           return <MultilineTextInput
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -164,7 +171,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'numberInput':
           return <NumberInput
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
@@ -173,7 +180,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'dateInput':
           return <DateInput
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             key={respComp.key}
             languageCode={props.languageCode}
             compDef={respComp}
@@ -209,7 +216,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'matrix':
           return <Matrix
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -218,6 +225,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'eq5d-health-indicator':
           return <EQ5DHealthIndicatorInput
             key={respComp.key}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -227,7 +235,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'likert':
           return <LikertScale
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -236,7 +244,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'likertGroup':
           return <LikertGroup
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -245,7 +253,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'responsiveSingleChoiceArray':
           return <ResponsiveSingleChoiceArray
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -254,7 +262,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
         case 'responsiveBipolarLikertScaleArray':
           return <ResponsiveBipolarLikertScaleArray
             key={respComp.key}
-            componentKey={currentKeyPath}
+            parentKey={currentKeyPath}
             languageCode={props.languageCode}
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
@@ -270,7 +278,19 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
           />
         default:
-          return <p key={respComp.key ? respComp.key : index.toString()}>{respComp.role}</p>
+          const customCompDef = props.customResponseComponents?.find(customRespComp => customRespComp.name === respComp.role);
+          if (!customCompDef) {
+            return <p key={respComp.key ? respComp.key : index.toString()}>{respComp.role}</p>
+          }
+          const Component = customCompDef.component;
+          return <Component
+            key={respComp.key}
+            parentKey={currentKeyPath}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
       }
     })
     }

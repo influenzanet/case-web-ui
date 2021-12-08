@@ -3,13 +3,10 @@ import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import LikertScale from './LikertScale';
+import { CommonResponseComponentProps } from '../../utils';
 
-interface LikertGroupProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface LikertGroupProps extends CommonResponseComponentProps {
+
 }
 
 const LikertGroup: React.FC<LikertGroupProps> = (props) => {
@@ -71,7 +68,7 @@ const LikertGroup: React.FC<LikertGroupProps> = (props) => {
     if (row.displayCondition === false) {
       return null;
     }
-    const rowKey = props.componentKey + '.' + row.key;
+    const rowKey = props.parentKey + '.' + row.key;
 
     switch (row.role) {
       case 'text':
@@ -83,7 +80,7 @@ const LikertGroup: React.FC<LikertGroupProps> = (props) => {
       case 'likert':
         return <LikertScale
           key={rowKey}
-          componentKey={rowKey}
+          parentKey={rowKey}
           languageCode={props.languageCode}
           compDef={row}
           prefill={getPrefillForItem(row)}

@@ -5,7 +5,7 @@ import HelpGroup from './SurveyComponents/HelpGroup';
 import TextViewComponent from './SurveyComponents/TextViewComponent';
 import ErrorComponent from './SurveyComponents/ErrorComponent';
 import WarningComponent from './SurveyComponents/WarningComponent';
-import ResponseComponent from './ResponseComponent/ResponseComponent';
+import ResponseComponent, { CustomSurveyResponseComponent } from './ResponseComponent/ResponseComponent';
 import clsx from 'clsx';
 import BulletList from './SurveyComponents/BulletList';
 import MarkdownComponent from './SurveyComponents/MarkdownComponent';
@@ -19,6 +19,7 @@ interface SurveySingleItemViewProps {
   showInvalid?: boolean;
   invalidWarning: string;
   showKeys?: boolean;
+  customResponseComponents?: Array<CustomSurveyResponseComponent>;
 }
 
 
@@ -80,6 +81,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                   setResponse(response);
                 }}
                 showOptionKey={props.showKeys}
+                customResponseComponents={props.customResponseComponents}
               />
             case 'text':
               return <TextViewComponent key={index.toFixed()}

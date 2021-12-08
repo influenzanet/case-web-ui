@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
-import { getClassName, getInputMaxWidth, getLabelPlacementStyle, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLabelPlacementStyle, getLocaleStringTextByCode } from '../../utils';
 import clsx from 'clsx';
 
-interface NumberInputProps {
-  componentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
-  disabled?: boolean;
+interface NumberInputProps extends CommonResponseComponentProps {
   ignoreClassName?: boolean;
   nonFullWidth?: boolean;
   defaultClassName?: string;
@@ -88,7 +82,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
   const content = props.compDef.content;
   const placeAfter = getLabelPlacementStyle(props.compDef.style) === 'after';
   const inputMaxWidth = getInputMaxWidth(props.compDef.style);
-  const fullKey = [props.componentKey, props.compDef.key].join('.');
+  const fullKey = [props.parentKey, props.compDef.key].join('.');
 
   const labelText = getLocaleStringTextByCode(content, props.languageCode);
 
@@ -122,7 +116,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
       className="form-control border-0 flex-grow-1"
       type="number"
       autoComplete="off"
-      id={props.componentKey}
+      id={props.parentKey}
       placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
       value={inputValue}
       maxLength={30}
@@ -135,7 +129,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
       step={stepSize ? stepSize as number : undefined}
     />
 
-    {placeAfter ? <label htmlFor={props.componentKey} className="ms-1">
+    {placeAfter ? <label htmlFor={props.parentKey} className="ms-1">
       {getLocaleStringTextByCode(content, props.languageCode)}
     </label> : null}
   </div>

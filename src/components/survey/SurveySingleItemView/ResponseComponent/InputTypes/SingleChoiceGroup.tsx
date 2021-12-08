@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/lib/data_types/response';
-import { getClassName, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import TextInput from './TextInput';
 import NumberInput from './NumberInput';
@@ -10,12 +10,7 @@ import clsx from 'clsx';
 import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
 
-interface SingleChoiceGroupProps {
-  parentKey: string;
-  compDef: ItemComponent;
-  prefill?: ResponseItem;
-  responseChanged: (response: ResponseItem | undefined) => void;
-  languageCode: string;
+interface SingleChoiceGroupProps extends CommonResponseComponentProps {
   showOptionKey?: boolean;
 }
 
@@ -164,7 +159,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         case 'numberInput':
           labelComponent =
             <NumberInput
-              componentKey={props.parentKey}
+              parentKey={props.parentKey}
               key={option.key}
               compDef={option}
               prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
@@ -175,7 +170,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           break;
         case 'dateInput':
           labelComponent = <DateInput
-            componentKey={optionKey}
+            parentKey={optionKey}
             key={option.key}
             compDef={option}
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
