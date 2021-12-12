@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { isItemGroupComponent, ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
+import { isItemGroupComponent, ItemComponent, ResponseItem } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getItemComponentByRole, getLocaleStringTextByCode } from '../../utils';
 import VerticalSlider from './VerticalSlider';
 

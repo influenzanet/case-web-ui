@@ -3,7 +3,7 @@ import SurveyView from "./SurveyView";
 import ExampleWeekly from '../../../../exampleContent/surveys/example_weekly.json';
 import ExampleIntake from '../../../../exampleContent/surveys/example_intake.json';
 import RTRPre from '../../../../exampleContent/surveys/rtr-pre.json';
-import { Survey } from "survey-engine/lib/data_types";
+import { Survey } from "survey-engine/data_types";
 
 import 'localStyles';
 

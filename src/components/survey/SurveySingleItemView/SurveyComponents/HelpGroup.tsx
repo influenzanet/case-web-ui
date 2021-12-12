@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemGroupComponent } from 'survey-engine/lib/data_types';
+import { ItemGroupComponent } from 'survey-engine/data_types';
 
 import TextViewComponent from './TextViewComponent';
 

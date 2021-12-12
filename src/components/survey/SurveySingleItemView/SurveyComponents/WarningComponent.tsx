@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemComponent } from 'survey-engine/lib/data_types';
+import { ItemComponent } from 'survey-engine/data_types';
 import { getClassName, getLocaleStringTextByCode } from '../utils';
 import clsx from 'clsx';
 

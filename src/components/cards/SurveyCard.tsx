@@ -6,7 +6,7 @@ import { AvatarConfig } from '../../types/avatars';
 import { getLocalizedString } from '../../utils/localize';
 import SurveyCardBtn from '../buttons/SurveyCardBtn';
 import styles from './SurveyCard.module.scss';
-import { LocalizedString } from 'survey-engine/lib/data_types';
+import { LocalizedString } from 'survey-engine/data_types';
 
 export interface SurveyCardDetails {
   studyName?: LocalizedString[];

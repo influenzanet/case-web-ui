@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ItemComponent, ResponseItem } from 'survey-engine/lib/data_types';
+import { ItemComponent, ResponseItem } from 'survey-engine/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import { nl, nlBE, fr, de, it } from 'date-fns/locale';

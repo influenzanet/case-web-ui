@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/lib/data_types';
+import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';

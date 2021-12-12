@@ -1,5 +1,5 @@
 import React from 'react';
-import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
+import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/data_types/survey-item-component';
 import TextViewComponent from './TextViewComponent';
 
 interface BulletListProps {

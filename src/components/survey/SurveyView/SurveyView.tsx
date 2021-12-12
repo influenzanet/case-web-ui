@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import { Survey, SurveySingleItemResponse, SurveyContext } from 'survey-engine/lib/data_types';
-import { SurveyEngineCore } from 'survey-engine/lib/engine';
+import { Survey, SurveySingleItemResponse, SurveyContext } from 'survey-engine/data_types';
+import { SurveyEngineCore } from 'survey-engine/engine';
 import { CustomSurveyResponseComponent } from '../SurveySingleItemView/ResponseComponent/ResponseComponent';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
 import SurveyProgress from './SurveyProgress/SurveyProgress';

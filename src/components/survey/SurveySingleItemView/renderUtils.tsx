@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { isItemGroupComponent, ItemComponent } from 'survey-engine/lib/data_types';
+import { isItemGroupComponent, ItemComponent } from 'survey-engine/data_types';
 import { getClassName, getLocaleStringTextByCode } from './utils';
 
 

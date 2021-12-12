@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
-import { ResponseItem } from 'survey-engine/lib/data_types/response';
+import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/data_types/survey-item-component';
+import { ResponseItem } from 'survey-engine/data_types/response';
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import TextInput from './TextInput';

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { ItemComponent } from 'survey-engine/lib/data_types';
+import { ItemComponent } from 'survey-engine/data_types';
 import { MarkdownRenderer } from '../../../displays';
 import { getClassName, getLocaleStringTextByCode } from '../utils';
 

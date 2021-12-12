@@ -1,9 +1,9 @@
 import React, { useState, Dispatch, SetStateAction, useRef } from 'react';
-import { SurveySingleItem } from 'survey-engine/lib/data_types';
-import { SurveyEngineCore } from 'survey-engine/lib/engine';
+import { SurveySingleItem } from 'survey-engine/data_types';
+import { SurveyEngineCore } from 'survey-engine/engine';
 import SurveySingleItemView from '../../SurveySingleItemView/SurveySingleItemView';
 
-import { checkSurveyItemsValidity, checkSurveyItemValidity } from 'survey-engine/lib/validation-checkers';
+import { checkSurveyItemsValidity, checkSurveyItemValidity } from 'survey-engine/validation-checkers';
 import clsx from 'clsx';
 import { getItemComponentByRole, getLocaleStringTextByCode } from '../../SurveySingleItemView/utils';
 import { CustomSurveyResponseComponent } from '../../SurveySingleItemView/ResponseComponent/ResponseComponent';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ItemComponent, ItemGroupComponent } from 'survey-engine/lib/data_types/survey-item-component';
-import { ResponseItem } from 'survey-engine/lib/data_types/response';
+import { ItemComponent, ItemGroupComponent } from 'survey-engine/data_types/survey-item-component';
+import { ResponseItem } from 'survey-engine/data_types/response';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import LikertScale from './LikertScale';
 import { CommonResponseComponentProps } from '../../utils';

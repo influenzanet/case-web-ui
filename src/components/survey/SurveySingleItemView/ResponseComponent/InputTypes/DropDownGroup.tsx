@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { useState, useEffect } from 'react';
-import { ResponseItem, ItemGroupComponent } from 'survey-engine/lib/data_types';
+import { ResponseItem, ItemGroupComponent } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getLocaleStringTextByCode } from '../../utils';
 
 

@@ -1,4 +1,4 @@
-import { LocalizedObject, LocalizedString } from "survey-engine/lib/data_types";
+import { LocalizedObject, LocalizedString } from "survey-engine/data_types";
 
 export const getLocalizedString = (translations: LocalizedObject[] | undefined, code: string): string | undefined => {
   if (!translations) { return; }

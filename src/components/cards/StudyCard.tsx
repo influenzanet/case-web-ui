@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import { LocalizedString } from 'survey-engine/lib/data_types';
+import { LocalizedString } from 'survey-engine/data_types';
 import { AvatarConfig } from '../../types/avatars';
 import { Profile } from '../../types/profile';
 import { getLocalizedString } from '../../utils/localize';

@@ -12,6 +12,7 @@
 - Accordion list component accepts itemKey property, and uses this to generate item keys. By setting the `itemKey`, more than one accordion list on the page can be used.
 - Add shadow to modal (dialog) border.
 - Cloze question can include line breaks with role `lineBreak`.
+- Updated project dependencies. From this, important is especially the survey `survey-engine`.
 
 
 ## 1.6.2 - 2021-11-22

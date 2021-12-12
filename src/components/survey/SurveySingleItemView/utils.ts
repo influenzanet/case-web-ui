@@ -1,4 +1,4 @@
-import { ItemComponent, LocalizedString, LocalizedObject, ResponseItem } from "survey-engine/lib/data_types";
+import { ItemComponent, LocalizedString, LocalizedObject, ResponseItem } from "survey-engine/data_types";
 
 export interface CommonResponseComponentProps {
   parentKey: string;

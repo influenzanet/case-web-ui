@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/lib/data_types';
+import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem } from 'survey-engine/data_types';
 import { renderFormattedContent } from '../../renderUtils';
 import MarkdownComponent from '../../SurveyComponents/MarkdownComponent';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';

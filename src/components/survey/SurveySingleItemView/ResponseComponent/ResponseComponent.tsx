@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ItemComponent, ResponseItem, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/lib/data_types';
+import { ItemComponent, ResponseItem, isItemGroupComponent, ItemGroupComponent } from 'survey-engine/data_types';
 import SingleChoiceGroup from './InputTypes/SingleChoiceGroup';
 import MultipleChoiceGroup from './InputTypes/MultipleChoiceGroup';
 import DropDownGroup from './InputTypes/DropDownGroup';
