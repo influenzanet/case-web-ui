@@ -10,7 +10,7 @@ interface DialogProps {
   color?: 'primary' | 'danger' | 'warning' | 'success';
   size?: 'sm' | 'lg' | 'xl';
   fullScreenFrom?: 'sm-down' | 'md-down' | 'lg-down' | 'xl-down' | 'xxl-down';
-  onClose: () => void;
+  onClose?: () => void;
   ariaLabelledBy: string;
   ariaDescribedBy?: string;
   dialogPaddingXClass?: string;
@@ -37,7 +37,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
     >
       {props.title}
     </h4>
-    <div className="ps-2">
+    {props.onClose !== undefined ? <div className="ps-2">
       <button type="button"
         onClick={props.onClose}
         className={clsx(
@@ -46,7 +46,8 @@ const Dialog: React.FC<DialogProps> = (props) => {
             "btn-close-white": isTextColorWhite
           }
         )} aria-label="Exit"></button>
-    </div>
+    </div> : null}
+
   </React.Fragment>
 
   const dialogHeader = <React.Fragment>

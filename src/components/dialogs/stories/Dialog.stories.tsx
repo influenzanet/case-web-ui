@@ -43,6 +43,19 @@ Width.args = {
   dialogPaddingXClass: 'px-2'
 }
 
+export const WithoutOnClose = Template.bind({});
+WithoutOnClose.args = {
+  open: true,
+  title: "Dialog title",
+  color: 'primary',
+  ariaLabelledBy: 'Test dialog',
+  ariaDescribedBy: undefined,
+  children: <React.Fragment>
+    <div style={{ minHeight: 300 }}></div>
+  </React.Fragment>,
+  dialogPaddingXClass: 'px-2'
+}
+
 export const Warning = Template.bind({});
 Warning.args = {
   open: true,
