@@ -74,6 +74,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
       contentClassName="border-0 shadow"
       size={props.size}
       centered
+      animation={false}
       fullscreen={props.fullScreenFrom ? props.fullScreenFrom : 'sm-down'}
     >
       {dialogHeader}
