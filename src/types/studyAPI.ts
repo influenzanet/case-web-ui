@@ -46,6 +46,7 @@ export interface StudyInfos {
   };
   stats: {
     participantCount: number;
+    tempParticipantCount: number;
     responseCount: number;
   }
 }
