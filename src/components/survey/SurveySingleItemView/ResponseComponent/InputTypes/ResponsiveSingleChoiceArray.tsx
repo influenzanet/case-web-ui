@@ -140,6 +140,9 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     const rows = props.compDef.items;
     return <React.Fragment>
       {rows.map((item, index) => {
+        if (item.displayCondition === false) {
+          return null;
+        }
         switch (item.role) {
           case 'row':
             const rowKey = props.compDef.key + '.' + item.key;
@@ -284,6 +287,9 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
 
     return <React.Fragment>
       {rows.map((item, index) => {
+        if (item.displayCondition === false) {
+          return null;
+        }
         switch (item.role) {
           case 'row':
             return renderHorizontalRow(item, options, index === rows.length - 1);
@@ -337,6 +343,9 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
       <tbody>
         {props.compDef.items.map(item => {
           let rowContent = <td colSpan={options.items.length + 1}>Unknown row type: {item.role}</td>;
+          if (item.displayCondition === false) {
+            return null;
+          }
           switch (item.role) {
             case 'row':
               rowContent = <React.Fragment>

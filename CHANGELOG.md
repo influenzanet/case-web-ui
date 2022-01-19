@@ -14,6 +14,7 @@
 - Cloze question can include line breaks with role `lineBreak`.
 - Updated project dependencies. From this, important is especially the survey `survey-engine`.
 - Dialog prop "onClose" is optional. If no onClose is provided, the closing icon is hidden.
+- Responsive Single Choice array and Bipolar likert scale array rows support displayCondition.
 
 
 ## 1.6.2 - 2021-11-22

@@ -155,6 +155,9 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     const rows = props.compDef.items.filter(item => item.role === "row");
     return <React.Fragment>
       {rows.map((item, index) => {
+        if (item.displayCondition === false) {
+          return null;
+        }
         return getSingleVerticalItem(item, options, index === 0, index === rows.length - 1);
       })}
     </React.Fragment>
@@ -253,6 +256,9 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     const rows = props.compDef.items.filter(item => item.role === "row");
     return <React.Fragment>
       {rows.map((item, index) => {
+        if (item.displayCondition === false) {
+          return null;
+        }
         const labelOnTop = props.compDef.style?.find(s => s.key === 'labelRowPosition')?.value === 'top';
         const labelRowMaxLabelWidth = props.compDef.style?.find(s => s.key === 'labelRowMaxLabelWidth')?.value;
         return getSingleItemWithLabelRow(item, options, index === 0, index === rows.length - 1, labelOnTop, labelRowMaxLabelWidth);
@@ -285,7 +291,9 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
       <tbody>
         {props.compDef.items.map(item => {
           let rowContent = <td colSpan={options.items.length + 1}>Unknown row type: {item.role}</td>;
-
+          if (item.displayCondition === false) {
+            return null;
+          }
           switch (item.role) {
             case 'row':
               if (!isItemGroupComponent(item)) {
