@@ -70,34 +70,44 @@ const Template = (args) => (
 
 export const WithoutStudyName = Template.bind({});
 WithoutStudyName.args = {
+  reportID: 'id',
   cardInfos: {
     reportName: 'TestReport',
     subtitle: '20.12.2021 11:11',
   },
   avatars: avatarList,
-  onClick: (studyKey: string, surveyKey: string, profileId: string) => { },
+  onClick: (reportID: string) => { },
 }
 
 export const Withimage = Template.bind({});
 Withimage.args = {
+  reportID: 'id',
   cardInfos: {
     reportName: 'TestReport',
     studyName: 'TestStudy',
     cardIcon: 'static-content/images/placeholder_image.png',
     subtitle: '20.12.2021 11:11',
-    summary: 'Lorem **ipsum** dolor sit amet, consectetur adipiscing elit. Vel enim id justo, tempor amet rhoncus facilisi. Semper turpis nulla egestas diam non sed.'
+    summary: 'Lorem **ipsum** dolor sit amet, consectetur adipiscing elit. Vel enim id justo, tempor amet rhoncus facilisi. Semper turpis nulla egestas diam non sed.',
+    profile: {
+      id: 'id',
+      alias: 'Profile name',
+      avatarId: 'flamingo'
+    },
+    actionBtnText: 'more info',
   },
   avatars: avatarList,
-  onClick: (studyKey: string, surveyKey: string, profileId: string) => { },
+  onClick: (reportID: string) => { },
 }
 
 export const WithBgClassName = Template.bind({});
 WithBgClassName.args = {
+  reportID: 'id',
   bgClassNameOverride: 'bg-grey-2',
   cardInfos: {
     reportName: 'TestReport',
     studyName: 'TestStudy',
     subtitle: '20.12.2021 11:11',
     summary: '*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vel enim id justo, tempor amet rhoncus facilisi. Semper turpis nulla egestas diam non sed.*'
-  }
+  },
+  onClick: (reportID: string) => { },
 }
