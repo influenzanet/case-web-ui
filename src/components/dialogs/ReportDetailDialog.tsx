@@ -17,7 +17,6 @@ interface ReportDetailDialogProps {
     studyName?: string;
     cardIcon?: string;
     subtitle: string;
-    summary?: string;
     profile?: Profile;
     data: Array<{
       label?: string;

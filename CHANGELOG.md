@@ -6,6 +6,7 @@
 
 - New component called `ActionCard` - a configurable card with hover effect, clickable, can include image on top or on the left. Image is attached as background image to a div, with configurable width, height (also min/max) and and background postion and size. Optionally the image can be included as a normal `img` - by using the prop `as`.
 - Survey renderer accepts an array of custom defined response components: `customResponseComponents: Array<CustomSurveyResponseComponent>;`. These can be used to extend the survey question types.
+- New components for report history / report card / report detail dialog.
 
 ### Changed
 
