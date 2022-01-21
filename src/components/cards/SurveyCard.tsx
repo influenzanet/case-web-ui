@@ -32,11 +32,9 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
     className={clsx("p-2 my-2",
       styles.card,
       {
-        "bg-primary text-white": props.details.category === 'prio',
+        "bg-primary text-white": ['prio', 'immediate'].includes(props.details.category),
         "bg-secondary text-body": ['normal'].includes(props.details.category),
         "bg-grey-1": props.details.category === 'optional',
-        //"text-white": props.category === 'prio',
-        //[styles.optional]: props.category === 'optional',
       }
     )}
     onClick={() => {
@@ -48,7 +46,7 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
     <h5 className="fw-bold">
       {props.details.studyName ?
         <span className={clsx({
-          'text-secondary': 'prio' === props.details.category,
+          'text-secondary': ['prio', 'immediate'].includes(props.details.category),
           'text-grey-5': ['optional', 'normal'].includes(props.details.category),
         })}>
           {getLocalizedString(props.details.studyName, selectedLanguage)}
@@ -60,7 +58,7 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
       <span className={
         clsx("ms-1 fs-6 fw-light", {
           "text-primary": props.details.category === 'normal',
-          "text-secondary": props.details.category === 'prio',
+          "text-secondary": ['prio', 'immediate'].includes(props.details.category),
           "text-grey-7": props.details.category === 'optional',
         })
       }>

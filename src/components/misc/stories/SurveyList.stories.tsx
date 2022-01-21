@@ -101,6 +101,28 @@ export const WithStudyNames = () =>
       },
       {
         studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
+        surveyKey: 'surveyKeyImmediate',
+        studyKey: 'studyKey',
+        category: 'immediate',
+        validUntil: undefined,
+        profiles: [{
+          id: 'test',
+          avatarId: 'default',
+          consentConfirmedAt: 1,
+          createdAt: 1,
+          mainProfile: true,
+          alias: 'Test Profile'
+        }],
+        surveyInfos: {
+          surveyKey: 'surveyKeyImmediate',
+          studyKey: 'studyKey',
+          name: [{ code: 'en', parts: [{ str: 'Survey Name' }] }],
+          description: [{ code: 'en', parts: [{ str: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere pariatur, ut veniam ad eaque, sint, natus error architecto eligendi nihil ex repellendus. Inventore, quasi consequatur sunt consequuntur temporibus eveniet repellendus?' }] }],
+          typicalDuration: [{ code: 'en', parts: [{ str: '5-7 min.' }] }],
+        },
+      },
+      {
+        studyName: [{ code: 'en', parts: [{ str: 'Study Name' }] }],
         surveyKey: 'surveyKey2',
         studyKey: 'studyKey',
         category: 'normal',
