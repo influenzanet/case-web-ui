@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getYear, format, max, min, eachMonthOfInterval, startOfYear, getMonth, endOfYear } from 'date-fns';
-import { dateLocales } from './DateInput';
+// import { dateLocales } from './DateInput';
 
 
 interface YearMonthSelectorProps {
@@ -10,6 +10,7 @@ interface YearMonthSelectorProps {
   maxDate: Date;
   onlyYear?: boolean;
   languageCode: string;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 
@@ -52,7 +53,7 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
     end: endOfYear(new Date(referenceYear, 0, 2)),
   }).map(m => {
     return {
-      label: format(m, 'MMMM', { locale: dateLocales.find(l => l.code === props.languageCode)?.locale }),
+      label: format(m, 'MMMM', { locale: props.dateLocales?.find(l => l.code === props.languageCode)?.locale }),
       value: getMonth(m)
     }
   });
@@ -100,7 +101,7 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
         {yearSelector}
       </div>
 
-      { selectedYear && !props.onlyYear ?
+      {selectedYear && !props.onlyYear ?
         <div className="col-auto">
           {monthSelector}
         </div> : null}

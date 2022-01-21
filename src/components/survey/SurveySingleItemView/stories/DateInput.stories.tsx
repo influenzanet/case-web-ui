@@ -1,11 +1,25 @@
 import React from "react";
 import SurveySingleItemView from "../SurveySingleItemView";
+import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 
 import 'localStyles';
+import { registerLocale } from "react-datepicker";
 
 export default {
   title: "Survey Item Types/DateInput"
 };
+
+const dateLocales = [
+  { code: 'nl', locale: nl, format: 'dd-MM-yyyy' },
+  { code: 'nl-be', locale: nlBE, format: 'dd.MM.yyyy' },
+  { code: 'fr-be', locale: fr, format: 'dd.MM.yyyy' },
+  { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },
+  { code: 'it', locale: it, format: 'dd/MM/yyyy' },
+];
+
+dateLocales.forEach(loc => {
+  registerLocale(loc.code, loc.locale);
+});
 
 const invalidWarning = "Please check your response";
 
@@ -31,8 +45,9 @@ export const Datepicker = () => <SurveySingleItemView
   responsePrefill={undefined}
   responseChanged={(response) => console.log(response)}
   showInvalid={false}
-  languageCode="en"
+  languageCode="nl"
   invalidWarning={invalidWarning}
+  dateLocales={dateLocales}
 />
 
 export const YearSelector = () => <SurveySingleItemView
@@ -59,6 +74,7 @@ export const YearSelector = () => <SurveySingleItemView
   showInvalid={false}
   languageCode="en"
   invalidWarning={invalidWarning}
+  dateLocales={dateLocales}
 />
 
 export const YearMonthSelector = () => <SurveySingleItemView
@@ -85,4 +101,5 @@ export const YearMonthSelector = () => <SurveySingleItemView
   showInvalid={false}
   languageCode="en"
   invalidWarning={invalidWarning}
+  dateLocales={dateLocales}
 />

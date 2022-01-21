@@ -33,6 +33,7 @@ interface ResponseComponentProps {
   isRequired: boolean;
   showOptionKey?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 export interface CustomSurveyResponseComponent {
@@ -187,6 +188,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
             openCalendar={undefined}
+            dateLocales={props.dateLocales}
           />
         case 'sliderNumeric':
           return <SliderNumeric

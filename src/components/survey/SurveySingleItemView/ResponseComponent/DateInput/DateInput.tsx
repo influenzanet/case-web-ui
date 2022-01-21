@@ -1,29 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ItemComponent, ResponseItem } from 'survey-engine/data_types';
-import DatePicker, { registerLocale } from "react-datepicker";
+import { ResponseItem } from 'survey-engine/data_types';
+import DatePicker from "react-datepicker";
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
-import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { addYears, getUnixTime } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
 import clsx from 'clsx';
 
-export const dateLocales = [
-  { code: 'nl', locale: nl, format: 'dd-MM-yyyy' },
-  { code: 'nl-be', locale: nlBE, format: 'dd.MM.yyyy' },
-  { code: 'fr-be', locale: fr, format: 'dd.MM.yyyy' },
-  { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },
-  { code: 'it', locale: it, format: 'dd/MM/yyyy' },
-];
-
-dateLocales.forEach(loc => {
-  registerLocale(loc.code, loc.locale);
-});
-
 
 interface DateInputProps extends CommonResponseComponentProps {
   openCalendar: boolean | undefined;
   defaultClassName?: string;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 const DateInput: React.FC<DateInputProps> = (props) => {
@@ -95,7 +83,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 ms-3 ">
           <span className="material-icons ">arrow_back</span>
         </button>
-        <span>{format(date, 'MMMM yyyy', { locale: dateLocales.find(loc => loc.code === props.languageCode)?.locale })}</span>
+        <span>{format(date, 'MMMM yyyy', { locale: props.dateLocales?.find(loc => loc.code === props.languageCode)?.locale })}</span>
         <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 me-3">
           <span className="material-icons ">arrow_forward</span>
         </button>
@@ -112,6 +100,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         maxDate={maxDate}
         onChange={handleDateChange}
         languageCode={props.languageCode}
+        dateLocales={props.dateLocales}
       />
       break;
     case 'Y':
@@ -122,6 +111,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         onlyYear={true}
         onChange={handleDateChange}
         languageCode={props.languageCode}
+        dateLocales={props.dateLocales}
       />
       break;
     default:
@@ -138,7 +128,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           selected={selectedDate}
           locale={props.languageCode}
           onChange={(date) => handleDateChange(date ? date as Date : undefined)}
-          dateFormat={dateLocales.find(loc => loc.code === props.languageCode)?.format}
+          dateFormat={props.dateLocales?.find(loc => loc.code === props.languageCode)?.format}
           placeholderText={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
           minDate={props.compDef.properties?.min ? new Date((props.compDef.properties?.min as number) * 1000) : undefined}
           maxDate={props.compDef.properties?.max ? new Date((props.compDef.properties?.max as number) * 1000) : undefined}

@@ -20,9 +20,11 @@ interface SurveyViewProps {
   hideBackButton?: boolean;
   showKeys?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
   // init with temporary loaded results
   // save temporary result
 }
+
 
 const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const [surveyEngine, setSurveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.survey, props.context, props.prefills));

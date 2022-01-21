@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.8.0 - 2022-01-21
+
+### BREAKING-CHANGES
+
+- Survey View needs to receive date-fns locales as a prop. These locales needs to be registered outside of the library, from the host app.
+
+
 ## 1.7.0 - 2022-01-21
 
 ### Added

@@ -20,6 +20,7 @@ interface SurveySingleItemViewProps {
   invalidWarning: string;
   showKeys?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 
@@ -75,6 +76,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                 compDef={component}
                 prefill={props.responsePrefill}
                 isRequired={requiredItem ? true : false}
+                dateLocales={props.dateLocales}
                 responseChanged={(response) => {
                   console.log('new response set', response)
                   setTouched(true);
