@@ -3,7 +3,6 @@ import SurveySingleItemView from "../SurveySingleItemView";
 import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 
 import 'localStyles';
-import { registerLocale } from "react-datepicker";
 
 export default {
   title: "Survey Item Types/DateInput"
@@ -16,10 +15,6 @@ const dateLocales = [
   { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },
   { code: 'it', locale: it, format: 'dd/MM/yyyy' },
 ];
-
-dateLocales.forEach(loc => {
-  registerLocale(loc.code, loc.locale);
-});
 
 const invalidWarning = "Please check your response";
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.1 - 2022-01-21
+
+- Run locale registration for react-datepicker, when a component is initialized.
+
 ## 1.8.0 - 2022-01-21
 
 ### BREAKING-CHANGES

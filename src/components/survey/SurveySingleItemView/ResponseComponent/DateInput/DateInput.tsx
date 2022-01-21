@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import { format } from 'date-fns';
 import { addYears, getUnixTime } from 'date-fns';
@@ -22,6 +22,12 @@ const DateInput: React.FC<DateInputProps> = (props) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
     props.prefill && props.prefill.value ? new Date(parseInt(props.prefill.value) * 1000) : undefined,
   );
+
+  useEffect(() => {
+    props.dateLocales?.forEach(loc => {
+      registerLocale(loc.code, loc.locale);
+    })
+  }, []);
 
   useEffect(() => {
     if (touched) {
