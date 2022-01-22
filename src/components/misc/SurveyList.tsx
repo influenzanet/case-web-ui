@@ -44,6 +44,7 @@ const SurveyList: React.FC<SurveyListProps> = (props) => {
         showBtn={props.texts.optionalSurveys.showBtn}
         surveys={props.optionalSurveys}
         openSurvey={props.openSurvey}
+        hideTopBorder={true}
         avatars={props.avatars}
         selectedLanguage={props.selectedLanguage}
       />

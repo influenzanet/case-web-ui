@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.8.2 - 2022-01-22
+
+### Changed
+
+- Survey list header contains one top border, and this can be hidden. This change is to make the page less cluttered for use cases when report list or other article based content is displayed.
+
 ## 1.8.1 - 2022-01-21
 
 - Run locale registration for react-datepicker, when a component is initialized.

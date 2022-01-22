@@ -31,7 +31,7 @@ const RequiredSurveys: React.FC<RequiredSurveysProps> = (props) => {
   const hasSurveys = props.surveys.length > 0;
   return (
     <React.Fragment>
-      <div className="border-primary border-top-2 border-bottom-2 py-2 mb-2">
+      <div className="border-primary border-top-2 pt-2 mb-2">
         <h2 className="m-0">
           {props.title + ':'}
           <span className="text-primary ms-1">{props.surveys.length}</span>

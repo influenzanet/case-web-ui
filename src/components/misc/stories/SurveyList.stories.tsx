@@ -178,7 +178,7 @@ export const WithoutStudyNames = () => <SurveyList
   texts={{
     requiredSurveys: {
       title: 'Required Surveys',
-      info: 'Info box for required surveys',
+      info: '',
       successMsg: 'All surveys has been answered.',
     },
     optionalSurveys: {

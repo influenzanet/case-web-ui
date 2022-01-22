@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { useState } from 'react';
 import { AvatarConfig } from '../../types/avatars';
 import SurveyCard, { SurveyCardDetails } from '../cards/SurveyCard';
@@ -9,6 +10,7 @@ interface OptionalSurveysProps {
   showBtn: string;
   info: string;
   surveys: Array<SurveyCardDetails>;
+  hideTopBorder?: boolean;
   selectedLanguage: string;
   avatars: Array<AvatarConfig>;
   openSurvey: (studyKey: string, surveyKey: string, profileId: string) => void;
@@ -28,7 +30,12 @@ const OptionalSurveys: React.FC<OptionalSurveysProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="border-top-2 border-primary mt-2 pt-2">
+      <div className={clsx(
+        "mt-2",
+        {
+          "border-top-2 border-primary pt-2": !props.hideTopBorder
+        }
+      )}>
         {props.surveys.length > 0 ?
           <button
             className="btn btn-secondary text-primary d-flex align-items-center text-start"
@@ -44,7 +51,7 @@ const OptionalSurveys: React.FC<OptionalSurveysProps> = (props) => {
 
       {
         showOptional ? <div>
-          <div className="border-primary  border-bottom-2 py-2 mb-2">
+          <div className="pt-2 mb-2">
             <h2 className="m-0">
               {props.title + ':'}
               <span className="text-dark ms-1">{props.surveys.length}</span>

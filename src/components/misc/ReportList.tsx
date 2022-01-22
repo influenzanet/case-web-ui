@@ -43,7 +43,7 @@ const ReportList: React.FC<ReportListProps> = (props) => {
 
   return (
     <div className={props.className}>
-      <div className="border-primary border-top-2 border-bottom-2 py-2 mb-2">
+      <div className="border-primary border-top-2 pt-2 mb-2">
         <h2 className="m-0">
           {props.texts.title}
         </h2>
