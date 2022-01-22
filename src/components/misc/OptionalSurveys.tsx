@@ -30,13 +30,14 @@ const OptionalSurveys: React.FC<OptionalSurveysProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className={clsx(
-        "mt-2",
-        {
-          "border-top-2 border-primary pt-2": !props.hideTopBorder
-        }
-      )}>
-        {props.surveys.length > 0 ?
+      {props.surveys.length > 0 ?
+        <div className={clsx(
+          "mt-3",
+          {
+            "border-top-2 border-primary pt-2": !props.hideTopBorder
+          }
+        )}>
+
           <button
             className="btn btn-secondary text-primary d-flex align-items-center text-start"
             onClick={() => setShowOptional(prev => !prev)}
@@ -46,9 +47,8 @@ const OptionalSurveys: React.FC<OptionalSurveysProps> = (props) => {
               {showOptional ? <ChevronUp /> : <ChevronDown />}
             </span>
           </button>
-          : null}
-      </div>
 
+        </div> : null}
       {
         showOptional ? <div>
           <div className="pt-2 mb-2">
