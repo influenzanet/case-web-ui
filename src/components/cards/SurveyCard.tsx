@@ -47,7 +47,7 @@ const SurveyCard: React.FC<SurveyCardProps> = (props) => {
       {props.details.studyName ?
         <span className={clsx({
           'text-secondary': ['prio', 'immediate'].includes(props.details.category),
-          'text-grey-5': ['optional', 'normal'].includes(props.details.category),
+          'text-grey-6': ['optional', 'normal'].includes(props.details.category),
         })}>
           {getLocalizedString(props.details.studyName, selectedLanguage)}
           {' - '}

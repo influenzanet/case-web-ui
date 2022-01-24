@@ -61,11 +61,11 @@ const ReportDetailDialog: React.FC<ReportDetailDialogProps> = (props) => {
             {props.reportInfos.reportName}
           </span>
           {props.reportInfos.studyName ?
-            <span className="fw-bold text-grey-5">
+            <span className="fw-bold report-card-subtitle">
               {' - '}{props.reportInfos.studyName}
             </span> : null}
         </h5>
-        <h6 className='text-grey-6'>
+        <h6 className='report-card-subtitle'>
           {props.reportInfos.subtitle}
         </h6>
         {props.reportInfos.profile ?

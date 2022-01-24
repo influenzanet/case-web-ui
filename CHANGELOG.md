@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.8.4 - 2022-01-24
+
+Color and font-size optimisations for accessibility.
+
+## 1.8.3 - 2022-01-22
+
+### Changed
+
+- Fix optional survey list's top spacing and border behaviour
+
 ## 1.8.2 - 2022-01-22
 
 ### Changed

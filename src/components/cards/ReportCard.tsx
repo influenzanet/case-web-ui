@@ -43,11 +43,11 @@ const ReportCard: React.FC<ReportCardProps> = (props) => {
             {props.cardInfos.reportName}
           </span>
           {props.cardInfos.studyName ?
-            <span className="fw-bold text-grey-5">
+            <span className="fw-bold report-card-subtitle">
               {' - '}{props.cardInfos.studyName}
             </span> : null}
         </h5>
-        <h6 className='text-grey-6'>
+        <h6 className='report-card-subtitle'>
           {props.cardInfos.subtitle}
         </h6>
         <div>

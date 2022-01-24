@@ -93,7 +93,7 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
           }
         )}>
           {props.footerText ? <span className={clsx({
-            "text-grey-5": props.bodyBgImage === undefined,
+            "text-grey-7": props.bodyBgImage === undefined,
             "text-white": props.bodyBgImage !== undefined
           })}>
             {props.footerText}
