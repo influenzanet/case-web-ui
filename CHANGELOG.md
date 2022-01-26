@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.5 - 2022-01-26
+
+Action card images can contain copyright notice.
+
 ## 1.8.4 - 2022-01-24
 
 Color and font-size optimisations for accessibility.

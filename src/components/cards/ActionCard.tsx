@@ -9,6 +9,7 @@ interface ActionCardProps {
     as?: 'div' | 'img'; // defaults to 'div'
     alt?: string;
     url: string;
+    copyrightNotice?: string;
     className?: string;
     backgroundPosition?: string;
     backgroundSize?: string;
@@ -38,11 +39,17 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
       return null;
     }
     if (props.image.as === 'img') {
-      return <img className="w-100" src={getExternalOrLocalContentURL(props.image.url)} alt={props.image.alt} />
+      return <div className='position-relative'>
+        <img className="w-100" src={getExternalOrLocalContentURL(props.image.url)} alt={props.image.alt} />{props.image.copyrightNotice ? <span className='position-absolute px-1a py-a text-white bottom-0 end-0 m-1a fs-small'
+          style={{
+            backgroundColor: 'rgba(32,32,32,0.5)'
+          }}
+        >{props.image.copyrightNotice}</span> : null}
+      </div>
     }
 
     return <div
-      className={clsx("flex-grow-1", props.image.className)}
+      className={clsx("flex-grow-1 position-relative", props.image.className)}
       style={{
         height: props.image.height,
         maxHeight: props.image.maxHeight,
@@ -53,7 +60,13 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
         backgroundImage: `url(${getExternalOrLocalContentURL(props.image.url)})`,
         backgroundPosition: props.image.backgroundPosition ? props.image.backgroundPosition : 'center',
         backgroundSize: props.image.backgroundSize ? props.image.backgroundSize : 'cover',
-      }} />
+      }}>
+      {props.image.copyrightNotice ? <span className='position-absolute px-1a py-a text-white bottom-0 end-0 m-1a fs-small'
+        style={{
+          backgroundColor: 'rgba(32,32,32,0.5)'
+        }}
+      >{props.image.copyrightNotice}</span> : null}
+    </div>
   }
 
   return (
