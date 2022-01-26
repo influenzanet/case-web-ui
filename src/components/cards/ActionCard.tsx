@@ -10,6 +10,7 @@ interface ActionCardProps {
     alt?: string;
     url: string;
     copyrightNotice?: string;
+    copyrightNoticeXAlignment?: 'start' | 'end'
     className?: string;
     backgroundPosition?: string;
     backgroundSize?: string;
@@ -38,13 +39,23 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
     if (!props.image) {
       return null;
     }
+    const copyrightNotice = props.image.copyrightNotice ? <span className={clsx(
+      'position-absolute px-1a py-a text-white bottom-0 m-1a fs-small',
+      {
+        'start-0': props.image.copyrightNoticeXAlignment === 'start',
+        'end-0': props.image.copyrightNoticeXAlignment !== 'start',
+      }
+    )}
+      style={{
+        backgroundColor: 'rgba(32,32,32,0.5)'
+      }}
+    >{props.image.copyrightNotice}</span> : null
+
+
     if (props.image.as === 'img') {
       return <div className='position-relative'>
-        <img className="w-100" src={getExternalOrLocalContentURL(props.image.url)} alt={props.image.alt} />{props.image.copyrightNotice ? <span className='position-absolute px-1a py-a text-white bottom-0 end-0 m-1a fs-small'
-          style={{
-            backgroundColor: 'rgba(32,32,32,0.5)'
-          }}
-        >{props.image.copyrightNotice}</span> : null}
+        <img className="w-100" src={getExternalOrLocalContentURL(props.image.url)} alt={props.image.alt} />
+        {copyrightNotice}
       </div>
     }
 
@@ -61,11 +72,7 @@ const ActionCard: React.FC<ActionCardProps> = (props) => {
         backgroundPosition: props.image.backgroundPosition ? props.image.backgroundPosition : 'center',
         backgroundSize: props.image.backgroundSize ? props.image.backgroundSize : 'cover',
       }}>
-      {props.image.copyrightNotice ? <span className='position-absolute px-1a py-a text-white bottom-0 end-0 m-1a fs-small'
-        style={{
-          backgroundColor: 'rgba(32,32,32,0.5)'
-        }}
-      >{props.image.copyrightNotice}</span> : null}
+      {copyrightNotice}
     </div>
   }
 

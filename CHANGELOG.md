@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.6 - 2022-01-26
+
+Action card images' copyright notice can be aligned right.
+
 ## 1.8.5 - 2022-01-26
 
 Action card images can contain copyright notice.

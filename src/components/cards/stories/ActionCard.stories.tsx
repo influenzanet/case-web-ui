@@ -43,6 +43,7 @@ AsImg.args = {
     url: '/images/placeholder_image.png',
     height: 200,
     copyrightNotice: '© coneno',
+    copyrightNoticeXAlignment: 'start',
   },
   title: 'Card Title',
   body: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi, minus eveniet? Eveniet natus pariatur, nam voluptates voluptas soluta magni dignissimos alias laborum fugit culpa, consequatur modi quas eius provident aperiam.',
