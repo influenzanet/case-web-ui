@@ -120,7 +120,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           labelComponent = <label htmlFor={optionKey}
             className="flex-grow-1 cursor-pointer"
           >
-            {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
+            {renderFormattedContent(option, props.languageCode, 'cursor-pointer', props.dateLocales)}
           </label>
           break;
         case 'cloze':
@@ -132,6 +132,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
             disabled={isDisabled}
+            dateLocales={props.dateLocales}
           />;
           break;
       }
@@ -154,6 +155,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
               responseChanged={setResponseForKey(option.key)}
               updateDelay={5}
               disabled={isDisabled}
+              dateLocales={props.dateLocales}
             />;
           break;
         case 'numberInput':
@@ -166,6 +168,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
               languageCode={props.languageCode}
               responseChanged={setResponseForKey(option.key)}
               ignoreClassName={optionClassName !== undefined}
+              dateLocales={props.dateLocales}
             />;
           break;
         case 'dateInput':
@@ -178,6 +181,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             responseChanged={setResponseForKey(option.key)}
             openCalendar={getSelectedKey() === option.key}
             disabled={isDisabled}
+            dateLocales={props.dateLocales}
           />;
           break;
         default:

@@ -11,7 +11,6 @@ import clsx from 'clsx';
 interface DateInputProps extends CommonResponseComponentProps {
   openCalendar: boolean | undefined;
   defaultClassName?: string;
-  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 const DateInput: React.FC<DateInputProps> = (props) => {

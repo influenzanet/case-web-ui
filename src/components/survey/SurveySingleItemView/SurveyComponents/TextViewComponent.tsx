@@ -2,11 +2,13 @@ import React from 'react';
 import { isItemGroupComponent, ItemComponent } from 'survey-engine/data_types';
 import { getClassName, getLocaleStringTextByCode } from '../utils';
 import clsx from 'clsx';
+import { renderFormattedContent } from '../renderUtils';
 
 interface TextViewComponentProps {
   compDef: ItemComponent;
   languageCode: string;
   className?: string;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 const supportedVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'span'] as const;
@@ -44,18 +46,20 @@ const TextViewComponent: React.FC<TextViewComponentProps> = (props) => {
     getClassName(props.compDef.style)
   );
 
+  let content = renderFormattedContent(props.compDef, props.languageCode, undefined, props.dateLocales ? props.dateLocales : []);
 
-  const content = isItemGroupComponent(props.compDef) ?
-    <React.Fragment>
-      {props.compDef.items.map((part, index) =>
-        <span
-          key={index.toFixed()}
-          className={getClassName(part.style)}
-        >{getLocaleStringTextByCode(part.content, props.languageCode)}</span>
-      )}
-    </React.Fragment>
-    : getLocaleStringTextByCode(props.compDef.content, props.languageCode);
-
+  /*
+const content = isItemGroupComponent(props.compDef) ?
+  <React.Fragment>
+    {props.compDef.items.map((part, index) =>
+      <span
+        key={index.toFixed()}
+        className={getClassName(part.style)}
+      >{getLocaleStringTextByCode(part.content, props.languageCode)}</span>
+    )}
+  </React.Fragment>
+  : getLocaleStringTextByCode(props.compDef.content, props.languageCode);
+*/
   const TextTag = variant ? variant : 'p';
 
   return (<TextTag className={className}>

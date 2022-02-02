@@ -30,6 +30,9 @@ export const Example = () => <SurveySingleItemView
                     { key: '1', role: 'text', content: [{ code: 'en', resolvedText: 'Option 1' }] },
                     { key: '2', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components' }], style: [{ key: 'className', value: 'fw-bold text-decoration-underline' },] },
                     { key: '3', role: 'text', content: [{ code: 'en', resolvedText: ' with styled components ' }], style: [{ key: 'className', value: '' },] },
+                    {
+                      key: "4", role: 'dateDisplay', content: [{ code: 'en', parts: [1151616515] }], style: [{ key: 'className', value: 'text-primary' }, { key: 'dateFormat', value: 'EEEE (dd.MM.yy)' }]
+                    },
                   ]
                 },
                 { key: '1b', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },

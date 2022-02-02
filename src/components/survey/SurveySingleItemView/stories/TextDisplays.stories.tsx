@@ -2,6 +2,14 @@ import React from "react";
 import SurveySingleItemView from "../SurveySingleItemView";
 
 import 'localStyles';
+import { nl, nlBE, fr, de, it } from 'date-fns/locale';
+const dateLocales = [
+  { code: 'nl', locale: nl, format: 'dd-MM-yyyy' },
+  { code: 'nl-be', locale: nlBE, format: 'dd.MM.yyyy' },
+  { code: 'fr-be', locale: fr, format: 'dd.MM.yyyy' },
+  { code: 'de-be', locale: de, format: 'dd.MM.yyyy' },
+  { code: 'it', locale: it, format: 'dd/MM/yyyy' },
+];
 
 export default {
   title: "Survey Item Types/Text Displays"
@@ -82,5 +90,48 @@ export const InResponseGroup = () => <SurveySingleItemView
   responseChanged={(response) => console.log(response)}
   showInvalid={false}
   languageCode="en"
+  invalidWarning={invalidWarning}
+/>
+
+
+export const DateDisplay = () => <SurveySingleItemView
+  dateLocales={dateLocales}
+  renderItem={{
+    key: 'test.q1',
+    version: 1,
+    components: {
+      key: 'root',
+      role: 'root',
+      items: [
+        {
+          key: 't', role: 'title',
+          items: [
+            { key: "1", role: 'text', content: [{ code: 'nl', resolvedText: 'Using date value in the text: ' }] },
+            {
+              key: "2", role: 'dateDisplay', content: [{ code: 'nl', parts: [1151616515] }], style: [{ key: 'className', value: 'text-primary' }, { key: 'dateFormat', value: 'EEEE dd.MM.yy' }]
+            },
+          ],
+        },
+        {
+          key: 'rg', role: 'responseGroup', items: [
+            {
+              key: '2', role: 'text',
+              items: [
+                { key: "1", role: 'text', content: [{ code: 'nl', resolvedText: 'Using date value in the text: ' }] },
+                {
+                  key: "2", role: 'dateDisplay', content: [{ code: 'nl', parts: [1151616515] }], style: [{ key: 'className', value: 'text-primary' }, { key: 'dateFormat', value: 'EEEE dd.MM.yy' }]
+                },
+
+              ],
+            },
+          ]
+        }
+      ]
+    },
+  }}
+  responsePrefill={undefined}
+  responseChanged={(response) => console.log(response)}
+  showInvalid={false}
+  languageCode="nl"
   invalidWarning={invalidWarning}
 />

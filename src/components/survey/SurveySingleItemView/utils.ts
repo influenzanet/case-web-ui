@@ -1,4 +1,6 @@
 import { ItemComponent, LocalizedString, LocalizedObject, ResponseItem } from "survey-engine/data_types";
+import { format } from 'date-fns';
+
 
 export interface CommonResponseComponentProps {
   parentKey: string;
@@ -8,6 +10,7 @@ export interface CommonResponseComponentProps {
   languageCode: string;
   showOptionKey?: boolean;
   disabled?: boolean;
+  dateLocales: Array<{ code: string, locale: any, format: string }>;
 }
 
 export const getItemComponentTranslationByRole = (components: Array<ItemComponent>, role: string, code: string): string | null => {
@@ -33,6 +36,28 @@ export const getLocaleStringTextByCode = (translations: LocalizedObject[] | unde
     return;
   }
   return translation.resolvedText;
+}
+
+export const getLocaleStringDateByCode = (translations: LocalizedObject[] | undefined, code: string, dateFormat: string, dateLocales?: Array<{ code: string, locale: any, format: string }>): string | undefined => {
+  if (!translations) { return; }
+  let translation = (translations.find(cont => cont.code === code) as LocalizedString);
+  if (!translation) {
+    if (translations.length > 0) {
+      translation = (translations[0] as LocalizedString);
+    }
+    return;
+  }
+  const parts = (translations[0] as LocalizedString).parts;
+  if (!parts || parts.length < 1) {
+    return;
+  }
+
+  let currentDate = new Date();
+  if (typeof (parts[0]) === "number") {
+    currentDate = new Date(parts[0] * 1000);
+  }
+  return format(currentDate, dateFormat, { locale: dateLocales?.find(loc => loc.code === 'nl')?.locale })
+
 }
 
 export const getItemComponentByRole = (components: Array<ItemComponent> | undefined, role: string): ItemComponent | undefined => {

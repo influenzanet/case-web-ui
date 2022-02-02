@@ -96,7 +96,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
       switch (item.role) {
         case 'text':
           return <div key={optionKey}>
-            {renderFormattedContent(item, props.languageCode)}
+            {renderFormattedContent(item, props.languageCode, undefined, props.dateLocales)}
           </div>
         case 'dropDownGroup':
           return <DropDownGroup
@@ -108,6 +108,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             fullWidth={true}
             parentKey={optionKey}
             defaultClassName={defaultInputClassName}
+            dateLocales={props.dateLocales}
           />
       }
     } else {
@@ -139,6 +140,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             disabled={isDisabled}
             nonFullWidth={true}
             defaultClassName={defaultInputClassName}
+            dateLocales={props.dateLocales}
           />;
 
         case 'lineBreak':
@@ -154,6 +156,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             ignoreClassName={optionClassName !== undefined}
             nonFullWidth={true}
             defaultClassName={defaultInputClassName}
+            dateLocales={props.dateLocales}
           />;
           break;
         case 'dateInput':
@@ -167,6 +170,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             openCalendar={undefined}
             disabled={isDisabled}
             defaultClassName={defaultInputClassName}
+            dateLocales={props.dateLocales}
           />;
         default:
           return <p key={item.key}>role inside cloze question group not implemented yet: {item.role}</p>;

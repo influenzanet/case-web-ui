@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.0 - 2022-02-02
+
+### Changes:
+
+- Formatted text components in the survey can include date object to display a localized date. (With `role: dateDisplay`).
+
+
 ## 1.8.7 - 2022-01-26
 
 Action card images' copyright notice can be aligned right.

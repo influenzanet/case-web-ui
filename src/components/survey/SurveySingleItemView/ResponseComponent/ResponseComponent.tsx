@@ -33,7 +33,7 @@ interface ResponseComponentProps {
   isRequired: boolean;
   showOptionKey?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
-  dateLocales?: Array<{ code: string, locale: any, format: string }>;
+  dateLocales: Array<{ code: string, locale: any, format: string }>;
 }
 
 export interface CustomSurveyResponseComponent {
@@ -132,6 +132,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
             showOptionKey={props.showOptionKey}
+            dateLocales={props.dateLocales}
           />
         case 'multipleChoiceGroup':
           return <MultipleChoiceGroup
@@ -142,6 +143,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
             showOptionKey={props.showOptionKey}
+            dateLocales={props.dateLocales}
           />
         case 'dropDownGroup':
           return <DropDownGroup
@@ -151,6 +153,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'input':
           return <TextInput
@@ -160,6 +163,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'multilineTextInput':
           return <MultilineTextInput
@@ -169,6 +173,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'numberInput':
           return <NumberInput
@@ -178,6 +183,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'dateInput':
           return <DateInput
@@ -223,6 +229,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'eq5d-health-indicator':
           return <EQ5DHealthIndicatorInput
@@ -233,6 +240,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             isRequired={props.isRequired}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'likert':
           return <LikertScale
@@ -242,6 +250,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'likertGroup':
           return <LikertGroup
@@ -251,6 +260,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'responsiveSingleChoiceArray':
           return <ResponsiveSingleChoiceArray
@@ -260,6 +270,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'responsiveBipolarLikertScaleArray':
           return <ResponsiveBipolarLikertScaleArray
@@ -269,6 +280,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'cloze':
           return <ClozeQuestion
@@ -278,6 +290,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         default:
           const customCompDef = props.customResponseComponents?.find(customRespComp => customRespComp.name === respComp.role);
@@ -292,6 +305,7 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
       }
     })

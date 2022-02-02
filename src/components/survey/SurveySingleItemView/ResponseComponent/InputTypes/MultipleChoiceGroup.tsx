@@ -146,7 +146,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
           labelComponent = <label htmlFor={optionKey}
             className="flex-grow-1 cursor-pointer"
           >
-            {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
+            {renderFormattedContent(option, props.languageCode, 'cursor-pointer', props.dateLocales)}
           </label>
           break;
         case 'cloze':
@@ -162,6 +162,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               updateSubResponseCache(option.key, response);
             }}
             disabled={isDisabled(option)}
+            dateLocales={props.dateLocales}
           />;
           break;
       }
@@ -196,6 +197,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               }}
               updateDelay={5}
               disabled={isDisabled(option)}
+              dateLocales={props.dateLocales}
             />;
           break;
         case 'numberInput':
@@ -213,6 +215,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
                 updateSubResponseCache(option.key, response);
               }}
               disabled={isDisabled(option)}
+              dateLocales={props.dateLocales}
             />;
           break;
         default:

@@ -111,7 +111,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
       )}
     >
       <div className="text-center">
-        {renderFormattedContent(startLabelComp, props.languageCode)}
+        {renderFormattedContent(startLabelComp, props.languageCode, undefined, props.dateLocales)}
       </div>
       <fieldset
         id={'vertical' + rowKey}
@@ -138,7 +138,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
         }
       </fieldset>
       <div className="text-center">
-        {renderFormattedContent(endLabelComp, props.languageCode)}
+        {renderFormattedContent(endLabelComp, props.languageCode, undefined, props.dateLocales)}
       </div>
     </div>
   }
@@ -188,14 +188,14 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
         <div style={{
           maxWidth: labelRowMaxLabelWidth
         }}>
-          {renderFormattedContent(startLabelComp, props.languageCode)}
+          {renderFormattedContent(startLabelComp, props.languageCode, undefined, props.dateLocales)}
         </div>
       </div>
       <div className="ps-3 flex-grow-1 text-end d-flex justify-content-end">
         <div style={{
           maxWidth: labelRowMaxLabelWidth
         }}>
-          {renderFormattedContent(endLabelComp, props.languageCode)}
+          {renderFormattedContent(endLabelComp, props.languageCode, undefined, props.dateLocales)}
         </div>
       </div>
     </div>;
@@ -314,7 +314,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                     width: labelColWidth
                   } : undefined}
                 >
-                  {renderFormattedContent(startLabelComp, props.languageCode)}
+                  {renderFormattedContent(startLabelComp, props.languageCode, undefined, props.dateLocales)}
                 </td>
                 {options.items.map(oi => <td
                   key={props.compDef + '.' + oi.key}
@@ -334,7 +334,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                     width: labelColWidth
                   } : undefined}
                 >
-                  {renderFormattedContent(endLabelComp, props.languageCode)}
+                  {renderFormattedContent(endLabelComp, props.languageCode, undefined, props.dateLocales)}
                 </td>
               </React.Fragment>
               break;

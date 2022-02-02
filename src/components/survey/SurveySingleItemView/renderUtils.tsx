@@ -1,24 +1,39 @@
 import clsx from 'clsx';
 import React from 'react';
 import { isItemGroupComponent, ItemComponent } from 'survey-engine/data_types';
-import { getClassName, getLocaleStringTextByCode } from './utils';
+import { getClassName, getLocaleStringDateByCode, getLocaleStringTextByCode, getStyleValueByKey } from './utils';
 
 
-export const renderFormattedContent = (component: ItemComponent, languageCode: string, defaultClassNamePerPart?: string) => {
+export const renderFormattedContent = (component: ItemComponent, languageCode: string, defaultClassNamePerPart: string | undefined, dateLocales: Array<{ code: string, locale: any, format: string }>) => {
   if (isItemGroupComponent(component)) {
     return <React.Fragment>
       {
-        component.items.map(item => <span
-          key={item.key}
-          className={
-            clsx(
-              defaultClassNamePerPart,
-              getClassName(item.style)
-            )
+        component.items.map(item => {
+          let itemContent: string | undefined;
+          switch (item.role) {
+            case 'dateDisplay':
+              let dateFormat = getStyleValueByKey(item.style, 'dateFormat');
+              if (!dateFormat) {
+                dateFormat = 'dd.MM.yyyy';
+              }
+              itemContent = getLocaleStringDateByCode(item.content, languageCode, dateFormat, dateLocales);
+              break;
+            default:
+              itemContent = getLocaleStringTextByCode(item.content, languageCode)
+              break;
           }
-        >
-          {getLocaleStringTextByCode(item.content, languageCode)}
-        </span>)
+          return <span
+            key={item.key}
+            className={
+              clsx(
+                defaultClassNamePerPart,
+                getClassName(item.style)
+              )
+            }
+          >
+            {itemContent}
+          </span>
+        })
       }
     </React.Fragment>
   } else {

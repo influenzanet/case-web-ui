@@ -18,7 +18,7 @@ interface VerticalModeOptionProps {
   isChecked: boolean;
   languageCode: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-
+  dateLocales: Array<{ code: string, locale: any, format: string }>
 }
 
 const VerticalModeOption: React.FC<VerticalModeOptionProps> = (props) => {
@@ -43,7 +43,7 @@ const VerticalModeOption: React.FC<VerticalModeOptionProps> = (props) => {
       />
     </div>
     <label className="form-check-label cursor-pointer flex-grow-1" htmlFor={optionFullKey}>
-      {renderFormattedContent(props.optionDef, props.languageCode, 'cursor-pointer')}
+      {renderFormattedContent(props.optionDef, props.languageCode, 'cursor-pointer', props.dateLocales)}
     </label>
   </div>
 }
@@ -160,7 +160,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                   'fw-bold'
                 )}
               >
-                {renderFormattedContent(item, props.languageCode)}
+                {renderFormattedContent(item, props.languageCode, undefined, props.dateLocales)}
               </h6>
               <fieldset
                 id={props.compDef.key + '.' + item.key}
@@ -179,6 +179,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                     isChecked={isResponseSet(item.key, option.key)}
                     languageCode={props.languageCode}
                     onChange={radioSelectionChanged(item.key)}
+                    dateLocales={props.dateLocales}
                   />
                 })}
               </fieldset>
@@ -213,7 +214,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
           'fw-bold'
         )}
       >
-        {renderFormattedContent(rowDef, props.languageCode)}
+        {renderFormattedContent(rowDef, props.languageCode, undefined, props.dateLocales)}
       </h6>
       <fieldset
         id={rowKey}
@@ -252,7 +253,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                 optionLabelClassName
               )}>
                 <label htmlFor={optionKey} >
-                  {renderFormattedContent(option, props.languageCode, 'cursor-pointer')}
+                  {renderFormattedContent(option, props.languageCode, 'cursor-pointer', props.dateLocales)}
                 </label>
               </div>);
 
@@ -335,7 +336,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
             scope="col"
             className="text-center"
           >
-            {renderFormattedContent(item, props.languageCode, 'cursor-pointer')}
+            {renderFormattedContent(item, props.languageCode, 'cursor-pointer', props.dateLocales)}
           </th>)}
 
         </tr>
@@ -350,7 +351,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
             case 'row':
               rowContent = <React.Fragment>
                 <th scope="row">
-                  {renderFormattedContent(item, props.languageCode)}
+                  {renderFormattedContent(item, props.languageCode, undefined, props.dateLocales)}
                 </th>
                 {options.items.map(oi => <td
                   key={props.compDef + '.' + oi.key}

@@ -76,7 +76,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
                 compDef={component}
                 prefill={props.responsePrefill}
                 isRequired={requiredItem ? true : false}
-                dateLocales={props.dateLocales}
+                dateLocales={props.dateLocales ? props.dateLocales : []}
                 responseChanged={(response) => {
                   console.log('new response set', response)
                   setTouched(true);
@@ -134,7 +134,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
       return null;
     }
 
-    let content = renderFormattedContent(titleComp, props.languageCode);
+    let content = renderFormattedContent(titleComp, props.languageCode, undefined, props.dateLocales ? props.dateLocales : []);
 
     const description = getLocaleStringTextByCode(titleComp.description, props.languageCode);
 
