@@ -37,7 +37,7 @@ export const Datepicker = () => <SurveySingleItemView
       ]
     },
   }}
-  responsePrefill={undefined}
+  responsePrefill={{ key: 'rg', items: [{ key: 'lg', value: "1506662626" }] }}
   responseChanged={(response) => console.log(response)}
   showInvalid={false}
   languageCode="nl"

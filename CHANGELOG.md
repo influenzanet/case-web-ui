@@ -5,7 +5,7 @@
 ### Changes:
 
 - Formatted text components in the survey can include date object to display a localized date. (With `role: dateDisplay`).
-
+- Use webpack5 in storybook.
 
 ## 1.8.7 - 2022-01-26
 

@@ -3,7 +3,11 @@ const path = require("path");
 module.exports = {
   stories: ["../src/**/*.stories.tsx"],
   // Add any Storybook addons you want here: https://storybook.js.org/addons/
-  addons: [],
+  addons: ['@storybook/addon-postcss'],
+  core: {
+    builder: "webpack5",
+  },
+  typescript: { reactDocgen: false }, // because webpack 5 incompatibility issue
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
@@ -16,7 +20,7 @@ module.exports = {
             },
           },
         },
-        "sass-loader"],
+        "postcss-loader", "sass-loader"],
       include: path.resolve(__dirname, "../")
     });
 

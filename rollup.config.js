@@ -5,6 +5,8 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import copy from 'rollup-plugin-copy';
 import json from 'rollup-plugin-json';
+import autoprefixer from 'autoprefixer';
+
 
 const packageJson = require("./package.json");
 
@@ -30,7 +32,12 @@ const config = {
     typescript({
       useTsconfigDeclarationDir: true
     }),
-    postcss({ modules: true }),
+    postcss({
+      modules: true,
+      plugins: [
+        autoprefixer(),
+      ]
+    }),
     copy({
       targets: [
         { src: 'src/scss/*', dest: 'build/scss' }

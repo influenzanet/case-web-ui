@@ -277,6 +277,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
               languageCode={props.languageCode}
               responseChanged={handleCellResponseChange(compDef.key, cell.key)}
               prefill={getCellResponse(compDef.key, cell.key)}
+              dateLocales={props.dateLocales}
             />
           </div>
           break
@@ -288,6 +289,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
               languageCode={props.languageCode}
               responseChanged={handleCellResponseChange(compDef.key, cell.key)}
               prefill={getCellResponse(compDef.key, cell.key)}
+              dateLocales={props.dateLocales}
             />
           break
         case 'dropDownGroup':
@@ -298,6 +300,7 @@ const Matrix: React.FC<MatrixProps> = (props) => {
             prefill={getCellResponse(compDef.key, cell.key)}
             fullWidth={true}
             parentKey={cellKey}
+            dateLocales={props.dateLocales}
           />
           break;
         default:

@@ -85,6 +85,7 @@ const LikertGroup: React.FC<LikertGroupProps> = (props) => {
           compDef={row}
           prefill={getPrefillForItem(row)}
           responseChanged={handleItemResponse(row.key ? row.key : 'no key found')}
+          dateLocales={props.dateLocales}
         />
       default:
         return <p key={row.key}>role inside likert group not implemented yet: {row.role}</p>
