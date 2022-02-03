@@ -57,7 +57,6 @@ export const getLocaleStringDateByCode = (translations: LocalizedObject[] | unde
     currentDate = new Date(parts[0] * 1000);
   }
   return format(currentDate, dateFormat, { locale: dateLocales?.find(loc => loc.code === 'nl')?.locale })
-
 }
 
 export const getItemComponentByRole = (components: Array<ItemComponent> | undefined, role: string): ItemComponent | undefined => {

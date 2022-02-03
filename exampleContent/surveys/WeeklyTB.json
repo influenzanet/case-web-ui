@@ -1,0 +1,1860 @@
+{
+  "studyKey": "tekenradar",
+  "survey": {
+    "props": {
+      "name": [
+        {
+          "code": "nl",
+          "parts": [
+            {
+              "str": "Wekelijkse tekenbeetvragenlijst"
+            }
+          ]
+        }
+      ],
+      "description": [
+        {
+          "code": "nl",
+          "parts": [
+            {
+              "str": "Klik hier om wekelijks je aantal tekenbeten door te geven."
+            }
+          ]
+        }
+      ],
+      "typicalDuration": [
+        {
+          "code": "nl",
+          "parts": [
+            {
+              "str": "Invullen duurt ongeveer 1 minuut."
+            }
+          ]
+        }
+      ]
+    },
+    "current": {
+      "versionId": "",
+      "surveyDefinition": {
+        "key": "WeeklyTB",
+        "version": 1,
+        "items": [
+          {
+            "key": "WeeklyTB.IntroWeeklyTBInit",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "key": "t19",
+                  "role": "markdown",
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": ""
+                    }
+                  ],
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "\n# Wekelijkse tekenbeetmeldingen\n\nMet de volgende vragen willen we meten of het aantal tekenbeten per week verandert. Daarom is het belangrijk de vragenlijst te blijven invullen, ook als je langere tijd géén tekenbeten hebt.\n\nGeef het daadwerkelijke aantal tekenbeten op, ook als je meerdere tekenbeten op hetzelfde moment had.\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "eq",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getAttribute",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getContext",
+                                "data": []
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "participantFlags"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "weeklyTBreporter"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "str",
+                  "str": "init"
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.IntroWeeklyTB",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "key": "0OC",
+                  "role": "markdown",
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": ""
+                    }
+                  ],
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "\n# Wekelijkse tekenbeetmeldingen\n\nMet de volgende vraag willen we meten of het aantal tekenbeten per week verandert. Daarom is het belangrijk de vragenlijst te blijven invullen, ook als je langere tijd géén tekenbeten hebt.\n\nGeef het daadwerkelijke aantal tekenbeten op, ook als je meerdere tekenbeten op hetzelfde moment had.\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "not",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "eq",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getContext",
+                                      "data": []
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "participantFlags"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "weeklyTBreporter"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "init"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB1",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel tekenbeten heb je gehad in de afgelopen week?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2a",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "items": [
+                    {
+                      "key": "0",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel tekenbeten had je vandaag "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -94608000
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "dd-MM-yyyy"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2b",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je gisteren ?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2c",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je eergisteren,?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2d",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je afgelopen ?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2e",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je afgelopen ?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2f",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je afgelopen ?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.WeeklyTB2g",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Hoeveel teken had je afgelopen ?"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "num",
+                      "role": "numberInput",
+                      "properties": {
+                        "min": {
+                          "dtype": "num",
+                          "num": 0
+                        },
+                        "max": {
+                          "dtype": "num",
+                          "num": 100
+                        }
+                      },
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "inputMaxWidth",
+                          "value": "80px"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "gt",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getResponseValueAsNum",
+                    "returnType": "float",
+                    "data": [
+                      {
+                        "dtype": "str",
+                        "str": "WeeklyTB.WeeklyTB1"
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "rg.num"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "num",
+                  "num": 0
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.Res",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Woonplaats van de persoon met de tekenbeet:"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": "sticky-top"
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "ic",
+                      "role": "multilineTextInput"
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "and",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "not",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "isDefined",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getAttribute",
+                                      "data": [
+                                        {
+                                          "dtype": "exp",
+                                          "exp": {
+                                            "name": "getContext",
+                                            "data": []
+                                          }
+                                        },
+                                        {
+                                          "dtype": "str",
+                                          "str": "participantFlags"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "flow"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "eq",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getContext",
+                                      "data": []
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "participantFlags"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "weeklyTBreporter"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "init"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.gender",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Geslacht."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "scg",
+                      "role": "singleChoiceGroup",
+                      "items": [
+                        {
+                          "key": "a",
+                          "role": "option",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Man"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "b",
+                          "role": "option",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Vrouw"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "c",
+                          "role": "option",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Geen van bovenstaande"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "order": {
+                        "name": "sequential"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "and",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "not",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "isDefined",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getAttribute",
+                                      "data": [
+                                        {
+                                          "dtype": "exp",
+                                          "exp": {
+                                            "name": "getContext",
+                                            "data": []
+                                          }
+                                        },
+                                        {
+                                          "dtype": "str",
+                                          "str": "participantFlags"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "flow"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "eq",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getContext",
+                                      "data": []
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "participantFlags"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "weeklyTBreporter"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "init"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.PTBG",
+            "version": 1,
+            "items": [
+              {
+                "key": "WeeklyTB.PTBG.PTB1",
+                "version": 1,
+                "components": {
+                  "role": "root",
+                  "order": {
+                    "name": "sequential"
+                  },
+                  "items": [
+                    {
+                      "role": "title",
+                      "items": [
+                        {
+                          "key": "0",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Als je deze tekenbeet niet meetelt, hoeveel tekenbeten heb je dan "
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "1",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "in de afgelopen 5 jaar "
+                                }
+                              ]
+                            }
+                          ],
+                          "style": [
+                            {
+                              "key": "className",
+                              "value": "text-primary"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "2",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "opgemerkt? Als je in de afgelopen week tekenbeten hebt gehad, tel die dan "
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "3",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "niet "
+                                }
+                              ]
+                            }
+                          ],
+                          "style": [
+                            {
+                              "key": "className",
+                              "value": "text-primary"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "4",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": " mee!"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "rg",
+                      "role": "responseGroup",
+                      "items": [
+                        {
+                          "key": "scg",
+                          "role": "singleChoiceGroup",
+                          "items": [
+                            {
+                              "key": "a",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "Geen tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "b",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "1 - 3 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "c",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "4 - 10 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "d",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "11 - 50 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "e",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "Meer dan 50 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "order": {
+                            "name": "sequential"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "WeeklyTB.PTBG.PTB2",
+                "version": 1,
+                "components": {
+                  "role": "root",
+                  "order": {
+                    "name": "sequential"
+                  },
+                  "items": [
+                    {
+                      "role": "title",
+                      "items": [
+                        {
+                          "key": "0",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Als je deze tekenbeet niet meetelt, hoeveel tekenbeten heb je dan "
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "1",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "in de afgelopen 3 maanden "
+                                }
+                              ]
+                            }
+                          ],
+                          "style": [
+                            {
+                              "key": "className",
+                              "value": "text-primary"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "2",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "opgemerkt? Als je in de afgelopen week tekenbeten hebt gehad, tel die dan "
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "3",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "niet "
+                                }
+                              ]
+                            }
+                          ],
+                          "style": [
+                            {
+                              "key": "className",
+                              "value": "text-primary"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "4",
+                          "role": "text",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "mee!"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "rg",
+                      "role": "responseGroup",
+                      "items": [
+                        {
+                          "key": "scg",
+                          "role": "singleChoiceGroup",
+                          "items": [
+                            {
+                              "key": "a",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "Geen tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "b",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "1 - 3 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "c",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "4 - 10 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "d",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "11 - 50 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "key": "e",
+                              "role": "option",
+                              "content": [
+                                {
+                                  "code": "nl",
+                                  "parts": [
+                                    {
+                                      "str": "Meer dan 50 tekenbeten"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "order": {
+                            "name": "sequential"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "condition": {
+                  "name": "responseHasOnlyKeysOtherThan",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.PTBG.PTB1"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg.scg"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "a"
+                    }
+                  ]
+                }
+              }
+            ],
+            "selectionMethod": {
+              "name": "sequential"
+            }
+          },
+          {
+            "key": "WeeklyTB.OutroWeeklyTBInit",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "key": "cOk",
+                  "role": "markdown",
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": ""
+                    }
+                  ],
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "\n##### Hartelijk dank voor het invullen van deze vragen. Volgende week sturen we je weer een email om te vragen hoeveel tekenbeten je hebt gehad.\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "eq",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "getAttribute",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getContext",
+                                "data": []
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "participantFlags"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "weeklyTBreporter"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "dtype": "str",
+                  "str": "init"
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.OutroWeeklyTB",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "key": "3i6",
+                  "role": "markdown",
+                  "style": [
+                    {
+                      "key": "className",
+                      "value": ""
+                    }
+                  ],
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "\n##### Hartelijk dank voor het invullen van deze vragen. Volgende week sturen we je weer een email om te vragen hoeveel tekenbeten je hebt gehad.\n\n##### Houd de plek van de tekenbeet de komende periode goed in de gaten en neem contact op met de huisarts als er een groeiende rode vlek of kring ontstaat of als u andere gezondheidsklachten krijgt die mogelijke met de ziekte van lyme te maken kunnen hebben.\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "condition": {
+              "name": "not",
+              "data": [
+                {
+                  "dtype": "exp",
+                  "exp": {
+                    "name": "eq",
+                    "data": [
+                      {
+                        "dtype": "exp",
+                        "exp": {
+                          "name": "getAttribute",
+                          "data": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "getAttribute",
+                                "data": [
+                                  {
+                                    "dtype": "exp",
+                                    "exp": {
+                                      "name": "getContext",
+                                      "data": []
+                                    }
+                                  },
+                                  {
+                                    "dtype": "str",
+                                    "str": "participantFlags"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "weeklyTBreporter"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "dtype": "str",
+                        "str": "init"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "key": "WeeklyTB.RWeeklyTB",
+            "version": 1,
+            "components": {
+              "role": "root",
+              "order": {
+                "name": "sequential"
+              },
+              "items": [
+                {
+                  "role": "title",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Als je nog extra informatie bij bovenstaande vragen hebt kun je dit hieronder invullen. (Let op: deze informatie wordt bij de door jou ingevulde vragenlijst opgeslagen en niet direct door de onderzoekers bekeken.)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "rg",
+                  "role": "responseGroup",
+                  "items": [
+                    {
+                      "key": "ic",
+                      "role": "multilineTextInput",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Insturen opmerking:"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "selectionMethod": {
+          "name": "sequential"
+        }
+      }
+    },
+    "availableFor": "temporary_participants",
+    "requireLoginBeforeSubmission": true
+  }
+}

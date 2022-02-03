@@ -6,6 +6,7 @@
 
 - Formatted text components in the survey can include date object to display a localized date. (With `role: dateDisplay`).
 - Use webpack5 in storybook.
+- Survey view accepts flag to turn on debug messages for survey engine.
 
 ## 1.8.7 - 2022-01-26
 

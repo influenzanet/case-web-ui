@@ -21,13 +21,14 @@ interface SurveyViewProps {
   showKeys?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
   dateLocales?: Array<{ code: string, locale: any, format: string }>;
+  showEngineDebugMsg?: boolean;
   // init with temporary loaded results
   // save temporary result
 }
 
 
 const SurveyView: React.FC<SurveyViewProps> = (props) => {
-  const [surveyEngine, setSurveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.survey, props.context, props.prefills));
+  const [surveyEngine, setSurveyEngine] = useState<SurveyEngineCore>(new SurveyEngineCore(props.survey, props.context, props.prefills, props.showEngineDebugMsg));
   const surveyPages = surveyEngine.getSurveyPages();
 
   const [responseCount, setResponseCount] = useState(0);
@@ -63,7 +64,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
     }
 
     const isLastPage = currentPage >= surveyPages.length - 1;
-
     return <SurveyPageView
       loading={props.loading}
       surveyEngine={surveyEngine}
