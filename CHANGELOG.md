@@ -1,6 +1,11 @@
 # Changelog
 
-## 1.9.0 - 2022-02-02
+## 1.9.0 - 2022-02-04
+
+### Added:
+
+- New input for "time", to ask for a specific hour and minute of the day. When stepsize is set, seconds can be asked as well.
+
 
 ### Changes:
 

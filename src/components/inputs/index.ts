@@ -4,6 +4,7 @@ import SelectField from './SelectField';
 import Slider from './Slider';
 import TextField from './TextField';
 import FileDropzone from './FileDropzone';
+import TimeInput, { preprocessTimeInputValue } from './TimeInput';
 
 export {
   AvatarSelector,
@@ -12,4 +13,6 @@ export {
   Slider,
   TextField,
   FileDropzone,
+  TimeInput,
+  preprocessTimeInputValue
 }
