@@ -24,6 +24,7 @@ import ResponsiveBipolarLikertScaleArray from './InputTypes/ResponsiveBipolarLik
 import ClozeQuestion from './InputTypes/ClozeQuestion';
 import { CommonResponseComponentProps } from '../utils';
 import Time from './InputTypes/Time';
+import Consent from './InputTypes/Consent';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -215,6 +216,16 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             compDef={respComp}
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+          />
+        case 'consent':
+          return <Consent
+            parentKey={currentKeyPath}
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
           />
         case 'sliderNumericRange':
           return <SliderNumericRange

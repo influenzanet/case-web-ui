@@ -6,6 +6,7 @@
 
 - New input for "time", to ask for a specific hour and minute of the day. When stepsize is set, seconds can be asked as well.
 - Added new response component with the role `timeInput` to select a time. Result will be interpreted as seconds since 00:00:00. Can also be used in cloze questions, single choice or multple choice questions.
+- New question type `consent` to display a consent dialog and store the response in a survey.
 
 
 ### Changes:
