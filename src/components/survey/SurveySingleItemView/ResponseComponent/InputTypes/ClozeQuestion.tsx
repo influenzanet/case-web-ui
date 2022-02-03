@@ -8,6 +8,7 @@ import DateInput from '../DateInput/DateInput';
 import DropDownGroup from './DropDownGroup';
 import NumberInput from './NumberInput';
 import TextInput from './TextInput';
+import Time from './Time';
 
 interface ClozeQuestionProps extends CommonResponseComponentProps {
 
@@ -158,7 +159,6 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             defaultClassName={defaultInputClassName}
             dateLocales={props.dateLocales}
           />;
-          break;
         case 'dateInput':
           return <DateInput
             parentKey={optionKey}
@@ -170,6 +170,20 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             openCalendar={undefined}
             disabled={isDisabled}
             defaultClassName={defaultInputClassName}
+            dateLocales={props.dateLocales}
+          />;
+        case 'timeInput':
+          return <Time
+            parentKey={optionKey}
+            key={item.key}
+            compDef={item}
+            prefill={(prefill && prefill.key === item.key) ? prefill : undefined}
+            languageCode={props.languageCode}
+            responseChanged={handleItemResponse(item.key ? item.key : 'undefined')}
+            disabled={isDisabled}
+            defaultClassName={defaultInputClassName}
+            ignoreClassName={optionClassName !== undefined}
+            nonFullWidth={true}
             dateLocales={props.dateLocales}
           />;
         default:

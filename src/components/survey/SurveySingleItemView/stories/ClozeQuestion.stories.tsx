@@ -63,7 +63,7 @@ export const ExampleClozeQuestion = () => <SurveySingleItemView
                   ]
                 },
                 {
-                  key: '5', role: 'dropDownGroup', items: [
+                  key: '6', role: 'dropDownGroup', items: [
                     { key: '1', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
                     { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] }
                   ]
@@ -139,6 +139,12 @@ export const Example2ClozeQuestion = () => <SurveySingleItemView
                 {
                   key: '4', role: 'dateInput',
                   properties: { dateInputMode: "YM" },
+                  style: [
+                    { key: 'className', value: 'm-1' }
+                  ]
+                },
+                {
+                  key: '5', role: 'timeInput',
                   style: [
                     { key: 'className', value: 'm-1' }
                   ]

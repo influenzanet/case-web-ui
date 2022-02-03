@@ -11,7 +11,7 @@ interface TimeProps extends CommonResponseComponentProps {
 }
 
 const secondsToTimeString = (value: number | undefined): string | undefined => {
-  if (value === undefined) { return }
+  if (value === undefined) { return '--:--' }
   const hours = Math.floor(value / 3600);
   const minutes = Math.floor((value - 3600 * hours) / 60);
   const seconds = Math.floor((value - 3600 * hours - 60 * minutes) / 60);
