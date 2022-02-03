@@ -9,6 +9,7 @@ import NumberInput from './NumberInput';
 import clsx from 'clsx';
 import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
+import Time from './Time';
 
 interface SingleChoiceGroupProps extends CommonResponseComponentProps {
   showOptionKey?: boolean;
@@ -161,6 +162,19 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         case 'numberInput':
           labelComponent =
             <NumberInput
+              parentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={setResponseForKey(option.key)}
+              ignoreClassName={optionClassName !== undefined}
+              dateLocales={props.dateLocales}
+            />;
+          break;
+        case 'timeInput':
+          labelComponent =
+            <Time
               parentKey={props.parentKey}
               key={option.key}
               compDef={option}

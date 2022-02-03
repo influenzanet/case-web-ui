@@ -36,6 +36,7 @@ export const Example = () => <SurveySingleItemView
                   ]
                 },
                 { key: '1b', role: 'option', content: [{ code: 'en', resolvedText: 'Option 1' }] },
+                { key: '1c', role: 'timeInput', content: [{ code: 'en', resolvedText: 'Option 1' }] },
                 { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] },
                 { key: '3', role: 'input', content: [{ code: 'en', resolvedText: 'Option 2 here' }] },
                 { key: 't1', role: 'dateInput', content: [{ code: 'en', resolvedText: 'Subtitle' }] },

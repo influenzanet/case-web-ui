@@ -37,6 +37,7 @@ export const Example = () => <SurveySingleItemView
                 { key: 't1', role: 'text', content: [{ code: 'en', resolvedText: 'Subtitle' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
                 { key: '4', role: 'option', content: [{ code: 'en', resolvedText: 'Option 4' }] },
                 { key: '5', role: 'option', content: [{ code: 'en', resolvedText: 'Option 5' }] },
+                { key: '5b', role: 'timeInput', content: [{ code: 'en', resolvedText: 'Option 5' }] },
                 { key: 't2', role: 'text', content: [{ code: 'en', resolvedText: 'Subtitle 2' }], style: [{ key: 'className', value: 'mb-1 pt-1 fw-bold border-top' }] },
                 { key: '6', role: 'option', content: [{ code: 'en', resolvedText: 'Option 6' }] },
                 { key: '7', role: 'option', content: [{ code: 'en', resolvedText: 'Option 7' }] },

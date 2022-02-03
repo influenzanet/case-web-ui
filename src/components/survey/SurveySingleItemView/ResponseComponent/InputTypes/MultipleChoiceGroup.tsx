@@ -7,6 +7,7 @@ import TextViewComponent from '../../SurveyComponents/TextViewComponent';
 import NumberInput from './NumberInput';
 import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
+import Time from './Time';
 
 
 interface MultipleChoiceGroupProps extends CommonResponseComponentProps {
@@ -196,6 +197,24 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
                 updateSubResponseCache(option.key, response);
               }}
               updateDelay={5}
+              disabled={isDisabled(option)}
+              dateLocales={props.dateLocales}
+            />;
+          break;
+        case 'timeInput':
+          labelComponent =
+            <Time
+              parentKey={props.parentKey}
+              key={option.key}
+              compDef={option}
+              prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
+              languageCode={props.languageCode}
+              responseChanged={(response) => {
+                const value = response?.value;
+                const checkStatus = (value !== undefined && value.length > 0);
+                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+                updateSubResponseCache(option.key, response);
+              }}
               disabled={isDisabled(option)}
               dateLocales={props.dateLocales}
             />;
