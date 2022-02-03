@@ -10,8 +10,8 @@ interface TimeProps extends CommonResponseComponentProps {
   defaultClassName?: string;
 }
 
-const secondsToTimeString = (value: number | undefined): string | undefined => {
-  if (value === undefined) { return '--:--' }
+const secondsToTimeString = (value: number | undefined, defaultValue?: string): string | undefined => {
+  if (value === undefined) { return defaultValue ? defaultValue : '--:--' }
   const hours = Math.floor(value / 3600);
   const minutes = Math.floor((value - 3600 * hours) / 60);
   const seconds = Math.floor((value - 3600 * hours - 60 * minutes) / 60);
@@ -69,13 +69,10 @@ const Time: React.FC<TimeProps> = (props) => {
     })
   };
 
-  const handleFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (!event || !event.currentTarget) { return; }
-    (event.currentTarget as HTMLInputElement).select();
-  };
 
   const minValue = getStyleValueByKey(props.compDef.style, 'minTime');
   const maxValue = getStyleValueByKey(props.compDef.style, 'maxTime');
+  const defaultValue = getStyleValueByKey(props.compDef.style, 'defaultValue');
   const stepSize = props.compDef.properties?.stepSize;
 
   const content = props.compDef.content;
@@ -110,9 +107,8 @@ const Time: React.FC<TimeProps> = (props) => {
       min={minValue}
       max={maxValue}
       step={stepSize ? stepSize as number : undefined}
-      value={secondsToTimeString(inputValue)}
-      onFocus={handleFocus}
-      onClick={(e: any) => (e.target as HTMLInputElement).select()}
+      //value={}
+      defaultValue={secondsToTimeString(inputValue, defaultValue)}
       onChange={handleInputValueChange(props.compDef.key)}
     />
     {placeAfter ? <label htmlFor={props.parentKey} className="ms-1">
