@@ -1,20 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
-import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLabelPlacementStyle, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLabelPlacementStyle, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
+import { preprocessTimeInputValue, TimeInput } from '../../../../inputs';
 
-interface NumberInputProps extends CommonResponseComponentProps {
+interface TimeProps extends CommonResponseComponentProps {
   ignoreClassName?: boolean;
   nonFullWidth?: boolean;
   defaultClassName?: string;
 }
 
-const NumberInput: React.FC<NumberInputProps> = (props) => {
+const secondsToTimeString = (value: number | undefined): string | undefined => {
+  if (value === undefined) { return }
+  const hours = Math.floor(value / 3600);
+  const minutes = Math.floor((value - 3600 * hours) / 60);
+  const seconds = Math.floor((value - 3600 * hours - 60 * minutes) / 60);
+  return `${convertWithPad(hours)}:${convertWithPad(minutes)}:${convertWithPad(seconds)}`;
+}
+
+const convertWithPad = (v: number) => {
+  let s = v.toFixed(0);
+  while (s.length < 2) { s = "0" + s; }
+  return s;
+}
+
+
+const Time: React.FC<TimeProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
-  const [inputValue, setInputValue] = useState<string>(
-    props.prefill && props.prefill.value ? parseFloat(props.prefill.value).toString() : '0'
+  const [inputValue, setInputValue] = useState<undefined | number>(
+    props.prefill && props.prefill.value ? parseFloat(props.prefill.value) : undefined
   );
 
   useEffect(() => {
@@ -27,34 +43,17 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-
   const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!key) { return; }
     setTouched(true);
 
-    let value = (event.target as HTMLInputElement).value;
-
-    if (props.compDef.properties?.stepSize === 1.0) {
-      const numVal = parseFloat(value);
-      if (!isNaN(numVal) && !Number.isInteger(numVal)) {
-        value = Math.round(numVal).toString();
-      }
-    }
-    if (props.compDef.properties?.min !== undefined) {
-      const numVal = parseFloat(value);
-      if (numVal < props.compDef.properties?.min) {
-        value = props.compDef.properties?.min.toString();
-      }
-    }
-    if (props.compDef.properties?.max !== undefined) {
-      const numVal = parseFloat(value);
-      if (numVal > props.compDef.properties?.max) {
-        value = props.compDef.properties?.max.toString();
-      }
-    }
+    const value = preprocessTimeInputValue(event);
 
     setInputValue(value);
     setResponse(prev => {
+      if (value === undefined) {
+        return undefined;
+      }
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',
@@ -75,18 +74,17 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     (event.currentTarget as HTMLInputElement).select();
   };
 
-  const minValue = props.compDef.properties?.min;
-  const maxValue = props.compDef.properties?.max;
+  const minValue = getStyleValueByKey(props.compDef.style, 'minTime');
+  const maxValue = getStyleValueByKey(props.compDef.style, 'maxTime');
   const stepSize = props.compDef.properties?.stepSize;
 
   const content = props.compDef.content;
   const placeAfter = getLabelPlacementStyle(props.compDef.style) === 'after';
-  const inputMaxWidth = getInputMaxWidth(props.compDef.style);
   const fullKey = [props.parentKey, props.compDef.key].join('.');
 
   const labelText = getLocaleStringTextByCode(content, props.languageCode);
 
-  return <div
+  return (<div
     className={clsx(
       props.defaultClassName,
       "d-flex align-items-center",
@@ -106,33 +104,22 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     >
       {getLocaleStringTextByCode(content, props.languageCode)}
     </label> : null}
-
-    <input
-      style={{
-        flexBasis: 0,
-        minWidth: 60,
-        maxWidth: inputMaxWidth,
-      }}
-      className="form-control border-0 flex-grow-1"
-      type="number"
-      autoComplete="off"
+    <TimeInput
       id={props.parentKey}
-      placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
-      value={inputValue}
-      maxLength={30}
-      onFocus={handleFocus}
-      onClick={(e) => (e.target as HTMLInputElement).select()}
-      onChange={handleInputValueChange(props.compDef.key)}
       disabled={props.compDef.disabled !== undefined || props.disabled === true}
-      min={minValue ? minValue as number : undefined}
-      max={maxValue ? maxValue as number : undefined}
+      min={minValue}
+      max={maxValue}
       step={stepSize ? stepSize as number : undefined}
+      value={secondsToTimeString(inputValue)}
+      onFocus={handleFocus}
+      onClick={(e: any) => (e.target as HTMLInputElement).select()}
+      onChange={handleInputValueChange(props.compDef.key)}
     />
-
     {placeAfter ? <label htmlFor={props.parentKey} className="ms-1">
       {getLocaleStringTextByCode(content, props.languageCode)}
     </label> : null}
   </div>
+  );
 };
 
-export default NumberInput;
+export default Time;

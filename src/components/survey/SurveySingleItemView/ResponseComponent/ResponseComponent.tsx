@@ -23,6 +23,7 @@ import ResponsiveSingleChoiceArray from './InputTypes/ResponsiveSingleChoiceArra
 import ResponsiveBipolarLikertScaleArray from './InputTypes/ResponsiveBipolarLikertScaleArray';
 import ClozeQuestion from './InputTypes/ClozeQuestion';
 import { CommonResponseComponentProps } from '../utils';
+import Time from './InputTypes/Time';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -194,6 +195,16 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
             prefill={getPrefillForItem(respComp)}
             responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
             openCalendar={undefined}
+            dateLocales={props.dateLocales}
+          />
+        case 'timeInput':
+          return <Time
+            parentKey={currentKeyPath}
+            key={respComp.key}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
             dateLocales={props.dateLocales}
           />
         case 'sliderNumeric':

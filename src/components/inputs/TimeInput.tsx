@@ -20,12 +20,15 @@ export const preprocessTimeInputValue = (event: React.ChangeEvent<HTMLInputEleme
 
 interface TimeInputProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   name?: string;
   label?: string;
   hasError?: boolean;
   errorMsg?: string;
+  min?: string;
+  max?: string;
+  step?: number;
 }
 
 const TimeInput: React.FC<TimeInputProps> = (props) => {
