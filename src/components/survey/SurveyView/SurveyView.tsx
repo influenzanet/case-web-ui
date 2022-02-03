@@ -94,6 +94,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       }}
       showKeys={props.showKeys}
       customResponseComponents={props.customResponseComponents}
+      dateLocales={props.dateLocales}
     />;
   }
 

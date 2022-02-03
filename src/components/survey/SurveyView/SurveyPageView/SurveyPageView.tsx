@@ -32,6 +32,7 @@ interface SurveyPageViewProps {
   ignoreValidation?: boolean;
   showKeys?: boolean;
   customResponseComponents?: Array<CustomSurveyResponseComponent>;
+  dateLocales?: Array<{ code: string, locale: any, format: string }>;
 }
 
 const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
@@ -82,6 +83,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         invalidWarning={props.localisedTexts.invalidResponse}
         showKeys={props.showKeys}
         customResponseComponents={props.customResponseComponents}
+        dateLocales={props.dateLocales}
       />
     </div>
   }
