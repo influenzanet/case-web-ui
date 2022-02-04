@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ItemGroupComponent, ResponseItem } from 'survey-engine/data_types';
-import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import clsx from 'clsx';
 import { renderFormattedContent } from '../../renderUtils';
-import { Checkbox } from '../../../../inputs';
 import { ConsentDialog } from '../../../../dialogs';
 
 
