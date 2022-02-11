@@ -8,6 +8,7 @@ interface TextInputProps extends CommonResponseComponentProps {
   onClick?: () => void;
   nonFullWidth?: boolean;
   defaultClassName?: string;
+  inputClassName?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = (props) => {
@@ -76,7 +77,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         {getLocaleStringTextByCode(props.compDef.content, props.languageCode)}
       </label>
       <input
-        className="form-control border-0 flex-grow-1"
+        className={clsx("form-control border-0 flex-grow-1", props.inputClassName)}
         style={{
           flexBasis: 0,
           minWidth: 40,

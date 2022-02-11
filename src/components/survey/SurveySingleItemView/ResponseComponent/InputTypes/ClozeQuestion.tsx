@@ -140,6 +140,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             updateDelay={50}
             disabled={isDisabled}
             nonFullWidth={true}
+            inputClassName='text-center'
             defaultClassName={defaultInputClassName}
             dateLocales={props.dateLocales}
           />;
@@ -157,6 +158,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             ignoreClassName={optionClassName !== undefined}
             nonFullWidth={true}
             defaultClassName={defaultInputClassName}
+            inputClassName='text-center'
             dateLocales={props.dateLocales}
           />;
         case 'dateInput':

@@ -7,6 +7,7 @@ interface NumberInputProps extends CommonResponseComponentProps {
   ignoreClassName?: boolean;
   nonFullWidth?: boolean;
   defaultClassName?: string;
+  inputClassName?: string;
 }
 
 const NumberInput: React.FC<NumberInputProps> = (props) => {
@@ -113,7 +114,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
         minWidth: 60,
         maxWidth: inputMaxWidth,
       }}
-      className="form-control border-0 flex-grow-1"
+      className={clsx("form-control border-0 flex-grow-1", props.inputClassName)}
       type="number"
       autoComplete="off"
       id={props.parentKey}
