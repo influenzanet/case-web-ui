@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.3 - 2022-02-11
+
+- Fix further input name issue in responsive single choice array and bipolar likert causing issues between multiple questions.
+
 ## 1.9.2 - 2022-02-11
 
 - Fix input name issue in responsive single choice array and bipolar likert.

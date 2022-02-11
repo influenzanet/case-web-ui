@@ -138,6 +138,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     const reverseOrder = props.compDef.style?.find(s => s.key === 'verticalModeReverseOrder')?.value === 'true';
 
     const rows = props.compDef.items;
+
     return <React.Fragment>
       {rows.map((item, index) => {
         if (item.displayCondition === false) {
@@ -146,6 +147,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         switch (item.role) {
           case 'row':
             const rowKey = props.compDef.key + '.' + item.key;
+            const htmlKey = `${props.parentKey}.${item.key}-vertical`;
             const sortedOptions = reverseOrder ? options.items.slice().reverse() : options.items;
             const rowClassName = item.style?.find(s => s.key === 'verticalModeClassName')?.value;
             return <div key={item.key}
@@ -164,6 +166,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
               </h6>
               <fieldset
                 id={props.compDef.key + '.' + item.key}
+                name={htmlKey}
                 aria-describedby={rowKey + 'label'}
               >
                 {sortedOptions.map((option, index) => {
@@ -171,7 +174,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
 
                   return <VerticalModeOption
                     key={option.key}
-                    slotFullKey={rowKey}
+                    slotFullKey={htmlKey}
                     optionKey={option.key}
                     optionDef={option}
                     className={optionClassName}
@@ -199,7 +202,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     const labelOnTop = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'top';
     const hideLabel = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'none';
     const rowClassName = rowDef.style?.find(s => s.key === 'horizontalModeClassName')?.value;
-
+    const htmlKey = `${props.parentKey}.${rowKey}-horizontal`;
 
     return <div
       key={rowKey}
@@ -217,8 +220,8 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         {renderFormattedContent(rowDef, props.languageCode, undefined, props.dateLocales)}
       </h6>
       <fieldset
-        id={rowKey}
-        name={rowKey}
+        id={htmlKey}
+        name={htmlKey}
         className={clsx(
           "d-flex",
         )}
@@ -236,7 +239,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                 <input
                   className="form-check-input cursor-pointer"
                   type="radio"
-                  name={rowKey}
+                  name={htmlKey}
                   id={optionKey}
                   onChange={radioSelectionChanged(rowKey)}
                   value={option.key}
@@ -349,6 +352,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
           }
           switch (item.role) {
             case 'row':
+              const htmlKey = `${props.parentKey}.${item.key}-table`;
               rowContent = <React.Fragment>
                 <th scope="row">
                   {renderFormattedContent(item, props.languageCode, undefined, props.dateLocales)}
@@ -360,7 +364,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                   <input
                     className="form-check-input cursor-pointer"
                     type="radio"
-                    name={'tableMode-' + item.key}
+                    name={htmlKey}
                     onChange={radioSelectionChanged(item.key)}
                     value={oi.key}
                     checked={isResponseSet(item.key, oi.key)}

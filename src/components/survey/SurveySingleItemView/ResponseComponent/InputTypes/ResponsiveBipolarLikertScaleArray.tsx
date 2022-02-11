@@ -99,6 +99,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     }
 
     const rowClassName = rowDef.style?.find(st => st.key === 'verticalModeClassName')?.value;
+    const htmlKey = `${props.parentKey}.${rowKey}-vertical`;
     return <div
       key={rowKey}
       className={clsx(
@@ -114,8 +115,8 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
         {renderFormattedContent(startLabelComp, props.languageCode, undefined, props.dateLocales)}
       </div>
       <fieldset
-        id={'vertical' + rowKey}
-        name={'vertical' + rowKey}
+        id={htmlKey}
+        name={htmlKey}
         className="text-center"
       >
         {
@@ -126,7 +127,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                 <input
                   className="form-check-input cursor-pointer"
                   type="radio"
-                  name={'vertical' + rowKey}
+                  name={htmlKey}
                   id={optionKey}
                   onChange={radioSelectionChanged(rowKey)}
                   value={option.key}
@@ -201,7 +202,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </div>;
 
     const rowClassName = rowDef.style?.find(st => st.key === 'withLabelRowModeClassName')?.value;
-
+    const htmlKey = `${props.parentKey}.${rowKey}-label-row`;
     return <div
       key={rowKey}
       className={clsx(
@@ -215,8 +216,8 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     >
       {labelOnTop ? labelRow : null}
       <fieldset
-        id={rowKey}
-        name={rowKey}
+        id={htmlKey}
+        name={htmlKey}
         className={clsx(
           "d-flex justify-content-between",
         )}
@@ -230,7 +231,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                 key={optionKey}
                 className="form-check-input cursor-pointer"
                 type="radio"
-                name={rowKey}
+                name={htmlKey}
                 id={optionKey}
                 onChange={radioSelectionChanged(rowKey)}
                 value={option.key}
@@ -307,6 +308,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                 rowContent = <span key={item.key}>Row labels are missing</span>
                 break;
               }
+              const htmlKey = `${props.parentKey}.${item.key}-table`;
               rowContent = <React.Fragment>
                 <td scope="row"
                   className="text-start"
@@ -323,7 +325,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                   <input
                     className="form-check-input cursor-pointer"
                     type="radio"
-                    name={'tableMode-' + item.key}
+                    name={htmlKey}
                     onChange={radioSelectionChanged(item.key)}
                     value={oi.key}
                     checked={isResponseSet(item.key, oi.key)}
