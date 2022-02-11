@@ -21,6 +21,8 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 - item
 - item
 
+With an external [link](https://coneno.com)
+
 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis odit incidunt minima velit eum ratione illum. Nihil corporis alias consectetur reiciendis aliquam laboriosam modi deleniti, maxime dolorum exercitationem tempore ex.`,
   renderers: {
     'pageinfo': (props: any) => {

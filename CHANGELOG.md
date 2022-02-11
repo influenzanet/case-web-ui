@@ -6,6 +6,7 @@
 
 - Fixing issue with response single choice and bipolar likert choice where keyboard navigation was not working as expected in table mode.
 - Center text and number inputs content when used in a cloze question.
+- TextLink should work as normal <a> tag.
 
 ## 1.9.0 - 2022-02-04
 
