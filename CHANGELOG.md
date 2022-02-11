@@ -1,15 +1,20 @@
 # Changelog
 
+## 1.9.1 - 2022-02-11
+
+### Changed
+
+- Fixing issue with response single choice and bipolar likert choice where keyboard navigation was not working as expected in table mode.
+
 ## 1.9.0 - 2022-02-04
 
-### Added:
+### Added
 
 - New input for "time", to ask for a specific hour and minute of the day. When stepsize is set, seconds can be asked as well.
 - Added new response component with the role `timeInput` to select a time. Result will be interpreted as seconds since 00:00:00. Can also be used in cloze questions, single choice or multple choice questions.
 - New question type `consent` to display a consent dialog and store the response in a survey.
 
-
-### Changes:
+### Changes
 
 - Formatted text components in the survey can include date object to display a localized date. (With `role: dateDisplay`).
 - Use webpack5 in storybook.
@@ -49,7 +54,6 @@ Color and font-size optimisations for accessibility.
 
 - Survey View needs to receive date-fns locales as a prop. These locales needs to be registered outside of the library, from the host app.
 
-
 ## 1.7.0 - 2022-01-21
 
 ### Added
@@ -68,11 +72,9 @@ Color and font-size optimisations for accessibility.
 - Responsive Single Choice array and Bipolar likert scale array rows support displayCondition.
 - SurveyCard can handle 'immediate' category.
 
-
 ## 1.6.2 - 2021-11-22
 
 Fix issue with dialog header rendering on windows.
-
 
 ## 1.6.1 - 2021-11-19
 
@@ -91,7 +93,6 @@ Updated project dependencies.
 - New survey response item type for "cloze" question, a question where inputs embedded in a text can be placed. E.g., On .... between ... and ... . This can be embedded inside a single or multiple choice question as well. To invoke such an item, you can use the `role: 'cloze'`.
 - New component available for file inputs using a dropzone.
 
-
 ### Changed
 
 - Survey navigation buttons should loose focus after clicked. Also submit button should not gain autofocus now.
@@ -99,7 +100,6 @@ Updated project dependencies.
 - DateInput n survey also accepts className for the component.
 - NavLink example removes `type="button"` that causes wrong style in Safari.
 - TextInput and MultiLineTextInput survey components now support `maxLength` attribute passed down through the style array, to control how many characters can be entered.
-
 
 ## 1.5.3 - 2021-08-30
 
@@ -114,58 +114,53 @@ Updated project dependencies.
 
 - Survey Page buttons on last page, put focus on Submit instead of back button. This a temporary solution, since ideally focus should be set to the top survey item.
 
-
 ## 1.5.1 - 2021-08-19
 
-### Changed:
+### Changed
 
 - Improve survey page progress indicator, to better handle cases with many survey pages.
 - Improve click target for likert scales item, especially relevant for vertical mode.
 
 ## 1.5.0 - 2021-08-17
 
-### Added:
+### Added
 
 - New survey response component for role `responsiveBipolarLikertScaleArray`.
 
-### Changed:
+### Changed
 
 - Updating project dependencies (react-markdown, recharts, react-datepicker)
 
-
-
 ## 1.4.2 - 2021-07-30
 
-### Changed:
+### Changed
 
 - `responsiveSingleChoiceArray`: fix isLast for horizontal mode
 - `likert` survey response item fixes issues with longer text when stacked in vertical mode.
 
-
 ## 1.4.1 - 2021-07-30
 
-### Changed:
+### Changed
 
--  `SingleChoiceGroup` and `MultipleChoiceGroup`: use flex grow label also in case of formatted text.
+- `SingleChoiceGroup` and `MultipleChoiceGroup`: use flex grow label also in case of formatted text.
 - `responsiveSingleChoiceArray`: small improvements on props.
-
 
 ## 1.4.0 - 2021-07-29
 
-### Added:
+### Added
 
 - New survey question type: `ResponsiveSingleChoiceArray`. When using this component, you can define different view modes for different screen sizes. Currently supported are: 'vertical', 'horizontal' and 'table' modes. This question type can be used, e.g., to implement Likert Scale matrices.
 
-### Changed:
+### Changed
 
--  `SingleChoiceGroup`: Options of a single choice group can be styled (with className attribute). In such a case, styling is not propagated down to the nested inputs, to avoid issues with improperly applied styles twice.
--  `SingleChoiceGroup` and `MultipleChoiceGroup` accept now option items with multiple parts (items in the component's items array). Currently, only text-based components are supported, for the purpose if different parts of the text needs to be styled differently (e.g., bold, color highlight or underlined).
+- `SingleChoiceGroup`: Options of a single choice group can be styled (with className attribute). In such a case, styling is not propagated down to the nested inputs, to avoid issues with improperly applied styles twice.
+- `SingleChoiceGroup` and `MultipleChoiceGroup` accept now option items with multiple parts (items in the component's items array). Currently, only text-based components are supported, for the purpose if different parts of the text needs to be styled differently (e.g., bold, color highlight or underlined).
 - Title component of a single survey item now supports className style attribute to attach CSS class to the whole title area. This can be used, e.g., to add "sticky-top", to make the question title stick to the top of the screen as long as the question is visible.
 - Title component of a single survey item accepts now a list of items through its `items` attribute. This can be used to define a `content` with differently styled parts (e.g., to highlight specific words, or override default font weight from bold to normal).
 
 ## [1.3.0] - 2021-07-08
 
-### Changed:
+### Changed
 
 - `SurveySingleItemView`: Apply same style to debug key as title even if there is no title component.
 - Add Italian date locale for datepickers.
@@ -192,6 +187,7 @@ Due to the updates related to react-markdown version, the following markdown cus
 **Map Chart**
 
 Previously:
+
 ~~~
 [mapchart:/charts/ggd-map-nl.json]:  /charts/20210126_0801_kaart_data.json
 ~~~
@@ -208,11 +204,13 @@ New syntax:
 **Line and Scatter Chart**
 
 Previously:
+
 ~~~
 [line-and-scatter-chart]: /charts/20210126_0801_percentage_klachten_over_tijd.json
 ~~~
 
 New syntax:
+
 ~~~
 <lineandscatterchart
   data-url="/charts/20210126_0801_percentage_klachten_over_tijd.json"
@@ -222,11 +220,13 @@ New syntax:
 **Page info for date line**
 
 Previously:
+
 ~~~
 `Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.`
 ~~~
 
 New syntax:
+
 ~~~
 <pageinfo>
 Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.
@@ -234,7 +234,6 @@ Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.
 ~~~
 
 The old syntax will be rendered as the default code block.
-
 
 ## [1.1.18]
 
@@ -298,7 +297,6 @@ The old syntax will be rendered as the default code block.
 ### Changed
 
 - Change styling of Text and Number input components. Label part should only expand as far as its content requires. Number input has max width currently.
-
 
 ## [1.1.12]
 
