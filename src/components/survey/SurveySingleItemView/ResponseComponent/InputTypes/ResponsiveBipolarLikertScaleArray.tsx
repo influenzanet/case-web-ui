@@ -323,7 +323,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                   <input
                     className="form-check-input cursor-pointer"
                     type="radio"
-                    name={item.key}
+                    name={'tableMode-' + item.key}
                     onChange={radioSelectionChanged(item.key)}
                     value={oi.key}
                     checked={isResponseSet(item.key, oi.key)}
