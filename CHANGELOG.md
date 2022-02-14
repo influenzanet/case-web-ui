@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.4 - 2022-02-14
+
+### Changed
+
+- dropdown group's `description` attribute will be used for the placeholder item of the dropdown.
+- survey's number inputs by default has no value (empty string), this would help to indicate that a value needs to be set
+
 ## 1.9.3 - 2022-02-11
 
 - Fix further input name issue in responsive single choice array and bipolar likert causing issues between multiple questions.
