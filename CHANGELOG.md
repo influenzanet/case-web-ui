@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.5 - 2022-02-14
+
+### Changed
+
+- fix cloze question's response cache handling (how to prefill existing values)
+
 ## 1.9.4 - 2022-02-14
 
 ### Changed

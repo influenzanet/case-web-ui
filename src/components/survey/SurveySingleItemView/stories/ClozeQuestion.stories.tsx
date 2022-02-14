@@ -79,10 +79,12 @@ export const ExampleClozeQuestion = () => <SurveySingleItemView
     key: 'rg',
     items: [{
       key: 'cloze',
-      items: [{
-        key: '2',
-        value: 'Prefilled'
-      }]
+      items: [
+        {
+          key: '2',
+          value: 'Prefilled'
+        },
+      ]
     }]
   }}
   responseChanged={(response) => console.log(response)}
