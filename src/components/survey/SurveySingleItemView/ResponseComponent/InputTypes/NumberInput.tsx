@@ -15,7 +15,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
   const [touched, setTouched] = useState(false);
 
   const [inputValue, setInputValue] = useState<string>(
-    props.prefill && props.prefill.value ? parseFloat(props.prefill.value).toString() : '0'
+    props.prefill && props.prefill.value ? parseFloat(props.prefill.value).toString() : ''
   );
 
   useEffect(() => {
