@@ -34,17 +34,11 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-  const getItemPrefill = (): ResponseItem | undefined => {
-    if (!response || !response.items || response.items.length < 1) {
+  const getItemPrefillForSubResponse = (key?: string): ResponseItem | undefined => {
+    if (!response || !response.items || response.items.length < 1 || key === undefined) {
       return undefined;
     }
-    return response.items[0];
-  }
-
-  const getPrefillForItem = (item: ItemComponent): ResponseItem | undefined => {
-    if (!props.prefill || !props.prefill.items) { return undefined; }
-    const itemPrefill = props.prefill.items.find(ri => ri.key === item.key);
-    return itemPrefill;
+    return response.items.find(ri => ri.key === key);
   }
 
   const handleItemResponse = (key: string) => (response: ResponseItem | undefined) => {
@@ -86,7 +80,8 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
     if (item.displayCondition === false) {
       return null;
     }
-    const prefill = getItemPrefill();
+    const prefill = getItemPrefillForSubResponse(item.key);
+
     const optionKey = props.parentKey + '.' + item.key;
 
     const isDisabled = item.disabled === true;
