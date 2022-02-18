@@ -14,8 +14,8 @@ interface RequiredSurveysProps {
 }
 
 const RequiredSurveys: React.FC<RequiredSurveysProps> = (props) => {
-  const surveyCards = () => props.surveys.map(s => <SurveyCard
-    key={s.studyKey + s.surveyKey + s.profiles[0].id}
+  const surveyCards = () => props.surveys.map((s, index) => <SurveyCard
+    key={s.studyKey + s.surveyKey + s.profiles[0].id + index.toFixed()}
     details={{ ...s }}
     avatars={props.avatars}
     selectedLanguage={props.selectedLanguage}
