@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.6 - 2022-02-22
+
+### Changed
+
+- date input inside a single choice should not automatically open date picker when prefill is used
+
 ## 1.9.5 - 2022-02-14
 
 ### Changed

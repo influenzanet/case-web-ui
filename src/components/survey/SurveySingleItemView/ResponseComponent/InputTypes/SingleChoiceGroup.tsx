@@ -193,7 +193,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
             languageCode={props.languageCode}
             responseChanged={setResponseForKey(option.key)}
-            openCalendar={getSelectedKey() === option.key}
+            openCalendar={touched && getSelectedKey() === option.key}
             disabled={isDisabled}
             dateLocales={props.dateLocales}
           />;
