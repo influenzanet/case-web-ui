@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.7 - 2022-02-26
+
+### Changed
+
+- Added `classNameOverride` option to footer column props, e.g., to be able to use different column width.
+
 ## 1.9.6 - 2022-02-22
 
 ### Changed

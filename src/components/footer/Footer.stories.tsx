@@ -42,6 +42,7 @@ WithContent.args = {
       {
         columnKey: '2',
         title: 'Internal Links and Dialogs',
+        classNameOverride: 'col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-3 text-white',
         items: [
           {
             type: 'internal',

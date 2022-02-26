@@ -5,6 +5,7 @@ export interface FooterContentConfig {
 export interface FooterColumnConfig {
   columnKey: string;
   columnTitle: string;
+  classNameOverride?: string;
   items: Array<FooterLinkItemConfig>;
 }
 

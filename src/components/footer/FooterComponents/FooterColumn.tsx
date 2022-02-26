@@ -5,6 +5,7 @@ import LinkButton from './FooterLinkButton';
 interface FooterColumnProps {
   title: string;
   items: Array<FooterLinkItemConfig>;
+  classNameOverride?: string;
   onNavigate: (url: string, external: boolean) => void;
   onChangeLanguage: (code: string) => void;
   onOpenDialog: (dialog: string) => void;
@@ -48,7 +49,7 @@ const FooterColumn: React.FC<FooterColumnProps> = (props) => {
   }
 
   return (
-    <div className={footerColClass}>
+    <div className={props.classNameOverride ? props.classNameOverride : footerColClass}>
       <h4
         className="border-1 border-bottom pb-1 m-0"
       >{props.title}</h4>

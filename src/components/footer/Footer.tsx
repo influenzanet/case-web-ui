@@ -27,6 +27,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                 key={column.columnKey}
                 title={column.columnTitle}
                 items={column.items}
+                classNameOverride={column.classNameOverride}
                 onChangeLanguage={props.onChangeLanguage}
                 onNavigate={props.onNavigate}
                 onOpenDialog={props.onOpenDialog}
