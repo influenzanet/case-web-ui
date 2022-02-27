@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getYear, format, max, min, eachMonthOfInterval, startOfYear, getMonth, endOfYear } from 'date-fns';
-// import { dateLocales } from './DateInput';
+import { getYear, format, eachMonthOfInterval, startOfYear, getMonth, endOfYear } from 'date-fns';
 
 
 interface YearMonthSelectorProps {

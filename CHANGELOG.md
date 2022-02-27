@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.8 - 2022-02-26
+
+### Changed
+
+- Datepicker header includes year and month dropdown to simplify selection.
+
 ## 1.9.7 - 2022-02-26
 
 ### Changed

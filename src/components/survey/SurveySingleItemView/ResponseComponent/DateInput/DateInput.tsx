@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
-import { format } from 'date-fns';
-import { addYears, getUnixTime } from 'date-fns';
+import { format, getYear, getMonth } from 'date-fns';
+import { addYears, getUnixTime, eachMonthOfInterval, startOfYear, endOfYear } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
 import clsx from 'clsx';
 
@@ -82,13 +82,51 @@ const DateInput: React.FC<DateInputProps> = (props) => {
     )
   }
 
-  const DatepickerHeader = ({ date, decreaseMonth, increaseMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }: any) => {
+  const DatepickerHeader = ({ date, decreaseMonth, increaseMonth, changeYear, changeMonth, prevMonthButtonDisabled, nextMonthButtonDisabled }: any) => {
+    const years = new Array<number>();
+    for (let i = getYear(minDate); i <= getYear(maxDate); i++) {
+      years.push(i);
+    }
+    years.reverse();
+
+    const referenceYear = getYear(new Date());
+    const months = eachMonthOfInterval({
+      start: startOfYear(new Date(referenceYear, 0, 2)),
+      end: endOfYear(new Date(referenceYear, 0, 2)),
+    }).map(m => {
+      return format(m, 'MMM', { locale: props.dateLocales?.find(l => l.code === props.languageCode)?.locale })
+    });
+
     return (
-      <div className="my-1 d-flex justify-content-between">
+      <div className="my-1 d-flex justify-content-between align-items-center">
         <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 ms-3 ">
           <span className="material-icons ">arrow_back</span>
         </button>
-        <span>{format(date, 'MMMM yyyy', { locale: props.dateLocales?.find(loc => loc.code === props.languageCode)?.locale })}</span>
+        <select
+          className='form-select'
+          value={getYear(date)}
+          onChange={({ target: { value } }) => changeYear(value)}
+          style={{ minWidth: 95 }}
+        >
+          {years.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className='form-select ms-1'
+          value={months[getMonth(date)]}
+          onChange={({ target: { value } }) => changeMonth(months.indexOf(value))}
+        >
+          {months.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+
         <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className="btn datepicker-arrow-btn p-0 me-3">
           <span className="material-icons ">arrow_forward</span>
         </button>
