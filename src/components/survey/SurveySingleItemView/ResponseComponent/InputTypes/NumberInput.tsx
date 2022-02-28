@@ -117,12 +117,16 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
       className={clsx("form-control border-0 flex-grow-1", props.inputClassName)}
       type="number"
       autoComplete="off"
+      inputMode='decimal'
       id={props.parentKey}
       placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
       value={inputValue}
       maxLength={30}
       onFocus={handleFocus}
       onClick={(e) => (e.target as HTMLInputElement).select()}
+      onWheel={(e) => {
+        e.currentTarget.blur()
+      }}
       onChange={handleInputValueChange(props.compDef.key)}
       disabled={props.compDef.disabled !== undefined || props.disabled === true}
       min={minValue ? minValue as number : undefined}

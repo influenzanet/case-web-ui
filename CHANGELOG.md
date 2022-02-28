@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.9 - 2022-02-28
+
+### Changed
+
+- Improved scrolling behaviour of numeric input in surveys. Also open the numeric keyboard on mobile.
+
 ## 1.9.8 - 2022-02-26
 
 ### Changed
