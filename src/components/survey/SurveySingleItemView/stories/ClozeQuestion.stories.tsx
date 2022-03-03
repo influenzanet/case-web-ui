@@ -52,7 +52,7 @@ export const ExampleClozeQuestion = () => <SurveySingleItemView
                   ]
                 },
                 {
-                  key: '4', role: 'input', description: [{ code: 'en', resolvedText: 'Placeholder 2' }], style: [{ key: 'inputMaxWidth', value: '120px' }, { key: 'className', value: '' }]
+                  key: '4', role: 'input', description: [{ code: 'en', resolvedText: 'Placeholder 2' }], style: [{ key: 'inputMaxWidth', value: '120px' }, { key: 'alignInputText', value: 'end' }, { key: 'className', value: 'flex-grow-1 text-end' }]
                 },
                 {
                   key: '5', role: 'text',

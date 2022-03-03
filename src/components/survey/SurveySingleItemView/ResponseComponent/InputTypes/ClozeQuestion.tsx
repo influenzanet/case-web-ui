@@ -3,7 +3,7 @@ import { isItemGroupComponent, ItemComponent, ItemGroupComponent, ResponseItem }
 import { renderFormattedContent } from '../../renderUtils';
 import MarkdownComponent from '../../SurveyComponents/MarkdownComponent';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
-import { CommonResponseComponentProps, getClassName } from '../../utils';
+import { CommonResponseComponentProps, getClassName, getStyleValueByKey } from '../../utils';
 import DateInput from '../DateInput/DateInput';
 import DropDownGroup from './DropDownGroup';
 import NumberInput from './NumberInput';
@@ -87,6 +87,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
     const isDisabled = item.disabled === true;
 
     const optionClassName = getClassName(item.style);
+    const alignInputText = getStyleValueByKey(item.style, 'alignInputText')
 
     if (isItemGroupComponent(item)) {
       switch (item.role) {
@@ -135,7 +136,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             updateDelay={50}
             disabled={isDisabled}
             nonFullWidth={true}
-            inputClassName='text-center'
+            inputClassName={`text-${alignInputText ? alignInputText : 'center'}`}
             defaultClassName={defaultInputClassName}
             dateLocales={props.dateLocales}
           />;
@@ -153,7 +154,7 @@ const ClozeQuestion: React.FC<ClozeQuestionProps> = (props) => {
             ignoreClassName={optionClassName !== undefined}
             nonFullWidth={true}
             defaultClassName={defaultInputClassName}
-            inputClassName='text-center'
+            inputClassName={`text-${alignInputText ? alignInputText : 'center'}`}
             dateLocales={props.dateLocales}
           />;
         case 'dateInput':
