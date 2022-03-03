@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.9.10 - 2022-03-03
+
+### Changed
+
+- Cloze question's input's text can be aligned start, center, end.
+
 ## 1.9.9 - 2022-02-28
 
 ### Changed
