@@ -33,6 +33,9 @@ const MultilineTextInput: React.FC<MultilineTextInputProps> = (props) => {
 
     setInputValue(value);
     setResponse(prev => {
+      if (value.length < 1) {
+        return undefined;
+      }
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',

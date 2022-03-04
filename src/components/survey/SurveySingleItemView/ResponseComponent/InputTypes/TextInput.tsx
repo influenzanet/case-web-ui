@@ -37,6 +37,9 @@ const TextInput: React.FC<TextInputProps> = (props) => {
     const value = (event.target as HTMLInputElement).value;
     setInputValue(value);
     setResponse(prev => {
+      if (value.length < 1) {
+        return undefined;
+      }
       if (!prev) {
         return {
           key: props.compDef.key ? props.compDef.key : 'no key found',

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.11 - 2022-03-04
+
+- Text and number inputs in the survey remove the response if the input's value is deleted (empty). This is to fix the expected behaviour and avoid users to be able to work around survey validation by entering and afterwards removing their entry.
+
 ## 1.9.10 - 2022-03-03
 
 ### Changed

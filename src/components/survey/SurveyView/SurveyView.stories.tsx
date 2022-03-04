@@ -3,7 +3,10 @@ import SurveyView from "./SurveyView";
 import ExampleWeekly from '../../../../exampleContent/surveys/example_weekly.json';
 import ExampleIntake from '../../../../exampleContent/surveys/example_intake.json';
 import RTRPre from '../../../../exampleContent/surveys/rtr-pre.json';
+import TBflow_Adults from '../../../../exampleContent/surveys/TBflow_Adults.json';
+import Standardflow_Adults from '../../../../exampleContent/surveys/Standardflow_Adults.json';
 import WeeklyTB from '../../../../exampleContent/surveys/WeeklyTB.json';
+
 import { Survey } from "survey-engine/data_types";
 import { nl, nlBE, fr, de, it } from 'date-fns/locale';
 const dateLocales = [
@@ -54,6 +57,34 @@ export const RTRPreSurvey = () => <div className="container">
     invalidResponseText='Invalid Response'
     survey={RTRPre.survey as Survey}
     onSubmit={(resp) => console.log(resp)}
+  />
+</div>
+
+export const TBflow_AdultsSurvey = () => <div className="container">
+  <SurveyView
+    languageCode='nl'
+    nextBtnText='Next'
+    backBtnText='Back'
+    submitBtnText='Submit'
+    invalidResponseText='Invalid Response'
+    survey={TBflow_Adults.survey as Survey}
+    onSubmit={(resp) => console.log(resp)}
+    dateLocales={dateLocales}
+    showEngineDebugMsg={false}
+  />
+</div>
+
+export const Standardflow_AdultsSurvey = () => <div className="container">
+  <SurveyView
+    languageCode='nl'
+    nextBtnText='Next'
+    backBtnText='Back'
+    submitBtnText='Submit'
+    invalidResponseText='Invalid Response'
+    survey={Standardflow_Adults.survey as Survey}
+    onSubmit={(resp) => console.log(resp)}
+    dateLocales={dateLocales}
+    showEngineDebugMsg={false}
   />
 </div>
 
