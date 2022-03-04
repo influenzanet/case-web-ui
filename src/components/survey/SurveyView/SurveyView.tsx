@@ -4,6 +4,7 @@ import { SurveyEngineCore } from 'survey-engine/engine';
 import { CustomSurveyResponseComponent } from '../SurveySingleItemView/ResponseComponent/ResponseComponent';
 import SurveyPageView from './SurveyPageView/SurveyPageView';
 import SurveyProgress from './SurveyProgress/SurveyProgress';
+import { isFirefox } from 'react-device-detect';
 
 interface SurveyViewProps {
   loading?: boolean;
@@ -51,8 +52,13 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   }
 
   const resetScrollPosition = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    if (isFirefox) {
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 10)
+    } else {
+      window.scrollTo(0, 0)
+    }
   }
 
   // console.log(surveyEngine.getSurveyEndItem());
@@ -77,7 +83,6 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
       showBackButton={currentPage > 0 && !props.hideBackButton}
       onPreviousPage={() => {
         setCurrentPage(prev => Math.max(0, prev - 1));
-        // resetScrollPosition();
       }}
       onNextPage={() => {
         setCurrentPage(prev => prev + 1);
