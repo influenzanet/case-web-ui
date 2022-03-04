@@ -6,6 +6,7 @@
 
 - Text and number inputs in the survey remove the response if the input's value is deleted (empty). This is to fix the expected behaviour and avoid users to be able to work around survey validation by entering and afterwards removing their entry.
 - Adding a workaround to apply scrolling in firefox when switching survey pages.
+- Improve responsive single choice array behavior on some devices, where it sometimes lead to disappearing answers or unintended scrolling.
 
 ## 1.9.10 - 2022-03-03
 

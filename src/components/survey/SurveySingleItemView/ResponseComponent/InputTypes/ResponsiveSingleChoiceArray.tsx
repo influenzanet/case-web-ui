@@ -126,7 +126,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     return resp !== undefined;
   }
 
-  const renderVerticalMode = () => {
+  const renderVerticalMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -146,7 +146,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         }
         switch (item.role) {
           case 'row':
-            const rowKey = props.compDef.key + '.' + item.key;
+            const rowKey = namePrefix + '_' + props.compDef.key + '.' + item.key;
             const htmlKey = `${props.parentKey}.${item.key}-vertical`;
             const sortedOptions = reverseOrder ? options.items.slice().reverse() : options.items;
             const rowClassName = item.style?.find(s => s.key === 'verticalModeClassName')?.value;
@@ -196,13 +196,14 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     </React.Fragment>
   }
 
-  const renderHorizontalRow = (rowDef: ItemComponent, options: ItemGroupComponent, isLast: boolean) => {
+  const renderHorizontalRow = (rowDef: ItemComponent, options: ItemGroupComponent, isLast: boolean, namePrefix: string) => {
     const rowKey = rowDef.key;
 
     const labelOnTop = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'top';
     const hideLabel = rowDef.style?.find(s => s.key === 'horizontalModeLabelPlacement')?.value === 'none';
     const rowClassName = rowDef.style?.find(s => s.key === 'horizontalModeClassName')?.value;
-    const htmlKey = `${props.parentKey}.${rowKey}-horizontal`;
+    const htmlKey = `${namePrefix}_${props.parentKey}.${rowKey}-horizontal`;
+    const htmlLabelKey = `${htmlKey}-label`;
 
     return <div
       key={rowKey}
@@ -211,7 +212,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         rowClassName,
       )}
     >
-      <h6 id={rowKey + 'label'}
+      <h6 id={htmlLabelKey}
 
         className={clsx(
           'fw-bold'
@@ -225,12 +226,13 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         className={clsx(
           "d-flex",
         )}
-        aria-describedby={rowKey + 'label'}
+        aria-describedby={htmlLabelKey}
       >
         {
           options.items.map(
             option => {
               const optionKey = option.key;
+              const htmlKeyForOption = htmlKey + optionKey;
               const radioBtn = (<div
                 className={clsx(
                   "text-center",
@@ -240,7 +242,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                   className="form-check-input cursor-pointer"
                   type="radio"
                   name={htmlKey}
-                  id={optionKey}
+                  id={htmlKeyForOption}
                   onChange={radioSelectionChanged(rowKey)}
                   value={option.key}
                   checked={isResponseSet(rowKey, option.key)}
@@ -255,7 +257,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
                 },
                 optionLabelClassName
               )}>
-                <label htmlFor={optionKey} >
+                <label htmlFor={htmlKeyForOption} >
                   {renderFormattedContent(option, props.languageCode, 'cursor-pointer', props.dateLocales)}
                 </label>
               </div>);
@@ -278,7 +280,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     </div>
   }
 
-  const renderHorizontalMode = () => {
+  const renderHorizontalMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -296,7 +298,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
         }
         switch (item.role) {
           case 'row':
-            return renderHorizontalRow(item, options, index === rows.length - 1);
+            return renderHorizontalRow(item, options, index === rows.length - 1, namePrefix);
           case 'options':
             return undefined;
           default:
@@ -306,7 +308,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     </React.Fragment>
   }
 
-  const renderTableMode = () => {
+  const renderTableMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -352,7 +354,7 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
           }
           switch (item.role) {
             case 'row':
-              const htmlKey = `${props.parentKey}.${item.key}-table`;
+              const htmlKey = `${namePrefix}.${props.parentKey}.${item.key}-table`;
               rowContent = <React.Fragment>
                 <th scope="row">
                   {renderFormattedContent(item, props.languageCode, undefined, props.dateLocales)}
@@ -388,14 +390,14 @@ const ResponsiveSingleChoiceArray: React.FC<ResponsiveSingleChoiceArrayProps> = 
     </table>
   }
 
-  const renderMode = (mode: Variant) => {
+  const renderMode = (mode: Variant, namePrefix: string) => {
     switch (mode) {
       case 'vertical':
-        return renderVerticalMode();
+        return renderVerticalMode(namePrefix);
       case 'horizontal':
-        return renderHorizontalMode();
+        return renderHorizontalMode(namePrefix);
       case 'table':
-        return renderTableMode();
+        return renderTableMode(namePrefix);
       default:
         return <p>unknown mode: {mode}</p>
     }

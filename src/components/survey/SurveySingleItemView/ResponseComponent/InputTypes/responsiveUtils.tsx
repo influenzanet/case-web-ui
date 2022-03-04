@@ -33,7 +33,7 @@ const getDefaultMode = (styles?: Array<{ key: string, value: string }>): Variant
   return bpMode.value as Variant;
 }
 
-export const getResponsiveModes = (renderMode: (variant: Variant) => React.ReactNode, styles?: Array<{ key: string, value: string }>) => {
+export const getResponsiveModes = (renderMode: (variant: Variant, namePrefix: string) => React.ReactNode, styles?: Array<{ key: string, value: string }>) => {
   const breakpointModes: Array<BreakpointModeDef> = [];
   const defaultMode = getDefaultMode(styles);
   if (!defaultMode) {
@@ -74,7 +74,7 @@ export const getResponsiveModes = (renderMode: (variant: Variant) => React.React
             className,
           )}
         >
-          {renderMode(bm.variant)}
+          {renderMode(bm.variant, bm.start ? bm.start : 'default')}
         </div>)
       }
     </React.Fragment>

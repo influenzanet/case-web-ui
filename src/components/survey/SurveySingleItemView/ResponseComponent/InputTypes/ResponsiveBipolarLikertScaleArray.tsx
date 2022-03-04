@@ -85,7 +85,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     return resp !== undefined;
   }
 
-  const getSingleVerticalItem = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean) => {
+  const getSingleVerticalItem = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean, namePrefix: string) => {
     const rowKey = rowDef.key;
 
     if (!isItemGroupComponent(rowDef)) {
@@ -99,7 +99,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     }
 
     const rowClassName = rowDef.style?.find(st => st.key === 'verticalModeClassName')?.value;
-    const htmlKey = `${props.parentKey}.${rowKey}-vertical`;
+    const htmlKey = `${namePrefix}_${props.parentKey}.${rowKey}-vertical`;
     return <div
       key={rowKey}
       className={clsx(
@@ -144,7 +144,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </div>
   }
 
-  const renderVerticalMode = () => {
+  const renderVerticalMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -159,12 +159,12 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
         if (item.displayCondition === false) {
           return null;
         }
-        return getSingleVerticalItem(item, options, index === 0, index === rows.length - 1);
+        return getSingleVerticalItem(item, options, index === 0, index === rows.length - 1, namePrefix);
       })}
     </React.Fragment>
   }
 
-  const getSingleItemWithLabelRow = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean, labelOnTop: boolean, labelRowMaxLabelWidth?: string) => {
+  const getSingleItemWithLabelRow = (rowDef: ItemComponent, options: ItemGroupComponent, isfirst: boolean, isLast: boolean, labelOnTop: boolean, namePrefix: string, labelRowMaxLabelWidth?: string) => {
     const rowKey = rowDef.key;
 
     if (!isItemGroupComponent(rowDef)) {
@@ -202,7 +202,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </div>;
 
     const rowClassName = rowDef.style?.find(st => st.key === 'withLabelRowModeClassName')?.value;
-    const htmlKey = `${props.parentKey}.${rowKey}-label-row`;
+    const htmlKey = `${namePrefix}_${props.parentKey}.${rowKey}-label-row`;
     return <div
       key={rowKey}
       className={clsx(
@@ -245,7 +245,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </div>
   }
 
-  const renderWithLabelRowMode = () => {
+  const renderWithLabelRowMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -262,12 +262,12 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
         }
         const labelOnTop = props.compDef.style?.find(s => s.key === 'labelRowPosition')?.value === 'top';
         const labelRowMaxLabelWidth = props.compDef.style?.find(s => s.key === 'labelRowMaxLabelWidth')?.value;
-        return getSingleItemWithLabelRow(item, options, index === 0, index === rows.length - 1, labelOnTop, labelRowMaxLabelWidth);
+        return getSingleItemWithLabelRow(item, options, index === 0, index === rows.length - 1, labelOnTop, namePrefix, labelRowMaxLabelWidth);
       })}
     </React.Fragment>
   }
 
-  const renderTableMode = () => {
+  const renderTableMode = (namePrefix: string) => {
     if (!isItemGroupComponent(props.compDef)) {
       return <p>Empty</p>;
     }
@@ -308,7 +308,7 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
                 rowContent = <span key={item.key}>Row labels are missing</span>
                 break;
               }
-              const htmlKey = `${props.parentKey}.${item.key}-table`;
+              const htmlKey = `${namePrefix}.${props.parentKey}.${item.key}-table`;
               rowContent = <React.Fragment>
                 <td scope="row"
                   className="text-start"
@@ -357,14 +357,14 @@ const ResponsiveBipolarLikertScaleArray: React.FC<ResponsiveBipolarLikertScaleAr
     </table>
   }
 
-  const renderMode = (mode: Variant) => {
+  const renderMode = (mode: Variant, namePrefix: string) => {
     switch (mode) {
       case 'vertical':
-        return renderVerticalMode();
+        return renderVerticalMode(namePrefix);
       case 'withLabelRow':
-        return renderWithLabelRowMode();
+        return renderWithLabelRowMode(namePrefix);
       case 'table':
-        return renderTableMode();
+        return renderTableMode(namePrefix);
       default:
         return <p>unknown mode: {mode}</p>
     }
