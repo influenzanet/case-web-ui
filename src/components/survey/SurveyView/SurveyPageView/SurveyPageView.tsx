@@ -115,14 +115,14 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
   const surveyEnd = () => {
     const titleComp = getItemComponentByRole(props.surveyEndItem?.components?.items, 'title');
     return <div
-      className="bg-grey-1 px-2 px-sm-3 py-2 mt-2a"
+      className="bg-grey-1 px-2 px-sm-3 pb-2 mt-2a"
     >
-      {titleComp ? <h5 className="text-primary fw-bold">{getLocaleStringTextByCode(titleComp.content, props.selectedLanguage)}</h5> : null}
+      {titleComp ? <h5 className="text-primary fw-bold pt-2 mb-0">{getLocaleStringTextByCode(titleComp.content, props.selectedLanguage)}</h5> : null}
       {props.showBackButton ?
         <button
           type="button"
           id="back"
-          className="btn btn-outline-primary fs-btn"
+          className="btn btn-outline-primary fs-btn mt-2"
           onClick={props.onPreviousPage}
           disabled={props.loading}
           autoFocus={false}
@@ -134,7 +134,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         type="button"
         id="submit"
         className={clsx(
-          "btn btn-primary fw-bold fs-btn",
+          "btn btn-primary fw-bold fs-btn mt-2",
           {
             "ms-2": props.showBackButton
           }
@@ -160,7 +160,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         <button
           type="button"
           id="back"
-          className="btn btn-outline-primary fs-btn"
+          className="btn btn-outline-primary fs-btn me-2"
           onClick={(event) => {
             event.currentTarget.blur()
             props.onPreviousPage()
@@ -175,7 +175,7 @@ const SurveyPageView: React.FC<SurveyPageViewProps> = (props) => {
         type="button"
         id="next"
         name="next"
-        className="btn btn-primary ms-2 fw-bold fs-btn"
+        className="btn btn-primary fw-bold fs-btn"
         onClick={(event) => {
           event.currentTarget.blur();
           handleClickWithValidation(props.onNextPage)

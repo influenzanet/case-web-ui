@@ -1,6 +1,12 @@
 # Changelog
 
-## 1.9.11 - 2022-03-04
+## 1.10.1 - 2022-03-07
+
+### Changed
+
+- Improve survey end buttons white space
+
+## 1.10.0 - 2022-03-04
 
 ### Changed
 
