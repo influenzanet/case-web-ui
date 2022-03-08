@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.2 - 2022-03-08
+
+### Changed
+
+- MapChart hides tab navigation if only one map is available.
+
 ## 1.10.1 - 2022-03-07
 
 ### Changed

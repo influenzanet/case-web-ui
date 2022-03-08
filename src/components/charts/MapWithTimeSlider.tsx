@@ -83,21 +83,26 @@ const MapWithTimeSlider: React.FC<MapWithTimeSliderProps> = (props) => {
 
   const localOptions = { minimumFractionDigits: 1, maximumFractionDigits: 1 };
 
-  const seriesSelector = (data: MapWithTimeSliderProps) => <nav aria-label="plot selection">
-    <ul className="pagination justify-content-center d-block d-sm-flex">
-      {data.seriesData.series.map(dt =>
-        <li key={dt.name}
-          role="button"
-          className={clsx(
-            "page-item",
-            { 'active': dt.name === selectedSeries?.name })}
-          onClick={() => setSelectedSeries(dt)}
-        >
-          <span className="page-link">{dt.name}</span>
-        </li>
-      )}
-    </ul>
-  </nav>;
+  const seriesSelector = (data: MapWithTimeSliderProps) => {
+    if (data.seriesData.series.length < 2) {
+      return null;
+    }
+    return <nav aria-label="plot selection">
+      <ul className="pagination justify-content-center d-block d-sm-flex">
+        {data.seriesData.series.map(dt =>
+          <li key={dt.name}
+            role="button"
+            className={clsx(
+              "page-item",
+              { 'active': dt.name === selectedSeries?.name })}
+            onClick={() => setSelectedSeries(dt)}
+          >
+            <span className="page-link">{dt.name}</span>
+          </li>
+        )}
+      </ul>
+    </nav>
+  }
 
   const renderLegend = () => {
     if (!selectedSeries?.legend.show) {
