@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 interface LoadingPlaceholderProps {
   minHeight: number | string;
+  height?: number | string;
   color: 'primary' | 'secondary' | 'white';
   iconSize?: string;
   iconBorderWidth?: string;
@@ -17,12 +18,12 @@ const LoadingPlaceholder: React.FC<LoadingPlaceholderProps> = (props) => {
   return (
     <div
       className={clsx(
-        "d-flex align-items-center justify-content-center h-100 ",
+        "d-flex align-items-center justify-content-center",
         `bg-${props.color}`,
         {
           'vh-100': props.minHeight === 'vh-100',
         })}
-      style={{ minHeight: props.minHeight }}>
+      style={{ minHeight: props.minHeight, height: props.height }}>
       <div className={clsx(
         "spinner-border",
         {

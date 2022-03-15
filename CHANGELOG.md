@@ -6,6 +6,7 @@
 
 - Improve nav-link style for accessibility
 - Improve behaviour of number input in the survey regarding min/max validation. Previously, input with valid but partial values were moved to the min/max value while the user was typing, resulting in a confusing behaviour. Now, the input accepts the user typed input, but sets the response, only if the value is valid otherwise unsets the response.
+- LoadingPlaceholder's h-100 class removed. Instead, you can control height as an optional attribute.
 
 ## 1.10.2 - 2022-03-08
 
