@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface SliderProps {
   min: number;
@@ -13,6 +13,8 @@ interface SliderProps {
 }
 
 const Slider: React.FC<SliderProps> = (props) => {
+  const [touched, setTouched] = useState(false);
+
   const trackColor = 'bg-' + (props.trackColor ? props.trackColor : 'grey-1');
   const tickColor = 'bg-' + (props.tickColor ? props.tickColor : 'grey-4');
 
@@ -48,6 +50,14 @@ const Slider: React.FC<SliderProps> = (props) => {
         onChange={(event) => {
           const value = parseFloat(event.target.value);
           props.onChange(value)
+          setTouched(true);
+        }}
+        onClick={(event) => {
+          if (touched) { return; }
+          console.log('clicked')
+          const value = parseFloat((event.target as HTMLInputElement)?.value);
+          props.onChange(value)
+          setTouched(true);
         }}
 
       />
