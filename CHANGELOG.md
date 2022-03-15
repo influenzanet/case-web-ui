@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.3 - 2022-03-15
+
+### Changed
+
+- Improve nav-link style for accessibility
+
 ## 1.10.2 - 2022-03-08
 
 ### Changed
