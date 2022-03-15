@@ -43,7 +43,7 @@ export const Example = () => <SurveySingleItemView
                 {
                   key: '8', role: 'numberInput', style: [
                     { key: 'className', value: 'pt-2 border-top border-1 border-grey-2' },
-                    { key: 'inputMaxWidth', value: '80px' }], content: [{ code: 'en', resolvedText: 'Healthcare provider name' }], properties: { min: 1, max: 20 }
+                    { key: 'inputMaxWidth', value: '80px' }], content: [{ code: 'en', resolvedText: 'Healthcare provider count' }], properties: { min: 12, max: 24 }
                 },
               ]
             }

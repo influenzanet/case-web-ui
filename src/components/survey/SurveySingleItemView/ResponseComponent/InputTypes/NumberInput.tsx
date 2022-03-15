@@ -28,6 +28,41 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
+  useEffect(() => {
+    let value = inputValue;
+
+    if (props.compDef.properties?.min !== undefined) {
+      const numVal = parseFloat(value);
+      if (numVal < props.compDef.properties?.min) {
+        value = "";
+      }
+    }
+    if (props.compDef.properties?.max !== undefined) {
+      const numVal = parseFloat(value);
+      if (numVal > props.compDef.properties?.max) {
+        value = "";
+      }
+    }
+
+    setResponse(prev => {
+      if (value.length < 1) {
+        return undefined;
+      }
+      if (!prev) {
+        return {
+          key: props.compDef.key ? props.compDef.key : 'no key found',
+          dtype: 'number',
+          value: value
+        }
+      }
+      return {
+        ...prev,
+        dtype: 'number',
+        value: value
+      }
+    })
+  }, [inputValue])
+
 
   const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!key) { return; }
@@ -41,37 +76,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
         value = Math.round(numVal).toString();
       }
     }
-    if (props.compDef.properties?.min !== undefined) {
-      const numVal = parseFloat(value);
-      if (numVal < props.compDef.properties?.min) {
-        value = props.compDef.properties?.min.toString();
-      }
-    }
-    if (props.compDef.properties?.max !== undefined) {
-      const numVal = parseFloat(value);
-      if (numVal > props.compDef.properties?.max) {
-        value = props.compDef.properties?.max.toString();
-      }
-    }
 
     setInputValue(value);
-    setResponse(prev => {
-      if (value.length < 1) {
-        return undefined;
-      }
-      if (!prev) {
-        return {
-          key: props.compDef.key ? props.compDef.key : 'no key found',
-          dtype: 'number',
-          value: value.toString()
-        }
-      }
-      return {
-        ...prev,
-        dtype: 'number',
-        value: value.toString()
-      }
-    })
   };
 
   const handleFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
