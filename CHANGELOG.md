@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.10.4 - 2022-04-14
+
+### Changed
+
+- Bugfix for survey's number input to handle min/max values with 0.
+- Update survey-engine version.
+
 ## 1.10.3 - 2022-03-15
 
 ### Changed

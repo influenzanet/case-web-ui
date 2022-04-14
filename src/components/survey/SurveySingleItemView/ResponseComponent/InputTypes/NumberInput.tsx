@@ -138,8 +138,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
       }}
       onChange={handleInputValueChange(props.compDef.key)}
       disabled={props.compDef.disabled !== undefined || props.disabled === true}
-      min={minValue ? minValue as number : undefined}
-      max={maxValue ? maxValue as number : undefined}
+      min={minValue !== undefined ? minValue as number : undefined}
+      max={maxValue !== undefined ? maxValue as number : undefined}
       step={stepSize ? stepSize as number : undefined}
     />
 

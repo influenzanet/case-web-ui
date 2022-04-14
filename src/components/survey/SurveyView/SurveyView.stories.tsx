@@ -95,6 +95,20 @@ export const WeeklyTBSurvey = () => <div className="container">
     backBtnText='Back'
     submitBtnText='Submit'
     invalidResponseText='Invalid Response'
+    prefills={[
+      {
+        key: 'WeeklyTB.WeeklyTB1',
+        response: {
+          key: 'rg',
+          items: [
+            {
+              key: 'num',
+              value: '0'
+            }
+          ]
+        }
+      }
+    ]}
     survey={WeeklyTB.survey as Survey}
     onSubmit={(resp) => console.log(resp)}
     dateLocales={dateLocales}

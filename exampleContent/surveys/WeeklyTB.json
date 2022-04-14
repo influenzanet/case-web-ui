@@ -17,7 +17,7 @@
           "code": "nl",
           "parts": [
             {
-              "str": "Klik hier om wekelijks je aantal tekenbeten door te geven."
+              "str": "Klik hier om elke week je aantal tekenbeten door te geven."
             }
           ]
         }
@@ -49,7 +49,7 @@
               },
               "items": [
                 {
-                  "key": "t19",
+                  "key": "ZPK",
                   "role": "markdown",
                   "style": [
                     {
@@ -121,7 +121,7 @@
               },
               "items": [
                 {
-                  "key": "0OC",
+                  "key": "MWT",
                   "role": "markdown",
                   "style": [
                     {
@@ -256,7 +256,26 @@
                   ]
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB1"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2a",
@@ -278,7 +297,7 @@
                           "code": "nl",
                           "parts": [
                             {
-                              "str": "Hoeveel tekenbeten had je vandaag "
+                              "str": "Hoeveel tekenbeten had je vandaag, "
                             }
                           ]
                         }
@@ -298,7 +317,7 @@
                                 "data": [
                                   {
                                     "dtype": "num",
-                                    "num": -94608000
+                                    "num": 0
                                   }
                                 ]
                               }
@@ -309,7 +328,7 @@
                       "style": [
                         {
                           "key": "dateFormat",
-                          "value": "dd-MM-yyyy"
+                          "value": "EEEE (dd.MM.)"
                         }
                       ]
                     }
@@ -384,7 +403,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2a"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2b",
@@ -397,12 +435,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je gisteren ?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je gisteren "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -86400
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -477,7 +564,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2b"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2c",
@@ -490,12 +596,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je eergisteren,?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je eergisteren, "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -172800
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -570,7 +725,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2c"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2d",
@@ -583,12 +757,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je afgelopen ?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je afgelopen "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -259200
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -663,7 +886,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2d"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2e",
@@ -676,12 +918,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je afgelopen ?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je afgelopen "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -345600
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -756,7 +1047,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2e"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2f",
@@ -769,12 +1079,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je afgelopen ?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je afgelopen "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -432000
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -849,7 +1208,26 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2f"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.WeeklyTB2g",
@@ -862,12 +1240,61 @@
               "items": [
                 {
                   "role": "title",
-                  "content": [
+                  "items": [
                     {
-                      "code": "nl",
-                      "parts": [
+                      "key": "0",
+                      "role": "text",
+                      "content": [
                         {
-                          "str": "Hoeveel teken had je afgelopen ?"
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Hoeveel teken had je afgelopen "
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "1",
+                      "role": "dateDisplay",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "dtype": "exp",
+                              "exp": {
+                                "name": "timestampWithOffset",
+                                "data": [
+                                  {
+                                    "dtype": "num",
+                                    "num": -518400
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "style": [
+                        {
+                          "key": "dateFormat",
+                          "value": "EEEE (dd.MM.)"
+                        }
+                      ]
+                    },
+                    {
+                      "key": "2",
+                      "role": "text",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "?"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -942,10 +1369,29 @@
                   "num": 0
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.WeeklyTB2g"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
-            "key": "WeeklyTB.Res",
+            "key": "WeeklyTB.P1",
             "version": 1,
             "components": {
               "role": "root",
@@ -960,7 +1406,7 @@
                       "code": "nl",
                       "parts": [
                         {
-                          "str": "Woonplaats van de persoon met de tekenbeet:"
+                          "str": "Wat zijn de 4 cijfers van je postcode?"
                         }
                       ]
                     }
@@ -978,66 +1424,53 @@
                   "items": [
                     {
                       "key": "ic",
-                      "role": "multilineTextInput"
+                      "role": "input"
                     }
                   ]
-                }
-              ]
-            },
-            "condition": {
-              "name": "and",
-              "data": [
+                },
                 {
-                  "dtype": "exp",
-                  "exp": {
+                  "role": "error",
+                  "content": [
+                    {
+                      "code": "nl",
+                      "parts": [
+                        {
+                          "str": "Voer de eerste vier cijfers van je postcode in"
+                        }
+                      ]
+                    }
+                  ],
+                  "displayCondition": {
                     "name": "not",
                     "data": [
                       {
                         "dtype": "exp",
                         "exp": {
-                          "name": "isDefined",
+                          "name": "getSurveyItemValidation",
                           "data": [
                             {
-                              "dtype": "exp",
-                              "exp": {
-                                "name": "getAttribute",
-                                "data": [
-                                  {
-                                    "dtype": "exp",
-                                    "exp": {
-                                      "name": "getAttribute",
-                                      "data": [
-                                        {
-                                          "dtype": "exp",
-                                          "exp": {
-                                            "name": "getContext",
-                                            "data": []
-                                          }
-                                        },
-                                        {
-                                          "dtype": "str",
-                                          "str": "participantFlags"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  {
-                                    "dtype": "str",
-                                    "str": "flow"
-                                  }
-                                ]
-                              }
+                              "dtype": "str",
+                              "str": "this"
+                            },
+                            {
+                              "dtype": "str",
+                              "str": "r2"
                             }
                           ]
                         }
                       }
                     ]
                   }
-                },
+                }
+              ]
+            },
+            "condition": {
+              "name": "not",
+              "data": [
                 {
                   "dtype": "exp",
                   "exp": {
-                    "name": "eq",
+                    "name": "isDefined",
                     "data": [
                       {
                         "dtype": "exp",
@@ -1065,23 +1498,91 @@
                             },
                             {
                               "dtype": "str",
-                              "str": "weeklyTBreporter"
+                              "str": "postalCode"
                             }
                           ]
                         }
-                      },
-                      {
-                        "dtype": "str",
-                        "str": "init"
                       }
                     ]
                   }
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.P1"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "r2",
+                "type": "hard",
+                "rule": {
+                  "name": "or",
+                  "data": [
+                    {
+                      "dtype": "exp",
+                      "exp": {
+                        "name": "not",
+                        "data": [
+                          {
+                            "dtype": "exp",
+                            "exp": {
+                              "name": "hasResponse",
+                              "data": [
+                                {
+                                  "dtype": "str",
+                                  "str": "WeeklyTB.P1"
+                                },
+                                {
+                                  "dtype": "str",
+                                  "str": "rg"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "dtype": "exp",
+                      "exp": {
+                        "name": "checkResponseValueWithRegex",
+                        "data": [
+                          {
+                            "dtype": "str",
+                            "str": "WeeklyTB.P1"
+                          },
+                          {
+                            "dtype": "str",
+                            "str": "rg.ic"
+                          },
+                          {
+                            "dtype": "str",
+                            "str": "^[0-9][0-9][0-9][0-9]$"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
-            "key": "WeeklyTB.gender",
+            "key": "WeeklyTB.P2",
             "version": 1,
             "components": {
               "role": "root",
@@ -1096,7 +1597,7 @@
                       "code": "nl",
                       "parts": [
                         {
-                          "str": "Geslacht."
+                          "str": "Wat is je geslacht?"
                         }
                       ]
                     }
@@ -1151,6 +1652,20 @@
                               ]
                             }
                           ]
+                        },
+                        {
+                          "key": "d",
+                          "role": "option",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": "Wil ik niet zeggen"
+                                }
+                              ]
+                            }
+                          ]
                         }
                       ],
                       "order": {
@@ -1162,59 +1677,12 @@
               ]
             },
             "condition": {
-              "name": "and",
+              "name": "not",
               "data": [
                 {
                   "dtype": "exp",
                   "exp": {
-                    "name": "not",
-                    "data": [
-                      {
-                        "dtype": "exp",
-                        "exp": {
-                          "name": "isDefined",
-                          "data": [
-                            {
-                              "dtype": "exp",
-                              "exp": {
-                                "name": "getAttribute",
-                                "data": [
-                                  {
-                                    "dtype": "exp",
-                                    "exp": {
-                                      "name": "getAttribute",
-                                      "data": [
-                                        {
-                                          "dtype": "exp",
-                                          "exp": {
-                                            "name": "getContext",
-                                            "data": []
-                                          }
-                                        },
-                                        {
-                                          "dtype": "str",
-                                          "str": "participantFlags"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  {
-                                    "dtype": "str",
-                                    "str": "flow"
-                                  }
-                                ]
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                },
-                {
-                  "dtype": "exp",
-                  "exp": {
-                    "name": "eq",
+                    "name": "isDefined",
                     "data": [
                       {
                         "dtype": "exp",
@@ -1242,20 +1710,35 @@
                             },
                             {
                               "dtype": "str",
-                              "str": "weeklyTBreporter"
+                              "str": "gender"
                             }
                           ]
                         }
-                      },
-                      {
-                        "dtype": "str",
-                        "str": "init"
                       }
                     ]
                   }
                 }
               ]
-            }
+            },
+            "validations": [
+              {
+                "key": "r1",
+                "type": "hard",
+                "rule": {
+                  "name": "hasResponse",
+                  "data": [
+                    {
+                      "dtype": "str",
+                      "str": "WeeklyTB.P2"
+                    },
+                    {
+                      "dtype": "str",
+                      "str": "rg"
+                    }
+                  ]
+                }
+              }
+            ]
           },
           {
             "key": "WeeklyTB.PTBG",
@@ -1443,7 +1926,26 @@
                       ]
                     }
                   ]
-                }
+                },
+                "validations": [
+                  {
+                    "key": "r1",
+                    "type": "hard",
+                    "rule": {
+                      "name": "hasResponse",
+                      "data": [
+                        {
+                          "dtype": "str",
+                          "str": "WeeklyTB.PTBG.PTB1"
+                        },
+                        {
+                          "dtype": "str",
+                          "str": "rg"
+                        }
+                      ]
+                    }
+                  }
+                ]
               },
               {
                 "key": "WeeklyTB.PTBG.PTB2",
@@ -1644,115 +2146,30 @@
                       "str": "a"
                     }
                   ]
-                }
+                },
+                "validations": [
+                  {
+                    "key": "r1",
+                    "type": "hard",
+                    "rule": {
+                      "name": "hasResponse",
+                      "data": [
+                        {
+                          "dtype": "str",
+                          "str": "WeeklyTB.PTBG.PTB2"
+                        },
+                        {
+                          "dtype": "str",
+                          "str": "rg"
+                        }
+                      ]
+                    }
+                  }
+                ]
               }
             ],
             "selectionMethod": {
               "name": "sequential"
-            }
-          },
-          {
-            "key": "WeeklyTB.OutroWeeklyTBInit",
-            "version": 1,
-            "components": {
-              "role": "root",
-              "order": {
-                "name": "sequential"
-              },
-              "items": [
-                {
-                  "key": "cOk",
-                  "role": "markdown",
-                  "style": [
-                    {
-                      "key": "className",
-                      "value": ""
-                    }
-                  ],
-                  "content": [
-                    {
-                      "code": "nl",
-                      "parts": [
-                        {
-                          "str": "\n##### Hartelijk dank voor het invullen van deze vragen. Volgende week sturen we je weer een email om te vragen hoeveel tekenbeten je hebt gehad.\n"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            "condition": {
-              "name": "eq",
-              "data": [
-                {
-                  "dtype": "exp",
-                  "exp": {
-                    "name": "getAttribute",
-                    "data": [
-                      {
-                        "dtype": "exp",
-                        "exp": {
-                          "name": "getAttribute",
-                          "data": [
-                            {
-                              "dtype": "exp",
-                              "exp": {
-                                "name": "getContext",
-                                "data": []
-                              }
-                            },
-                            {
-                              "dtype": "str",
-                              "str": "participantFlags"
-                            }
-                          ]
-                        }
-                      },
-                      {
-                        "dtype": "str",
-                        "str": "weeklyTBreporter"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "dtype": "str",
-                  "str": "init"
-                }
-              ]
-            }
-          },
-          {
-            "key": "WeeklyTB.OutroWeeklyTB",
-            "version": 1,
-            "components": {
-              "role": "root",
-              "order": {
-                "name": "sequential"
-              },
-              "items": [
-                {
-                  "key": "3i6",
-                  "role": "markdown",
-                  "style": [
-                    {
-                      "key": "className",
-                      "value": ""
-                    }
-                  ],
-                  "content": [
-                    {
-                      "code": "nl",
-                      "parts": [
-                        {
-                          "str": "\n##### Hartelijk dank voor het invullen van deze vragen. Volgende week sturen we je weer een email om te vragen hoeveel tekenbeten je hebt gehad.\n\n##### Houd de plek van de tekenbeet de komende periode goed in de gaten en neem contact op met de huisarts als er een groeiende rode vlek of kring ontstaat of als u andere gezondheidsklachten krijgt die mogelijke met de ziekte van lyme te maken kunnen hebben.\n"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
             },
             "condition": {
               "name": "not",
@@ -1760,7 +2177,7 @@
                 {
                   "dtype": "exp",
                   "exp": {
-                    "name": "eq",
+                    "name": "isDefined",
                     "data": [
                       {
                         "dtype": "exp",
@@ -1788,14 +2205,10 @@
                             },
                             {
                               "dtype": "str",
-                              "str": "weeklyTBreporter"
+                              "str": "tbExposure"
                             }
                           ]
                         }
-                      },
-                      {
-                        "dtype": "str",
-                        "str": "init"
                       }
                     ]
                   }
@@ -1804,40 +2217,201 @@
             }
           },
           {
-            "key": "WeeklyTB.RWeeklyTB",
+            "key": "WeeklyTB.PB_kwFu",
+            "version": 0,
+            "type": "pageBreak"
+          },
+          {
+            "key": "WeeklyTB.END",
             "version": 1,
-            "components": {
-              "role": "root",
-              "order": {
-                "name": "sequential"
-              },
-              "items": [
-                {
-                  "role": "title",
-                  "content": [
-                    {
-                      "code": "nl",
-                      "parts": [
-                        {
-                          "str": "Als je nog extra informatie bij bovenstaande vragen hebt kun je dit hieronder invullen. (Let op: deze informatie wordt bij de door jou ingevulde vragenlijst opgeslagen en niet direct door de onderzoekers bekeken.)"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "key": "rg",
-                  "role": "responseGroup",
+            "items": [
+              {
+                "key": "WeeklyTB.END.WeeklyEndText",
+                "version": 1,
+                "components": {
+                  "role": "root",
+                  "order": {
+                    "name": "sequential"
+                  },
                   "items": [
                     {
-                      "key": "ic",
-                      "role": "multilineTextInput",
+                      "key": "wUd",
+                      "role": "markdown",
+                      "style": [
+                        {
+                          "key": "className",
+                          "value": ""
+                        }
+                      ],
                       "content": [
                         {
                           "code": "nl",
                           "parts": [
                             {
-                              "str": "Insturen opmerking:"
+                              "str": "\n### Hartelijk dank voor het invullen van deze vragen.\n\n\n##### Let op: klik op **\"Opslaan en verder gaan\"** onderaan de pagina om je antwoorden op te sturen!\n\nVolgende week sturen we je weer een e-mail om te vragen hoeveel tekenbeten je hebt gehad.\n"
+                            }
+                          ]
+                        }
+                      ],
+                      "displayCondition": {
+                        "name": "eq",
+                        "data": [
+                          {
+                            "dtype": "exp",
+                            "exp": {
+                              "name": "getAttribute",
+                              "data": [
+                                {
+                                  "dtype": "exp",
+                                  "exp": {
+                                    "name": "getAttribute",
+                                    "data": [
+                                      {
+                                        "dtype": "exp",
+                                        "exp": {
+                                          "name": "getContext",
+                                          "data": []
+                                        }
+                                      },
+                                      {
+                                        "dtype": "str",
+                                        "str": "participantFlags"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "dtype": "str",
+                                  "str": "weeklyTBreporter"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "dtype": "str",
+                            "str": "init"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "key": "jlI",
+                      "role": "markdown",
+                      "style": [
+                        {
+                          "key": "className",
+                          "value": ""
+                        }
+                      ],
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "\n### Hartelijk dank voor het invullen van deze vragen.\n\n\n##### Let op: klik op **\"Opslaan en verder gaan\"** onderaan de pagina om je antwoorden op te sturen!\n\nVolgende week sturen we je weer een e-mail om te vragen hoeveel tekenbeten je hebt gehad.\n\nAls je een tekenbeet hebt gehad, houd dan de plek van de tekenbeet de komende periode goed in de gaten en neem contact op met de huisarts als er een groeiende rode vlek of kring ontstaat of als je andere gezondheidsklachten krijgt die mogelijke met de ziekte van Lyme te maken kunnen hebben.\n"
+                            }
+                          ]
+                        }
+                      ],
+                      "displayCondition": {
+                        "name": "not",
+                        "data": [
+                          {
+                            "dtype": "exp",
+                            "exp": {
+                              "name": "eq",
+                              "data": [
+                                {
+                                  "dtype": "exp",
+                                  "exp": {
+                                    "name": "getAttribute",
+                                    "data": [
+                                      {
+                                        "dtype": "exp",
+                                        "exp": {
+                                          "name": "getAttribute",
+                                          "data": [
+                                            {
+                                              "dtype": "exp",
+                                              "exp": {
+                                                "name": "getContext",
+                                                "data": []
+                                              }
+                                            },
+                                            {
+                                              "dtype": "str",
+                                              "str": "participantFlags"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "dtype": "str",
+                                        "str": "weeklyTBreporter"
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "dtype": "str",
+                                  "str": "init"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "key": "WeeklyTB.END.Comment",
+                "version": 1,
+                "components": {
+                  "role": "root",
+                  "order": {
+                    "name": "sequential"
+                  },
+                  "items": [
+                    {
+                      "role": "title",
+                      "content": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Als je nog feedback voor ons hebt, kun je dat hieronder invullen"
+                            }
+                          ]
+                        }
+                      ],
+                      "description": [
+                        {
+                          "code": "nl",
+                          "parts": [
+                            {
+                              "str": "Let op: deze informatie wordt eerst opgeslagen en niet direct door de onderzoekers bekeken."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "rg",
+                      "role": "responseGroup",
+                      "items": [
+                        {
+                          "key": "ic",
+                          "role": "multilineTextInput",
+                          "content": [
+                            {
+                              "code": "nl",
+                              "parts": [
+                                {
+                                  "str": ""
+                                }
+                              ]
                             }
                           ]
                         }
@@ -1845,7 +2419,10 @@
                     }
                   ]
                 }
-              ]
+              }
+            ],
+            "selectionMethod": {
+              "name": "sequential"
             }
           }
         ],
@@ -1855,6 +2432,144 @@
       }
     },
     "availableFor": "temporary_participants",
-    "requireLoginBeforeSubmission": true
+    "requireLoginBeforeSubmission": true,
+    "prefillRules": [
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB1"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2a"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2b"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2c"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2d"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2e"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2f"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      },
+      {
+        "name": "PREFILL_SLOT_WITH_VALUE",
+        "data": [
+          {
+            "dtype": "str",
+            "str": "WeeklyTB.WeeklyTB2g"
+          },
+          {
+            "dtype": "str",
+            "str": "rg.num"
+          },
+          {
+            "dtype": "num",
+            "num": 0
+          }
+        ]
+      }
+    ]
   }
 }
