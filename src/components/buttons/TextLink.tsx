@@ -17,7 +17,7 @@ const TextLink: React.FC<TextLinkProps> = (props) => {
         )}
       style={props.style}
       href={props.href}
-      target='_blank'
+      target={props.href?.startsWith('http') ? '_blank' : '_self'}
     >
       <span className="text-decoration-underline" >{props.children}</span>
       <i className="material-icons " style={{ fontSize: 'inherit', textDecoration: 'none' }}>call_made</i>

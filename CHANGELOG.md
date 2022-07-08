@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.11.0 - 2022-07-08
+
+### Changed
+
+- TextLink will use target '_self', when internal link is used.
+- Update some dependency versions.
+
 ## 1.10.4 - 2022-04-14
 
 ### Changed
