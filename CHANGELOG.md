@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.1 - 2022-07-22
+
+### Changed
+
+- TeaserImage component supports copyright placement
+
 ## 1.11.0 - 2022-07-08
 
 ### Changed

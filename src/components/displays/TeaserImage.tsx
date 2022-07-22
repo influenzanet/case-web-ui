@@ -10,6 +10,8 @@ interface TeaserImageProps {
     height?: number;
     className?: string;
     backgroundPosition?: string;
+    copyrightNotice?: string;
+    copyrightNoticeXAlignment?: 'start' | 'end'
   }
   textBox?: {
     className?: string;
@@ -23,8 +25,11 @@ const TeaserImage: React.FC<TeaserImageProps> = (props) => {
     <div
       className={(clsx(
         styles.teaserImage,
-        "d-flex align-items-center",
-        props.image.className
+        "d-flex align-items-center position-relative",
+        props.image.className,
+        {
+          "pb-4": props.image.copyrightNotice
+        }
       ))}
       style={{
         minHeight: props.image.height ? props.image.height : 367,
@@ -32,7 +37,7 @@ const TeaserImage: React.FC<TeaserImageProps> = (props) => {
         backgroundPosition: props.image.backgroundPosition,
       }}
     >
-      { props.textBox ? <div className={containerClassName}>
+      {props.textBox ? <div className={containerClassName}>
         <div className="row">
           <div className={clsx(
             // "col-12 col-md-6 col-lg-4",
@@ -45,6 +50,17 @@ const TeaserImage: React.FC<TeaserImageProps> = (props) => {
           </div>
         </div>
       </div> : null}
+      {props.image.copyrightNotice ? <span className={clsx(
+        'position-absolute px-1a py-a text-white bottom-0 m-1a fs-small',
+        {
+          'start-0': props.image.copyrightNoticeXAlignment === 'start',
+          'end-0': props.image.copyrightNoticeXAlignment !== 'start',
+        }
+      )}
+        style={{
+          backgroundColor: 'rgba(32,32,32,0.5)'
+        }}
+      >{props.image.copyrightNotice}</span> : null}
     </div>
   );
 };
