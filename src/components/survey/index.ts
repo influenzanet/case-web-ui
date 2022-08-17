@@ -7,3 +7,6 @@ export {
   SurveySingleItemView,
   SurveyPageView,
 }
+
+export * from "./SurveySingleItemView/utils";
+export * from "./SurveySingleItemView/SurveyComponents";
