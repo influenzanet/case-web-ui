@@ -120,7 +120,7 @@
 ### Added
 
 - New input for "time", to ask for a specific hour and minute of the day. When stepsize is set, seconds can be asked as well.
-- Added new response component with the role `timeInput` to select a time. Result will be interpreted as seconds since 00:00:00. Can also be used in cloze questions, single choice or multple choice questions.
+- Added new response component with the role `timeInput` to select a time. Result will be interpreted as seconds since 00:00:00. Can also be used in cloze questions, single choice or multiple choice questions.
 - New question type `consent` to display a consent dialog and store the response in a survey.
 
 ### Changes
@@ -167,7 +167,7 @@ Color and font-size optimisations for accessibility.
 
 ### Added
 
-- New component called `ActionCard` - a configurable card with hover effect, clickable, can include image on top or on the left. Image is attached as background image to a div, with configurable width, height (also min/max) and and background postion and size. Optionally the image can be included as a normal `img` - by using the prop `as`.
+- New component called `ActionCard` - a configurable card with hover effect, clickable, can include image on top or on the left. Image is attached as background image to a div, with configurable width, height (also min/max) and and background position and size. Optionally the image can be included as a normal `img` - by using the prop `as`.
 - Survey renderer accepts an array of custom defined response components: `customResponseComponents: Array<CustomSurveyResponseComponent>;`. These can be used to extend the survey question types.
 - New components for report history / report card / report detail dialog.
 
@@ -393,7 +393,7 @@ The old syntax will be rendered as the default code block.
 
 ### Changed
 
-- Add `controlList='nodownload'` option to VideoPlayer to prevent download option appearing in video menu. (Videos aretypically not meant for downloading locally.)
+- Add `controlList='nodownload'` option to VideoPlayer to prevent download option appearing in video menu. (Videos are typically not meant for downloading locally.)
 - Survey's numeric slider component is using the "description" attribute, as a placeholder when no answer is selected yet.
 - NumberInput component accepts new style attribute (e.g., `{ key: 'inputMaxWidth': '80px'}`) to control max width of the input field. Ignored if smaller than min width (50px). If not defined, component won't have max width, thus will try to fill up remaining space.
 
@@ -416,4 +416,4 @@ The old syntax will be rendered as the default code block.
 
 ### Changed
 
-- Multiple Choice survey component can render formatted text component between the options. For this, use the `role: 'text'` for the component insder the multiple choice group. Formatting is applied throug the `style` list's "className" entry.
+- Multiple Choice survey component can render formatted text component between the options. For this, use the `role: 'text'` for the component inside the multiple choice group. Formatting is applied through the `style` list's "className" entry.
