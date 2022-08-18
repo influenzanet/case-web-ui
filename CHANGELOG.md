@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.2 - 2022-08-18
+
+### Changed
+
+- Export survey utils functions & components
+
 ## 1.11.1 - 2022-07-22
 
 ### Changed
