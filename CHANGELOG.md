@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.12.0 - 2022-09-08
+
+### Changed
+
+- TextInput survey response component:
+  - auto-removes leading and trailing whitespaces in the stored response (but does not modifies the user input to allow simpler typing)
+  - through a new style attribute, the component can define a transformation such as convert to upper case or convert to lower case. ({ key: 'transformCase', value: 'upper' | 'lower'})
+
 ## 1.11.2 - 2022-08-19
 
 ### Changed

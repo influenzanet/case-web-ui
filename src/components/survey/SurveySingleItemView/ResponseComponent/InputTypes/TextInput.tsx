@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ItemComponent, ResponseItem } from 'survey-engine/data_types';
+import { ResponseItem } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 
@@ -30,12 +30,23 @@ const TextInput: React.FC<TextInputProps> = (props) => {
   }, [response]);
 
 
+  const transformCase = getStyleValueByKey(props.compDef.style, 'transformCase');
+
   const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!key) { return; }
     setTouched(true);
 
-    const value = (event.target as HTMLInputElement).value;
+    let value = (event.target as HTMLInputElement).value;
+
+    if (transformCase === 'upper') {
+      value = value.toUpperCase();
+    } else if (transformCase === 'lower') {
+      value = value.toLowerCase();
+    }
+
     setInputValue(value);
+
+    value = value.trim();
     setResponse(prev => {
       if (value.length < 1) {
         return undefined;
