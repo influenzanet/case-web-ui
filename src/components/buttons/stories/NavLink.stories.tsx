@@ -6,7 +6,7 @@ export default {
   title: "Buttons/Navlink"
 };
 
-export const Example = () => <div className="bg-primary">
+export const Example = () => <div className="bg-primary nav">
   <a
     className="nav-link"
   >Link 1</a>
