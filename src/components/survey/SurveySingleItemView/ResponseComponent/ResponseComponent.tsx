@@ -25,6 +25,7 @@ import ClozeQuestion from './InputTypes/ClozeQuestion';
 import { CommonResponseComponentProps } from '../utils';
 import Time from './InputTypes/Time';
 import Consent from './InputTypes/Consent';
+import ResponsiveMatrix from './InputTypes/ResponsiveMatrix';
 
 interface ResponseComponentProps {
   itemKey: string;
@@ -245,6 +246,16 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
           />
         case 'matrix':
           return <Matrix
+            key={respComp.key}
+            parentKey={currentKeyPath}
+            languageCode={props.languageCode}
+            compDef={respComp}
+            prefill={getPrefillForItem(respComp)}
+            responseChanged={handleItemResponse(respComp.key ? respComp.key : 'no key found')}
+            dateLocales={props.dateLocales}
+          />
+        case 'responsiveMatrix':
+          return <ResponsiveMatrix
             key={respComp.key}
             parentKey={currentKeyPath}
             languageCode={props.languageCode}
