@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
-import { DropEvent, FileRejection, useDropzone } from 'react-dropzone'
+import { DropEvent, FileRejection, useDropzone, Accept } from 'react-dropzone'
 
 interface FileDropzoneProps {
   placeholderText: string;
-  accept?: string | string[];
+  accept?: { [key: string]: string[] };
   files?: File[];
   maxFiles?: number;
   maxSize?: number;

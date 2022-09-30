@@ -9,6 +9,7 @@
 ### Changed
 
 - Updated dependencies: recharts, react-dropzone, react-simple-maps
+  - file dropzones had breaking change about how the accept property is defined: see here <https://github.com/react-dropzone/react-dropzone/releases/tag/v13.0.0>
 
 ## 1.12.0 - 2022-09-08
 
