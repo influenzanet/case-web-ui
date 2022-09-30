@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.0 - 2022-09-30
+
+### Added
+
+- New question type `ResponsiveMatrix`, currently supporting dropdown as an input.
+
 ## 1.12.0 - 2022-09-08
 
 ### Changed
