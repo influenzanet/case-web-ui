@@ -6,6 +6,10 @@
 
 - New question type `ResponsiveMatrix`, currently supporting dropdown as an input.
 
+### Changed
+
+- Updated dependencies: recharts, react-dropzone, react-simple-maps
+
 ## 1.12.0 - 2022-09-08
 
 ### Changed
