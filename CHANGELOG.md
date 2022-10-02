@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.1 - 2022-10-02
+
+### Changed
+
+- In `ResponsiveMatrix` use role to find dropdown options
+
 ## 1.13.0 - 2022-09-30
 
 ### Added

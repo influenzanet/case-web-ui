@@ -26,7 +26,7 @@ const ResponsiveMatrix: React.FC<ResponsiveMatrixProps> = (props) => {
   const className = getClassName(props.compDef.style);
   const breakpoint = getStyleValueByKey(props.compDef.style, 'breakpoint');
   const responseType = getStyleValueByKey(props.compDef.style, 'responseType');
-  const getDropdownOptionsDef = () => (props.compDef as ItemGroupComponent).items?.find(item => item.key === 'dropdownOptions');
+  const getDropdownOptionsDef = () => (props.compDef as ItemGroupComponent).items?.find(item => item.role === 'dropdownOptions');
 
   const getColumns = () => {
     if (!isItemGroupComponent(props.compDef)) {
