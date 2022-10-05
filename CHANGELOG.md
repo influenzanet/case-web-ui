@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.2 - 2022-10-05
+
+### Changed
+
+- Fix response update in `responsiveMatrix`.
+
 ## 1.13.1 - 2022-10-02
 
 ### Changed

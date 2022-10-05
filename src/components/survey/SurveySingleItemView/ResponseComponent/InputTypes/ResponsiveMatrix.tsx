@@ -84,7 +84,7 @@ const ResponsiveMatrix: React.FC<ResponsiveMatrixProps> = (props) => {
       const rowIndex = prev.items.findIndex(item => item.key === responseSlotKey);
       const items = [...prev.items];
       if (rowIndex > -1) {
-        items[rowIndex].items = [{ key: value }];
+        items[rowIndex].value = value;
       } else {
         items.push({
           key: responseSlotKey, value: value
