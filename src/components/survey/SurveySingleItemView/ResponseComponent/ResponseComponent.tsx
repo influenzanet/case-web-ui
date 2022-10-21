@@ -14,7 +14,6 @@ import SliderNumericRange from './Sliders/SliderNumericRange/SliderNumericRange'
 import SliderCategorical from './Sliders/SliderCategorical/SliderCategorical';
 import Matrix from './InputTypes/Matrix';
 import TextViewComponent from '../SurveyComponents/TextViewComponent';
-import moment from 'moment';
 import EQ5DHealthIndicatorInput from './EQ5DHealthIndicatorInput/EQ5DHealthIndicatorInput';
 import LikertScale from './InputTypes/LikertScale';
 import LikertGroup from './InputTypes/LikertGroup';
@@ -60,7 +59,6 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
     return <p>question root should be a group component</p>
   }
 
-  moment.locale(props.languageCode);
 
   const getPrefillForItem = (item: ItemComponent): ResponseItem | undefined => {
     if (!props.prefill || !props.prefill.items) { return undefined; }

@@ -42,13 +42,13 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const onResponsesChanged = () => {
     if (props.onResponsesChanged) {
       const resp = surveyEngine.getResponses();
-      props.onResponsesChanged(resp, props.survey.current.versionId);
+      props.onResponsesChanged(resp, props.survey.versionId);
     }
   }
 
   const onSubmit = () => {
     const resp = surveyEngine.getResponses();
-    props.onSubmit(resp, props.survey.current.versionId);
+    props.onSubmit(resp, props.survey.versionId);
   }
 
   const resetScrollPosition = () => {
