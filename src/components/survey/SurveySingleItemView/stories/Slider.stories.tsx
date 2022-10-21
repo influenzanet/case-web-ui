@@ -12,7 +12,7 @@ const invalidWarning = "Please check your response";
 export const Numeric = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -54,7 +54,7 @@ export const Numeric = () => <SurveySingleItemView
 export const NumericRange = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',

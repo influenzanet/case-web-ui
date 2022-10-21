@@ -21,7 +21,7 @@ const invalidWarning = "Please check your response";
 export const Consent = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.14.0 - 2022-10-21
+
+### BREAKING CHANGES
+
+- We updated the survey data model to accomodate changes related to the improved survey history handling.
+
+### Changed
+
+- Updated dependencies
+
 ## 1.13.2 - 2022-10-05
 
 ### Changed

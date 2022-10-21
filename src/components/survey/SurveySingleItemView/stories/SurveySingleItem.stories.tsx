@@ -17,7 +17,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q1',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -51,7 +51,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q1sticky1',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -85,7 +85,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q1sticky2',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -122,7 +122,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q2',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -163,7 +163,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q2multipart title',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -206,7 +206,7 @@ export const Example = () =>
       <SurveySingleItemView
         renderItem={{
           key: 'test.q2withhelp',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',
@@ -269,7 +269,7 @@ export const Example = () =>
         ]}
         renderItem={{
           key: 'test.q2withhelp',
-          version: 1,
+
           components: {
             key: 'root',
             role: 'root',

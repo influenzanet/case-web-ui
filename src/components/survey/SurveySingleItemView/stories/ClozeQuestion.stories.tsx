@@ -12,7 +12,7 @@ const invalidWarning = "Please check your response";
 export const ExampleClozeQuestion = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -96,7 +96,7 @@ export const ExampleClozeQuestion = () => <SurveySingleItemView
 export const Example2ClozeQuestion = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -168,7 +168,7 @@ export const Example2ClozeQuestion = () => <SurveySingleItemView
 export const ExampleClozeInSingleChoice = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -240,7 +240,7 @@ export const ExampleClozeInSingleChoice = () => <SurveySingleItemView
 export const ExampleClozeInMultipleChoice = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',

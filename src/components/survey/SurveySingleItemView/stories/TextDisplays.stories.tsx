@@ -20,7 +20,7 @@ const invalidWarning = "Please check your response";
 export const AtRootLevel = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -68,7 +68,7 @@ export const AtRootLevel = () => <SurveySingleItemView
 export const InResponseGroup = () => <SurveySingleItemView
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
@@ -98,7 +98,7 @@ export const DateDisplay = () => <SurveySingleItemView
   dateLocales={dateLocales}
   renderItem={{
     key: 'test.q1',
-    version: 1,
+
     components: {
       key: 'root',
       role: 'root',
