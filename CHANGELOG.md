@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.1 - 2022-11-11
+
+### Changed
+
+- Fixing an issue where the missing "items" attribute of a helpGroup survey component would cause the survey to crash.
+
 ## 1.14.0 - 2022-10-21
 
 ### BREAKING CHANGES

@@ -9,6 +9,22 @@ interface HelpGroupProps {
 }
 
 const HelpGroup: React.FC<HelpGroupProps> = (props) => {
+  const renderContent = () => {
+    if (props.componentGroup.items === undefined) {
+      return <p className='text-danger'> 'items' is missing in the helpGroup component </p>
+    }
+    return <React.Fragment>
+      {
+        props.componentGroup.items.map((item, index) => {
+          return <TextViewComponent key={index.toFixed()}
+            compDef={item}
+            languageCode={props.languageCode}
+          />
+        })
+      }
+    </React.Fragment>
+  }
+
   return (
     <div className="d-flex align-items-center ms-1 ms-sm-2 ms-md-2a">
       <button
@@ -28,14 +44,7 @@ const HelpGroup: React.FC<HelpGroupProps> = (props) => {
         className="dropdown-menu dropdown-menu-end shadow border-none px-2 px-sm-2a py-2a w-75"
         style={{ maxWidth: 500, border: 'none' }}
       >
-        {
-          props.componentGroup.items.map((item, index) => {
-            return <TextViewComponent key={index.toFixed()}
-              compDef={item}
-              languageCode={props.languageCode}
-            />
-          })
-        }
+        {renderContent()}
       </div>
     </div>
   );
