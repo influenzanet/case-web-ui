@@ -71,9 +71,12 @@ const ResponseComponent: React.FC<ResponseComponentProps> = (props) => {
     setResponse(
       prev => {
         if (!prev || !prev.items) {
+          if (!response) {
+            return undefined;
+          }
           return {
             key: props.compDef.key ? props.compDef.key : 'no key defined',
-            items: response ? [response] : [],
+            items: [response],
           }
         }
 

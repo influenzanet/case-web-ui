@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.2 - 2022-12-08
+
+### Changed
+
+- Fixing an issue where toggling responses between answered and unanswered state quicker than the cool down delay resulted different state than expected (init items with empty array instead of setting the response with undefined).
+
 ## 1.14.1 - 2022-11-11
 
 ### Changed
