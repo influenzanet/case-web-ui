@@ -11,7 +11,7 @@ interface SurveyViewProps {
   survey: Survey;
   languageCode: string;
   onSubmit: (responses: SurveySingleItemResponse[], version: string) => void;
-  onResponsesChanged?: (responses: SurveySingleItemResponse[], version: string, surveyEngine: SurveyEngineCore) => void;
+  onResponsesChanged?: (responses: SurveySingleItemResponse[], version: string, surveyEngine?: SurveyEngineCore) => void;
   prefills?: SurveySingleItemResponse[];
   context?: SurveyContext;
   backBtnText: string;
