@@ -11,7 +11,7 @@ interface SurveyViewProps {
   survey: Survey;
   languageCode: string;
   onSubmit: (responses: SurveySingleItemResponse[], version: string) => void;
-  onResponsesChanged?: (responses: SurveySingleItemResponse[], version: string) => void;
+  onResponsesChanged?: (responses: SurveySingleItemResponse[], version: string, surveyEngine?: SurveyEngineCore) => void;
   prefills?: SurveySingleItemResponse[];
   context?: SurveyContext;
   backBtnText: string;
@@ -42,7 +42,7 @@ const SurveyView: React.FC<SurveyViewProps> = (props) => {
   const onResponsesChanged = () => {
     if (props.onResponsesChanged) {
       const resp = surveyEngine.getResponses();
-      props.onResponsesChanged(resp, props.survey.versionId);
+      props.onResponsesChanged(resp, props.survey.versionId, surveyEngine);
     }
   }
 
