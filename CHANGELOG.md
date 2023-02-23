@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.3 - 2023-02-23
+
+### Changed
+
+- [PR#8](https://github.com/coneno/case-web-ui/pull/8): Add surveyEngine in the onResponseChanged callback
+
 ## 1.14.2 - 2022-12-08
 
 ### Changed
