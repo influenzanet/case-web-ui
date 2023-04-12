@@ -26,7 +26,7 @@ Info.args = {
 }
 
 export const Empty = Template.bind({});
-Info.args = {
+Empty.args = {
   content: undefined,
   className: "",
   hide: false,

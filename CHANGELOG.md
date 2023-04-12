@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.14.4 - 2023-04-12
+
+### Changed
+
+- Updated dependencies
+- Add missing `children` prop to `<Checkbox>` component
+
 ## 1.14.3 - 2023-02-23
 
 ### Changed

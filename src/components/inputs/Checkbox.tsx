@@ -9,6 +9,7 @@ interface CheckboxProps {
   label?: string;
   onChange: (value: boolean) => void;
   onClick?: () => void;
+  children?: React.ReactNode;
 }
 
 const Checkbox: React.FC<CheckboxProps> = (props) => {
