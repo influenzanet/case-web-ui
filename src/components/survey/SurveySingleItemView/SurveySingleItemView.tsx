@@ -46,6 +46,7 @@ const SurveySingleItemView: React.FC<SurveySingleItemViewProps> = (props) => {
     }
     return (
       <HelpGroup
+        itemKey={props.renderItem.key.replace('.', '-')}
         componentGroup={helpGroup}
         languageCode={props.languageCode}
       />

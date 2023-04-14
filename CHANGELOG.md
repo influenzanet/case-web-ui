@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.14.5 - 2023-04-14
+
+### Changed
+
+- Updated dependencies
+- helpGroup is now using the Popover component from react-bootstrap (popper not needed to render the component anymore)
+
 ## 1.14.4 - 2023-04-12
 
 ### Changed
