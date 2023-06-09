@@ -1,6 +1,6 @@
 {
-  "name": "case-web-ui",
-  "version": "1.14.5",
+  "name": "@influenzanet/case-web-ui",
+  "version": "1.14.6",
   "description": "React components for CASE",
   "scripts": {
     "build": "rollup -c",
