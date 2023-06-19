@@ -64,27 +64,27 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     setTouched(true);
     // console.log(response);
 
-    setSubResponseCache(prev => {
-      const ind = prev.findIndex(pr => pr.key === key);
-      if (!response) {
+    if (!response) {
+      setResponse({ key: props.compDef.key, items: [] });
+      setSubResponseCache(prev => {
+        const ind = prev.findIndex(pr => pr.key === key);
         if (ind < 0) {
           return prev;
         }
-        prev = prev.splice(ind, 1);
-      } else {
+        return prev.splice(ind, 1);
+      })
+    } else {
+      setResponse({ key: props.compDef.key, items: [{ ...response }] });
+      setSubResponseCache(prev => {
+        const ind = prev.findIndex(pr => pr.key === key);
         if (ind < 0) {
           prev.push(response);
         }
         else {
-          prev[ind] = response;
+          prev[ind] = { ...response };
         }
-      }
-      return [...prev];
-    })
-    if (!response) {
-      setResponse({ key: props.compDef.key, items: [] });
-    } else {
-      setResponse({ key: props.compDef.key, items: [{ ...response }] });
+        return [...prev];
+      })
     }
   }
 

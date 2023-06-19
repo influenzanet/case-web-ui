@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.6 - 2023-06-19
+
+### Changed
+
+- Fix issue in `SingleChoiceGroup` where the "subResponseCache" was not properly updated when the "sub-response" was deleted.
+
 ## 1.14.5 - 2023-04-14
 
 ### Changed
