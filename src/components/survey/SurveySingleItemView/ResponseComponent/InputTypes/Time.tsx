@@ -10,12 +10,29 @@ interface TimeProps extends CommonResponseComponentProps {
   defaultClassName?: string;
 }
 
-const secondsToTimeString = (value: number | undefined, defaultValue?: string): string | undefined => {
-  if (value === undefined) { return defaultValue ? defaultValue : '--:--' }
-  const hours = Math.floor(value / 3600);
-  const minutes = Math.floor((value - 3600 * hours) / 60);
-  const seconds = Math.floor((value - 3600 * hours - 60 * minutes) / 60);
-  return `${convertWithPad(hours)}:${convertWithPad(minutes)}:${convertWithPad(seconds)}`;
+const secondsToInputTimeFormat = (value: number | undefined, defaultValue?: string, step?: number | undefined): string | undefined => {
+  if (value === undefined) {
+    return defaultValue ?? "--:--";
+  }
+
+  const minuteInSeconds = 60;
+  const hourInSeconds = 3600;
+
+  const hours = Math.floor(value / hourInSeconds);
+  const minutes = Math.floor((value - hourInSeconds * hours) / minuteInSeconds);
+  const seconds = Math.floor(value - hourInSeconds * hours - minuteInSeconds * minutes);
+
+  const paddedHours = convertWithPad(hours);
+  const paddedMinutes = convertWithPad(minutes);
+  const paddedSeconds = convertWithPad(seconds);
+
+  let result = `${paddedHours}:${paddedMinutes}`;
+
+  if(step && step < minuteInSeconds) {
+    result = `${result}:${paddedSeconds}`;
+  }
+
+  return result;
 }
 
 const convertWithPad = (v: number) => {
@@ -23,7 +40,6 @@ const convertWithPad = (v: number) => {
   while (s.length < 2) { s = "0" + s; }
   return s;
 }
-
 
 const Time: React.FC<TimeProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
@@ -73,7 +89,7 @@ const Time: React.FC<TimeProps> = (props) => {
   const minValue = getStyleValueByKey(props.compDef.style, 'minTime');
   const maxValue = getStyleValueByKey(props.compDef.style, 'maxTime');
   const defaultValue = getStyleValueByKey(props.compDef.style, 'defaultValue');
-  const stepSize = props.compDef.properties?.stepSize;
+  const stepSize = props.compDef.properties?.stepSize as number ?? undefined;
 
   const content = props.compDef.content;
   const placeAfter = getLabelPlacementStyle(props.compDef.style) === 'after';
@@ -106,9 +122,8 @@ const Time: React.FC<TimeProps> = (props) => {
       disabled={props.compDef.disabled !== undefined || props.disabled === true}
       min={minValue}
       max={maxValue}
-      step={stepSize ? stepSize as number : undefined}
-      //value={}
-      defaultValue={secondsToTimeString(inputValue, defaultValue)}
+      step={stepSize}
+      value={secondsToInputTimeFormat(inputValue, defaultValue, stepSize)}
       onChange={handleInputValueChange(props.compDef.key)}
     />
     {placeAfter ? <label htmlFor={props.parentKey} className="ms-1">
