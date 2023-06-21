@@ -21,14 +21,14 @@ export const TimeInput = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 't', role: 'timeInput', disabled: undefined, content: [], description: [], properties: { dateInputMode: "" }
+              key: 't', role: 'timeInput', disabled: undefined, content: [], description: [], properties: { dateInputMode: "", stepSize: 1 }
             }
           ]
         }
       ]
     },
   }}
-  responsePrefill={{ key: 'rg', items: [{ key: 't', value: "7260" }] }}
+  responsePrefill={{ key: 'rg', items: [{ key: 't', value: "7264" }] }}
   responseChanged={(response) => console.log(response)}
   showInvalid={false}
   languageCode="nl"
