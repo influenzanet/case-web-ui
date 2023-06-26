@@ -71,7 +71,8 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         if (ind < 0) {
           return prev;
         }
-        return prev.splice(ind, 1);
+        prev.splice(ind, 1);
+        return [...prev]
       })
     } else {
       setResponse({ key: props.compDef.key, items: [{ ...response }] });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
@@ -32,11 +32,18 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-  const handleSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSelectionChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const key = event.target.value;
     const checked = event.target.checked;
-    setResponseForKey(key, checked);
-  }
+    const subResp = subResponseCache.find(sr => sr.key === key);
+    if (subResp) {
+      setResponseForKey(key, checked, subResp.value, subResp.dtype, subResp.items);
+    } else {
+      setResponseForKey(key, checked);
+    }
+  }, [
+    subResponseCache,
+  ]);
 
   const setResponseForKey = (key: string, checked: boolean, value?: string, dtype?: string, items?: ResponseItem[]) => {
     setTouched(true);
@@ -90,23 +97,28 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
   }
 
   const updateSubResponseCache = (key: string | undefined, response: ResponseItem | undefined) => {
-    setSubResponseCache(prev => {
-      const ind = prev.findIndex(pr => pr.key === key);
-      if (!response) {
+    // console.log('updateSubResponseCache', key, response)
+    if (!response) {
+      setSubResponseCache(prev => {
+        const ind = prev.findIndex(pr => pr.key === key);
         if (ind < 0) {
           return prev;
         }
-        prev = prev.splice(ind, 1);
-      } else {
+        prev.splice(ind, 1);
+        return [...prev];
+      })
+    } else {
+      setSubResponseCache(prev => {
+        const ind = prev.findIndex(pr => pr.key === key);
         if (ind < 0) {
           prev.push(response);
         }
         else {
-          prev[ind] = response;
+          prev[ind] = { ...response };
         }
-      }
-      return [...prev];
-    })
+        return [...prev];
+      })
+    }
   }
 
   const isChecked = (key: string): boolean => {
@@ -212,7 +224,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               responseChanged={(response) => {
                 const value = response?.value;
                 const checkStatus = (value !== undefined && value.length > 0);
-                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value, response?.dtype);
                 updateSubResponseCache(option.key, response);
               }}
               disabled={isDisabled(option)}
@@ -230,7 +242,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
               responseChanged={(response) => {
                 const value = response?.value;
                 const checkStatus = (value !== undefined && value.length > 0);
-                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
+                setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value, response?.dtype);
                 updateSubResponseCache(option.key, response);
               }}
               disabled={isDisabled(option)}

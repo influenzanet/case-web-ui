@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.14.7 - 2023-06-26
+
+### Changed
+
+- Fix issue in `MultipleChoiceGroup" "subResponseCache" issues and correctly setting the response if checkbox is selected again. Also appending corresponding "dtype" to the response in case number input or time input is used.
+
 ## 1.14.6 - 2023-06-19
 
 ### Changed
