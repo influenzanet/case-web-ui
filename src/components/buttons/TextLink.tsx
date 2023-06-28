@@ -3,6 +3,7 @@ import clsx from 'clsx';
 
 interface TextLinkProps {
   href?: string;
+  target?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -17,7 +18,7 @@ const TextLink: React.FC<TextLinkProps> = (props) => {
         )}
       style={props.style}
       href={props.href}
-      target={props.href?.startsWith('http') ? '_blank' : '_self'}
+      target={props.target ?? (props.href?.startsWith('http') ? '_blank' : '_self')}
     >
       <span className="text-decoration-underline" >{props.children}</span>
       <i className="material-icons " style={{ fontSize: 'inherit', textDecoration: 'none' }}>call_made</i>
