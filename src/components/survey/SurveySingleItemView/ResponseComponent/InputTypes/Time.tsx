@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getClassName, getLabelPlacementStyle, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
 import { preprocessTimeInputValue, TimeInput } from '../../../../inputs';
+import { InputHandleRef } from '../../../../../types/type';
 
 interface TimeProps extends CommonResponseComponentProps {
   ignoreClassName?: boolean;
   nonFullWidth?: boolean;
   defaultClassName?: string;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>
 }
 
 const secondsToInputTimeFormat = (value: number | undefined, defaultValue?: string, step?: number | undefined): string | undefined => {
@@ -41,13 +43,20 @@ const convertWithPad = (v: number) => {
   return s;
 }
 
-const Time: React.FC<TimeProps> = (props) => {
+
+const Time = forwardRef<InputHandleRef, TimeProps>((props, ref) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
   const [inputValue, setInputValue] = useState<undefined | number>(
     props.prefill && props.prefill.value ? parseFloat(props.prefill.value) : undefined
   );
+
+  useImperativeHandle(ref, () => {
+    return {
+      clearValue: () => handleInputValueChange(defaultValue ?? '--:--')
+    }
+  })
 
   useEffect(() => {
     if (touched) {
@@ -59,32 +68,29 @@ const Time: React.FC<TimeProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
-  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!key) { return; }
+  const handleInputValueChange = (newValue: string) => {
+
+    if(!props.compDef.key) {
+      return;
+    }
+
     setTouched(true);
 
-    const value = preprocessTimeInputValue(event);
+    const value = preprocessTimeInputValue(newValue);
 
     setInputValue(value);
-    setResponse(prev => {
-      if (value === undefined) {
-        return undefined;
-      }
-      if (!prev) {
-        return {
-          key: props.compDef.key ? props.compDef.key : 'no key found',
-          dtype: 'number',
-          value: value.toString()
-        }
-      }
-      return {
-        ...prev,
-        dtype: 'number',
-        value: value.toString()
-      }
-    })
-  };
 
+    const response: ResponseItem = {
+      key: props.compDef.key
+    };
+
+    if(value) {
+      response.dtype = 'number';
+      response.value = value.toString()
+    }
+
+    setResponse(response);
+  };
 
   const minValue = getStyleValueByKey(props.compDef.style, 'minTime');
   const maxValue = getStyleValueByKey(props.compDef.style, 'maxTime');
@@ -122,15 +128,16 @@ const Time: React.FC<TimeProps> = (props) => {
       disabled={props.compDef.disabled !== undefined || props.disabled === true}
       min={minValue}
       max={maxValue}
-      step={stepSize}
+      step={stepSize ? stepSize as number : undefined}
       value={secondsToInputTimeFormat(inputValue, defaultValue, stepSize)}
-      onChange={handleInputValueChange(props.compDef.key)}
+      onChange={(event) => { handleInputValueChange(event.target.value) }}
+      onFocus={props.onFocus}
     />
     {placeAfter ? <label htmlFor={props.parentKey} className="ms-1">
       {getLocaleStringTextByCode(content, props.languageCode)}
     </label> : null}
   </div>
   );
-};
+});
 
 export default Time;
