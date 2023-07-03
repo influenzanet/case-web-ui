@@ -136,6 +136,8 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
   }
 
   let datepicker = <p>{'...'}</p>;
+  const placeholder = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
+
   switch (props.compDef.properties?.dateInputMode) {
     case 'YM':
       datepicker = <YearMonthSelector
@@ -145,6 +147,7 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
         onChange={handleDateChange}
         languageCode={props.languageCode}
         dateLocales={props.dateLocales}
+        yearPlaceholder={placeholder}
         onFocus={props.onFocus}
       />
       break;
@@ -157,6 +160,7 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
         onChange={handleDateChange}
         languageCode={props.languageCode}
         dateLocales={props.dateLocales}
+        yearPlaceholder={placeholder}
         onFocus={props.onFocus}
       />
       break;
@@ -175,7 +179,7 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
           locale={props.languageCode}
           onChange={handleDateChange}
           dateFormat={props.dateLocales?.find(loc => loc.code === props.languageCode)?.format}
-          placeholderText={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
+          placeholderText={placeholder}
           minDate={props.compDef.properties?.min ? new Date((props.compDef.properties?.min as number) * 1000) : undefined}
           maxDate={props.compDef.properties?.max ? new Date((props.compDef.properties?.max as number) * 1000) : undefined}
           onCalendarOpen={() => wrapperRef.current?.focus()}

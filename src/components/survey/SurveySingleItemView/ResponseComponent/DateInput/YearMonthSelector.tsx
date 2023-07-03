@@ -9,7 +9,8 @@ interface YearMonthSelectorProps {
   onlyYear?: boolean;
   languageCode: string;
   dateLocales?: Array<{ code: string, locale: any, format: string }>;
-  onFocus?: React.FocusEventHandler<HTMLSelectElement>
+  yearPlaceholder?: string;
+  onFocus?: React.FocusEventHandler<HTMLSelectElement>;
 }
 
 const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
@@ -68,7 +69,7 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
     onChange={onChangeYear}
     onFocus={props.onFocus}
   >
-    <option value={'NaN'}>Year</option>
+    <option value={'NaN'}>{props.yearPlaceholder}</option>
     {years.map(option => (
       <option key={option} value={option}>
         {option}
