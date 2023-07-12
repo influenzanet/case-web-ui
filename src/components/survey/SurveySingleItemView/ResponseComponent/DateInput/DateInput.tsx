@@ -169,7 +169,7 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
         ref={wrapperRef}
         tabIndex={0}
         className="border-0 btn bg-white p-0 d-flex flex-row "
-        onClick={() => datePickerRef.current?.setOpen(true)}
+        onClick={() => !datePickerRef.current?.isCalendarOpen() ? datePickerRef.current?.setOpen(true) : false}
       >
         <DatePicker
           id={props.parentKey}
