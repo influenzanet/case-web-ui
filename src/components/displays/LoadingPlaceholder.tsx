@@ -7,6 +7,7 @@ interface LoadingPlaceholderProps {
   color: 'primary' | 'secondary' | 'white';
   iconSize?: string;
   iconBorderWidth?: string;
+  className?: string;
 }
 
 const defaultIconSize = '3rem';
@@ -18,6 +19,7 @@ const LoadingPlaceholder: React.FC<LoadingPlaceholderProps> = (props) => {
   return (
     <div
       className={clsx(
+        props.className,
         "loading-placeholder d-flex align-items-center justify-content-center",
         {
           'vh-100': props.minHeight === 'vh-100',
