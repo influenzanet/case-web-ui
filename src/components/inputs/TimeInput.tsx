@@ -2,8 +2,8 @@ import React, { InputHTMLAttributes } from 'react';
 import AlertBox from '../displays/AlertBox';
 import clsx from 'clsx';
 
-export const preprocessTimeInputValue = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): number | undefined => {
-  const value = event.target.value;
+export const preprocessTimeInputValue = (value: string): number | undefined => {
+
   if (!value) { return }
 
   const parts = value.split(':');

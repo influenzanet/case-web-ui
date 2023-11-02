@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
 import { CommonResponseComponentProps, getClassName, getInputMaxWidth, getLocaleStringTextByCode, getStyleValueByKey } from '../../utils';
 import clsx from 'clsx';
+import { InputHandleRef } from '../../../../../types/type';
 
 interface TextInputProps extends CommonResponseComponentProps {
   updateDelay?: number;
@@ -9,15 +10,22 @@ interface TextInputProps extends CommonResponseComponentProps {
   nonFullWidth?: boolean;
   defaultClassName?: string;
   inputClassName?: string;
+  onFocus?: React.FocusEventHandler<HTMLInputElement>
 }
 
-const TextInput: React.FC<TextInputProps> = (props) => {
+const TextInput = forwardRef<InputHandleRef, TextInputProps>((props, ref)  => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
   const [inputValue, setInputValue] = useState<string>(
     props.prefill && props.prefill.value ? props.prefill.value : ''
   );
+
+  useImperativeHandle(ref, () => {
+    return {
+      clearValue: () => handleInputValueChange("")
+    }
+  });
 
   useEffect(() => {
     if (touched) {
@@ -32,11 +40,14 @@ const TextInput: React.FC<TextInputProps> = (props) => {
 
   const transformCase = getStyleValueByKey(props.compDef.style, 'transformCase');
 
-  const handleInputValueChange = (key: string | undefined) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!key) { return; }
+  const handleInputValueChange = (newValue: string) => {
+    if(!props.compDef.key) {
+      return
+    }
+
     setTouched(true);
 
-    let value = (event.target as HTMLInputElement).value;
+    let value = newValue;
 
     if (transformCase === 'upper') {
       value = value.toUpperCase();
@@ -47,21 +58,16 @@ const TextInput: React.FC<TextInputProps> = (props) => {
     setInputValue(value);
 
     value = value.trim();
-    setResponse(prev => {
-      if (value.length < 1) {
-        return undefined;
-      }
-      if (!prev) {
-        return {
-          key: props.compDef.key ? props.compDef.key : 'no key found',
-          value: value
-        }
-      }
-      return {
-        ...prev,
-        value: value
-      }
-    })
+
+    const response: ResponseItem = {
+      key: props.compDef.key
+    };
+
+    if(value.length > 0) {
+      response.value = value;
+    }
+
+    setResponse(response);
   };
 
   const labelText = getLocaleStringTextByCode(props.compDef.content, props.languageCode);
@@ -102,11 +108,12 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         placeholder={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
         value={inputValue}
         maxLength={maxLengthValue ? parseInt(maxLengthValue) : 4000}
-        onChange={handleInputValueChange(props.compDef.key)}
+        onChange={(event) => { handleInputValueChange(event.target.value)} }
         disabled={props.compDef.disabled === true || props.disabled === true}
+        onFocus={props.onFocus}
       />
     </div>
   );
-};
+});
 
 export default TextInput;
