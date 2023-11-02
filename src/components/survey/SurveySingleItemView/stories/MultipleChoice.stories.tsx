@@ -52,7 +52,7 @@ export const Example = () => <SurveySingleItemView
       ]
     },
   }}
-  responsePrefill={undefined}
+  responsePrefill={{ key: 'rg', items: [{ key: 'mcg', items: [{ key: '8', value: "75" }] }]}}
   responseChanged={(response) => console.log(response)}
   showInvalid={false}
   languageCode="en"
