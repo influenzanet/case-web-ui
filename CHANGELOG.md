@@ -1,16 +1,14 @@
 # Changelog
 
-## 1.14.7 - 2023-06-26
+## 1.15.0
 
 ### Changed
 
-- Fix issue in `MultipleChoiceGroup" "subResponseCache" issues and correctly setting the response if checkbox is selected again. Also appending corresponding "dtype" to the response in case number input or time input is used.
+- fixed multiple issues with SingleChoiceGroup, MultipleChoiceGroup and Time components
 
-## 1.14.6 - 2023-06-19
+- added className to LoadingPlaceholder
 
-### Changed
-
-- Fix issue in `SingleChoiceGroup` where the "subResponseCache" was not properly updated when the "sub-response" was deleted.
+- fixed an issue where the DateInput would not close the date picker
 
 ## 1.14.5 - 2023-04-14
 
@@ -101,7 +99,7 @@
 
 ### Changed
 
-- TextLink will use target '_self', when internal link is used.
+- TextLink will use target '\_self', when internal link is used.
 - Update some dependency versions.
 
 ## 1.10.4 - 2022-04-14
@@ -278,7 +276,7 @@ Updated project dependencies.
 
 ### BREAKING-CHANGES
 
-- Replacing  material-ui dialog, with react bootstrap's modal. Dialog component support now following props:
+- Replacing material-ui dialog, with react bootstrap's modal. Dialog component support now following props:
   - size (optional): 'sm', 'lg', 'xl'
   - fullScreenFrom (optional): 'sm-down', 'md-down', 'lg-down', xl-down', 'xxl-down'. If not defined, 'sm-down' will be used as a default value.
 
@@ -382,50 +380,50 @@ Due to the updates related to react-markdown version, the following markdown cus
 
 Previously:
 
-~~~
+```
 [mapchart:/charts/ggd-map-nl.json]:  /charts/20210126_0801_kaart_data.json
-~~~
+```
 
 New syntax:
 
-~~~
+```
 <mapchart
   map-url="/charts/ggd-map-nl.json"
   data-url="/charts/20210126_0801_kaart_data.json"
 />
-~~~
+```
 
 **Line and Scatter Chart**
 
 Previously:
 
-~~~
+```
 [line-and-scatter-chart]: /charts/20210126_0801_percentage_klachten_over_tijd.json
-~~~
+```
 
 New syntax:
 
-~~~
+```
 <lineandscatterchart
   data-url="/charts/20210126_0801_percentage_klachten_over_tijd.json"
 />
-~~~
+```
 
 **Page info for date line**
 
 Previously:
 
-~~~
+```
 `Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.`
-~~~
+```
 
 New syntax:
 
-~~~
+```
 <pageinfo>
 Deze pagina is voor het laatst aangepast op 02.feb.2021 16:00.
 </pageinfo>
-~~~
+```
 
 The old syntax will be rendered as the default code block.
 
