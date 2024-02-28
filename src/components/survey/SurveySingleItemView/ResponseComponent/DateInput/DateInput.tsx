@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef, useImperativeHandle, Ref } from 'react';
 import { ResponseItem } from 'survey-engine/data_types';
 import DatePicker, { registerLocale } from "react-datepicker";
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
@@ -6,21 +6,28 @@ import { format, getYear, getMonth } from 'date-fns';
 import { addYears, getUnixTime, eachMonthOfInterval, startOfYear, endOfYear } from 'date-fns';
 import YearMonthSelector from './YearMonthSelector';
 import clsx from 'clsx';
-
+import { InputHandleRef } from '../../../../../types/type';
 
 interface DateInputProps extends CommonResponseComponentProps {
   openCalendar: boolean | undefined;
   defaultClassName?: string;
+  onFocus?: () => void
 }
 
-const DateInput: React.FC<DateInputProps> = (props) => {
+const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
   const datePickerRef = useRef<DatePicker>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
-    props.prefill && props.prefill.value ? new Date(parseInt(props.prefill.value) * 1000) : undefined,
+  const [selectedDate, setSelectedDate] = useState<Date | null>(
+    props.prefill && props.prefill.value ? new Date(parseInt(props.prefill.value) * 1000) : null
   );
+
+  useImperativeHandle(ref, () => {
+    return {
+      clearValue: () => handleDateChange(null)
+    }
+  });
 
   useEffect(() => {
     props.dateLocales?.forEach(loc => {
@@ -44,30 +51,24 @@ const DateInput: React.FC<DateInputProps> = (props) => {
     }
   }, [props.openCalendar]);
 
-  const handleDateChange = (date: Date | undefined) => {
+  const handleDateChange = (date: Date | null) => {
+    if(!props.compDef.key) {
+      return;
+    }
     setTouched(true);
 
     setSelectedDate(date);
-    if (!date) {
-      setResponse(undefined);
-      return;
+
+    const response: ResponseItem = {
+      key: props.compDef.key
+    };
+
+    if(date) {
+      response.dtype = 'date';
+      response.value = getUnixTime(date).toString()
     }
 
-    setResponse(prev => {
-      if (!date) { return undefined; }
-      if (!prev) {
-        return {
-          key: props.compDef.key ? props.compDef.key : 'no key found',
-          dtype: 'date',
-          value: getUnixTime(date).toString(),
-        }
-      }
-      return {
-        ...prev,
-        dtype: 'date',
-        value: getUnixTime(date).toString(),
-      }
-    });
+    setResponse(response);
   }
 
   const minDate = props.compDef.properties?.min ? new Date((props.compDef.properties?.min as number) * 1000) : new Date(1900, 1);
@@ -135,6 +136,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
   }
 
   let datepicker = <p>{'...'}</p>;
+  const placeholder = getLocaleStringTextByCode(props.compDef.description, props.languageCode);
+
   switch (props.compDef.properties?.dateInputMode) {
     case 'YM':
       datepicker = <YearMonthSelector
@@ -144,6 +147,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         onChange={handleDateChange}
         languageCode={props.languageCode}
         dateLocales={props.dateLocales}
+        yearPlaceholder={placeholder}
+        onFocus={props.onFocus}
       />
       break;
     case 'Y':
@@ -155,6 +160,8 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         onChange={handleDateChange}
         languageCode={props.languageCode}
         dateLocales={props.dateLocales}
+        yearPlaceholder={placeholder}
+        onFocus={props.onFocus}
       />
       break;
     default:
@@ -162,7 +169,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
         ref={wrapperRef}
         tabIndex={0}
         className="border-0 btn bg-white p-0 d-flex flex-row "
-        onClick={() => datePickerRef.current?.setOpen(true)}
+        onClick={() => !datePickerRef.current?.isCalendarOpen() ? datePickerRef.current?.setOpen(true) : false}
       >
         <DatePicker
           id={props.parentKey}
@@ -170,9 +177,9 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           className="form-control border-0 shadow-none p-1"
           selected={selectedDate}
           locale={props.languageCode}
-          onChange={(date) => handleDateChange(date ? date as Date : undefined)}
+          onChange={handleDateChange}
           dateFormat={props.dateLocales?.find(loc => loc.code === props.languageCode)?.format}
-          placeholderText={getLocaleStringTextByCode(props.compDef.description, props.languageCode)}
+          placeholderText={placeholder}
           minDate={props.compDef.properties?.min ? new Date((props.compDef.properties?.min as number) * 1000) : undefined}
           maxDate={props.compDef.properties?.max ? new Date((props.compDef.properties?.max as number) * 1000) : undefined}
           onCalendarOpen={() => wrapperRef.current?.focus()}
@@ -182,6 +189,7 @@ const DateInput: React.FC<DateInputProps> = (props) => {
           disabledKeyboardNavigation
           calendarContainer={DatepickerContainer}
           renderCustomHeader={DatepickerHeader}
+          onFocus={props.onFocus}
         />
         <span className="m-1 d-none d-sm-inline material-icons">date_range</span>
       </div>
@@ -202,6 +210,6 @@ const DateInput: React.FC<DateInputProps> = (props) => {
       {datepicker}
     </div >
   );
-};
+});
 
 export default DateInput;

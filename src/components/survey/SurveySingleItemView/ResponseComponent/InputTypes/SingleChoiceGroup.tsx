@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { isItemGroupComponent, ItemComponent, ItemGroupComponent } from 'survey-engine/data_types/survey-item-component';
 import { ResponseItem } from 'survey-engine/data_types/response';
 import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
@@ -10,19 +10,17 @@ import clsx from 'clsx';
 import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
 import Time from './Time';
+import { InputHandleRef } from '../../../../../types/type';
 
 interface SingleChoiceGroupProps extends CommonResponseComponentProps {
   showOptionKey?: boolean;
 }
 
-
 const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
-  const [subResponseCache, setSubResponseCache] = useState<Array<ResponseItem>>(
-    (props.prefill && props.prefill.items) ? [...props.prefill.items] : []
-  );
+  const inputRefs: { key: string | undefined, obj: RefObject<InputHandleRef>}[] = []
 
   useEffect(() => {
     if (touched) {
@@ -34,57 +32,45 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
+  const handleSelectionChange = (key: string) => {
+    if(key === getSelectedKey()) {
+      return;
+    }
 
-  const handleSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const key = (event.target as HTMLInputElement).value;
+    const currentlySelected = inputRefs.find((input) => input.key === getSelectedKey());
+    if(currentlySelected) {
+      currentlySelected.obj.current?.clearValue();
+    }
+
     onOptionSelected(key);
   };
 
   const onOptionSelected = (key: string) => {
     setTouched(true);
-    setResponse(prev => {
-      if (!prev) {
-        return {
-          key: props.compDef.key ? props.compDef.key : 'no key found',
-          items: [{ key: key }]
-        }
-      }
-      const subResp = subResponseCache.find(sr => sr.key === key);
-      return {
-        ...prev,
-        items: [
-          subResp ? subResp : { key }
-        ]
-      }
+    setResponse({
+      key: props.compDef.key ? props.compDef.key : 'no key found',
+      items: [{ key: key }]
     });
+  }
+
+  const getHandleSelectionCallback = (key: string | undefined) => () => {
+    if(!key) {
+      return;
+    }
+    handleSelectionChange(key)
   }
 
   const setResponseForKey = (key: string | undefined) => (response: ResponseItem | undefined) => {
     if (!key || !props.compDef.key) { return; }
-    setTouched(true);
-    // console.log(response);
 
-    setSubResponseCache(prev => {
-      const ind = prev.findIndex(pr => pr.key === key);
+    if(key === getSelectedKey()) {
+      setTouched(true);
+
       if (!response) {
-        if (ind < 0) {
-          return prev;
-        }
-        prev = prev.splice(ind, 1);
+        setResponse({ key: props.compDef.key, items: [] });
       } else {
-        if (ind < 0) {
-          prev.push(response);
-        }
-        else {
-          prev[ind] = response;
-        }
+        setResponse({ key: props.compDef.key, items: [{ ...response }] });
       }
-      return [...prev];
-    })
-    if (!response) {
-      setResponse({ key: props.compDef.key, items: [] });
-    } else {
-      setResponse({ key: props.compDef.key, items: [{ ...response }] });
     }
   }
 
@@ -106,12 +92,17 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
     if (option.displayCondition === false) {
       return null;
     }
+
     const prefill = getSelectedItem();
     const optionKey = props.parentKey + '.' + option.key;
 
     const isDisabled = option.disabled === true;
 
     const optionClassName = getClassName(option.style);
+
+    const inputRefHandle = useRef<InputHandleRef>(null);
+
+    inputRefs.push({ key: option.key, obj: inputRefHandle });
 
     let labelComponent = <p>{'loading...'}</p>
     if (isItemGroupComponent(option)) {
@@ -148,6 +139,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
         case 'input':
           labelComponent =
             <TextInput
+              ref={inputRefHandle}
               parentKey={props.parentKey}
               key={option.key}
               compDef={option}
@@ -157,11 +149,13 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
               updateDelay={5}
               disabled={isDisabled}
               dateLocales={props.dateLocales}
+              onFocus={getHandleSelectionCallback(option.key)}
             />;
           break;
         case 'numberInput':
           labelComponent =
             <NumberInput
+              ref={inputRefHandle}
               parentKey={props.parentKey}
               key={option.key}
               compDef={option}
@@ -170,11 +164,13 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
               responseChanged={setResponseForKey(option.key)}
               ignoreClassName={optionClassName !== undefined}
               dateLocales={props.dateLocales}
+              onFocus={getHandleSelectionCallback(option.key)}
             />;
           break;
         case 'timeInput':
           labelComponent =
             <Time
+              ref={inputRefHandle}
               parentKey={props.parentKey}
               key={option.key}
               compDef={option}
@@ -183,10 +179,12 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
               responseChanged={setResponseForKey(option.key)}
               ignoreClassName={optionClassName !== undefined}
               dateLocales={props.dateLocales}
+              onFocus={getHandleSelectionCallback(option.key)}
             />;
           break;
         case 'dateInput':
           labelComponent = <DateInput
+            ref={inputRefHandle}
             parentKey={optionKey}
             key={option.key}
             compDef={option}
@@ -196,6 +194,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
             openCalendar={touched && getSelectedKey() === option.key}
             disabled={isDisabled}
             dateLocales={props.dateLocales}
+            onFocus={getHandleSelectionCallback(option.key)}
           />;
           break;
         default:
@@ -223,7 +222,7 @@ const SingleChoiceGroup: React.FC<SingleChoiceGroupProps> = (props) => {
           value={option.key}
           checked={getSelectedKey() === option.key}
           disabled={isDisabled}
-          onChange={handleSelectionChange}
+          onChange={getHandleSelectionCallback(option.key)}
         />
       </div>
       {labelComponent}

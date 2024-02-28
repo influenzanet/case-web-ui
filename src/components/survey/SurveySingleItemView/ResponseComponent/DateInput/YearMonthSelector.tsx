@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { getYear, format, eachMonthOfInterval, startOfYear, getMonth, endOfYear } from 'date-fns';
 
-
 interface YearMonthSelectorProps {
-  currentDate?: Date;
-  onChange: (date?: Date) => void;
+  currentDate?: Date | null;
+  onChange: (date: Date | null) => void;
   minDate: Date;
   maxDate: Date;
   onlyYear?: boolean;
   languageCode: string;
   dateLocales?: Array<{ code: string, locale: any, format: string }>;
+  yearPlaceholder?: string;
+  onFocus?: React.FocusEventHandler<HTMLSelectElement>;
 }
 
-
 const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
-  const [selectedYear, setSelectedYear] = useState<number | undefined>(props.currentDate ? getYear(props.currentDate) : undefined);
-  const [selectedMonth, setSelectedMonth] = useState<number | undefined>(props.currentDate ? getMonth(props.currentDate) : undefined);
+  const [selectedYear, setSelectedYear] = useState<number | null>(props.currentDate ? getYear(props.currentDate) : null);
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(props.currentDate ? getMonth(props.currentDate) : null);
 
   useEffect(() => {
-    setSelectedYear(props.currentDate ? getYear(props.currentDate) : undefined);
-    setSelectedMonth(props.currentDate ? getMonth(props.currentDate) : undefined);
+    setSelectedYear(props.currentDate ? getYear(props.currentDate) : null);
+    setSelectedMonth(props.currentDate ? getMonth(props.currentDate) : null);
   }, [props.currentDate]);
 
   useEffect(() => {
     if (!selectedYear) {
-      props.onChange(undefined);
+      props.onChange(null);
       return;
     }
     if (props.onlyYear) {
@@ -32,8 +32,8 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
       return;
     }
 
-    if (selectedMonth === undefined) {
-      props.onChange(undefined);
+    if (selectedMonth === null) {
+      props.onChange(null);
       return;
     }
     props.onChange(new Date(selectedYear, selectedMonth, 2));
@@ -57,12 +57,19 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
     }
   });
 
+  const onChangeYear = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedYear(value && value !== '-1' ? parseInt(value) : null);
+    setSelectedMonth(0);
+  }, [setSelectedYear, setSelectedMonth]);
+
   const yearSelector = <select
     className="form-select mb-2 mb-sm-0"
-    value={selectedYear !== undefined && selectedYear.toString() !== 'NaN' ? selectedYear : 'NaN'}
-    onChange={({ target: { value } }) => setSelectedYear(value && value !== '-1' ? parseInt(value) : undefined)}
+    value={selectedYear !== null && selectedYear.toString() !== 'NaN' ? selectedYear : 'NaN'}
+    onChange={onChangeYear}
+    onFocus={props.onFocus}
   >
-    <option value={'NaN'}></option>
+    <option value={'NaN'}>{props.yearPlaceholder}</option>
     {years.map(option => (
       <option key={option} value={option}>
         {option}
@@ -70,17 +77,22 @@ const YearMonthSelector: React.FC<YearMonthSelectorProps> = (props) => {
     ))}
   </select>
 
-  const monthSelector = <select
-    className="form-select mb-2 mb-sm-0"
-    value={selectedMonth !== undefined ? selectedMonth : 'NaN'}
-    onChange={({ target: { value } }) => {
-      if (value === 'NaN') {
-        setSelectedYear(undefined);
-        setSelectedMonth(undefined);
+  const onChangeMonth = useCallback((event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+
+    if (value === 'NaN') {
+        setSelectedYear(null);
+        setSelectedMonth(null);
         return;
       }
       setSelectedMonth(parseInt(value));
-    }}
+  }, [setSelectedYear, setSelectedMonth]);
+
+  const monthSelector = <select
+    className="form-select mb-2 mb-sm-0"
+    value={selectedMonth !== null ? selectedMonth : 'NaN'}
+    onChange={onChangeMonth}
+    onFocus={props.onFocus}
   >
     <option value="NaN"></option>
     {

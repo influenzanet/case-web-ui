@@ -84,7 +84,7 @@ export const YearMonthSelector = () => <SurveySingleItemView
         {
           key: 'rg', role: 'responseGroup', items: [
             {
-              key: 'lg', role: 'dateInput', disabled: false, content: [], description: [], properties: { dateInputMode: "YM" }
+              key: 'lg', role: 'dateInput', disabled: false, content: [], description: [{ code: 'en', resolvedText: 'Year' }, { code: 'it', resolvedText: 'Anno' }], properties: { dateInputMode: "YM" }
             }
           ]
         }

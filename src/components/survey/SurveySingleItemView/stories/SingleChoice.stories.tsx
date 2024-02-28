@@ -40,6 +40,8 @@ export const Example = () => <SurveySingleItemView
                 { key: '2', role: 'option', content: [{ code: 'en', resolvedText: 'Option 2' }] },
                 { key: '3', role: 'input', content: [{ code: 'en', resolvedText: 'Option 2 here' }] },
                 { key: 't1', role: 'dateInput', content: [{ code: 'en', resolvedText: 'Subtitle' }] },
+
+                { key: 'ym', role: 'dateInput', properties: { dateInputMode: "YM" }, content: [{ code: 'en', resolvedText: 'Subtitle' }] },
                 {
                   key: '8', role: 'numberInput', style: [
                     { key: 'className', value: 'pt-2 border-top border-1 border-grey-2' },

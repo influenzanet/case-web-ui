@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, RefObject, useRef, useCallback } from 'react';
 import { ItemComponent, ResponseItem, ItemGroupComponent, isItemGroupComponent } from 'survey-engine/data_types';
-import { CommonResponseComponentProps, getClassName, getLocaleStringTextByCode } from '../../utils';
+import { CommonResponseComponentProps, getLocaleStringTextByCode } from '../../utils';
 import TextInput from './TextInput';
 import clsx from 'clsx';
 import TextViewComponent from '../../SurveyComponents/TextViewComponent';
@@ -8,6 +8,7 @@ import NumberInput from './NumberInput';
 import { renderFormattedContent } from '../../renderUtils';
 import ClozeQuestion from './ClozeQuestion';
 import Time from './Time';
+import { InputHandleRef } from '../../../../../types/type';
 
 
 interface MultipleChoiceGroupProps extends CommonResponseComponentProps {
@@ -18,9 +19,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
   const [response, setResponse] = useState<ResponseItem | undefined>(props.prefill);
   const [touched, setTouched] = useState(false);
 
-  const [subResponseCache, setSubResponseCache] = useState<Array<ResponseItem>>(
-    (props.prefill && props.prefill.items) ? [...props.prefill.items] : []
-  );
+  const inputRefs: { key: string | undefined, obj: RefObject<InputHandleRef>}[] = [];
 
   useEffect(() => {
     if (touched) {
@@ -35,8 +34,16 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
   const handleSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const key = event.target.value;
     const checked = event.target.checked;
+
+    if(! checked) {
+      const inputHandle = inputRefs.find((input) => input.key === key);
+      if(inputHandle) {
+        inputHandle.obj.current?.clearValue();
+      }
+    }
+
     setResponseForKey(key, checked);
-  }
+  };
 
   const setResponseForKey = (key: string, checked: boolean, value?: string, dtype?: string, items?: ResponseItem[]) => {
     setTouched(true);
@@ -89,26 +96,6 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     }
   }
 
-  const updateSubResponseCache = (key: string | undefined, response: ResponseItem | undefined) => {
-    setSubResponseCache(prev => {
-      const ind = prev.findIndex(pr => pr.key === key);
-      if (!response) {
-        if (ind < 0) {
-          return prev;
-        }
-        prev = prev.splice(ind, 1);
-      } else {
-        if (ind < 0) {
-          prev.push(response);
-        }
-        else {
-          prev[ind] = response;
-        }
-      }
-      return [...prev];
-    })
-  }
-
   const isChecked = (key: string): boolean => {
     if (!response || !response.items || response.items.length < 1) {
       return false;
@@ -139,7 +126,11 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
     }
     const optionKey = props.parentKey + '.' + option.key;
     let labelComponent = <p>{'loading...'}</p>;
-    const prefill = subResponseCache.find(r => r.key === option.key);
+    const prefill = response?.items?.find(r => r.key === option.key);
+
+    const inputRefHandle = useRef<InputHandleRef>(null);
+
+    inputRefs.push({ key: option.key, obj: inputRefHandle });
 
     if (isItemGroupComponent(option)) {
       switch (option.role) {
@@ -160,7 +151,6 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
             responseChanged={(response) => {
               const checkStatus = (response !== undefined && response.items !== undefined);
               setResponseForKey(option.key ? option.key : 'unknown', checkStatus, response?.value, undefined, response?.items);
-              updateSubResponseCache(option.key, response);
             }}
             disabled={isDisabled(option)}
             dateLocales={props.dateLocales}
@@ -187,6 +177,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
             <TextInput
               parentKey={props.parentKey}
               key={option.key}
+              ref={inputRefHandle}
               compDef={option}
               prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
               languageCode={props.languageCode}
@@ -194,7 +185,6 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
                 const value = response?.value;
                 const checkStatus = (value !== undefined && value.length > 0);
                 setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
-                updateSubResponseCache(option.key, response);
               }}
               updateDelay={5}
               disabled={isDisabled(option)}
@@ -206,6 +196,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
             <Time
               parentKey={props.parentKey}
               key={option.key}
+              ref={inputRefHandle}
               compDef={option}
               prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
               languageCode={props.languageCode}
@@ -213,7 +204,6 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
                 const value = response?.value;
                 const checkStatus = (value !== undefined && value.length > 0);
                 setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
-                updateSubResponseCache(option.key, response);
               }}
               disabled={isDisabled(option)}
               dateLocales={props.dateLocales}
@@ -224,6 +214,7 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
             <NumberInput
               parentKey={props.parentKey}
               key={option.key}
+              ref={inputRefHandle}
               compDef={option}
               prefill={(prefill && prefill.key === option.key) ? prefill : undefined}
               languageCode={props.languageCode}
@@ -231,7 +222,6 @@ const MultipleChoiceGroup: React.FC<MultipleChoiceGroupProps> = (props) => {
                 const value = response?.value;
                 const checkStatus = (value !== undefined && value.length > 0);
                 setResponseForKey(option.key ? option.key : 'unknown', checkStatus, value);
-                updateSubResponseCache(option.key, response);
               }}
               disabled={isDisabled(option)}
               dateLocales={props.dateLocales}

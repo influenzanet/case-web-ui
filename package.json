@@ -1,6 +1,6 @@
 {
-  "name": "@influenzanet/case-web-ui",
-  "version": "1.14.6",
+  "name": "case-web-ui",
+  "version": "1.15.0",
   "description": "React components for CASE",
   "scripts": {
     "build": "rollup -c",
@@ -73,5 +73,9 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "survey-engine": "^1.2.1"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   }
 }

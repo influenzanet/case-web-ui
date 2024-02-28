@@ -1,6 +1,10 @@
-import { ItemComponent, LocalizedString, LocalizedObject, ResponseItem } from "survey-engine/data_types";
-import { format } from 'date-fns';
-
+import {
+  ItemComponent,
+  LocalizedString,
+  LocalizedObject,
+  ResponseItem,
+} from "survey-engine/data_types";
+import { format } from "date-fns";
 
 export interface CommonResponseComponentProps {
   parentKey: string;
@@ -10,25 +14,36 @@ export interface CommonResponseComponentProps {
   languageCode: string;
   showOptionKey?: boolean;
   disabled?: boolean;
-  dateLocales: Array<{ code: string, locale: any, format: string }>;
+  dateLocales: Array<{ code: string; locale: any; format: string }>;
 }
 
-export const getItemComponentTranslationByRole = (components: Array<ItemComponent>, role: string, code: string): string | null => {
-  const comp = components.find(comp => comp.role === role);
+export const getItemComponentTranslationByRole = (
+  components: Array<ItemComponent>,
+  role: string,
+  code: string
+): string | null => {
+  const comp = components.find((comp) => comp.role === role);
   if (!comp || comp.displayCondition === false) {
     return null;
   }
   const translation = getLocaleStringTextByCode(comp.content, code);
   if (!translation) {
-    console.warn('no translation found for given language code: ' + code);
+    console.warn("no translation found for given language code: " + code);
     return null;
   }
   return translation;
-}
+};
 
-export const getLocaleStringTextByCode = (translations: LocalizedObject[] | undefined, code: string): string | undefined => {
-  if (!translations) { return; }
-  const translation = (translations.find(cont => cont.code === code) as LocalizedString);
+export const getLocaleStringTextByCode = (
+  translations: LocalizedObject[] | undefined,
+  code: string
+): string | undefined => {
+  if (!translations) {
+    return;
+  }
+  const translation = translations.find(
+    (cont) => cont.code === code
+  ) as LocalizedString;
   if (!translation) {
     if (translations.length > 0) {
       return (translations[0] as LocalizedString).resolvedText;
@@ -36,14 +51,23 @@ export const getLocaleStringTextByCode = (translations: LocalizedObject[] | unde
     return;
   }
   return translation.resolvedText;
-}
+};
 
-export const getLocaleStringDateByCode = (translations: LocalizedObject[] | undefined, code: string, dateFormat: string, dateLocales?: Array<{ code: string, locale: any, format: string }>): string | undefined => {
-  if (!translations) { return; }
-  let translation = (translations.find(cont => cont.code === code) as LocalizedString);
+export const getLocaleStringDateByCode = (
+  translations: LocalizedObject[] | undefined,
+  code: string,
+  dateFormat: string,
+  dateLocales?: Array<{ code: string; locale: any; format: string }>
+): string | undefined => {
+  if (!translations) {
+    return;
+  }
+  let translation = translations.find(
+    (cont) => cont.code === code
+  ) as LocalizedString;
   if (!translation) {
     if (translations.length > 0) {
-      translation = (translations[0] as LocalizedString);
+      translation = translations[0] as LocalizedString;
     }
     return;
   }
@@ -53,42 +77,59 @@ export const getLocaleStringDateByCode = (translations: LocalizedObject[] | unde
   }
 
   let currentDate = new Date();
-  if (typeof (parts[0]) === "number") {
+  if (typeof parts[0] === "number") {
     currentDate = new Date(parts[0] * 1000);
   }
-  return format(currentDate, dateFormat, { locale: dateLocales?.find(loc => loc.code === 'nl')?.locale })
-}
+  return format(currentDate, dateFormat, {
+    locale: dateLocales?.find((loc) => loc.code === "nl")?.locale,
+  });
+};
 
-export const getItemComponentByRole = (components: Array<ItemComponent> | undefined, role: string): ItemComponent | undefined => {
-  if (!components) { return; }
-  return components.find(comp => comp.role === role);
+export const getItemComponentByRole = (
+  components: Array<ItemComponent> | undefined,
+  role: string
+): ItemComponent | undefined => {
+  if (!components) {
+    return;
+  }
+  return components.find((comp) => comp.role === role);
+};
 
-}
+export const getItemComponentsByRole = (
+  components: Array<ItemComponent>,
+  role: string
+): ItemComponent[] => {
+  return components.filter((comp) => comp.role === role);
+};
 
-export const getItemComponentsByRole = (components: Array<ItemComponent>, role: string): ItemComponent[] => {
-  return components.filter(comp => comp.role === role);
-}
-
-export const getStyleValueByKey = (styles: Array<{ key: string, value: string }> | undefined, key: string): string | undefined => {
+export const getStyleValueByKey = (
+  styles: Array<{ key: string; value: string }> | undefined,
+  key: string
+): string | undefined => {
   if (!styles) {
     return;
   }
-  const object = styles.find(st => st.key === key);
+  const object = styles.find((st) => st.key === key);
   if (!object) {
     return;
   }
   return object.value;
-}
+};
 
-export const getClassName = (styles?: Array<{ key: string, value: string }>): string | undefined => {
-  return getStyleValueByKey(styles, 'className');
-}
+export const getClassName = (
+  styles?: Array<{ key: string; value: string }>
+): string | undefined => {
+  return getStyleValueByKey(styles, "className");
+};
 
-export const getLabelPlacementStyle = (styles?: Array<{ key: string, value: string }>): string | undefined => {
-  return getStyleValueByKey(styles, 'labelPlacement');
-}
+export const getLabelPlacementStyle = (
+  styles?: Array<{ key: string; value: string }>
+): string | undefined => {
+  return getStyleValueByKey(styles, "labelPlacement");
+};
 
-export const getInputMaxWidth = (styles?: Array<{ key: string, value: string }>): string | undefined => {
-  return getStyleValueByKey(styles, 'inputMaxWidth');
-}
-
+export const getInputMaxWidth = (
+  styles?: Array<{ key: string; value: string }>
+): string | undefined => {
+  return getStyleValueByKey(styles, "inputMaxWidth");
+};
