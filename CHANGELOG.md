@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.15.1
+
+### Changed
+
+- fixed bug on DateInput preventing validation to work properly
+
 ## 1.15.0
 
 ### Changed

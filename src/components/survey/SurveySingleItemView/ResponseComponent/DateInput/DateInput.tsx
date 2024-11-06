@@ -59,14 +59,17 @@ const DateInput = forwardRef<InputHandleRef, DateInputProps>((props, ref) => {
 
     setSelectedDate(date);
 
-    const response: ResponseItem = {
-      key: props.compDef.key
-    };
+    if(!date) {
+      setResponse(undefined);
 
-    if(date) {
-      response.dtype = 'date';
-      response.value = getUnixTime(date).toString()
+      return;
     }
+
+    const response: ResponseItem = {
+      key: props.compDef.key,
+      dtype: 'date',
+      value: getUnixTime(date).toString()
+    };
 
     setResponse(response);
   }
